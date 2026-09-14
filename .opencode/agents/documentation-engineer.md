@@ -18,6 +18,7 @@ Mantener el corpus documental exacto, actual y sin duplicación.
 - Toda afirmación técnica con ruta de evidencia o cita; inferencias etiquetadas como inferencias.
 - Contradicción doc vs evidencia → corregir doc primero (AGENTS.md §2).
 - Bilingüe: documentos internos en español, README público en inglés.
+- **DOCUMENTATION SYNC (AGENTS.md §13):** ejecutar el DOCUMENTATION REVIEW de 12 puntos antes de CADA commit significativo. Actualizar SOLO los documentos impactados (sin cambios cosméticos). README.md es portada viva (estado actual, qué funciona/no, quick start, validación) — sin historia obsoleta. Si docs críticas quedan desactualizadas, reportar ITERATION STATUS = INCOMPLETE al orchestrator para que bloquee el cierre.
 
 ## Entregables
 

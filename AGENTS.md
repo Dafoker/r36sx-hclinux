@@ -103,3 +103,28 @@ Detener y pedir intervención humana (con estado exacto + razón + comandos exac
 ## 12. HANDOFF
 
 Toda iteración resume: `CHANGE_CLASS · OBJECTIVE · FILES_CHANGED · HEAD · CHECKS_RUN · BUILD_EVIDENCE · PHYSICAL_EVIDENCE · BLOCKER · NEXT_EXACT_ACTION · STOP_CONDITION`. El proyecto continúa desde GitHub sin este chat.
+
+## 13. DOCUMENTATION SYNC (REGLA OBLIGATORIA — PERMANENTE)
+
+La documentación es parte del entregable técnico de CADA iteración. **Una iteración con código/config/scripts/build/evidencia/estado cambiados y documentación afectada sin actualizar = ITERACIÓN INCOMPLETA** (no cerrar, no etiquetar PASS).
+
+**DOCUMENTATION REVIEW OBLIGATORIO antes de CADA commit significativo.** Checklist mínimo a revisar (no implica modificar todos — solo los impactados):
+
+1. ¿Cambió install/prepare/compile? → `README.md` y/o `docs/BUILD.md`
+2. ¿Cambió arquitectura/boot/memoria/AVP/kernel/BSP? → `docs/ARCHITECTURE.md`, `docs/BOOT_CHAIN.md`, `docs/SDK_AUDIT.md`
+3. ¿Cambió el estado actual? → `CURRENT.md` (en CADA iteración significativa; debe reflejar el estado verdadero al HEAD publicado)
+4. ¿Decisión técnica durable? → ADR en `DECISIONS.md` (decisiones, no acciones; "se compiló X" no es ADR, "X será baseline provisional hasta evidencia física" sí)
+5. ¿Roadmap/fase completada? → `docs/ROADMAP.md`
+6. ¿Nuevo script/comando para otros devs? → `README.md`/`docs/BUILD.md` + README del directorio
+7. ¿Particularidad hardware R36SX? → `docs/HARDWARE_R36SX_V26.md`
+8. ¿Nueva evidencia SDK? → `docs/SDK_AUDIT.md` con ruta exacta
+9. ¿Experimento importante? → `docs/experiments/YYYY-MM-DD_<nombre>.md`
+10. ¿Regla permanente de agentes? → `AGENTS.md`
+11. ¿Doc nuevo localizable? → `CONTEXT_MAP.md`
+12. ¿Visible para recién llegados a GitHub? → `README.md` (portada VIVA: qué es, objetivo, estado, qué funciona/no, quick start, artefactos, validación STATIC/HOST/BUILD/PHYSICAL, seguridad, licencia — sin historia obsoleta)
+
+**Prohibido:** cambios cosméticos para generar actividad; declarar PHYSICAL PASS sin evidencia física; dejar README con estado histórico obsoleto. La historia vive en Git + CHANGELOG + docs/experiments.
+
+**Gate commit/push:** `git status` → `git diff` → validaciones → DOCUMENTATION REVIEW → actualizar docs impactadas → `git diff --check` → commit → push → verificar remote HEAD. Si docs desactualizadas: ITERATION STATUS = INCOMPLETE.
+
+**CHANGELOG.md**: una línea por iteración con cambio técnico relevante; no es diario. Detalles en docs/experiments/.
