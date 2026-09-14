@@ -136,3 +136,17 @@ make O=output/d3100 all
 - Validación física de cualquier build (PHYSICAL PASS) — Fase 5+.
 - Layout de particiones flash de la consola stock — Fase 3 (requiere dumps o SD stock).
 - `/dev/dis`, ioctl vendor, deps exactas de TreeFrogUI — Fase 6.
+
+## Addendum Fase 2 (2026-09-14) — validación física contra SD stock (G:)
+
+| Claim | Veredicto | Evidence |
+|---|---|---|
+| Toolchain del firmware stock = Codescape 2018.09-02 gcc 6.3.0 (igual que SDK) | **CONFIRMED (físico)** | vermagic SD `linsen.chen@hichip01 ... gcc 6.3.0 (Codescape 2018.09-02)` == nuestro vermagic (solo host/user/fecha difieren) |
+| Board stock = D3100 v20 (reporte previo del usuario) | **DISPROVED — es `hc1600a@dbE3100v20` (E3100)** | DTB stock decompilado nodo board (SD `/mnt/g/cubegm/dtb.bin`, sha `1258f1eb...`) |
+| Board E3100 existe en el SDK | **DISPROVED (no existe)** | `grep -ri e3100` en SDK = 0 → board propia obligatoria (Fase 4) |
+| Memoria Linux stock = 254 MiB (como SDK d3100_v20) | **DISPROVED — es `reg=<0x0 0xaf91e50>` ≈ 176 MiB** (AVP reserva ~80 MiB) | DTB stock memory node |
+| Bootargs stock usan serial ttyS0 | **DISPROVED — `console=tty1`, serial OFF de fábrica** | DTB stock chosen |
+| fb stock = DE4K 0x1883a000 static (como SDK v20) | **DISPROVED — 0x18808000, buffer system +12MiB extra, 1280x720** | DTB stock fb0 |
+| Reproducibilidad DTB del pipeline | **CONFIRMED** | `dtb.bin` build nuevo == baseline previo usuario (sha `254522d5...` byte-idéntico) |
+
+Detalle completo: `docs/experiments/2026-09-14_vendor-baseline-d3100-v20.md` + `docs/HARDWARE_R36SX_V26.md`.

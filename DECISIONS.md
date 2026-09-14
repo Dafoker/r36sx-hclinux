@@ -75,3 +75,27 @@ Formato ADR. STATUS: ACTIVE | SUPERSEDED | DEPRECATED. No registrar aquí nada m
 - **CONSEQUENCES:** sin binarios vendor gigantes en git; artefactos vía manifests + releases futuros.
 - **EVIDENCE:** `gh repo view ozkaoz/r36sx-hclinux` → not found (2026-09-14); lista de repos ozkaoz sin conflicto.
 - **RELATED:** docs/ai/RELEASE_CONTRACT.md
+
+## ADR-007 — d3100_v20 como vendor baseline provisional (NO identidad final de board)
+
+- **DATE:** 2026-09-14
+- **STATUS:** ACTIVE
+- **SCOPE:** build vendor de referencia
+- **CONTEXT:** Fase 2 requería reproducir un build vendor conocido. El manual §16.1 usa `hichip_hc16xx_db_d3100_v20_defconfig` como ejemplo canónico; la evidencia física del DTB stock de la consola revela `board label = "hc1600a@dbE3100v20"` (E3100 — board inexistente en el SDK).
+- **DECISION:** `d3100_v20` es el **VENDOR BASELINE CANDIDATE (CONFIDENCE: HIGH)** para reproducir el pipeline del fabricante. **FINAL BOARD IDENTITY: NOT YET PROVEN** — la board real es familia E3100 v20; los artefactos d3100_v20 NO se consideran compatibles con la consola real (memoria/display divergen) y **jamás se flashean** en la R36SX.
+- **RATIONALE:** el pipeline (toolchain, patches, DTS plumbing, post-build) es común a la familia; solo la board difiere. El vermagic stock del fabricante usa el mismo toolchain Codescape 2018.09-02 que nuestro build → validación fuerte del pipeline.
+- **CONSEQUENCES:** Fase 4 (board propia `r36sx-v26`) es obligatoria y deriva del DTB stock decompilado; todo build d3100_v20 queda etiquetado solo como referencia de pipeline.
+- **EVIDENCE:** docs/experiments/2026-09-14_vendor-baseline-d3100-v20.md; docs/HARDWARE_R36SX_V26.md; DTB stock sha `1258f1eb...`.
+- **RELATED:** ADR-003, ADR-004, docs/SDK_AUDIT.md
+
+## ADR-008 — Baseline kernel-only (HCBOOT/AVP deshabilitados en build)
+
+- **DATE:** 2026-09-14
+- **STATUS:** ACTIVE
+- **SCOPE:** alcance del build baseline
+- **CONTEXT:** compilar hcboot/AVP requiere toolchain bare-metal `mips32-mti-elf` (Codescape 2019.09-03-2) distribuido solo vía GitLab privado de HiChip (requiere login; `/opt/mips32-mti-elf` local es symlink roto a directorio inexistente). En la consola real, AVP/bootloader stock se preservan siempre (ADR-005): no los reemplazamos.
+- **DECISION:** el baseline (y builds de Fases 4-5) compilan **kernel + DTB + rootfs** con `BR2_TARGET_HCBOOT` y `BR2_PACKAGE_AVP` off en el .config del output (defconfig vendor intacto). Los artefactos de flasheo que requieren bootloader.bin quedan fuera de alcance hasta obtener el bare-metal o decisión explícita del usuario.
+- **RATIONALE:** una variable por experimento; el AVP stock ya funciona en el dispositivo; sin bare-metal no hay alternativa honesta.
+- **CONSEQUENCES:** `target-post-image` fallará al final (bootloader.bin ausente) — error esperado y documentado; los artefactos del kernel se generan antes. Si en el futuro se obtiene el bare-metal, reevaluar.
+- **EVIDENCE:** error build literal: `Toolchain /opt/mips32-mti-elf/2019.09-03-2/bin/mips-mti-elf-gcc not exist`; GitLab HiChip pide login (HTML 8331B); experimento 2026-09-14.
+- **RELATED:** ADR-005, docs/BUILD.md

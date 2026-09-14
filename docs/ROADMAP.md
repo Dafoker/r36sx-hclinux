@@ -8,12 +8,12 @@ BootROM → bootloader (stock) → AVP/HCRTOS (stock, preservado) → **kernel p
 
 | Fase | Objetivo | Gate de salida | Estado |
 |---|---|---|---|
-| **0. Bootstrap** | Repo + contexto + agentes + GitHub operativo | Preflight PASS + push verificado + docs core | EN CURSO |
-| **1. Auditoría SDK** | Extraer y auditar SDK completo; confirmar/refutar hipótesis §15 | `docs/SDK_AUDIT.md` con claims+evidencia+ruta | PENDIENTE |
-| **2. Baseline vendor** | Reproducir build vendor sin modificaciones | BUILD PASS reproducible + hashes | PENDIENTE |
-| **3. Hardware R36SX V2.6** | Documentar hardware real (DTS stock, logs físicos si el usuario aporta) | `docs/HARDWARE_R36SX_V26.md` con fuentes | PENDIENTE |
-| **4. Board propia** | `boards/r36sx-v26/` derivada por evidencia, no copia ciega | Diferencias vs vendor documentadas + BUILD PASS | PENDIENTE |
-| **5. Primer kernel propio** | Reemplazar SOLO kernel/DTB; resto stock | PHYSICAL PASS (boot + TreeFrogUI stock) | PENDIENTE |
+| **0. Bootstrap** | Repo + contexto + agentes + GitHub operativo | Preflight PASS + push verificado + docs core | ✅ DONE |
+| **1. Auditoría SDK** | Extraer y auditar SDK completo; confirmar/refutar hipótesis §15 | `docs/SDK_AUDIT.md` con claims+evidencia+ruta | ✅ DONE (STATIC PASS, H1–H11 CONFIRMED) |
+| **2. Baseline vendor** | Reproducir build vendor sin modificaciones | BUILD PASS reproducible + hashes | ✅ DONE (kernel-only, ADR-007/008; BUILD PASS 2026-09-14) |
+| **3. Hardware R36SX V2.6** | Documentar hardware real (DTS stock, logs físicos si el usuario aporta) | `docs/HARDWARE_R36SX_V26.md` con fuentes | ✅ DONE (evidencia física SD stock G: read-only; board E3100v20, 176MiB) |
+| **4. Board propia** | `boards/r36sx-v26/` derivada por evidencia, no copia ciega | Diferencias vs vendor documentadas + BUILD PASS | ⏳ EN CURSO (8 diferencias clave documentadas; DTS propio pendiente) |
+| **5. Primer kernel propio** | Reemplazar SOLO kernel/DTB; resto stock | PHYSICAL PASS (boot + TreeFrogUI stock) | PENDIENTE (requiere autorización deploy) |
 | **6. Contrato TreeFrogUI** | Matriz de dependencias reales (fb, input, audio, ioctl, /dev/dis...) | `docs/TREEFROGUI_COMPATIBILITY.md` | PENDIENTE |
 | **7. Optimizaciones** | Una hipótesis por experimento, contra baseline | Cada una: resultado + decisión ADR si durable | PENDIENTE |
 | **8. Rootfs propio** | Buildroot controlado + picoarch + TreeFrogUI | CLEAN-INSTALL PHYSICAL PASS | PENDIENTE |
