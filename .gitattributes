@@ -1,0 +1,11 @@
+# Normalización de line endings: todo LF (scripts bash, docs)
+* text=auto eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+# Binarios
+*.pdf binary
+*.7z binary
+*.gz binary
+*.patch text eol=lf
+*.dts text eol=lf
+*.dtsi text eol=lf

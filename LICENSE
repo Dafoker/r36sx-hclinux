@@ -1,0 +1,10 @@
+# Licencia — r36sx-hclinux
+
+Pendiente de decisión (ADR futuro). Consideraciones:
+
+- Este repositorio contiene trabajo propio: scripts, documentación, configs, patches propios.
+- El SDK HCLinux de HiChip (`hclinux-2024.02.y.2.tar.gz`) es **propiedad de HiChip** y NO se redistribuye aquí; se usa como fuente inmutable externa (ADR-002).
+- Patches vendor citados se referencian por hash/ruta, no se copian sin análisis.
+- Los forks de TreeFrogUI/picoarch conservan sus licencias upstream.
+
+Licencia final del trabajo propio: a definir con el usuario antes de cualquier release pública (clase G).

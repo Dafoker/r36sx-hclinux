@@ -1,0 +1,18 @@
+# Ignorados: artefactos, caches, workspace
+out/
+cache/
+*.o
+*.ko
+*.img
+*.uImage
+*.bin.tmp
+# SDK extraído NUNCA va a git (2+ GiB, vendor propietario)
+sdk/
+work/
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/

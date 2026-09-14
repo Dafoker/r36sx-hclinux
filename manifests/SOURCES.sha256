@@ -1,0 +1,8 @@
+# manifests/SOURCES.sha256 — Fuentes vendor inmutables (ADR-002)
+# Formato: <sha256>  <ruta absoluta en WSL>
+# Generado 2026-09-14 con sha256sum desde WSL. Verificar con scripts/verify_sources.sh.
+e3211b41f8d649c7d7838f7f19b8cca5cf30ba6cb1ff9545be6943845fbf8d5d  /mnt/d/GitHub/KERNEL/hclinux-2024.02.y.2.tar.gz
+da146baf0fbd2e6a2d6e114d7ca71ecafbb0f8d1cdbf6e92bede20debccc5f77  /mnt/d/GitHub/KERNEL/hcdrivers.7z
+fa154f64584768429facc27d0894c97ad59e39b3ac87e2343aa992fbc01d0414  /mnt/d/GitHub/KERNEL/patches.7z
+18e505ea1ba0fcb739e4ae276ed6c0a6f33ffc8db38781d8e7a7e269649435f7  /mnt/d/GitHub/KERNEL/hclinux_user_manual.pdf
+8286144d686127896d8430e2c4ac9cc077b998e4eb2bdb3809e0ad88ae63c112  /mnt/d/GitHub/KERNEL/hclinux_user_manual_es.pdf
