@@ -10,10 +10,19 @@ Hashes de verificación: `manifests/SOURCES.sha256` · Regla: TODO en `/mnt/d/Gi
 | `hclinux-2024.02.y.2.tar.gz` | 2,116,519,773 (2.0 GiB) | `e3211b41f8d649c7d7838f7f19b8cca5cf30ba6cb1ff9545be6943845fbf8d5d` |
 | `hclinux_user_manual.pdf` | 4,225,431 | `18e505ea1ba0fcb739e4ae276ed6c0a6f33ffc8db38781d8e7a7e269649435f7` |
 | `hclinux_user_manual_es.pdf` | 201,428 | `8286144d686127896d8430e2c4ac9cc077b998e4eb2bdb3809e0ad88ae63c112` |
+| `HCLINUX_OPENCODE_GUIDE.md` | — | `ee5cff0d7b6463541dfafa962685dd4800444e5e050ec37a5aaa67cd0e3f6b2c` |
+| `HCLINUX_MANUAL_MACHINE_READABLE.md` | — | `5002c10216aa8cca24a84b032191002c27073925280aff99c2f7fa91c318247a` |
 | `hcdrivers.7z` | 507,596 | `da146baf0fbd2e6a2d6e114d7ca71ecafbb0f8d1cdbf6e92bede20debccc5f77` |
 | `patches.7z` | 312,832 | `fa154f64584768429facc27d0894c97ad59e39b3ac87e2343aa992fbc01d0414` |
 
 **Nota:** el requisito original citaba `hclinux-2024.02.y.2.tar`; el archivo físico real es **`.tar.gz`** — evidencia corrige al plan (AGENTS.md §2).
+
+### Referencias derivadas del manual (añadidas 2026-09-14, post-bootstrap)
+
+- `HCLINUX_OPENCODE_GUIDE.md` — referencia técnica orientada a agentes, derivada del manual vendor (107 págs). Incluye regla de autoridad: si el guía y el árbol SDK discrepan, **el árbol SDK manda**.
+- `HCLINUX_MANUAL_MACHINE_READABLE.md` — manual vendor original (chino) en Markdown navegable con marcadores de página PDF.
+
+Ambas han sido **cross-checkeadas contra el SDK real** (ver `docs/SDK_AUDIT.md` §cross-checks): direcciones, boot chain, toolchains y tabla de soporte kernel **CONFIRMADAS**; único PARTIAL: tamaño del bloque DDR-init (manual dice 4 KiB; archivo real `.abs` = 12,288 B = 12 KiB).
 
 ## Directorios
 
