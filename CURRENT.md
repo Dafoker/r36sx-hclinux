@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6d — FASE 5 EN CURSO: kernel recompilado CONFIG_CHECK_ADC=y, RE-TEST pendiente)
+**Actualizado:** 2026-09-15 (Iteración 6e — FASE 5 EN CURSO: hipótesis CHECK_ADC REFUTADA, requiere dmesg serial, rollback OK)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -31,12 +31,13 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 
 ## PHYSICAL STATUS
 
-**ROLLBACK OK + KERNEL RECOMPILADO CONFIG_CHECK_ADC=y — RE-TEST FÍSICO PENDIENTE.**
-- BOOT PARCIAL del kernel r36sx-v26 (Fase 4B) documentado: splash TreeFrogUI (b PASS) pero NO menú (c FAIL). Rollback a stock `53b3e0b3...` OK (consola usable).
-- **HIPÓTESIS CAUSA RAIZ (C):** `CONFIG_CHECK_ADC is not set` → no `/dev/check_adc1`/`/dev/check_adc5` que la UI abre → boot parcial.
-- **RE-BUILD HECHO:** kernel recompilado con `CONFIG_CHECK_ADC=y` (fragmento `boards/r36sx-v26/kernel/r36sx-v26.config.fragment`, vendor base intacto). Gates PASS (TOOLCHAIN/PATCH/DTB 0 diff). **vmlinux.uImage `08cced35...`** (Load 0x80000000, Entry 0x803E3AA0). dtb.bin `04fb8383...` sin cambios.
-- **RE-TEST FÍSICO PENDIENTE:** desplegar `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b-checkadc` (`08cced35...`) en SD (dtb NO se toca) y bootear. Rollback disponible.
-- **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`). Cable USB-C OTG NO sirve (solo MTP/PTP).
+**RE-TEST FALLÓ — HIPÓTESIS CHECK_ADC REFUTADA. Consola en stock (usable). DIAGNÓSTICO SERIAL REQUERIDO.**
+- RE-TEST con `CONFIG_CHECK_ADC=y` (`08cced35...`): sigue en splash, sin menú. **`CONFIG_CHECK_ADC` NO era la causa única.** Hipótesis C REFUTADA.
+- Hallazgo adicional no concluyente: `/dev/backlight` requerido por UI pero `CONFIG_FB_BACKLIGHT is not set` en vendor.
+- **NO hay logs de boot en SD** (menu.log binario no se reescribe; no hay dmesg guardado). NO se puede diagnosticar por filesystem de la SD.
+- **DECISIÓN:** no recompilar más configs por conjetura. Se requiere **dmesg via serial (ADR-011)** para diagnóstico no-ciego.
+- **ROLLBACK EJECUTADO y verificado:** `G:\cubegm\vmlinux.uImage` = stock `53b3e0b3...` (desde `.stock.bak`), confirmado WSL+Windows. Consola usable.
+- **ADR-011:** DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`, hc_uart@18818600 115200n8). Cable USB-C OTG NO sirve (solo MTP/PTP).
 - Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (sha256 `97086531ea...`).
 - NOR/bootloader/AVP/rootfs INTACTOS.
 
@@ -60,8 +61,9 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **RE-TEST FÍSICO:** el usuario despliega `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b-checkadc` (`08cced35...`) en `G:\cubegm\vmlinux.uImage` (backup `.stock.bak` ya existe; dtb.bin NO se toca), expulsa, bootea, y reporta si llega al menú (criterio c). Si PASS → Fase 5 cierra. Si FAIL → verificar demás `/dev` de la UI vs config o usar serial (ADR-011).
-2. Documentar resultado del re-test y actualizar GitHub al cierre.
+1. **DIAGNÓSTICO NO-CIEGO (obligatorio):** capturar dmesg del boot con kernel r36sx-v26 vía `scripts/diagnose_boot_serial.sh` (DTB serial-only, hc_uart@18818600 115200n8) + cable USB-TTL. Localizar dónde se cuelga la UI tras el splash (qué driver/init falla).
+2. En paralelo sin hardware: comparar exhaustivamente los `/dev` requeridos por la UI (fb0/fb1/dis/ge/backlight/input/check_adc/sndC0i2so/mmz/auddec/persistentmem/mipi/standby) contra el kernel vendor para listar TODOS los posibles faltantes (backlight pendiente de confirmar). Solo como apoyo al dmesg, no como conjetura ciega.
+3. Documentar y actualizar GitHub al cierre.
 
 ## REFERENCIA RÁPIDA
 

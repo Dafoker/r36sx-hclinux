@@ -85,10 +85,22 @@ Requiere dmesg/serial para discriminar.
 - **vmlinux.uImage NUEVO:** `08cced35fc3b90ba1e1ce3a4387c536bbfe0b500a6e31d5f665d4624f78d5673`, Load `0x80000000`, Entry `0x803E3AA0` (gzip, 2,700,962 B). dtb.bin `04fb8383...` (== stock, sin cambios).
 - Artefactos: `~/work/r36sx-hclinux/artifacts/r36sx-v26/` (SHA256SUMS 7/7 OK). Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b-checkadc`.
 
+# RE-TEST FÍSICO (2026-09-15) — FALLÓ igual
+
+**Despliegue del kernel CONFIG_CHECK_ADC=y (`08cced35...`) y boot:**
+- La consola sigue quedándose en la **pantalla de inicio/splash** sin llegar al menú TreeFrogUI. Mismo síntoma que el boot parcial original.
+- **CONCLUSIÓN: `CONFIG_CHECK_ADC=y` SOLO NO era la causa raíz** (o no es la única). Hipótesis C REFUTADA como causa única.
+- **ROLLBACK EJECUTADO y verificado:** `G:\cubegm\vmlinux.uImage` restaurado a stock `53b3e0b3...` (desde `.stock.bak`), verificado por WSL y Windows. Consola usable.
+
+**Nuevo hallazgo (no concluyente, requiere evidencia):** la UI abre `/dev/backlight`, pero el config vendor tiene `CONFIG_FB_BACKLIGHT is not set` y `CONFIG_BACKLIGHT_LCD_SUPPORT is not set`. Podría ser otra causa, PERO sin la config de fábrica ni dmesg no se puede confirmar sin conjeturar. **NO actuar a ciegas: se requiere dmesg via serial (ADR-011) para diagnóstico definitivo.**
+
+**Dato clave de diagnóstico:** no hay logs de boot en la SD (menu.log es binario de 1980, no se reescribe; no hay dmesg guardado). La única evidencia de causa raíz es **dmesg por serial** (DTB serial-only + cable USB-TTL, ADR-011).
+
 # Next action
 
-- **RE-TEST físico:** desplegar `vmlinux.uImage-r36sx-v26-fase4b-checkadc` (`08cced35...`) en SD (dtb.bin NO se toca) y bootear. Si `/dev/check_adc*` era la causa, la UI debe llegar al menú (criterio c PASS). Rollback disponible (stock `53b3e0b3...`).
-- Si sigue fallando: verificar los demás `/dev` de la UI vs config, o usar `scripts/diagnose_boot_serial.sh` (DTB serial-only + USB-TTL, hc_uart@18818600 115200n8) para dmesg.
+- **DIAGNÓSTICO NO-CIEGO (obligatorio antes de más cambios):** capturar dmesg del boot con kernel r36sx-v26 via `scripts/diagnose_boot_serial.sh` (DTB serial-only, hc_uart@18818600 115200n8) + cable USB-TTL. Ver dónde se cuelga la UI tras el splash.
+- En paralelo (sin hardware): extraer símbolos/drivers del kernel de fábrica si se consigue el vmlinux de fábrica en forma analizable, o comparar `/dev` requeridos por la UI contra el kernel vendor de forma exhaustiva.
+- NO recompilar más configs por conjetura sin dmesg.
 - (B) Script serial listo (ADR-011).
 
 # Decision
