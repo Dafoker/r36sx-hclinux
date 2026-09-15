@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6f — FASE 5 EN CURSO: causa raíz initramfs, kernel recompilado con rootfs embebido, re-test pendiente)
+**Actualizado:** 2026-09-15 (Iteración 6g — FASE 5 EN CURSO: initramfs llegó a splash, S99app añadido, uImage 0ddcd33a, re-test pendiente)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -31,10 +31,12 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 
 ## PHYSICAL STATUS
 
-**CAUSA RAÍZ ENCONTRADA + KERNEL RECOMPILADO CON INITRAMFS EMBEBIDO — RE-TEST PENDIENTE.**
-- **CAUSA RAÍZ:** el kernel de fábrica de la R36SX **embebe su rootfs como initramfs dentro del vmlinux** (cpio `070701` + `etc/init.d/rcS` + `usr/bin/hcdaemon` verificados en el uImage stock). Nuestro build NO lo hacía (`BR2_TARGET_ROOTFS_INITRAMFS not set`, `CONFIG_BLK_DEV_INITRD not set`) → sin root, boot parcial/pantalla negra.
-- **RE-BUILD HECHO:** `BR2_TARGET_ROOTFS_INITRAMFS=y` + `CONFIG_BLK_DEV_INITRD=y` + `CONFIG_INITRAMFS_SOURCE=rootfs.cpio`. vmlinux 78MB con initramfs. **uImage `004b2d50...` 13.7MB** (antes 2.7MB). Gates PASS (TOOLCHAIN/PATCH/DTB 0 diff).
-- **RE-TEST FÍSICO PENDIENTE:** desplegar `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs` (`004b2d50...`) en SD (dtb NO se toca), bootear. Debería arrancar como el stock y llegar al menú.
+**CAUSA RAÍZ + INITRAMFS + S99app — RE-TEST PENDIENTE.**
+- **CAUSA RAÍZ:** el kernel de fábrica embebe su rootfs como initramfs en el vmlinux. Nuestro build no lo hacía → sin root, boot parcial/pantalla negra. Resuelto con `BR2_TARGET_ROOTFS_INITRAMFS=y` + `CONFIG_BLK_DEV_INITRD=y`.
+- **RE-TEST initramfs (`004b2d50...`):** llegó al **splash TreeFrogUI pero NO al menú** (avance vs pantalla negra). Faltaba **`etc/init.d/S99app`** (monta /mnt/sdcard + swap + lanza icube.sh).
+- **S99app añadido** al rootfs-overlay de la board (`boards/r36sx-v26/rootfs-overlay/etc/init.d/S99app`, extraído del initramfs stock) + `BR2_ROOTFS_OVERLAY` configurado.
+- **RE-BUILD HECHO:** uImage **`0ddcd33a...`** 13,674,373 B (initramfs + S99app). Gates PASS (TOOLCHAIN/PATCH/DTB 0 diff).
+- **RE-TEST FÍSICO PENDIENTE:** desplegar `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs-s99app` (`0ddcd33a...`) en SD (dtb NO se toca), bootear. Con S99app la UI debería montar /mnt/sdcard y lanzarse → menú.
 - **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`). Cable USB-C OTG NO sirve (solo MTP/PTP).
 - Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (sha256 `97086531ea...`).
 - NOR/bootloader/AVP INTACTOS. Solo `vmlinux.uImage` en SD.
@@ -59,8 +61,8 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **RE-TEST FÍSICO del kernel con initramfs:** el usuario despliega `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs` (`004b2d50...`) en `G:\cubegm\vmlinux.uImage` (backup `.stock.bak` ya existe; dtb.bin NO se toca), expulsa, bootea, y reporta si llega al menú (criterio c). Si PASS → Fase 5 boot resuelto; iterar hacia reemplazo total.
-2. Si sigue fallando: ajustar el rootfs embebido (overlay del board, binarios de la SD) o capturar dmesg via serial (ADR-011).
+1. **RE-TEST FÍSICO del kernel con S99app:** el usuario despliega `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs-s99app` (`0ddcd33a...`) en `G:\cubegm\vmlinux.uImage` (backup `.stock.bak` ya existe; dtb.bin NO se toca), expulsa, bootea, y reporta si llega al menú (criterio c). Si PASS → Fase 5 boot resuelto; iterar hacia reemplazo total.
+2. Si sigue fallando: comparar binarios del initramfs stock vs nuestro build (ntfs-3g, hcdaemon tamaño/deps) o capturar dmesg via serial (ADR-011).
 3. Documentar y actualizar GitHub al cierre.
 
 ## REFERENCIA RÁPIDA

@@ -182,10 +182,26 @@ Requiere dmesg/serial para discriminar.
 
 **Por qué esto resuelve el boot:** el kernel de fábrica embebe su rootfs como initramfs (evidencia: cpio + rcS + hcdaemon en el uImage stock). Nuestro build ahora lo replica → el kernel con `root=/dev/ram0` encuentra su root → arranca userspace → monta la SD → lanza la UI.
 
+# RE-TEST #4 (initramfs sin S99app) — llegó al splash, NO al menú (2026-09-15)
+
+**Test del kernel con initramfs `004b2d50...`:** la consola muestra la imagen TreeFrogUI pero **no llega al menú** (se queda estancada). AVANCE vs pantalla negra anterior (el initramfs permitió llegar a userspace), pero la UI no arranca.
+
+**Causa identificada:** el initramfs embebido del build (Buildroot estándar) NO tenía el script **`etc/init.d/S99app`** que está en el initramfs stock del desarrollador. `S99app` es el que: espera la SD en `/media`, hace `mount --bind /media/<MNTDIR> /mnt/sdcard`, activa swap con `pagefile.sys`, y **lanza `/mnt/sdcard/cubegm/icube.sh`** (la UI). Sin él, nadie monta `/mnt/sdcard` ni lanza la UI → splash sin menú.
+
+# RE-BUILD CON S99app (2026-09-15) — solución
+
+**Añadido `S99app` (extraído del initramfs stock) al rootfs-overlay de la board** (`boards/r36sx-v26/rootfs-overlay/etc/init.d/S99app`). Configurado `BR2_ROOTFS_OVERLAY` en defconfig y `build_kernel.sh` copia el overlay al workspace.
+
+**Resultado (BUILD PASS, gates PASS):**
+- `rootfs.cpio` ahora contiene `etc/init.d/S99app` (verificado, lanza icube.sh ×2).
+- **Nuevo uImage `0ddcd33a...`**: Load `0x80000000`, Entry `0x803E4050`, gzip **13,674,373 B**.
+- Gates: **DTB SEMANTIC PASS (0 diff), TOOLCHAIN PASS, PATCH PASS**.
+- Artefactos 7/7 OK. Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs-s99app`.
+
 # Next action
 
-- **RE-TEST FÍSICO:** desplegar `vmlinux.uImage-r36sx-v26-initramfs` (`004b2d50...`) en SD (dtb.bin NO se toca), bootear. Con initramfs embebido, el kernel debería arrancar como el stock y llegar al menú (criterio c PASS).
-- Si la UI no carga completamente, ajustar el rootfs embebido (overlay del board, binarios de la SD).
+- **RE-TEST FÍSICO:** desplegar `vmlinux.uImage-r36sx-v26-initramfs-s99app` (`0ddcd33a...`) en SD (dtb NO se toca), bootear. Con S99app, la UI debería montar /mnt/sdcard y lanzarse → llegar al menú (criterio c PASS).
+- Si aún falla: comparar binarios del initramfs stock vs nuestro build (ntfs-3g, hcdaemon tamaño, dependencias), o serial (ADR-011).
 - Avanzar hacia reemplazo total (rootfs propio + kernel + DTB).
 - (B) Script serial listo (ADR-011) como respaldo.
 
