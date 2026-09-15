@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6h — FASE 5 EN CURSO: initramfs del desarrollador como rootfs, uImage 707fcec8, re-test pendiente)
+**Actualizado:** 2026-09-15 (Iteración 6i — FASE 5 EN CURSO: S11diag FIX + uImage 0fef5fd1 desplegado, re-test físico pendiente)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -13,7 +13,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT OBJECTIVE
 
-Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a desplegar (PASO 2) → preparar swap del kernel nuevo (PASO 3) → boot físico (PASO 4) → rollback si falla (PASO 5) → documentar y actualizar GitHub.
+Completar Fase 5: backup SD (PASO 1 OK) → artefactos verificados (PASO 2 OK) → swap del kernel (PASO 3 OK, desplegado `0fef5fd1`) → **boot físico con S11diag** (PASO 4) para capturar dmesg del kernel propio → diagnosticar causa raíz del boot parcial → rollback si falla (PASO 5) → documentar y actualizar GitHub.
 
 ## CURRENT HEAD
 
@@ -31,16 +31,15 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 
 ## PHYSICAL STATUS
 
-**CAUSA RAÍZ + INITRAMFS DEL DESARROLLADOR — RE-TEST PENDIENTE.**
-- **CAUSA RAÍZ:** el kernel de fábrica embebe su rootfs como initramfs en el vmlinux. Resuelto con initramfs embebido.
-- **Progreso:** initramfs Buildroot (stub hcdaemon) llegó a splash pero no menú. El rootfs Buildroot usaba `hcdaemon` stub (6,212 B); el stock usa el daemon real del desarrollador (610,404 B).
-- **Solución actual:** usar **initramfs DEL DESARROLLADOR** (extraído del stock, 3.9MB con hcdaemon real/libc/busybox/S99app) como rootfs embebido (`CONFIG_INITRAMFS_SOURCE=rootfs-dev.cpio`, BR2_TARGET_ROOTFS_INITRAMFS off).
-- **RE-BUILD HECHO:** uImage **`707fcec8...`** 4,352,104 B (initramfs minimal del desarrollador). Gates PASS (TOOLCHAIN/PATCH/DTB 0 diff).
-- **RE-TEST FÍSICO PENDIENTE:** desplegar `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-devrootfs` (`707fcec8...`) en SD (dtb NO se toca), bootear. Con el rootfs del desarrollador, la UI debería llegar al menú.
+**S11diag FIX + RE-TEST FÍSICO PENDIENTE (boot para capturar dmesg).**
+- **CAUSA RAÍZ (confirmada):** el kernel de fábrica embebe su rootfs como initramfs en el vmlinux. Resuelto con initramfs del desarrollador embebido.
+- **Bug encontrado y arreglado (6i):** S11diag corría en S11 (antes de S99app), cuando la SD aún no está montada. `LOG=/media/*/cubegm/dmesg_boot.log` (glob literal, sin expandir) fallaba → no capturaba dmesg. Reescrito con wait-loop (hasta 20s) esperando `/media/*/cubegm`.
+- **uImage `0fef5fd1...`** 4,354,188 B (initramfs del desarrollador + S11diag fix, hcdaemon real 610KB). Gates TOOLCHAIN/PATCH/DTB SEMANTIC PASS. kernel.config `793a3ab7`. **Desplegado en G: `0fef5fd1...`** (stock.bak `53b3e0b3` intacto; dtb.bin/avp.uImage sin tocar).
+- **RE-TEST FÍSICO PENDIENTE:** bootear la consola. Al arrancar, S11diag escribirá `G:\cubegm\dmesg_boot.log` con el dmesg del kernel propio. Traer la SD al PC y leerlo → comparar contra stock (`docs/experiments/evidence-stock-dmesg.md`) → identificar el driver/config que falta.
+- Si NO se genera `dmesg_boot.log`: el kernel no llegó a rcS/initramfs (más grave; capturar via serial ADR-011, o revisar CONFIG_INITRAMFS_SOURCE).
 - **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`). Cable USB-C OTG NO sirve (solo MTP/PTP).
 - Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (sha256 `97086531ea...`).
-- NOR/bootloader/AVP INTACTOS. Solo `vmlinux.uImage` en SD.
-
+- NOR/bootloader/AVP INTACTOS. Solo `vmlinux.uImage` en SD (ahora `0fef5fd1`).
 ## SOURCE SDK SHA256
 
 `e3211b41f8d649c7d7838f7f19b8cca5cf30ba6cb1ff9545be6943845fbf8d5d` — /mnt/d/GitHub/KERNEL/hclinux-2024.02.y.2.tar.gz
@@ -61,10 +60,11 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **RE-TEST FÍSICO del kernel con initramfs del desarrollador:** el usuario despliega `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-devrootfs` (`707fcec8...`) en `G:\cubegm\vmlinux.uImage` (backup `.stock.bak` ya existe; dtb.bin NO se toca), expulsa, bootea, y reporta si llega al menú (criterio c). Si PASS → Fase 5 boot resuelto (kernel propio + rootfs del desarrollador); avanzar a reemplazo total.
-2. Si sigue fallando: dmesg via serial (ADR-011) o comparar config del kernel de fábrica.
-3. Documentar y actualizar GitHub al cierre.
-
+1. **BOOT FÍSICO DIAGNÓSTICO:** con la SD (kernel `0fef5fd1` + S11diag) insertada y expulsada limpiamente, bootear la consola R36SX. S11diag escribirá el dmesg a `G:\cubegm\dmesg_boot.log` (espera hasta 20s a que la SD se monte en `/media`). No hace falta que la UI llegue al menú: solo el boot hasta rcS.
+2. **Traer la SD al PC** (G:), leer `G:\cubegm\dmesg_boot.log` y entregarlo al agente.
+3. Comparar el dmesg del kernel propio contra el stock (`docs/experiments/evidence-stock-dmesg.md`) → identificar el driver/config que falta → re-build → re-test.
+4. Si `dmesg_boot.log` NO se genera: el kernel no llegó a rcS/initramfs → serial ADR-011, o verificar que el initramfs se embebió (CONFIG_INITRAMFS_SOURCE → rootfs-dev.cpio).
+5. Documentar y actualizar GitHub al cierre.
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |

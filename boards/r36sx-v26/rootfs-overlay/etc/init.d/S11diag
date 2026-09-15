@@ -1,25 +1,38 @@
 #!/bin/sh
 # S11diag — captura dmesg del boot a la SD (inyectado en el initramfs embebido).
-# Se ejecuta DESPUÉS de S10mdev (SD montada en /media), ANTES de S99app (UI).
-# Corre en rcS del initramfs -> SÍ se ejecuta (el sistema usa el initramfs embebido).
-# Escribe el diagnóstico a la partición de datos de la SD (accesible desde el PC).
-LOG=/mnt/sdcard/cubegm/dmesg_boot.log
-[ -d /mnt/sdcard/cubegm ] || LOG=/media/*/cubegm/dmesg_boot.log
-[ -d /mnt/sdcard/cubegm ] || LOG=/tmp/dmesg_boot.log
+# Se ejecuta DESPUÉS de S10mdev, ANTES de S99app (UI). Corre en rcS del initramfs.
+# La SD NO está montada aún en /mnt/sdcard (eso lo hace S99app). Aquí se ESPERA
+# a que mdev monte la SD en /media/<subdir> y se escribe en <subdir>/cubegm/.
+LOG=""
+n=0
+while [ $n -lt 40 ]; do
+    for subdir in /media/*/cubegm; do
+        if [ -d "$subdir" ]; then
+            LOG="$subdir/dmesg_boot.log"
+            break 2
+        fi
+    done
+    n=$((n + 1))
+    sleep 0.5
+done
+# Último recurso (no debería pasar): dmesg perdido en RAM
+if [ -z "$LOG" ]; then
+    LOG=/tmp/dmesg_boot.log
+fi
 
 {
-  echo "===== dmesg capture $(date) ====="
-  echo "cmdline: $(cat /proc/cmdline 2>/dev/null)"
-  echo "--- modules ---"
-  cat /proc/modules 2>/dev/null
-  echo "--- devices ---"
-  ls -la /dev/ 2>/dev/null
-  echo "--- mtd ---"
-  cat /proc/mtd 2>/dev/null
-  echo "--- DMESG ---"
-  dmesg 2>/dev/null
-  echo "--- dmesg tail 100 ---"
-  dmesg 2>/dev/null | tail -100
+    echo "===== dmesg capture $(date) ====="
+    echo "cmdline: $(cat /proc/cmdline 2>/dev/null)"
+    echo "--- modules ---"
+    cat /proc/modules 2>/dev/null
+    echo "--- devices ---"
+    ls -la /dev/ 2>/dev/null
+    echo "--- mtd ---"
+    cat /proc/mtd 2>/dev/null
+    echo "--- iomem ---"
+    cat /proc/iomem 2>/dev/null | head -60
+    echo "--- DMESG (full) ---"
+    dmesg 2>/dev/null
 } > "$LOG" 2>&1
 echo "S11diag done -> $LOG" > /dev/console 2>&1
 exit 0

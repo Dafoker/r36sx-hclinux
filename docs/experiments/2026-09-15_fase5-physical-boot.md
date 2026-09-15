@@ -215,3 +215,65 @@ Requiere dmesg/serial para discriminar.
 # Decision
 
 - ADR pendiente: el config de fábrica no está en el SDK ni es extraíble → la única evidencia de causa raíz del boot parcial es dmesg/serial físico (a documentar en DECISIONS.md si se confirma hallazgo de hardware/config).
+---
+
+# S11diag FIX + RE-BUILD (2026-09-15, Iteración 6i) — re-test diagnóstico listo
+
+## Bug en S11diag (bloqueante) detectado al preparar el re-test físico
+
+El plan era desplegar `f5319159...` (initramfs dev + S11diag) y leer `G:\cubegm\dmesg_boot.log`. Al auditar la secuencia de arranque del initramfs se detectó un **bug que habría desperdiciado el test físico**:
+
+- **S10mdev** solo monta tmpfs en `/media` y prepara devtmpfs; **NO monta la SD**.
+- La SD se monta **asíncronamente** vía mdev hotplug en `/media/<subdir>`; **S99app** la espera con `wait_for_media_ready()` (bucle buscando `/media/$subdir/cubegm/icube`) y luego hace `mount --bind /media/$MNTDIR /mnt/sdcard`.
+- Por tanto en **S11diag** (que corre justo después de S10, antes de S99app) NI `/mnt/sdcard` NI `/media/*/cubegm` existen todavía.
+
+El S11diag original hacía:
+```
+LOG=/media/*/cubegm/dmesg_boot.log
+```
+Ese glob está **entre comillas → no se expande** → el `> "$LOG"` intenta crear el path literal `/media/*/cubegm/dmesg_boot.log`, que no existe como directorio → **el redirect falla → no se escribe dmesg**. Test físico desperdiciado.
+
+## Fix aplicado (boards/r36sx-v26/rootfs-overlay/etc/init.d/S11diag)
+
+Reescrito con wait-loop que espera a que mdev monte la SD en `/media/*/cubegm` (hasta 40×0.5s = 20s), espejo de la lógica de S99app:
+
+```
+LOG=""
+n=0
+while [ $n -lt 40 ]; do
+    for subdir in /media/*/cubegm; do
+        if [ -d "$subdir" ]; then LOG="$subdir/dmesg_boot.log"; break 2; fi
+    done
+    n=$((n + 1)); sleep 0.5
+done
+[ -z "$LOG" ] && LOG=/tmp/dmesg_boot.log
+{ ... dmesg ... } > "$LOG" 2>&1
+```
+
+## Re-build (BUILD PASS, gates PASS)
+
+- `./scripts/build_kernel.sh r36sx-v26` → regenera `rootfs-dev.cpio` desde el overlay (incluye S11diag fix).
+- **uImage `0fef5fd1...`** 4,354,188 B — Load `0x80000000`, Entry `0x803E4050` (gzip).
+- Verificado: extraído el initramfs interior del uImage → `etc/init.d/S11diag` embebido == fuente fija (diff MATCH, wait-loop presente); `usr/bin/hcdaemon` real (610,404 B); `S99app` presente.
+- Gates: **TOOLCHAIN PASS, PATCH PASS (41/41), DTB SEMANTIC PASS (0 diff)**. kernel.config `793a3ab7` (BLK_DEV_INITRD/CHECK_ADC/INITRAMFS_SOURCE=rootfs-dev.cpio).
+- dtb.bin build `04fb8383...` (stock-equivalente, no se despliega — el de SD `1258f1eb...` se mantiene).
+
+## Deploy (autorizado) + verificación
+
+- `G:\cubegm\vmlinux.uImage` ← **`0fef5fd1...`** (sobreescribe el `f5319159...` previo, también no-stock).
+- `vmlinux.uImage.stock.bak` = `53b3e0b3...` **intacto** (golden).
+- `dtb.bin` = `1258f1eb...` **sin tocar**. `avp.uImage` = `a9788995...` **sin tocar**. NOR/bootloader/AVP INTACTOS.
+- Backup SD: `~/backups/r36sx-sd-files-20260915.tar.gz` (`97086531ea...`).
+- Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-devrootfs-s11diag-fixed`.
+
+## RE-TEST FÍSICO (pendiente — próximo paso)
+
+1. Expulsar SD de forma segura; insertar en la consola; bootear. S11diag escribirá `G:\cubegm\dmesg_boot.log`.
+2. Traer la SD al PC; leer `G:\cubegm\dmesg_boot.log` y entregarlo.
+3. Comparar dmesg del kernel propio vs stock (`evidence-stock-dmesg.md`) → identificar driver/config faltante.
+4. Si `dmesg_boot.log` NO se genera → el kernel no llegó a rcS/initramfs (serial ADR-011, o revisar CONFIG_INITRAMFS_SOURCE).
+
+# Decision
+
+- **S11diag corregido y desplegado como herramienta de diagnóstico no-ciega.** El próximo boot físico capturará el dmesg del kernel propio para discriminar la causa raíz del boot parcial sin serial.
+- Re-test físico pendiente de ejecución por el usuario (STOP CONDITION §5/§10: boot físico + lectura de SD).
