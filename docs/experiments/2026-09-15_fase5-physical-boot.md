@@ -144,11 +144,32 @@ Requiere dmesg/serial para discriminar.
 
 **Estado del diagnóstico de inyección:** S50diag (kernel r36sx-v26) NO generó `diag_boot_*.log` → el kernel r36sx-v26 no llegó a rcS en el test #3 (pantalla negra). Pero tests #1/#2 (sin S50diag) SÍ mostraron splash → el kernel SÍ llega a userspace cuando S50diag no interfiere. El `diag_19700101_000030.log` en cubegm es del STOCK (FrogShell), no del kernel propio.
 
+# CAUSA RAÍZ ENCONTRADA — el kernel de fábrica embebe su rootfs (initramfs) (2026-09-15)
+
+**Hallazgo definitivo (análisis del vmlinux.uImage stock):**
+
+| | Kernel STOCK | Kernel r36sx-v26 (nuestro) |
+|---|---|---|
+| initramfs embebido (cpio `070701`) | **SÍ** (382 hits) | **NO** (0) |
+| `etc/init.d/rcS` en vmlinux | **SÍ** (offset 5097761) | **NO** |
+| `linuxrc`/`inittab` embebidos | **SÍ** | **NO** |
+| `CONFIG_BLK_DEV_INITRD` | habilitado (evidencia initramfs) | `# not set` |
+| Boot result | OK (root embebido) | falla (sin root) |
+
+**Interpretación:** el kernel de fábrica usa initramfs embebido (`CONFIG_INITRAMFS_SOURCE` → rootfs). El rootfs de la SD (`G:\rootfs\`) coincide con el initramfs embebido (mismos `S41hcdaemon`, `rcS`, `inittab`, `usr/bin/hcdaemon`). Nuestro build vendor-config NO embebe rootfs (`CONFIG_BLK_DEV_INITRD not set`, igual en el config base vendor) → `root=/dev/ram0 rootfstype=ramfs` no encuentra root → el kernel no arranca userspace → boot parcial/pantalla negra.
+
+**Explica por qué S50diag/S01diag en `G:\rootfs\etc\init.d\` NO se ejecutaron:** el sistema corre el initramfs embebido en el vmlinux, no los scripts de la SD. La SD solo provee datos/UI (`cubegm`).
+
+**La bifurcación R36SX v2.6 está aquí:** el config del kernel de fábrica habilita el initramfs embebido. El SDK vendor-config no.
+
+**Solución propuesta (reemplazo total):** reconstruir kernel r36sx-v26 **embebiendo el initramfs** (CONFIG_INITRAMFS_SOURCE apuntando al rootfs, p.ej. el de la SD o uno propio) para replicar el arranque de fábrica.
+
 # Next action
 
-- **Capturar el dmesg del kernel r36sx-v26 PROPIO** de forma robusta (S50diag en rcS parece interferir → probar un S50diag mínimo y temprano, o serial ADR-011).
-- Objetivo final: reconstruir config del kernel de fábrica (monolithic, específico R36SX) para el reemplazo total. El SDK vendor-config es genérico; falta el delta específico R36SX v2.6.
-- (B) Script serial listo (ADR-011).
+- **Reconstruir el kernel r36sx-v26 con initramfs embebido** (CONFIG_BLK_DEV_INITRD=y + CONFIG_INITRAMFS_SOURCE → rootfs). Verificar que el vmlinux resultante contiene el cpio (070701) y rcS/inittab, como el stock.
+- Si el rootfs embebido debe ser el de fábrica: usar `G:\rootfs` (coincide con el initramfs stock). Para reemplazo total: rootfs propio + kernel + DTB.
+- Re-test físico: con initramfs embebido, el kernel debería arrancar igual que el stock (llegar al menú).
+- (B) Script serial listo (ADR-011) como respaldo.
 
 # Decision
 
