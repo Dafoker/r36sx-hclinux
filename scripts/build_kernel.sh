@@ -28,6 +28,12 @@ cp "$DEF_REPO" "$S/configs/$(basename "$DEF_REPO")"
 # fragmento de kernel config (board-specific deltas, p.ej. CONFIG_CHECK_ADC) -> workspace
 KFRAG="$R/boards/$BOARD/kernel/$BOARD.config.fragment"
 [ -f "$KFRAG" ] && cp "$KFRAG" "$BD/kernel/$BOARD.config.fragment"
+# rootfs-overlay de la board (p.ej. etc/init.d/S99app para lanzar la UI) -> workspace
+OVERLAY_SRC="$R/boards/$BOARD/rootfs-overlay"
+if [ -d "$OVERLAY_SRC" ]; then
+  mkdir -p "$BD/rootfs-overlay"
+  cp -r "$OVERLAY_SRC"/. "$BD/rootfs-overlay/"
+fi
 
 # 4. entorno validado (docs/BUILD.md + TOOLCHAIN_PROVENANCE)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
