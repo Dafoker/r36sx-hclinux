@@ -188,21 +188,28 @@ Requiere dmesg/serial para discriminar.
 
 **Causa identificada:** el initramfs embebido del build (Buildroot estándar) NO tenía el script **`etc/init.d/S99app`** que está en el initramfs stock del desarrollador. `S99app` es el que: espera la SD en `/media`, hace `mount --bind /media/<MNTDIR> /mnt/sdcard`, activa swap con `pagefile.sys`, y **lanza `/mnt/sdcard/cubegm/icube.sh`** (la UI). Sin él, nadie monta `/mnt/sdcard` ni lanza la UI → splash sin menú.
 
-# RE-BUILD CON S99app (2026-09-15) — solución
+# RE-BUILD CON INITRAMFS DEL DESARROLLADOR (2026-09-15) — boot fiel de fábrica
 
-**Añadido `S99app` (extraído del initramfs stock) al rootfs-overlay de la board** (`boards/r36sx-v26/rootfs-overlay/etc/init.d/S99app`). Configurado `BR2_ROOTFS_OVERLAY` en defconfig y `build_kernel.sh` copia el overlay al workspace.
+**RE-TEST del kernel con S99app (`0ddcd33a...`) → SIGUIÓ en splash sin menú.** Análisis: el rootfs Buildroot embebido (27MB) usaba un `hcdaemon` **stub** (6,212 B) en vez del daemon real del desarrollador (610,404 B). El kernel de fábrica embebe un initramfs **minimal del desarrollador** (3.9MB) con su propia libc/busybox/hcdaemon.
+
+**Solución aplicada — usar el initramfs DEL DESARROLLADOR como rootfs embebido:**
+- Extraído el initramfs stock completo (cpio 3,852,472 B → 380 archivos) al rootfs-overlay de la board.
+- `CONFIG_INITRAMFS_SOURCE` apunta a `rootfs-dev.cpio` (3,849,216 B, hcdaemon real 610KB, S99app, libc/busybox del desarrollador).
+- `BR2_TARGET_ROOTFS_INITRAMFS` desactivado (Buildroot no sobreescribe CONFIG_INITRAMFS_SOURCE).
+- `build_kernel.sh` genera rootfs-dev.cpio desde el overlay.
 
 **Resultado (BUILD PASS, gates PASS):**
-- `rootfs.cpio` ahora contiene `etc/init.d/S99app` (verificado, lanza icube.sh ×2).
-- **Nuevo uImage `0ddcd33a...`**: Load `0x80000000`, Entry `0x803E4050`, gzip **13,674,373 B**.
+- **uImage `707fcec8...`**: Load `0x80000000`, Entry `0x803E4050`, gzip **4,352,104 B** (initramfs minimal del desarrollador, vs 13.7MB del Buildroot).
 - Gates: **DTB SEMANTIC PASS (0 diff), TOOLCHAIN PASS, PATCH PASS**.
-- Artefactos 7/7 OK. Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs-s99app`.
+- Artefactos 7/7 OK. Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-devrootfs`.
+
+**Por qué debería funcionar:** ahora el kernel embebe el MISMO rootfs que el stock (initramfs del desarrollador con hcdaemon real), con NUESTRO kernel (config + DTB + compilación). El arranque replica el de fábrica.
 
 # Next action
 
-- **RE-TEST FÍSICO:** desplegar `vmlinux.uImage-r36sx-v26-initramfs-s99app` (`0ddcd33a...`) en SD (dtb NO se toca), bootear. Con S99app, la UI debería montar /mnt/sdcard y lanzarse → llegar al menú (criterio c PASS).
-- Si aún falla: comparar binarios del initramfs stock vs nuestro build (ntfs-3g, hcdaemon tamaño, dependencias), o serial (ADR-011).
-- Avanzar hacia reemplazo total (rootfs propio + kernel + DTB).
+- **RE-TEST FÍSICO:** desplegar `vmlinux.uImage-r36sx-v26-devrootfs` (`707fcec8...`) en SD (dtb NO se toca), bootear. Con el initramfs del desarrollador + nuestro kernel, la UI debería llegar al menú.
+- Si llega al menú → Fase 5 boot RESUELTO (kernel propio + rootfs del desarrollador). Avanzar a reemplazo total (rootfs propio).
+- Si aún falla → dmesg via serial (ADR-011) o comparar config del kernel de fábrica.
 - (B) Script serial listo (ADR-011) como respaldo.
 
 # Decision
