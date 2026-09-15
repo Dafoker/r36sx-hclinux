@@ -111,3 +111,27 @@ Formato ADR. STATUS: ACTIVE | SUPERSEDED | DEPRECATED. No registrar aquí nada m
 - **CONSEQUENCES:** el gate C queda: config validation + kernel build + DTB validation + audit_toolchain + audit_kernel_patches.
 - **EVIDENCE:** ambos gates PASS sobre el baseline d3100_v20 (experimento docs/experiments/2026-09-14_fase25-provenance-audit.md).
 - **RELATED:** AGENTS.md §14, docs/TOOLCHAIN_PROVENANCE.md, docs/PATCH_PROVENANCE.md
+
+## ADR-010 — r36sx-v26: board stock-equivalent con DTS verbatim y allowlist cero
+
+- **DATE:** 2026-09-14
+- **STATUS:** ACTIVE
+- **SCOPE:** board propia / DTS
+- **CONTEXT:** Fase 4 demostró que el DTB stock decompilado es semánticamente reproducible (roundtrip PASS) y que el pipeline SDK compila DTS con macros (gcc -E + dtc). El DTS de la board propia se ensambla por script desde la referencia auditada, no editado a mano.
+- **DECISION:** la board `r36sx-v26` usa como DTS el **cuerpo stock-normalized verbatim** + encabezado de macros con los valores exactos del mapa stock (docs/DTS_STOCK_MODEL.md). El gate `scripts/compare_dtb_semantics.sh` exige **allowlist de diferencias = 0** contra el stock; cualquier desviación futura (optimización) requiere entrada en la allowlist documentada + ADR + evidencia.
+- **RATIONALE:** stock equivalence primero (requisito Fase 4); DTS editado a mano reintroduce riesgo de divergencia silenciosa del hardware description; el ensamblado por script es reproducible y auditable (make_board_dts.sh).
+- **CONSEQUENCES:** modificar el DTS = modificar la referencia o el ensamblador — siempre por script + gate. Los archivos fuente del repo son la única fuente de verdad (build_kernel.sh sincroniza al workspace SDK).
+- **EVIDENCE:** experimento 2026-09-14_r36sx-v26-board.md (DTB SEMANTIC PASS 0 diff; dtb.bin == stock roundtrip byte-idéntico `04fb8383...`).
+- **RELATED:** ADR-007, docs/DTS_STOCK_MODEL.md, docs/R36SX_D3100_DELTA.md, scripts/{make_board_dts,compare_dtb_semantics,build_kernel}.sh
+
+## ADR-010 — r36sx-v26: board stock-equivalent con DTS verbatim + allowlist cero
+
+- **DATE:** 2026-09-14
+- **STATUS:** ACTIVE
+- **SCOPE:** board propia / DTS
+- **CONTEXT:** Fase 4A demostró que el DTB stock decompilado es reproducible (roundtrip SEMANTIC PASS) y autoritativo (jerarquía Fase 4 del usuario); la alternativa "híbrido con includes vendor" introduciría riesgo de desviación silenciosa del hardware stock.
+- **DECISION:** el DTS de `r36sx-v26` se genera por `scripts/make_board_dts.sh` = encabezado con macros del sistema SDK (CONFIG_MEMORY_SIZE/LINUX_MEMORY_SIZE/SYSMEM_OFFSET con valores stock exactos) + cuerpo `reference/stock-normalized.dts` VERBATIM. NO se edita a mano. Gate obligatorio: `scripts/compare_dtb_semantics.sh` debe dar **0 diferencias vs stock** (allowlist vacía). Cualquier desviación futura intencional requiere: entrada en la allowlist del script + evidencia + ADR propia.
+- **RATIONALE:** stock-equivalence verificable > elegancia de includes; el pipeline vendor (fixup-load-addr vía gcc -E) queda satisfecho con las macros del encabezado; reproducibilidad total (DTS derivado de referencia auditada, regenerable con un comando).
+- **CONSEQUENCES:** cambios de hardware (p.ej. futuras optimizaciones de Fase 7) pasan por allowlist+ADR; la referencia stock nunca se modifica.
+- **EVIDENCE:** experimento docs/experiments/2026-09-14_r36sx-v26-board.md — DTB build == stock roundtrip (sha 04fb8383...), 0 diff semántico; kernel config delta 0.
+- **RELATED:** ADR-007, docs/DTS_STOCK_MODEL.md, docs/R36SX_D3100_DELTA.md

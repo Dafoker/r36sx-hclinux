@@ -13,8 +13,8 @@ BootROM → bootloader (stock) → AVP/HCRTOS (stock, preservado) → **kernel p
 | **2. Baseline vendor** | Reproducir build vendor sin modificaciones | BUILD PASS reproducible + hashes | ✅ DONE (kernel-only, ADR-007/008; BUILD PASS 2026-09-14) |
 | **2.5 Provenance audit** | Demostrar cross-compile real + patch set aplicado + identidad board | TOOLCHAIN/PATCH PROVENANCE PASS + BOARD_IDENTITY | ✅ DONE (2026-09-14 — gates scripts/audit_*.sh PASS) |
 | **3. Hardware R36SX V2.6** | Documentar hardware real (DTS stock, logs físicos si el usuario aporta) | `docs/HARDWARE_R36SX_V26.md` con fuentes | ✅ DONE (evidencia física SD stock G: read-only; board E3100v20, 176MiB) |
-| **4. Board propia** | `boards/r36sx-v26/` derivada por evidencia, no copia ciega | Diferencias vs vendor documentadas + BUILD PASS | ⏳ EN CURSO (8 diferencias clave documentadas; DTS propio pendiente) |
-| **5. Primer kernel propio** | Reemplazar SOLO kernel/DTB; resto stock | PHYSICAL PASS (boot + TreeFrogUI stock) | PENDIENTE (requiere autorización deploy) |
+| **4. Board propia** | `boards/r36sx-v26/` derivada por evidencia, no copia ciega | Diferencias vs vendor documentadas + BUILD PASS | ✅ DONE (4A stock model + 4B build: DTB SEMANTIC PASS 0-diff, config delta 0, provenance PASS — ADR-010) |
+| **5. Primer kernel propio** | Reemplazar SOLO kernel/DTB; resto stock | PHYSICAL PASS (boot + TreeFrogUI stock) | ⏸ PENDIENTE AUTORIZACIÓN (Fase 5 = SAFE PHYSICAL BOOT TEST, protocolo rollback) |
 | **6. Contrato TreeFrogUI** | Matriz de dependencias reales (fb, input, audio, ioctl, /dev/dis...) | `docs/TREEFROGUI_COMPATIBILITY.md` | PENDIENTE |
 | **7. Optimizaciones** | Una hipótesis por experimento, contra baseline | Cada una: resultado + decisión ADR si durable | PENDIENTE |
 | **8. Rootfs propio** | Buildroot controlado + picoarch + TreeFrogUI | CLEAN-INSTALL PHYSICAL PASS | PENDIENTE |

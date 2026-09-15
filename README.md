@@ -12,15 +12,18 @@ Engineering project building our own kernel/DTB/rootfs for the R36SX V2.6 from t
 
 ## Current state (2026-09-14)
 
+**Vendor pipeline build: PASS · R36SX custom board build: PASS · Physical boot: NOT YET TESTED**
+
+What works: full vendor kernel pipeline reproduced end-to-end with proven provenance; stock hardware model fully reconstructed from the real console DTB (memory map 256 MiB = Linux 175.57 + AVP 80.43, MIPI-DSI panel r63311, console identity node, 3-partition NOR + SD boot); custom board `r36sx-v26` builds a kernel whose DTB is **semantically identical to stock (0 allowed differences)**. What doesn't yet: physical testing on the console (Fase 5, needs explicit authorization), TreeFrogUI integration (Fase 6), AVP/hcboot compilation (bare-metal toolchain unavailable — GitLab HiChip private).
+
 | Subsystem | Status | Evidence |
 |---|---|---|
 | SDK audit (H1–H11) | **STATIC PASS** — full pipeline mapped with evidence | `docs/SDK_AUDIT.md` |
-| Vendor baseline build (d3100_v20, kernel-only) | **BUILD PASS** — cross-compilation & patch provenance PROVEN (.cmd files + patch log V=1) | `docs/TOOLCHAIN_PROVENANCE.md` · `docs/PATCH_PROVENANCE.md` |
-| Board identity (physical) | **CONFIRMED: E3100v20** (chipid exists in SDK enum, no board files; 8 documented differences) | `docs/BOARD_IDENTITY.md` · `docs/HARDWARE_R36SX_V26.md` |
-| Custom board `r36sx-v26` | **PENDING (Fase 4)** | — |
-| Kernel own build / DTB own | **PENDING (Fase 5)** | — |
-| TreeFrogUI contract | **PENDING (Fase 6)** | — |
-| Physical validation | **N/A — nothing flashed** (explicit user authorization required) | `docs/ai/HARDWARE_SAFETY.md` |
+| Vendor baseline build (d3100_v20) | **BUILD PASS** + provenance PROVEN (.cmd files + patch log V=1) | `docs/TOOLCHAIN_PROVENANCE.md` · `docs/PATCH_PROVENANCE.md` |
+| Stock hardware model (4A) | **PASS** — DTB decompiled (roundtrip SEMANTIC), memory map exact, panel MIPI-DSI r63311 demonstrated, 15 formal deltas | `docs/DTS_STOCK_MODEL.md` · `docs/R36SX_D3100_DELTA.md` |
+| **Custom board r36sx-v26 (4B)** | **BUILD PASS — DTB semantically IDENTICAL to stock (allowlist 0); kernel .config == vendor; provenance gates PASS** | `docs/experiments/2026-09-14_r36sx-v26-board.md` |
+| TreeFrogUI contract | PENDING (Fase 6) | — |
+| Physical validation | **NOT YET TESTED — nothing flashed; nothing deployed** (Fase 5 requires explicit authorization + rollback protocol) | `docs/ai/HARDWARE_SAFETY.md` |
 
 What works: full vendor kernel pipeline reproduced end-to-end (kernel+DTB+uImage+rootfs), physical hardware documented from stock SD (read-only). What doesn't yet: custom board DTS, own kernel on device, AVP/hcboot compilation (bare-metal toolchain unavailable — GitLab HiChip is private), TreeFrogUI integration.
 

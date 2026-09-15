@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-14 (Iteración 4 — Fase 2.5 provenance audit COMPLETADA, todos los gates PASS)
+**Actualizado:** 2026-09-14 (Iteración 5 — FASE 4 COMPLETADA: stock model 4A + board r36sx-v26 4B, todos los gates PASS)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -9,11 +9,11 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT PHASE
 
-**FASE 2.5 COMPLETADA — TOOLCHAIN + PATCH PROVENANCE + BOARD IDENTITY: ALL PASS**. Siguiente: **FASE 4 — board propia r36sx-v26** (autorizada: gates 2.5 superados).
+**FASE 4 COMPLETADA (4A stock model + 4B board build — ALL GATES PASS)**. Siguiente: **FASE 5 — SAFE PHYSICAL BOOT TEST** (REQUIERE AUTORIZACIÓN EXPLÍCITA del usuario + protocolo de rollback; NO iniciada).
 
 ## CURRENT OBJECTIVE
 
-Fase 4: crear `boards/r36sx-v26/dts/r36sx-v26.dts` (base estructural d3100_v20 SDK + las 8 diferencias del DTB stock E3100v20 + panel DSI) + defconfig propio → build kernel+DTB (gate C: con audit_* PASS).
+Esperar autorización para Fase 5. Mientras: Fase 6 (contrato TreeFrogUI) puede avanzar sin hardware.
 
 ## CURRENT HEAD
 
@@ -21,17 +21,17 @@ Fase 4: crear `boards/r36sx-v26/dts/r36sx-v26.dts` (base estructural d3100_v20 S
 
 ## KNOWN-GOOD STATE
 
-- Fases 0–3 DONE (repo, SDK audit, baseline kernel-only BUILD PASS, hardware físico).
-- Fase 2.5 DONE: cross-compilation PROBADA (.cmd: mips-mti-linux-gnu-gcc invocado en 117 subsistemas; ELF kernel/busybox/.ko = MIPS32r2 LE); patches PROBADOS (41 Applying en orden, log V=1, rsync BSP + yaffs2 antes de patches, .stamp_patched; 62/62 externos D:\ idénticos, no doble aplicación); E3100 = chipid del enum SDK sin board files → board propia obligatoria.
-- Gates reproducibles: `./scripts/audit_toolchain.sh` → **TOOLCHAIN PROVENANCE: PASS** · `./scripts/audit_kernel_patches.sh` → **PATCH PROVENANCE: PASS**.
+- Fases 0–3 + 2.5 DONE (repo, SDK audit, baseline BUILD+PROVENANCE PASS, hardware físico).
+- **Fase 4 DONE**: stock-normalized.dts versionado (roundtrip PASS); mapa memoria exacto (256=175.57 Linux+80.43 AVP); panel MIPI-DSI r63311 demostrado; 15 deltas formales (7 CRITICAL); board r36sx-v26: defconfig propio (8 cambios), DTS generado por script (verbatim stock + macros), **kernel BUILD PASS con DTB SEMÁNTICAMENTE IDÉNTICO al stock (allowlist 0)** y kernel config == vendor baseline (delta 0). Gates: DTB SEMANTIC + TOOLCHAIN + PATCH PROVENANCE = PASS.
+- Artefactos r36sx-v26: `~/work/.../artifacts/r36sx-v26/` + `D:\R36SX\hclinux-builds\r36sx-v26-fase4b-20260914\` (vmlinux.uImage 2.58MiB 0x80000000/0x803e3200, dtb.bin == stock roundtrip 04fb8383...).
 
 ## BUILD STATUS
 
-VENDOR BASELINE KERNEL-ONLY d3100_v20: **BUILD PASS + PROVENANCE PASS**. AVP/bootloader: N/A (ADR-008).
+**R36SX-V26 STOCK-EQUIVALENT KERNEL: BUILD PASS** (+ provenance PASS). bootloader.bin ausente = esperado (ADR-008).
 
 ## PHYSICAL STATUS
 
-**N/A — sin flashear.** SD G: solo lecturas.
+**NOT TESTED — nada flasheado, nada desplegado.** Fase 5 = SAFE PHYSICAL BOOT TEST (requiere autorización + rollback; deploy = reemplazo de vmlinux.uImage/dtb.bin en SD, NOR intacto).
 
 ## SOURCE SDK SHA256
 
@@ -39,29 +39,29 @@ VENDOR BASELINE KERNEL-ONLY d3100_v20: **BUILD PASS + PROVENANCE PASS**. AVP/boo
 
 ## CURRENT BOARD CANDIDATE
 
-Base estructural: d3100_v20 (pipeline). Hardware baseline: **DTB stock E3100v20** (docs/BOARD_IDENTITY.md §6). r36sx-v26 = DTS propio híbrido.
+**r36sx-v26 = board propia CONFIRMADA** (stock-equivalent, ADR-010). D3100_v20 = pipeline baseline (upstream intacto).
 
 ## ACTIVE BLOCKERS
 
-1. Bare-metal `mips32-mti-elf` (AVP/hcboot propios) — privado GitLab HiChip (ADR-008; no bloquea Fase 4).
-2. Layout de particiones flash físico — sin evidencia aún (solo relevante al flashear).
+1. Fase 5 bloqueada por AUTORIZACIÓN del usuario (no técnica).
+2. Bare-metal mips32-mti-elf (AVP/hcboot propios) — privado (ADR-008; no bloquea nada actual).
+3. Kernel config de fábrica (entry 0x803337c0) no incluido en SDK — usamos vendor SDK config (documentado).
 
 ## LAST VALIDATED ACTION
 
-Fase 2.5 completa: gates PASS + remoto verificado ×3 (API/local/ls-remote). Experimento: docs/experiments/2026-09-14_fase25-provenance-audit.md.
+Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + config delta 0 + artefactos hasheados en D:\. Experimento: docs/experiments/2026-09-14_r36sx-v26-board.md.
 
 ## NEXT EXACT ACTION
 
-1. Commit+push iteración 4 (Fase 2.5).
-2. Fase 4 iter. 5: copiar `hc16xx-db-d3100-v20.dts`+`-avp.dtsi` a `boards/r36sx-v26/dts/` → aplicar 8 diferencias stock (E3100 label, memory `0xaf91e50`, console=tty1, fb0 `0x18808000` system 12MiB 1280x720, GPIO keys 0x14/0x18, +backlight, clock 0x05, 4 UARTs disabled) + panel DSI stock → `dtc` validar → defconfig `configs/buildroot/r36sx_v26_defconfig` → `build_kernel.sh r36sx-v26` (gate C).
+**STOP — NO desplegar automáticamente.** Propuesta al usuario: FASE 5 — SAFE PHYSICAL BOOT TEST (protocolo: backup SD → copia vmlinux.uImage+dtb.bin nuevos a SD → boot → criterios PASS → rollback documentado). Alternativa mientras: iniciar Fase 6 (contrato TreeFrogUI, sin hardware).
 
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |
 |------------|------|
-| Reglas + PROVENANCE + DOC SYNC | `AGENTS.md` (§13, §14) |
-| Router docs | `CONTEXT_MAP.md` |
-| Toolchain probado | `docs/TOOLCHAIN_PROVENANCE.md` |
-| Patches probados | `docs/PATCH_PROVENANCE.md` |
-| E3100 vs D3100 | `docs/BOARD_IDENTITY.md` |
-| Hardware físico | `docs/HARDWARE_R36SX_V26.md` |
+| Reglas (§13 sync, §14 provenance) | `AGENTS.md` |
+| Modelo stock / memoria / panel | `docs/DTS_STOCK_MODEL.md` |
+| Deltas stock↔D3100 (15) | `docs/R36SX_D3100_DELTA.md` |
+| Defconfig delta (8 cambios) | `docs/R36SX_DEFCONFIG_DELTA.md` |
+| Direcciones (stock/baseline/r36sx) | `docs/BOOT_CHAIN.md` |
+| Experimento Fase 4 | `docs/experiments/2026-09-14_r36sx-v26-board.md` |

@@ -12,16 +12,22 @@
    - Luego `bootm` **Linux**: `vmlinux.uImage` (stock R36SX: Load `0x80000000`, Entry `0x803EC710`), DTB en **`0x85ff0000`** (AutoRun0=`wm 0xb8800004 0x85ff0000`, post-build.sh:125+).
 4. **Linux 4.4.186** en core-main; **HCRTOS/AVP** en core-AVP; comunicación **AMPRPC** (amprpc/avp-proxy/kshm), memoria media **MMZ**.
 
-## Direcciones clave (todas con evidencia)
+## Direcciones clave (todas con evidencia — tabla comparativa Fase 4)
 
-| Elemento | Valor | Evidencia |
-|---|---|---|
-| DTB load | `0x85ff0000` | post-build.sh:125,147,169 |
-| Reg DTB→AVP | `0xb8800004` | apps-bootloader main.c:620; avp dts Kconfig:19 |
-| AVP load/entry (stock R36SX) | `0x8BDA4000` | dump uImage usuario |
-| Linux load (stock R36SX) | `0x80000000` / Entry `0x803EC710` | dump uImage usuario |
-| Linux load (SDK, derivado) | `CONFIG_LINUX_MEMORY_OFFSET` (=0) + `CONFIG_PHYSICAL_START` parcheado desde DTS | linux-ext-fixup-load-addr.mk |
+| Elemento | STOCK (fábrica) | D3100 baseline | R36SX-V26 build (Fase 4B) | Evidencia |
+|---|---|---|---|---|
+| Linux load | `0x80000000` | `0x80000000` | `0x80000000` | uImage headers ×3 |
+| Linux entry | `0x803337c0` (config fábrica, no en SDK) | `0x803e3200` | **`0x803e3200`** (== baseline; config vendor SDK) | uImage headers + readelf |
+| DTB address | `0x85ff0000` | idem (pipeline) | idem (DTB idéntico al stock) | post-build.sh:125+ |
+| Linux memory | `0x0 + 0xAF91E50` (175.57 MiB) | `0x0 + 0x4F32E40` (79.20) | **`0x0 + 0xAF91E50` (== stock)** | DTB memory node + compare gate |
+| AVP load/entry | `0x8BDA4000` | n/a (AVP off) | n/a (AVP stock preservado) | uImage stock SD + ADR-008 |
+| AVP sysmem | `0xBDA2E50 + 0xB53600` | `0x4F32E40 + 0xB53600` | **`0xBDA2E50 + 0xB53600` (== stock)** | DTB hcrtos + compare gate |
+| AVP entry verificado | sysmem stock +0x1000 → `0x8BDA4000` = entry real avp.uImage stock ✓ | — | — | DTS_STOCK_MODEL §verificación macros |
+| FB static | `0xAF91E50 + 0xE11000` | n/a (system) | **== stock** | DTB fb0 |
+| mmz0/mmz1 | `0xCDA2E50+0x325D1B0` / `0xC8F6450+0x4ACA00` | otros | **== stock** | DTB hcrtos |
+
+**Diferencia residual documentada (no del DTS):** entry/data-size del kernel stock provienen del config interno del fabricante (no incluido en SDK); nuestro build replica el config vendor SDK. DTB entregado al bootloader = idéntico al stock.
 
 ## Zona prohibida (AGENTS.md §5, ADR-005)
 
-DDR-init, bootloader, AVP: **intocables en baseline**. Clase D requiere autorización explícita.
+DDR-init, bootloader, AVP: **intocables en baseline**. Clase D requiere autorización explícita. Deploy físico (Fase 5): solo reemplazo de `vmlinux.uImage` (+`dtb.bin`) en SD — la consola bootea desde SD (NOR 3 particiones: boot/eromfs/persistentmem — docs/DTS_STOCK_MODEL.md).
