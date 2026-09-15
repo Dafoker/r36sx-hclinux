@@ -96,11 +96,29 @@ Requiere dmesg/serial para discriminar.
 
 **Dato clave de diagnóstico:** no hay logs de boot en la SD (menu.log es binario de 1980, no se reescribe; no hay dmesg guardado). La única evidencia de causa raíz es **dmesg por serial** (DTB serial-only + cable USB-TTL, ADR-011).
 
+# Diagnóstico vía FrogShell (2026-09-15) — NUEVA VÍA NO-CIEGA
+
+**El usuario puede entrar a FrogShell (file manager/terminal) con TreeFrogUI STOCK (que funciona).** Esto permite capturar el **dmesg del kernel de fábrica** y la lista real de `/dev`/drivers que crea — la comparación definitiva contra nuestro vendor-config, sin cable serial.
+
+**`scripts/diagnose_console.sh`** — script de diagnóstico para ejecutar EN la consola (busybox ash):
+- Recopila: cmdline, **dmesg completo**, `/dev/` y `/dev/input/`, `/proc/modules`, `/proc/mtd`, `/sys/class` (backlight/input/graphics), `/dev/kshm`, check_adc, **DTS cargado (`/proc/device-tree` status de backlight/check_adc/pwm/uart)**, `/proc/iomem`, procesos.
+- Escribe a `/mnt/sdcard/cubegm/diag_*.log` (accesible desde el PC).
+- Copiado a la SD como `G:\diag.sh` (`/mnt/sdcard/diag.sh`), sha256 `f3493241...`.
+
+**USO:**
+1. Con TreeFrogUI stock, entrar a FrogShell.
+2. Ejecutar: `sh /mnt/sdcard/diag.sh`
+3. Recoger `G:\cubegm\diag_*.log` del PC.
+4. El dmesg stock revela: qué drivers crean los `/dev` de la UI, el config efectivo, y si algún driver requerido (backlight PWM, check_adc, dis, ge, amprpc) está activo en fábrica.
+
+**IMPORTANTE:** ejecutar con STOCK captura el estado de referencia (funciona). La comparación contra nuestro kernel identifica el driver/config faltante de forma no-ciega.
+
 # Next action
 
-- **DIAGNÓSTICO NO-CIEGO (obligatorio antes de más cambios):** capturar dmesg del boot con kernel r36sx-v26 via `scripts/diagnose_boot_serial.sh` (DTB serial-only, hc_uart@18818600 115200n8) + cable USB-TTL. Ver dónde se cuelga la UI tras el splash.
-- En paralelo (sin hardware): extraer símbolos/drivers del kernel de fábrica si se consigue el vmlinux de fábrica en forma analizable, o comparar `/dev` requeridos por la UI contra el kernel vendor de forma exhaustiva.
-- NO recompilar más configs por conjetura sin dmesg.
+- **EJECUTAR `diag.sh` en la consola (stock) y traer el log** → comparar dmesg/drivers stock vs nuestro vendor-config → identificar el driver/config faltante.
+- Si el log stock muestra drivers que el vendor-config no tiene, recompilar con los fragmentos correctos (sin conjetura, guiado por el dmesg).
+- Alternativa: serial (ADR-011) para el kernel r36sx-v26 si se requiere capturar el boot del kernel propio.
+- NO recompilar más configs por conjetura sin dmesg/evidencia.
 - (B) Script serial listo (ADR-011).
 
 # Decision
