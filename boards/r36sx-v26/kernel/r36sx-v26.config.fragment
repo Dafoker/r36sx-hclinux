@@ -3,13 +3,13 @@
 #
 # Fase 5 — CAUSA RAÍZ: el kernel de fábrica de la R36SX embebe su rootfs como
 # initramfs dentro del vmlinux (cpio 070701 + etc/init.d/rcS + usr/bin/hcdaemon
-# verificados en el uImage stock). El vendor kernel-squashfs.config lo trae
-# deshabilitado (CONFIG_BLK_DEV_INITRD not set) -> sin initramfs, el kernel con
-# root=/dev/ram0 no encuentra root y la UI no arranca (boot parcial/pantalla negra).
-# Este fragmento habilita el initramfs embebido para replicar el arranque de fábrica.
+# verificados en el uImage stock). Para replicar fielmente el arranque de fábrica,
+# usamos el INITRAMFS DEL DESARROLLADOR (extraído del uImage stock) como rootfs
+# embebido. CONFIG_INITRAMFS_SOURCE apunta al cpio del initramfs del desarrollador
+# (rootfs-dev.cpio, generado desde boards/r36sx-v26/rootfs-overlay).
 #
-# Nota: CONFIG_CHECK_ADC=y se mantiene (el re-test demostró que NO es la causa única,
-# pero es un driver que la UI usa; inofensivo dejarlo).
+# Nota: BR2_TARGET_ROOTFS_INITRAMFS desactivado (Buildroot no sobreescribe
+# CONFIG_INITRAMFS_SOURCE con su rootfs; usamos el del desarrollador).
 CONFIG_CHECK_ADC=y
 CONFIG_BLK_DEV_INITRD=y
 CONFIG_RD_GZIP=y
@@ -17,3 +17,4 @@ CONFIG_RD_BZIP2=y
 CONFIG_RD_LZMA=y
 CONFIG_RD_XZ=y
 CONFIG_RD_LZO=y
+CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v26/rootfs-dev.cpio"

@@ -34,6 +34,13 @@ if [ -d "$OVERLAY_SRC" ]; then
   mkdir -p "$BD/rootfs-overlay"
   cp -r "$OVERLAY_SRC"/. "$BD/rootfs-overlay/"
 fi
+# generar initramfs del desarrollador (rootfs-dev.cpio) desde el overlay, si el fragmento lo referencia
+KDEV="$W/artifacts/$BOARD/rootfs-dev.cpio"
+if [ -d "$OVERLAY_SRC" ] && grep -q "rootfs-dev.cpio" "$KFRAG" 2>/dev/null; then
+  mkdir -p "$(dirname "$KDEV")"
+  ( cd "$OVERLAY_SRC" && find . | cpio -o -H newc 2>/dev/null > "$KDEV" )
+  echo "initramfs dev: $KDEV ($(stat -c%s "$KDEV") bytes)"
+fi
 
 # 4. entorno validado (docs/BUILD.md + TOOLCHAIN_PROVENANCE)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
