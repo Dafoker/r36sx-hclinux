@@ -59,10 +59,26 @@ Requiere dmesg/serial para discriminar.
 - Confirmado en SDK (post-build.sh + main.c): el bootloader `bootm` usa el entry del header uImage → nuestro `0x803e3200` es respetado (no es la causa; el kernel arrancó).
 - El kernel SÍ arrancó (fb0 + splash TreeFrogUI) → fallo en la inicialización de UI/userspace tras el splash. Causa probable: config vendor SDK ≠ config fábrica (delta 0 vs vendor, pero vendor ≠ fábrica) → algún driver/feature de runtime que la UI requiere falta. No identificable sin dmesg/serial.
 
+# Investigación C (2026-09-15) — driver faltante hipótesis fuerte
+
+**Drivers /dev que la UI (driver_r36sx.so, icube, MyExecutable) abre:**
+`/dev/fb0`, `/dev/fb1`, `/dev/dis`, `/dev/ge`, `/dev/backlight`, `/dev/input/event0`, `/dev/check_adc1`, `/dev/check_adc5`, `/dev/sndC0i2so`, `/dev/mmz`, `/dev/auddec`, `/dev/persistentmem`, `/dev/mipi`, `/dev/hdmi_tx`, `/dev/standby`.
+
+**Config vendor (kernel.config r36sx-v26):** casi todos los drivers HC están `=y` (HC_DIS, HC_GE, HC_FB, HC_MMZ, HC_ADC, KEY_ADC, HC_I2SO, HC_AUDDEC, HC_AVPPROXY, HC_AMPRPC, HC_PERSISTENTMEM, HC_INPUT, GPIO_KEY, INPUT_EVDEV). **PERO `CONFIG_CHECK_ADC is not set`** (igual en baseline d3100 — default vendor).
+
+**Hallazgo crítico — `CONFIG_CHECK_ADC`:**
+- DTS stock declara nodos `check_adc0..5@18818400` y `adc-bat-level="/dev/check_adc1"`, `adc-bat-charging="/dev/check_adc5"`.
+- `drivers/hcdrivers/adc/hc_check_adc.c:273` crea `check_adc%d` vía `device_create(MKDEV...)`; se enlaza por `of_match_table "hc16xx-check-adc"`.
+- Con `CONFIG_CHECK_ADC is not set`, el driver NO se compila → `/dev/check_adc1` y `/dev/check_adc5` NO se crean.
+- La UI (`driver_r36sx.so`) abre `/dev/check_adc1` (batería) y `/dev/check_adc5` (charging). Si el open falla, la UI puede quedarse en splash o abortar → **explicaría el boot parcial** (splash sí, menú no).
+- El kernel de fábrica probablemente tenía `CONFIG_CHECK_ADC=y` (el DTS stock declara los nodos y la UI los usa).
+
+**HIPÓTESIS PRINCIPAL (accionable, bajo riesgo):** habilitar `CONFIG_CHECK_ADC=y` en el defconfig kernel r36sx-v26, recompilar, y re-probar. El driver es del SDK (hcdrivers), ya presente en el árbol; solo falta activarlo. NO toca DTB/bootloader/AVP/NOR.
+
 # Next action
 
-- (C) Investigar en SDK qué drivers/features requiere TreeFrogUI (input key_adc3, audio, amprpc/AVP, fb) que nuestro vendor-config pueda no proveer. Comparar símbolos de nuestro kernel vs requeridos.
-- (B) Crear script de captura serial/dmesg para ejecutar con kernel nuevo vía cable USB OTG/C USB-C, para obtener evidencia decisiva en un futuro test.
+- **Recompilar kernel r36sx-v26 con `CONFIG_CHECK_ADC=y`** (y verificar si hay más drivers requeridos deshabilitados en vendor-config: p.ej. revisar los demás `/dev` de la UI contra config) y re-probar el boot físico.
+- (B) `scripts/diagnose_boot_serial.sh` generó DTB de diagnóstico serial-only (ADR-011) para capturar dmesg vía USB-TTL (hc_uart@18818600, 115200 8N1) si se requiere confirmación directa.
 
 # Decision
 

@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6b — FASE 5 EN CURSO: PASO 0-3 hechos, BOOT PARCIAL, rollback pendiente decisión)
+**Actualizado:** 2026-09-15 (Iteración 6c — FASE 5 EN CURSO: rollback OK + hipótesis de causa raíz CONFIG_CHECK_ADC)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -34,7 +34,8 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 **ROLLBACK COMPLETADO — consola recuperada usable (kernel stock de nuevo).**
 - BOOT PARCIAL del kernel r36sx-v26 (Fase 4B) documentado: arrancó + splash TreeFrogUI (criterio b PASS) pero NO llegó al menú (criterio c FAIL).
 - **ROLLBACK (PASO 5) EJECUTADO Y VERIFICADO:** `G:\cubegm\vmlinux.uImage` restaurado a stock `53b3e0b3...`; consola arranca TreeFrogUI normal ✓.
-- Diagnóstico local agotado: `.config` de fábrica no extraíble (sin IKCONFIG, no ELF); entry uImage es respetado (no es la causa). Causa probable: config vendor SDK ≠ fábrica → driver runtime de UI faltante. Requiere dmesg/serial físico para confirmar.
+- **HIPÓTESIS DE CAUSA RAIZ (Diagnóstico C):** `CONFIG_CHECK_ADC is not set` en config vendor → no se crean `/dev/check_adc1`/`/dev/check_adc5` (batería/charging) que la UI abre → boot parcial. Acción propuesta: habilitar `CONFIG_CHECK_ADC=y` y recompilar. Confirmación definitiva requeriría dmesg (ADR-011: DTB serial-only para USB-TTL).
+- **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`, DTB 33109 B). Cable USB-C OTG NO sirve (solo MTP/PTP).
 - Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (415 MB, sha256 `97086531ea...`).
 - NOR/bootloader/AVP/rootfs INTACTOS durante todo el proceso.
 
@@ -58,8 +59,8 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **(C) Investigar drivers** que requiere TreeFrogUI (input key_adc3, audio, amprpc/AVP, fb) y comparar contra nuestro vendor-config para acotar el driver faltante.
-2. **(B) Crear script** de captura dmesg/serial para ejecutar con el kernel nuevo vía cable USB OTG/USB-C, para obtener evidencia decisiva en un futuro test físico.
+1. **Recompilar kernel r36sx-v26 con `CONFIG_CHECK_ADC=y`** (y auditar los demás `/dev` de la UI vs config: verificar que no haya otros drivers requeridos deshabilitados) → re-probar boot físico.
+2. Si se requiere confirmación directa: usar `scripts/diagnose_boot_serial.sh` (DTB serial-only + cable USB-TTL al hc_uart@18818600, 115200 8N1) para capturar dmesg del boot.
 3. Documentar hallazgos y actualizar GitHub al cierre de iteración.
 
 ## REFERENCIA RÁPIDA
