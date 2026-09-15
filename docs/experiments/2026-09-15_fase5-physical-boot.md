@@ -113,12 +113,24 @@ Requiere dmesg/serial para discriminar.
 
 **IMPORTANTE:** ejecutar con STOCK captura el estado de referencia (funciona). La comparación contra nuestro kernel identifica el driver/config faltante de forma no-ciega.
 
+# RESULTADO diag.sh en STOCK (2026-09-15) — dmesg de fábrica capturado
+
+**`scripts/diagnose_console.sh` ejecutado en FrogShell con TreeFrogUI stock (funciona).** Evidencia completa en `docs/experiments/evidence-stock-dmesg.md`.
+
+**Hallazgos del dmesg stock:**
+1. **`/dev/backlight` y `/dev/standby` se crean vía `avp-proxy`** leyendo `devname` del DTS (avp-proxy.c:691-704: `of_property_read_string("devname")` + `alloc_chrdev_region`). Nuestro DTS es idéntico al stock (DTB SEMANTIC PASS) → **estos devices también se crean en nuestro kernel. NO son la causa.**
+2. **Kernel de fábrica tiene drivers custom NO en SDK:** `decrypt_sector_data` (×2 en dmesg) y `ZZd2C`. Evidencia de divergencia fábrica vs SDK.
+3. Config vendor crea los /dev críticos (dis/fb/ge/mmz/kshm/amprpc/i2so/auddec/check_adc) — todos =y.
+4. `/dev/input/` VACÍO en stock (input no via event0).
+5. Stock corre UI completa: icube, rkgame, cubevol, nosleep, picoarch frogshell, hcdaemon.
+
+**CONCLUSIÓN:** el boot parcial (splash sí, menú no) con nuestro kernel NO se explica por un `/dev` faltante a nivel de config (todos los críticos están, backlight/standby via avp-proxy DTS idéntico). Causa probable: drivers de fábrica ausentes del SDK, o un driver que exige algo del config de fábrica no reproducido.
+
 # Next action
 
-- **EJECUTAR `diag.sh` en la consola (stock) y traer el log** → comparar dmesg/drivers stock vs nuestro vendor-config → identificar el driver/config faltante.
-- Si el log stock muestra drivers que el vendor-config no tiene, recompilar con los fragmentos correctos (sin conjetura, guiado por el dmesg).
-- Alternativa: serial (ADR-011) para el kernel r36sx-v26 si se requiere capturar el boot del kernel propio.
-- NO recompilar más configs por conjetura sin dmesg/evidencia.
+- **Capturar el dmesg del kernel r36sx-v26 PROPIO** (no stock) para ver dónde se cuelga vs stock. Métodos: (a) serial USB-TTL + DTB de diagnóstico (ADR-011), o (b) si la consola con nuestro kernel llega a un shell, ejecutar diag.sh.
+- Verificar drivers de fábrica no-SDK (`decrypt_sector_data`, `ZZd2C`): su rol en el boot de la UI.
+- Comparar dmesg stock vs dmesg r36sx-v26 línea a línea para localizar el driver/init divergente.
 - (B) Script serial listo (ADR-011).
 
 # Decision
