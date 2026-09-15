@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6 — FASE 5 EN CURSO: PASO 0 re-sync + PASO 1 backup SD Vía B hechos y verificados)
+**Actualizado:** 2026-09-15 (Iteración 6b — FASE 5 EN CURSO: PASO 0-3 hechos, BOOT PARCIAL, rollback pendiente decisión)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -9,7 +9,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT PHASE
 
-**FASE 5 — SAFE PHYSICAL BOOT TEST EN CURSO** (autorizada por el usuario). PASO 0 y PASO 1 completados y verificados. Siguiente: PASO 2 (verificación artefactos) + PASO 3 (preparar swap en staging).
+**FASE 5 — SAFE PHYSICAL BOOT TEST EN CURSO** (autorizada por el usuario). PASO 0-3 completados y verificados. **BOOT FÍSICO PARCIAL** (PASO 4): consola enciende + splash TreeFrogUI (criterio b PASS) pero NO llega al menú (criterio c FAIL). Decisión pendiente: rollback (PASO 5) vs capturar diagnóstico (dmesg/serial) primero.
 
 ## CURRENT OBJECTIVE
 
@@ -31,10 +31,12 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 
 ## PHYSICAL STATUS
 
-**EN PROGRESO — Fase 5 autorizada.** PASO 0 re-sync + PASO 1 backup completados:
-- Backup SD golden (Vía B): `~/backups/r36sx-sd-files-20260915.tar.gz` — 415 MB, sha256 `97086531ea258b9c05d030a866f5a6eec9e47f9a43f71da333609949d8bb4a60`; vmlinux stock `53b3e0b3...` verificado dentro; 2474 entradas cubegm/. Limitación: no bit-a-bit (válido por no reparticionar).
-- SD devuelta a Windows como G: (unbind OK), vmlinux `53b3e0b3...` verificado intacto.
-- **Nada desplegado todavía.** Deploy = solo reemplazo de vmlinux.uImage en SD (NOR/bootloader/AVP/rootfs INTACTOS).
+**BOOT PARCIAL — kernel r36sx-v26 desplegado y probado físicamente.**
+- PASO 0-2 verificados; PASO 3 staging `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b` (`9821559d...`).
+- Swap en G: ejecutado por el usuario: `vmlinux.uImage` → `9821559D...` (Fase 4B), backup `.stock.bak` creado. `dtb.bin` SD INTACTO (`1258f1eb...`).
+- **BOOT FÍSICO:** consola ENCIENDE, muestra splash TreeFrogUI (fb0 init — criterio b PASS) pero **NO llega al menú ni navegable (criterio c FAIL)**. Input/batería/audio no evaluables.
+- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (415 MB, sha256 `97086531ea...`, vmlinux stock `53b3e0b3...` verificado dentro).
+- NOR/bootloader/AVP/rootfs INTACTOS. Deploy = solo `vmlinux.uImage`.
 
 ## SOURCE SDK SHA256
 
@@ -56,7 +58,7 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-**PASO 2 (verificar artefactos a desplegar)** — recalcular SHA256 del vmlinux.uImage de Fase 4B vs SHA256SUMS/BUILD_INFO, confirmar dtb.bin == stock (`04fb8383` roundtrip, `1258f1eb` original; semánticamente idéntico) → reportar tabla → **PASO 3 (preparar swap)**: copiar vmlinux.uImage nuevo a staging accesible desde Windows (`/mnt/d/R36SX/staging/`), verificar hash tras copia, dar ruta Windows + instrucciones exactas al usuario para el swap manual en G: (no escribir /mnt/g). STOP antes de cualquier escritura en SD.
+**Decidir con el usuario:** (A) rollback inmediato (PASO 5: restaurar stock `53b3e0b3...` en G:) para recuperar la consola, o (B) primero capturar diagnóstico del boot parcial (dmesg/serial con kernel nuevo) para identificar causa raíz, luego rollback. En paralelo: investigar en `/mnt/d/GitHub/KERNEL` la diferencia de entry (`0x803e3200` vendor vs `0x803337c0` fábrica) y el init de la UI TreeFrogUI. Recomendado: intentar diagnóstico (B) si es viable, luego rollback para recuperar la consola usable.
 
 ## REFERENCIA RÁPIDA
 
