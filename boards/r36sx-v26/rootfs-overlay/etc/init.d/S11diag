@@ -1,0 +1,25 @@
+#!/bin/sh
+# S11diag — captura dmesg del boot a la SD (inyectado en el initramfs embebido).
+# Se ejecuta DESPUÉS de S10mdev (SD montada en /media), ANTES de S99app (UI).
+# Corre en rcS del initramfs -> SÍ se ejecuta (el sistema usa el initramfs embebido).
+# Escribe el diagnóstico a la partición de datos de la SD (accesible desde el PC).
+LOG=/mnt/sdcard/cubegm/dmesg_boot.log
+[ -d /mnt/sdcard/cubegm ] || LOG=/media/*/cubegm/dmesg_boot.log
+[ -d /mnt/sdcard/cubegm ] || LOG=/tmp/dmesg_boot.log
+
+{
+  echo "===== dmesg capture $(date) ====="
+  echo "cmdline: $(cat /proc/cmdline 2>/dev/null)"
+  echo "--- modules ---"
+  cat /proc/modules 2>/dev/null
+  echo "--- devices ---"
+  ls -la /dev/ 2>/dev/null
+  echo "--- mtd ---"
+  cat /proc/mtd 2>/dev/null
+  echo "--- DMESG ---"
+  dmesg 2>/dev/null
+  echo "--- dmesg tail 100 ---"
+  dmesg 2>/dev/null | tail -100
+} > "$LOG" 2>&1
+echo "S11diag done -> $LOG" > /dev/console 2>&1
+exit 0
