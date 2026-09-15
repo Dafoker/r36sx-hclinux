@@ -9,7 +9,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT PHASE
 
-**FASE 5 — SAFE PHYSICAL BOOT TEST EN CURSO** (autorizada por el usuario). PASO 0-3 completados y verificados. **BOOT FÍSICO PARCIAL** (PASO 4): consola enciende + splash TreeFrogUI (criterio b PASS) pero NO llega al menú (criterio c FAIL). Decisión pendiente: rollback (PASO 5) vs capturar diagnóstico (dmesg/serial) primero.
+**FASE 5 — SAFE PHYSICAL BOOT TEST EN CURSO** (autorizada por el usuario). PASO 0-3 completados y verificados. **BOOT FÍSICO PARCIAL** (criterio b PASS, c FAIL) documentado. **ROLLBACK (PASO 5) EJECUTADO Y VERIFICADO** — consola recuperada usable con stock. Pendiente: (C) investigar driver faltante en SDK, (B) preparar captura dmesg/serial para un futuro test.
 
 ## CURRENT OBJECTIVE
 
@@ -31,12 +31,12 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 
 ## PHYSICAL STATUS
 
-**BOOT PARCIAL — kernel r36sx-v26 desplegado y probado físicamente.**
-- PASO 0-2 verificados; PASO 3 staging `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b` (`9821559d...`).
-- Swap en G: ejecutado por el usuario: `vmlinux.uImage` → `9821559D...` (Fase 4B), backup `.stock.bak` creado. `dtb.bin` SD INTACTO (`1258f1eb...`).
-- **BOOT FÍSICO:** consola ENCIENDE, muestra splash TreeFrogUI (fb0 init — criterio b PASS) pero **NO llega al menú ni navegable (criterio c FAIL)**. Input/batería/audio no evaluables.
-- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (415 MB, sha256 `97086531ea...`, vmlinux stock `53b3e0b3...` verificado dentro).
-- NOR/bootloader/AVP/rootfs INTACTOS. Deploy = solo `vmlinux.uImage`.
+**ROLLBACK COMPLETADO — consola recuperada usable (kernel stock de nuevo).**
+- BOOT PARCIAL del kernel r36sx-v26 (Fase 4B) documentado: arrancó + splash TreeFrogUI (criterio b PASS) pero NO llegó al menú (criterio c FAIL).
+- **ROLLBACK (PASO 5) EJECUTADO Y VERIFICADO:** `G:\cubegm\vmlinux.uImage` restaurado a stock `53b3e0b3...`; consola arranca TreeFrogUI normal ✓.
+- Diagnóstico local agotado: `.config` de fábrica no extraíble (sin IKCONFIG, no ELF); entry uImage es respetado (no es la causa). Causa probable: config vendor SDK ≠ fábrica → driver runtime de UI faltante. Requiere dmesg/serial físico para confirmar.
+- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (415 MB, sha256 `97086531ea...`).
+- NOR/bootloader/AVP/rootfs INTACTOS durante todo el proceso.
 
 ## SOURCE SDK SHA256
 
@@ -58,7 +58,9 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-**Decidir con el usuario:** (A) rollback inmediato (PASO 5: restaurar stock `53b3e0b3...` en G:) para recuperar la consola, o (B) primero capturar diagnóstico del boot parcial (dmesg/serial con kernel nuevo) para identificar causa raíz, luego rollback. En paralelo: investigar en `/mnt/d/GitHub/KERNEL` la diferencia de entry (`0x803e3200` vendor vs `0x803337c0` fábrica) y el init de la UI TreeFrogUI. Recomendado: intentar diagnóstico (B) si es viable, luego rollback para recuperar la consola usable.
+1. **(C) Investigar drivers** que requiere TreeFrogUI (input key_adc3, audio, amprpc/AVP, fb) y comparar contra nuestro vendor-config para acotar el driver faltante.
+2. **(B) Crear script** de captura dmesg/serial para ejecutar con el kernel nuevo vía cable USB OTG/USB-C, para obtener evidencia decisiva en un futuro test físico.
+3. Documentar hallazgos y actualizar GitHub al cierre de iteración.
 
 ## REFERENCIA RÁPIDA
 

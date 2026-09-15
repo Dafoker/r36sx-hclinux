@@ -47,6 +47,23 @@ Requiere dmesg/serial para discriminar.
 - docs/experiments/2026-09-15_fase5-physical-boot.md (este archivo)
 - CHANGELOG.md, CURRENT.md (estado)
 
+# Resultado (2026-09-15, tras boot parcial)
+
+**ROLLBACK EJECUTADO Y VERIFICADO (PASO 5):**
+- Restaurado `G:\cubegm\vmlinux.uImage` ← `vmlinux.uImage.stock.bak` (stock `53b3e0b3...`).
+- `Get-FileHash` = `53B3E0B3D57FCDBEF40D448AE2D3A00159BC84F2FD5BE4C10A826827C7F2E01E` ✓.
+- Consola vuelve a arrancar TreeFrogUI normal → **ROLLBACK OK**. Consola recuperada usable.
+
+**Diagnóstico (opción B parcial, límite alcanzado):**
+- El `vmlinux.bin` stock NO es ELF ni tiene `CONFIG_IKCONFIG` (0 matches IKCFG_ST) → **imposible extraer el `.config` de fábrica** desde el uImage stock. Comparación config-stock vs vendor NO viable por esta vía.
+- Confirmado en SDK (post-build.sh + main.c): el bootloader `bootm` usa el entry del header uImage → nuestro `0x803e3200` es respetado (no es la causa; el kernel arrancó).
+- El kernel SÍ arrancó (fb0 + splash TreeFrogUI) → fallo en la inicialización de UI/userspace tras el splash. Causa probable: config vendor SDK ≠ config fábrica (delta 0 vs vendor, pero vendor ≠ fábrica) → algún driver/feature de runtime que la UI requiere falta. No identificable sin dmesg/serial.
+
 # Next action
 
-STOP: decidir con el usuario entre (A) rollback inmediato (PASO 5) o (B) intentar capturar dmesg/serial con el kernel nuevo antes de restaurar. Recomendado: capturar diagnóstico si es posible, luego rollback para recuperar la consola.
+- (C) Investigar en SDK qué drivers/features requiere TreeFrogUI (input key_adc3, audio, amprpc/AVP, fb) que nuestro vendor-config pueda no proveer. Comparar símbolos de nuestro kernel vs requeridos.
+- (B) Crear script de captura serial/dmesg para ejecutar con kernel nuevo vía cable USB OTG/C USB-C, para obtener evidencia decisiva en un futuro test.
+
+# Decision
+
+- ADR pendiente: el config de fábrica no está en el SDK ni es extraíble → la única evidencia de causa raíz del boot parcial es dmesg/serial físico (a documentar en DECISIONS.md si se confirma hallazgo de hardware/config).
