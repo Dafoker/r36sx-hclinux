@@ -24,15 +24,17 @@ Hipótesis razonable: "E3100" podría ser el marketing-name de una variante D310
 | # | Subsistema | Stock (R36SX real) | SDK d3100_v20 | Impacto |
 |---|---|---|---|---|
 | 1 | board label | `hc1600a@dbE3100v20` | `hc1600a@dbD3100v20` | identidad/cosmético + tooling vendor |
-| 2 | **memoria Linux** | `reg = <0x0 0xaf91e50>` ≈ **176 MiB** | 254 MiB (CONFIG_MEMORY_SIZE-MINIMAL AVP) | **CRÍTICO — DTB SDK en consola real pisaría la memoria del AVP → brick funcional** |
+| 2 | **memoria** (D01–D05) | total 256 MiB: **Linux 175.57** (`0xAF91E50`) + **AVP 80.43** (FBstatic 14.07 + sysmem 11.33 + mmz1 4.67 + mmz0 50.36) | total 128 MiB: Linux 79.20 (`0x4F32E40`) | **CRÍTICO — memory maps incompatibles → DTS propio obligatorio** (docs/DTS_STOCK_MODEL.md) |
 | 3 | bootargs | `console=tty1 earlycon= ` (serial OFF) | `console=ttyS0,115200N8 earlycon=uart8250,mmio,0x18818300` | debug portuario; stock sin UART log |
-| 4 | fb0 | reg `0x18808000`, buffer **system** + extra 12 MiB, 1280x720, scale→1920x1080 | reg `0x1883a000` (DE4K), buffer **static** `0x4f32e40`, 720x1280 | display pipeline/rendering |
-| 5 | GPIO key | `reg_bit <0x18800094 0x14 0x01 ... 0x18 0x01>` (bits 0x14/0x18) | `0x18800094 0x12 0x01` | mapeo de botones físicos |
+| 4 | fb0 | **`0x1883a000` (DE4K), buffer static `0xAF91E50+0xE11000`, 720x1280 portrait** | `0x18808000`, buffer system +12MiB, 1280x720 | display pipeline (nota: docs Fase 2.5 tenían la orientación INVERTIDA — corregido Fase 4A) |
+| 5 | strappin GPIO | `0x18800094 0x12` (y strappin_avp `0xb8800094 0x12`) | `0x18800094 0x14/0x18` | straps de boot config (docs Fase 2.5 lo tenían invertido — corregido) |
 | 6 | UARTs | 4 nodos `hc_uart@18818300/8600/8800/900` extra (disabled) | ausentes | pinmux/pad availability |
 | 7 | backlight | nodo `backlight` (avp-proxy) presente | ausente | control de retroiluminación |
 | 8 | clock pinctrl | `clock = <0x05>` | `<0x04>` | clock de pinctrl/input |
 
-Más: **panel MIPI-DSI propio** con `panel-init-sequence` completa (líneas 1736–1744 del stock .dts) — el stock define un panel DSI concreto que el SDK no trae (los lcd/*.dtsi del SDK son otros paneles).
+Más: **panel MIPI-DSI `lcd-dsi0-r63311`** con `panel-init-sequence` propia (ausente en SDK, grep=0) · **nodo `/panel` de identidad de consola** (botones/HP/speaker/sdio-det/batería) inexistente en SDK · **particiones NOR 3 vs 7** (la consola bootea kernel/AVP/rootfs desde la SD, no desde NOR — ver docs/R36SX_D3100_DELTA.md D12 y docs/DTS_STOCK_MODEL.md).
+
+**CORRECCIÓN Fase 4A (supera la tabla de 8 filas de Fase 2.5):** el análisis formal completo (718 líneas diff, 88 hunks) arroja **15 diferencias formales** documentadas en `docs/R36SX_D3100_DELTA.md` (7 CRITICAL + 8 FUNCTIONAL), con 2 errores de orientación corregidos (fb0, strappin) y el dato "SDK 254 MiB" desmentido (real: 128 MiB total v20).
 
 ## 5. ¿Afectan a...?
 

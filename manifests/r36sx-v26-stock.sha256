@@ -1,0 +1,24 @@
+# manifests/r36sx-v26-stock.sha256 — Inputs congelados Fase 4 (2026-09-14)
+# Regla: firmware stock propietario NO se versiona en git; SOLO hashes + metadatos.
+
+## STOCK (SD G: read-only, /mnt/g/cubegm/)
+1258f1eba809e43540c581b815c87815540a9e5897a4e8584363ab7de5cc27bb  dtb.bin (DTB stock R36SX V2.6 — FUENTE AUTORITATIVA hardware)
+53b3e0b3d57fcdbef40d448ae2d3a00159bc84f2fd5be4c10a826827c7f2e01e  vmlinux.uImage (kernel stock 4.4.186, linsen.chen@hichip01, Entry 0x803337c0)
+a9788995db80197db6d743b8b237eadbfd3c424fcf1ab448fcd99c003b0950b2  avp.uImage (AVP stock, standalone 0x8bda4000)
+
+## VENDOR BASELINE (build propio d3100_v20, Fase 2 — workspace ~/work/r36sx-hclinux)
+254522d546852107ce076b6ee3729f7f11a41cd8c4ce9c24cb4fe399c2438e7a  build/d3100-v20-baseline/images/dtb.bin (DTB d3100_v20)
+c50d56f1153be032914caa88e0691ce73cf39982ee9e58522cd45b607f52d8bc  build/d3100-v20-baseline/images/vmlinux.uImage
+366f90e058055099b5cc56f697e1a82ad33ea57c427373693daa4e89f60ed137  build/d3100-v20-baseline/images/vmlinux
+3e941a2777f6af2e14326b3c5a5c6b1efc9c5bb8f5cbfaa12b9be13662631289  build/d3100-v20-baseline/build/linux-4.4.186/.config (kernel.config vendor)
+
+## SDK DTS/DTSI fuente v20 (workspace)
+64af4c9e261602a9a2d935bf27f4caa0f5a9fe5dae5ebfcb974f811333727eb6  board/hichip/hc16xx/common/dts/hc16xx-db-d3100-v20.dts
+a210350afc2f356d63a8c1bec895911981d093b8789792949398f7d83ad947ad  board/hichip/hc16xx/common/dts/hc16xx-db-d3100-v20-avp.dtsi
+3dfb3872b2a57731248c2610e49c9b209b8aef6091648d1d3bf3daf5c762b775  board/hichip/hc16xx/common/dts/hc16xx-common.dtsi
+
+## PROJECT
+e3211b41f8d649c7d7838f7f19b8cca5cf30ba6cb1ff9545be6943845fbf8d5d  SDK hclinux-2024.02.y.2.tar.gz (inmutable, ADR-002)
+# Git HEAD y toolchain identity: ver docs/TOOLCHAIN_PROVENANCE.md + git log del commit Fase 4A
+# Toolchain: mips-mti-linux-gnu Codescape 2018.09-02 gcc 6.3.0
+# Patch manifest: docs/PATCH_PROVENANCE.md (41 patches, orden confirmado)

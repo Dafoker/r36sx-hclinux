@@ -24,22 +24,28 @@
 | Bootargs stock | `root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug` — **consola serial OFF de fábrica** (`console=tty1`, no `ttyS0`) | DTB stock chosen |
 | Rootfs stock | initramfs (/dev/ram0), init=/linuxrc | bootargs stock |
 
-## Memoria (físico — CRÍTICO)
+## Memoria (físico — CORREGIDO Fase 4A, valores exactos: docs/DTS_STOCK_MODEL.md)
 
 | Dato | Valor | Fuente |
 |---|---|---|
-| RAM total | 256 MiB (`CONFIG_MEMORY_SIZE 0x10000000` en familia; confirmado por DTB dims) | DTB stock |
-| **Linux visible stock** | **`reg = <0x00 0xaf91e50>` = 184,451,920 B ≈ 176 MiB** (offset 0x0) | DTB stock memory node |
-| Reservado AVP/MMZ | ~256-176 = **~80 MiB** | cálculo sobre DTB stock |
-| ⚠️ SDK d3100_v20 | Linux = 254 MiB (SYSMEM 2MB + MMZ 0) | `hc16xx-db-d3100-v20-avp.dtsi` — **NO USAR en la consola real: pisaría memoria del AVP** |
+| RAM total | **256 MiB** (`0x10000000` — mmz0 termina exactamente en ese límite) | DTB stock memory-mapping completo |
+| **Linux visible stock** | **`reg = <0x0 0xAF91E50>` = 175.57 MiB** | DTB stock memory node |
+| Reservado lado AVP | **80.43 MiB** (FBstatic 14.07 + sysmem 11.33 + mmz1 kshm 4.67 + mmz0 media 50.36 + gap 0.01) + bootmem transitorio 32 MiB | DTB stock hcrtos/memory-mapping |
+| ⚠️ SDK d3100_v20 | Total **128 MiB** (CONFIG_MEMORY_SIZE 0x08000000), Linux 79.20 MiB (`0x4F32E40`) | avp.dtsi v20 + DTB SDK compilado — memory maps INCOMPATIBLES con la consola (DTS propio obligatorio) |
 
-## Display (físico)
+> Correcciones Fase 4A: la frase previa "AVP reserva ~176 MiB" era un error de redacción (176 = Linux); "SDK v20 = 254 MiB" provenía de macros del v10, no del v20 real.
+
+## Display (físico — CORREGIDO Fase 4A)
 
 | Dato | Valor | Fuente |
 |---|---|---|
-| fb0 | `reg = <0x18808000 0x1000>` (NO DE4K `0x1883a000`), 32bpp, **1280x720** (xres 0x500), `buffer-source = "system"`, `extra-buffer-size = 0xc00000` (12 MiB), scale `<1280 720 1920 1080>` | DTB stock fb0 |
-| fb1 | `reg = <0x18808080 0x1000>`, 8bpp, 1280x720, status disabled | DTB stock fb1 |
-| Backlight | nodo `backlight` via `avp-proxy` presente en stock, ausente en SDK v20 | DTB stock |
+| Interface | **MIPI-DSI** (`dsi0`, reg `0x1884a000`, 4 lanes, format 5) | DTB stock dsi0 |
+| Panel driver | **`lcd-dsi0-r63311`** + panel-init-sequence completa (4524 B) — NO existe en SDK | DTB stock |
+| fb0 | `reg = <0x1883a000 0x1000>` (**DE4K**), 32bpp, **720x1280 portrait** (yvirt 0x1400 = 4 buffers), buffer **static** `0xAF91E50 +0xE11000` header 0x1000, scale 720x1280→1920x1080, default-on | DTB stock fb0 |
+| fb1 | `0x18808080`, 8bpp, disabled | DTB stock fb1 |
+| Backlight | nodo hcrtos `backlight` (pwm0, freq 100kHz, scale 0xff, default 0x99) + `backlight-delay 200ms` | DTB stock |
+
+> Corrección Fase 4A: en docs previos se había invertido la orientación fb0 (el DE4K 0x1883a000 es el STOCK; el SDK v20 usa 0x18808000).
 
 ## Input (físico)
 

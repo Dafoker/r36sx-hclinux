@@ -42,9 +42,12 @@ Linux vanilla 4.4.186 (kernel.org)
   → post-build.sh: mkimage → vmlinux.uImage + avp.uImage + bootloader.bin + firmware pkgs
 ```
 
-## R36SX V2.6 (evidencia física, Fase 3 pendiente fino)
+## R36SX V2.6 (evidencia física — valores exactos Fase 4A: docs/DTS_STOCK_MODEL.md)
 
-- SoC HC1600A, board label stock `hc1600a@dbD3100v20` → familia SDK **D3100 v20** (matching HIGH).
-- Memoria total 256 MiB (CONFIG_MEMORY_SIZE 0x10000000 en d3100 v10; validar v20 stock).
-- vmlinux.uImage stock: Load 0x80000000 / Entry 0x803EC710; avp.uImage 0x8BDA4000.
-- Diferencias finas (DDR, panel LCD, pinmux botones, particiones) — **NO asumibles** del D3100: modelarlas desde DTB stock (Fases 3–4).
+- SoC HC1600A, board label stock `hc1600a@dbE3100v20` → familia SDK **D3100** (estructura); board propia r36sx-v26 obligatoria (Fase 4B).
+- **RAM 256 MiB**: Linux 175.57 (`0xAF91E50`) · AVP 80.43 (FBstatic 14.07 + sysmem 11.33 + mmz1 kshm 4.67 + mmz0 50.36) + bootmem transitorio.
+- Display: **MIPI-DSI** `lcd-dsi0-r63311` 4 lanes (panel propio, ausente en SDK), fb0 DE4K `0x1883a000` static buffer portrait 720x1280.
+- **Boot: kernel/AVP/rootfs desde la SD** (NOR solo boot/eromfs/persistentmem, 3 particiones — el devkit D3100 flashea 7 en NOR).
+- vmlinux.uImage stock: Load 0x80000000 / Entry 0x803337c0; avp.uImage: 0x8BDA4000.
+- Nodo `/panel` = identidad de consola (botones/HP/speaker/sdio-det/batería ADC) — inexistente en SDK.
+- Diferencias formales stock↔SDK: 15 (7 CRITICAL) — docs/R36SX_D3100_DELTA.md.

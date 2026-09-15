@@ -144,7 +144,7 @@ make O=output/d3100 all
 | Toolchain del firmware stock = Codescape 2018.09-02 gcc 6.3.0 (igual que SDK) | **CONFIRMED (físico, evidencia complementaria)** | cadena de compilador embebida en vermagic stock (`linsen.chen@hichip01 ... Codescape 2018.09-02`) == cadena embebida en nuestro vmlinux. NOTA: `user@host` del vermagic describe el entorno de build original, NO prueba toolchain (AGENTS.md §14); la prueba primaria de NUESTRO build: docs/TOOLCHAIN_PROVENANCE.md (.cmd files) |
 | Board stock = D3100 v20 (reporte previo del usuario) | **DISPROVED — es `hc1600a@dbE3100v20` (E3100)** | DTB stock decompilado nodo board (SD `/mnt/g/cubegm/dtb.bin`, sha `1258f1eb...`) |
 | Board E3100 existe en el SDK | **DISPROVED (no existe)** | `grep -ri e3100` en SDK = 0 → board propia obligatoria (Fase 4) |
-| Memoria Linux stock = 254 MiB (como SDK d3100_v20) | **DISPROVED — es `reg=<0x0 0xaf91e50>` ≈ 176 MiB** (AVP reserva ~80 MiB) | DTB stock memory node |
+| Memoria Linux stock = 254 MiB (como SDK d3100_v20) | **DISPROVED — stock: Linux `0xAF91E50` = 175.57 MiB de 256 total (AVP 80.43); SDK v20 real: total 128 MiB, Linux 79.20** (valores exactos y correcciones en docs/DTS_STOCK_MODEL.md — Fase 4A) | DTB stock memory node + memory-mapping |
 | Bootargs stock usan serial ttyS0 | **DISPROVED — `console=tty1`, serial OFF de fábrica** | DTB stock chosen |
 | fb stock = DE4K 0x1883a000 static (como SDK v20) | **DISPROVED — 0x18808000, buffer system +12MiB extra, 1280x720** | DTB stock fb0 |
 | Reproducibilidad DTB del pipeline | **CONFIRMED** | `dtb.bin` build nuevo == baseline previo usuario (sha `254522d5...` byte-idéntico) |
