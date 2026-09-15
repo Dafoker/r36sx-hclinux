@@ -128,3 +128,27 @@ La documentación es parte del entregable técnico de CADA iteración. **Una ite
 **Gate commit/push:** `git status` → `git diff` → validaciones → DOCUMENTATION REVIEW → actualizar docs impactadas → `git diff --check` → commit → push → verificar remote HEAD. Si docs desactualizadas: ITERATION STATUS = INCOMPLETE.
 
 **CHANGELOG.md**: una línea por iteración con cambio técnico relevante; no es diario. Detalles en docs/experiments/.
+
+## 14. KERNEL PROVENANCE GATE (permanente — desde Fase 2.5)
+
+Ningún kernel BUILD PASS es apto para desarrollo posterior sin evidencia CONSERVADA de:
+
+- arquitectura host;
+- arquitectura target;
+- **cross compiler realmente invocado** (command files de kbuild `.cmd`, no suposición);
+- compiler triplet y versión;
+- sysroot;
+- kernel `ARCH` y `CROSS_COMPILE` efectivos;
+- kernel config;
+- **patch set efectivo con orden** (log de aplicación, no presencia);
+- overlays BSP/vendor aplicados (rsync/injection: hook, momento, source→dest);
+- ELF architecture resultante (kernel + userspace + módulos);
+- hashes de artefactos.
+
+**"Presence of a toolchain does not prove it was used. Presence of a patch does not prove it was applied."** La presencia NO es aplicación: la prueba es la invocación registrada (`.cmd` files / patch logs / árbol resultante con hunks).
+
+**vermagic ≠ toolchain identity**: `user@host` del vermagic solo describe el entorno de build original; la cadena de versión de compilador embebida es evidencia COMPLEMENTARIA, jamás prueba primaria de toolchain.
+
+Herramientas del gate (parte del gate C futuro): `scripts/audit_toolchain.sh` → `TOOLCHAIN PROVENANCE: PASS/FAIL` · `scripts/audit_kernel_patches.sh` → `PATCH PROVENANCE: PASS/FAIL`.
+
+Regla de patches externos: un patch de `/mnt/d/GitHub/KERNEL` idéntico por SHA256 a uno del SDK que Buildroot ya aplica = `EXTERNAL COPY: VERIFIED IDENTICAL · DOUBLE APPLICATION: NOT REQUIRED` (uso correcto). Un patch externo NO presente en el SDK NO se aplica automáticamente — requiere análisis de versión destino/dependencia/orden/finalidad y decisión documentada.

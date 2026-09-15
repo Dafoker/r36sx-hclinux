@@ -29,3 +29,7 @@ Inspeccionar el SDK HCLinux 2024.02.y.2 y toda fuente vendor en `/mnt/d/GitHub/K
 - `docs/SDK_AUDIT.md` actualizado con evidencia.
 - Descubrimientos de toolchains/defconfigs/patches/DTS con rutas exactas.
 - ADRs propuestos al orchestrator si un hallazgo cambia decisiones durables.
+
+## PROVENANCE RULE (AGENTS.md §14)
+
+Presencia NO es uso: un patch listado no fue aplicado hasta verlo en patch log/árbol resultante; una toolchain presente no fue usada hasta verla en .cmd de kbuild. Documentar mecanismo REAL de aplicación (hooks, orden rsync vs patches) e inyección de SOURCE/linux-drivers con rutas exactas. Patches externos idénticos por SHA256 a los del SDK: VERIFIED IDENTICAL, sin doble aplicación. vermagic user@host no prueba toolchain.

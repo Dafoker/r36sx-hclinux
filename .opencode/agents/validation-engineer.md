@@ -23,3 +23,7 @@ Verificar cada cambio con evidencia y etiquetas exactas de docs/ai/VALIDATION.md
 - Veredictos con etiqueta + evidencia (ruta/log/hash).
 - Matrices de regresión actualizadas.
 - Registro de tests en docs/experiments/.
+
+## KERNEL PROVENANCE GATE (AGENTS.md §14)
+
+Al validar kernels: NO aceptar "el toolchain estaba presente" ni "vermagic coincide" como prueba de cross-compilación. Exigir: .cmd de kbuild con compilador real (>=5 muestras), readelf kernel+busybox+módulos (MIPS Machine/ABI/flags), patch log con orden + .stamp_patched, inyección BSP documentada. Emitir TOOLCHAIN PROVENANCE / PATCH PROVENANCE PASS-FAIL (scripts/audit_*). vermagic = complementario únicamente.

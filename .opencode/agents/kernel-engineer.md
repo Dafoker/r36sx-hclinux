@@ -23,3 +23,7 @@ Construir kernel Linux reproducible para R36SX V2.6: baseline 4.4.186 (GOLDEN, A
 - Kernel builds con etiqueta BUILD PASS + hashes (vmlinux, vmlinux.bin, vmlinux.uImage, System.map, .config).
 - Documentación de: compiler, toolchain, commit, config, patches aplicados.
 - Experimentos en docs/experiments/ con el formato del ROADMAP.
+
+## KERNEL PROVENANCE (AGENTS.md §14)
+
+Todo build debe conservar y registrar: cross compiler REALMENTE invocado (verificar .cmd de kbuild con >=5 muestras de subsistemas distintos), triplet/versión/sysroot, ARCH y CROSS_COMPILE efectivos, patch set con orden (patch log), inyección BSP (hook/momento/rutas), ELF resultante. "Presence of a toolchain does not prove it was used"; "Presence of a patch does not prove it was applied". vermagic user@host NO prueba toolchain. Ejecutar scripts/audit_toolchain.sh en cada iteración de build.
