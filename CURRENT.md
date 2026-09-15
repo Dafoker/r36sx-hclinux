@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6c — FASE 5 EN CURSO: rollback OK + hipótesis de causa raíz CONFIG_CHECK_ADC)
+**Actualizado:** 2026-09-15 (Iteración 6d — FASE 5 EN CURSO: kernel recompilado CONFIG_CHECK_ADC=y, RE-TEST pendiente)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -31,13 +31,14 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 
 ## PHYSICAL STATUS
 
-**ROLLBACK COMPLETADO — consola recuperada usable (kernel stock de nuevo).**
-- BOOT PARCIAL del kernel r36sx-v26 (Fase 4B) documentado: arrancó + splash TreeFrogUI (criterio b PASS) pero NO llegó al menú (criterio c FAIL).
-- **ROLLBACK (PASO 5) EJECUTADO Y VERIFICADO:** `G:\cubegm\vmlinux.uImage` restaurado a stock `53b3e0b3...`; consola arranca TreeFrogUI normal ✓.
-- **HIPÓTESIS DE CAUSA RAIZ (Diagnóstico C):** `CONFIG_CHECK_ADC is not set` en config vendor → no se crean `/dev/check_adc1`/`/dev/check_adc5` (batería/charging) que la UI abre → boot parcial. Acción propuesta: habilitar `CONFIG_CHECK_ADC=y` y recompilar. Confirmación definitiva requeriría dmesg (ADR-011: DTB serial-only para USB-TTL).
-- **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`, DTB 33109 B). Cable USB-C OTG NO sirve (solo MTP/PTP).
-- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (415 MB, sha256 `97086531ea...`).
-- NOR/bootloader/AVP/rootfs INTACTOS durante todo el proceso.
+**ROLLBACK OK + KERNEL RECOMPILADO CONFIG_CHECK_ADC=y — RE-TEST FÍSICO PENDIENTE.**
+- BOOT PARCIAL del kernel r36sx-v26 (Fase 4B) documentado: splash TreeFrogUI (b PASS) pero NO menú (c FAIL). Rollback a stock `53b3e0b3...` OK (consola usable).
+- **HIPÓTESIS CAUSA RAIZ (C):** `CONFIG_CHECK_ADC is not set` → no `/dev/check_adc1`/`/dev/check_adc5` que la UI abre → boot parcial.
+- **RE-BUILD HECHO:** kernel recompilado con `CONFIG_CHECK_ADC=y` (fragmento `boards/r36sx-v26/kernel/r36sx-v26.config.fragment`, vendor base intacto). Gates PASS (TOOLCHAIN/PATCH/DTB 0 diff). **vmlinux.uImage `08cced35...`** (Load 0x80000000, Entry 0x803E3AA0). dtb.bin `04fb8383...` sin cambios.
+- **RE-TEST FÍSICO PENDIENTE:** desplegar `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b-checkadc` (`08cced35...`) en SD (dtb NO se toca) y bootear. Rollback disponible.
+- **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`). Cable USB-C OTG NO sirve (solo MTP/PTP).
+- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (sha256 `97086531ea...`).
+- NOR/bootloader/AVP/rootfs INTACTOS.
 
 ## SOURCE SDK SHA256
 
@@ -59,9 +60,8 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **Recompilar kernel r36sx-v26 con `CONFIG_CHECK_ADC=y`** (y auditar los demás `/dev` de la UI vs config: verificar que no haya otros drivers requeridos deshabilitados) → re-probar boot físico.
-2. Si se requiere confirmación directa: usar `scripts/diagnose_boot_serial.sh` (DTB serial-only + cable USB-TTL al hc_uart@18818600, 115200 8N1) para capturar dmesg del boot.
-3. Documentar hallazgos y actualizar GitHub al cierre de iteración.
+1. **RE-TEST FÍSICO:** el usuario despliega `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b-checkadc` (`08cced35...`) en `G:\cubegm\vmlinux.uImage` (backup `.stock.bak` ya existe; dtb.bin NO se toca), expulsa, bootea, y reporta si llega al menú (criterio c). Si PASS → Fase 5 cierra. Si FAIL → verificar demás `/dev` de la UI vs config o usar serial (ADR-011).
+2. Documentar resultado del re-test y actualizar GitHub al cierre.
 
 ## REFERENCIA RÁPIDA
 

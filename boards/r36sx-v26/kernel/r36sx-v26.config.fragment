@@ -1,0 +1,8 @@
+#!/bin/bash
+# Kernel config fragment para r36sx-v26 (board-specific kernel config deltas)
+# Aplicado por Buildroot via BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES.
+# ADR-011/diagnóstico Fase 5: el kernel de fábrica tiene CONFIG_CHECK_ADC=y
+# (crea /dev/check_adc1..5 usados por la UI para batería/charging). El vendor
+# kernel-squashfs.config lo trae deshabilitado -> sin el driver la UI se queda
+# en splash. Este fragmento restaura el comportamiento de fábrica SOLO para esta board.
+CONFIG_CHECK_ADC=y

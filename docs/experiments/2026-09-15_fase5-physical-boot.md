@@ -75,10 +75,21 @@ Requiere dmesg/serial para discriminar.
 
 **HIPÓTESIS PRINCIPAL (accionable, bajo riesgo):** habilitar `CONFIG_CHECK_ADC=y` en el defconfig kernel r36sx-v26, recompilar, y re-probar. El driver es del SDK (hcdrivers), ya presente en el árbol; solo falta activarlo. NO toca DTB/bootloader/AVP/NOR.
 
+# Re-build CONFIG_CHECK_ADC=y (2026-09-15, después del hallazgo C)
+
+**KERNEL RECOMPILADO con `CONFIG_CHECK_ADC=y`:**
+- Mecanismo reproducible: fragmento `boards/r36sx-v26/kernel/r36sx-v26.config.fragment` (`CONFIG_CHECK_ADC=y`) referenciado en `BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES` del defconfig Buildroot. `build_kernel.sh` copia el fragmento al workspace SDK. **NO modifica el vendor config base** (`kernel-squashfs.config` intacto).
+- Build PASS (~12 min; error final `bootloader.bin not found` = esperado ADR-008).
+- Gates: **TOOLCHAIN PASS, PATCH PASS, DTB SEMANTIC PASS (0 diff)**.
+- `.config` build: `CONFIG_HC_ADC=y`, `CONFIG_KEY_ADC=y`, **`CONFIG_CHECK_ADC=y`** (antes `not set`).
+- **vmlinux.uImage NUEVO:** `08cced35fc3b90ba1e1ce3a4387c536bbfe0b500a6e31d5f665d4624f78d5673`, Load `0x80000000`, Entry `0x803E3AA0` (gzip, 2,700,962 B). dtb.bin `04fb8383...` (== stock, sin cambios).
+- Artefactos: `~/work/r36sx-hclinux/artifacts/r36sx-v26/` (SHA256SUMS 7/7 OK). Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-fase4b-checkadc`.
+
 # Next action
 
-- **Recompilar kernel r36sx-v26 con `CONFIG_CHECK_ADC=y`** (y verificar si hay más drivers requeridos deshabilitados en vendor-config: p.ej. revisar los demás `/dev` de la UI contra config) y re-probar el boot físico.
-- (B) `scripts/diagnose_boot_serial.sh` generó DTB de diagnóstico serial-only (ADR-011) para capturar dmesg vía USB-TTL (hc_uart@18818600, 115200 8N1) si se requiere confirmación directa.
+- **RE-TEST físico:** desplegar `vmlinux.uImage-r36sx-v26-fase4b-checkadc` (`08cced35...`) en SD (dtb.bin NO se toca) y bootear. Si `/dev/check_adc*` era la causa, la UI debe llegar al menú (criterio c PASS). Rollback disponible (stock `53b3e0b3...`).
+- Si sigue fallando: verificar los demás `/dev` de la UI vs config, o usar `scripts/diagnose_boot_serial.sh` (DTB serial-only + USB-TTL, hc_uart@18818600 115200n8) para dmesg.
+- (B) Script serial listo (ADR-011).
 
 # Decision
 

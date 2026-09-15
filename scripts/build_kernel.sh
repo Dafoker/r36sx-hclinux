@@ -22,9 +22,12 @@ DEF_REPO="$R/configs/buildroot/hichip_hc16xx_${BOARD//-/_}_defconfig"
 
 # 3. sincronizar board files repo -> workspace SDK (board propia; vendor intacto)
 BD="$S/board/hichip/hc16xx/${BOARD//-/_}"
-mkdir -p "$BD/dts"
+mkdir -p "$BD/dts" "$BD/kernel"
 cp "$DTS_REPO" "$BD/dts/$BOARD.dts"
 cp "$DEF_REPO" "$S/configs/$(basename "$DEF_REPO")"
+# fragmento de kernel config (board-specific deltas, p.ej. CONFIG_CHECK_ADC) -> workspace
+KFRAG="$R/boards/$BOARD/kernel/$BOARD.config.fragment"
+[ -f "$KFRAG" ] && cp "$KFRAG" "$BD/kernel/$BOARD.config.fragment"
 
 # 4. entorno validado (docs/BUILD.md + TOOLCHAIN_PROVENANCE)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
