@@ -2,6 +2,10 @@
 
 Formato: una línea por iteración; detalle técnico en `docs/experiments/` y commits.
 
+## 2026-09-15
+
+- **Iteración 6 (Fase 5 — inicio, SAFE PHYSICAL BOOT TEST):** autorizado por el usuario. PASO 0 re-sync completado (HEAD 528e51b == remote, worktree limpio, preflight PASS 24/24, SD stock G: verificada: vmlinux.uImage `53b3e0b3...`, dtb `1258f1eb...`). PASO 1 backup: **VÍA B (filesystem-level)** — usbipd-win attach de la SD (`/dev/sde`, lector 05e3:0723) OK; se descartó `dd` completo por latencia USB (~55 min) y se eligió `tar` de solo archivos usados → `~/backups/r36sx-sd-files-20260915.tar.gz` (415,381,115 B, sha256 `97086531ea...`, 2474 entradas cubegm/, vmlinux stock `53b3e0b3...` dentro verificada). Limitación Vía B documentada (no bit-a-bit; válido por no reparticionar). SD devuelta a Windows como G: (unbind, verificada intacta). **Nota cuenta:** remote real = `ozkaoz/r36sx-hclinux` (el prompt refería `Dafoker`/`Odkwr` — misma cuenta, no bloqueante).
+
 ## 2026-09-14
 
 - **Iteración 1 (Fase 0):** bootstrap desde cero. Preflight WSL PASS; inventario STATIC PASS (5 fuentes top-level + hashes → manifests); repo local + estructura completa; AGENTS/CURRENT/CONTEXT_MAP/DECISIONS (ADR-001..006); contratos docs/ai/*; agentes .opencode; scripts core; repo GitHub creado + push inicial. Repo previo homónimo archivado a bundle y eliminado por decisión del usuario (ADR-003).

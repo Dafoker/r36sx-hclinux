@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-14 (Iteración 5 — FASE 4 COMPLETADA: stock model 4A + board r36sx-v26 4B, todos los gates PASS)
+**Actualizado:** 2026-09-15 (Iteración 6 — FASE 5 EN CURSO: PASO 0 re-sync + PASO 1 backup SD Vía B hechos y verificados)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -9,11 +9,11 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT PHASE
 
-**FASE 4 COMPLETADA (4A stock model + 4B board build — ALL GATES PASS)**. Siguiente: **FASE 5 — SAFE PHYSICAL BOOT TEST** (REQUIERE AUTORIZACIÓN EXPLÍCITA del usuario + protocolo de rollback; NO iniciada).
+**FASE 5 — SAFE PHYSICAL BOOT TEST EN CURSO** (autorizada por el usuario). PASO 0 y PASO 1 completados y verificados. Siguiente: PASO 2 (verificación artefactos) + PASO 3 (preparar swap en staging).
 
 ## CURRENT OBJECTIVE
 
-Esperar autorización para Fase 5. Mientras: Fase 6 (contrato TreeFrogUI) puede avanzar sin hardware.
+Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a desplegar (PASO 2) → preparar swap del kernel nuevo (PASO 3) → boot físico (PASO 4) → rollback si falla (PASO 5) → documentar y actualizar GitHub.
 
 ## CURRENT HEAD
 
@@ -31,7 +31,10 @@ Esperar autorización para Fase 5. Mientras: Fase 6 (contrato TreeFrogUI) puede 
 
 ## PHYSICAL STATUS
 
-**NOT TESTED — nada flasheado, nada desplegado.** Fase 5 = SAFE PHYSICAL BOOT TEST (requiere autorización + rollback; deploy = reemplazo de vmlinux.uImage/dtb.bin en SD, NOR intacto).
+**EN PROGRESO — Fase 5 autorizada.** PASO 0 re-sync + PASO 1 backup completados:
+- Backup SD golden (Vía B): `~/backups/r36sx-sd-files-20260915.tar.gz` — 415 MB, sha256 `97086531ea258b9c05d030a866f5a6eec9e47f9a43f71da333609949d8bb4a60`; vmlinux stock `53b3e0b3...` verificado dentro; 2474 entradas cubegm/. Limitación: no bit-a-bit (válido por no reparticionar).
+- SD devuelta a Windows como G: (unbind OK), vmlinux `53b3e0b3...` verificado intacto.
+- **Nada desplegado todavía.** Deploy = solo reemplazo de vmlinux.uImage en SD (NOR/bootloader/AVP/rootfs INTACTOS).
 
 ## SOURCE SDK SHA256
 
@@ -43,7 +46,7 @@ Esperar autorización para Fase 5. Mientras: Fase 6 (contrato TreeFrogUI) puede 
 
 ## ACTIVE BLOCKERS
 
-1. Fase 5 bloqueada por AUTORIZACIÓN del usuario (no técnica).
+1. Ninguno en Fase 5 hasta PASO 3 (swap requiere autorización explícita para escribir en la SD /mnt/g).
 2. Bare-metal mips32-mti-elf (AVP/hcboot propios) — privado (ADR-008; no bloquea nada actual).
 3. Kernel config de fábrica (entry 0x803337c0) no incluido en SDK — usamos vendor SDK config (documentado).
 
@@ -53,7 +56,7 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-**STOP — NO desplegar automáticamente.** Propuesta al usuario: FASE 5 — SAFE PHYSICAL BOOT TEST (protocolo: backup SD → copia vmlinux.uImage+dtb.bin nuevos a SD → boot → criterios PASS → rollback documentado). Alternativa mientras: iniciar Fase 6 (contrato TreeFrogUI, sin hardware).
+**PASO 2 (verificar artefactos a desplegar)** — recalcular SHA256 del vmlinux.uImage de Fase 4B vs SHA256SUMS/BUILD_INFO, confirmar dtb.bin == stock (`04fb8383` roundtrip, `1258f1eb` original; semánticamente idéntico) → reportar tabla → **PASO 3 (preparar swap)**: copiar vmlinux.uImage nuevo a staging accesible desde Windows (`/mnt/d/R36SX/staging/`), verificar hash tras copia, dar ruta Windows + instrucciones exactas al usuario para el swap manual en G: (no escribir /mnt/g). STOP antes de cualquier escritura en SD.
 
 ## REFERENCIA RÁPIDA
 
