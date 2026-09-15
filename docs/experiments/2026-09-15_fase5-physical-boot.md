@@ -126,12 +126,20 @@ Requiere dmesg/serial para discriminar.
 
 **CONCLUSIÓN:** el boot parcial (splash sí, menú no) con nuestro kernel NO se explica por un `/dev` faltante a nivel de config (todos los críticos están, backlight/standby via avp-proxy DTS idéntico). Causa probable: drivers de fábrica ausentes del SDK, o un driver que exige algo del config de fábrica no reproducido.
 
+# Intento de diagnóstico por inyección (S50diag) — REVERTIDO (2026-09-15)
+
+**Se intentó inyectar `S50diag` en `G:\rootfs\etc\init.d\` para capturar el dmesg del kernel r36sx-v26 automáticamente.** Resultado del test #3: **pantalla negra** (ni splash ni menú) y **NO se generó diag log** → `rcS` no llegó a ejecutar S50diag, o S50diag interfirió.
+
+**REVERSIÓN COMPLETA:** `S50diag` borrado del rootfs + kernel restaurado a stock `53b3e0b3...` (verificado WSL + Windows `Test-Path False`). SD limpia y usable.
+
+**Inconsistencia observada:** tests #1/#2 (kernel r36sx-v26 sin S50diag) mostraron SPLASH (kernel llega a userspace) pero test #3 (con S50diag) dio PANTALLA NEGRA. Esto sugiere boot inestable o que S50diag (busybox `$()`/date) interfirió. La inyección de scripts en rcS NO es una vía fiable aquí — descartada.
+
 # Next action
 
-- **Capturar el dmesg del kernel r36sx-v26 PROPIO** (no stock) para ver dónde se cuelga vs stock. Métodos: (a) serial USB-TTL + DTB de diagnóstico (ADR-011), o (b) si la consola con nuestro kernel llega a un shell, ejecutar diag.sh.
-- Verificar drivers de fábrica no-SDK (`decrypt_sector_data`, `ZZd2C`): su rol en el boot de la UI.
-- Comparar dmesg stock vs dmesg r36sx-v26 línea a línea para localizar el driver/init divergente.
-- (B) Script serial listo (ADR-011).
+- **Ruta directa al objetivo (boot correcto + reemplazo total):** reconstruir el config del kernel de fábrica. Evidencia clave: **uImage stock 3,905,906 B vs nuestro 2,700,962 B** (~45% más grande) → el config de fábrica es sustancialmente distinto al vendor SDK (muchos más drivers/subsistemas). El SDK NO tiene el config R36SX (solo boards vendor: d3100_p1, projector, c3100, etc.).
+- Método: extraer el config/símbolos del kernel de fábrica desde `vmlinux.bin` stock descomprimido (comparar drivers presentes). El objetivo es reconstruir un kernel que la UI de fábrica acepte.
+- Alternativa: usar el kernel de fábrica como baseline directo si es viable (reemplazo total = kernel + DTB + rootfs propios, no solo vmlinux.uImage).
+- (B) Script serial listo (ADR-011) como respaldo, pero se prioriza la ruta de config/símbolos sin hardware.
 
 # Decision
 
