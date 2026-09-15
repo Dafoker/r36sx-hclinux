@@ -164,11 +164,29 @@ Requiere dmesg/serial para discriminar.
 
 **Solución propuesta (reemplazo total):** reconstruir kernel r36sx-v26 **embebiendo el initramfs** (CONFIG_INITRAMFS_SOURCE apuntando al rootfs, p.ej. el de la SD o uno propio) para replicar el arranque de fábrica.
 
+# RE-BUILD CON INITRAMFS EMBEBIDO (2026-09-15) — solución a la causa raíz
+
+**Kernel r36sx-v26 recompilado con initramfs embebido** (replica el arranque de fábrica):
+
+**Cambios:**
+1. **Defconfig:** `BR2_TARGET_ROOTFS_INITRAMFS=y` (selecciona CPIO automáticamente); `BR2_TARGET_ROOTFS_SQUASHFS` deshabilitado (no combinar initramfs + squashfs, nota del Config.in).
+2. **Kernel fragment** (`boards/r36sx-v26/kernel/r36sx-v26.config.fragment`): `CONFIG_BLK_DEV_INITRD=y` + `CONFIG_RD_GZIP/BZIP2/LZMA/XZ/LZO=y` (mantiene `CONFIG_CHECK_ADC=y`).
+
+**Resultado del build (BUILD PASS, gates PASS):**
+- `.config`: `CONFIG_BLK_DEV_INITRD=y`, `CONFIG_INITRAMFS_SOURCE="${BR_BINARIES_DIR}/rootfs.cpio"`.
+- `rootfs.cpio` generado (27,602,432 B) con `linuxrc`, `etc/init.d/rcS`, `S41hcdaemon`, `usr/bin/hcdaemon`, `etc/inittab`.
+- `vmlinux` 78,091,628 B (antes 66.7MB) — contiene el initramfs (cpio `070701`, `linuxrc`).
+- **Nuevo uImage `004b2d50...`**: Load `0x80000000`, Entry `0x803E4050`, gzip **13,671,987 B** (antes 2.7MB).
+- Gates: **DTB SEMANTIC PASS (0 diff), TOOLCHAIN PASS, PATCH PASS**.
+- Artefactos `~/work/r36sx-hclinux/artifacts/r36sx-v26/` 7/7 OK. Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs`.
+
+**Por qué esto resuelve el boot:** el kernel de fábrica embebe su rootfs como initramfs (evidencia: cpio + rcS + hcdaemon en el uImage stock). Nuestro build ahora lo replica → el kernel con `root=/dev/ram0` encuentra su root → arranca userspace → monta la SD → lanza la UI.
+
 # Next action
 
-- **Reconstruir el kernel r36sx-v26 con initramfs embebido** (CONFIG_BLK_DEV_INITRD=y + CONFIG_INITRAMFS_SOURCE → rootfs). Verificar que el vmlinux resultante contiene el cpio (070701) y rcS/inittab, como el stock.
-- Si el rootfs embebido debe ser el de fábrica: usar `G:\rootfs` (coincide con el initramfs stock). Para reemplazo total: rootfs propio + kernel + DTB.
-- Re-test físico: con initramfs embebido, el kernel debería arrancar igual que el stock (llegar al menú).
+- **RE-TEST FÍSICO:** desplegar `vmlinux.uImage-r36sx-v26-initramfs` (`004b2d50...`) en SD (dtb.bin NO se toca), bootear. Con initramfs embebido, el kernel debería arrancar como el stock y llegar al menú (criterio c PASS).
+- Si la UI no carga completamente, ajustar el rootfs embebido (overlay del board, binarios de la SD).
+- Avanzar hacia reemplazo total (rootfs propio + kernel + DTB).
 - (B) Script serial listo (ADR-011) como respaldo.
 
 # Decision

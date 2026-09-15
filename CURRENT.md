@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6e — FASE 5 EN CURSO: hipótesis CHECK_ADC REFUTADA, requiere dmesg serial, rollback OK)
+**Actualizado:** 2026-09-15 (Iteración 6f — FASE 5 EN CURSO: causa raíz initramfs, kernel recompilado con rootfs embebido, re-test pendiente)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -31,15 +31,13 @@ Completar Fase 5: backup SD hecho (PASO 1 Vía B) → verificar artefactos a des
 
 ## PHYSICAL STATUS
 
-**RE-TEST FALLÓ — HIPÓTESIS CHECK_ADC REFUTADA. Consola en stock (usable). DIAGNÓSTICO SERIAL REQUERIDO.**
-- RE-TEST con `CONFIG_CHECK_ADC=y` (`08cced35...`): sigue en splash, sin menú. **`CONFIG_CHECK_ADC` NO era la causa única.** Hipótesis C REFUTADA.
-- Hallazgo adicional no concluyente: `/dev/backlight` requerido por UI pero `CONFIG_FB_BACKLIGHT is not set` en vendor.
-- **NO hay logs de boot en SD** (menu.log binario no se reescribe; no hay dmesg guardado). NO se puede diagnosticar por filesystem de la SD.
-- **DECISIÓN:** no recompilar más configs por conjetura. Se requiere **dmesg via serial (ADR-011)** para diagnóstico no-ciego.
-- **ROLLBACK EJECUTADO y verificado:** `G:\cubegm\vmlinux.uImage` = stock `53b3e0b3...` (desde `.stock.bak`), confirmado WSL+Windows. Consola usable.
-- **ADR-011:** DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`, hc_uart@18818600 115200n8). Cable USB-C OTG NO sirve (solo MTP/PTP).
+**CAUSA RAÍZ ENCONTRADA + KERNEL RECOMPILADO CON INITRAMFS EMBEBIDO — RE-TEST PENDIENTE.**
+- **CAUSA RAÍZ:** el kernel de fábrica de la R36SX **embebe su rootfs como initramfs dentro del vmlinux** (cpio `070701` + `etc/init.d/rcS` + `usr/bin/hcdaemon` verificados en el uImage stock). Nuestro build NO lo hacía (`BR2_TARGET_ROOTFS_INITRAMFS not set`, `CONFIG_BLK_DEV_INITRD not set`) → sin root, boot parcial/pantalla negra.
+- **RE-BUILD HECHO:** `BR2_TARGET_ROOTFS_INITRAMFS=y` + `CONFIG_BLK_DEV_INITRD=y` + `CONFIG_INITRAMFS_SOURCE=rootfs.cpio`. vmlinux 78MB con initramfs. **uImage `004b2d50...` 13.7MB** (antes 2.7MB). Gates PASS (TOOLCHAIN/PATCH/DTB 0 diff).
+- **RE-TEST FÍSICO PENDIENTE:** desplegar `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs` (`004b2d50...`) en SD (dtb NO se toca), bootear. Debería arrancar como el stock y llegar al menú.
+- **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`). Cable USB-C OTG NO sirve (solo MTP/PTP).
 - Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (sha256 `97086531ea...`).
-- NOR/bootloader/AVP/rootfs INTACTOS.
+- NOR/bootloader/AVP INTACTOS. Solo `vmlinux.uImage` en SD.
 
 ## SOURCE SDK SHA256
 
@@ -61,8 +59,8 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **DIAGNÓSTICO NO-CIEGO (obligatorio):** capturar dmesg del boot con kernel r36sx-v26 vía `scripts/diagnose_boot_serial.sh` (DTB serial-only, hc_uart@18818600 115200n8) + cable USB-TTL. Localizar dónde se cuelga la UI tras el splash (qué driver/init falla).
-2. En paralelo sin hardware: comparar exhaustivamente los `/dev` requeridos por la UI (fb0/fb1/dis/ge/backlight/input/check_adc/sndC0i2so/mmz/auddec/persistentmem/mipi/standby) contra el kernel vendor para listar TODOS los posibles faltantes (backlight pendiente de confirmar). Solo como apoyo al dmesg, no como conjetura ciega.
+1. **RE-TEST FÍSICO del kernel con initramfs:** el usuario despliega `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-initramfs` (`004b2d50...`) en `G:\cubegm\vmlinux.uImage` (backup `.stock.bak` ya existe; dtb.bin NO se toca), expulsa, bootea, y reporta si llega al menú (criterio c). Si PASS → Fase 5 boot resuelto; iterar hacia reemplazo total.
+2. Si sigue fallando: ajustar el rootfs embebido (overlay del board, binarios de la SD) o capturar dmesg via serial (ADR-011).
 3. Documentar y actualizar GitHub al cierre.
 
 ## REFERENCIA RÁPIDA
