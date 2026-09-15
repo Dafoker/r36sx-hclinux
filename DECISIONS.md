@@ -99,3 +99,15 @@ Formato ADR. STATUS: ACTIVE | SUPERSEDED | DEPRECATED. No registrar aquí nada m
 - **CONSEQUENCES:** `target-post-image` fallará al final (bootloader.bin ausente) — error esperado y documentado; los artefactos del kernel se generan antes. Si en el futuro se obtiene el bare-metal, reevaluar.
 - **EVIDENCE:** error build literal: `Toolchain /opt/mips32-mti-elf/2019.09-03-2/bin/mips-mti-elf-gcc not exist`; GitLab HiChip pide login (HTML 8331B); experimento 2026-09-14.
 - **RELATED:** ADR-005, docs/BUILD.md
+
+## ADR-009 — Gates de provenance como parte del gate C
+
+- **DATE:** 2026-09-14
+- **STATUS:** ACTIVE
+- **SCOPE:** validación de builds de kernel
+- **CONTEXT:** Fase 2.5 (requisito del usuario) demostró que "presence ≠ use" para toolchains y patches; la prueba primaria es la invocación registrada (.cmd de kbuild, patch log, árbol resultante) y "vermagic ≠ toolchain identity". Se crearon gates reproducibles.
+- **DECISION:** todo build de kernel (clase C) debe pasar `scripts/audit_toolchain.sh` (TOOLCHAIN PROVENANCE: PASS) y `scripts/audit_kernel_patches.sh` (PATCH PROVENANCE: PASS) antes de considerarse apto para la fase siguiente. Regla permanente en AGENTS.md §14.
+- **RATIONALE:** evita suposiciones de provenance en builds futuros; los gates son read-only, idempotentes y automáticos.
+- **CONSEQUENCES:** el gate C queda: config validation + kernel build + DTB validation + audit_toolchain + audit_kernel_patches.
+- **EVIDENCE:** ambos gates PASS sobre el baseline d3100_v20 (experimento docs/experiments/2026-09-14_fase25-provenance-audit.md).
+- **RELATED:** AGENTS.md §14, docs/TOOLCHAIN_PROVENANCE.md, docs/PATCH_PROVENANCE.md

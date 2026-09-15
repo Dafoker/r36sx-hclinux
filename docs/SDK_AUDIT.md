@@ -141,7 +141,7 @@ make O=output/d3100 all
 
 | Claim | Veredicto | Evidence |
 |---|---|---|
-| Toolchain del firmware stock = Codescape 2018.09-02 gcc 6.3.0 (igual que SDK) | **CONFIRMED (físico)** | vermagic SD `linsen.chen@hichip01 ... gcc 6.3.0 (Codescape 2018.09-02)` == nuestro vermagic (solo host/user/fecha difieren) |
+| Toolchain del firmware stock = Codescape 2018.09-02 gcc 6.3.0 (igual que SDK) | **CONFIRMED (físico, evidencia complementaria)** | cadena de compilador embebida en vermagic stock (`linsen.chen@hichip01 ... Codescape 2018.09-02`) == cadena embebida en nuestro vmlinux. NOTA: `user@host` del vermagic describe el entorno de build original, NO prueba toolchain (AGENTS.md §14); la prueba primaria de NUESTRO build: docs/TOOLCHAIN_PROVENANCE.md (.cmd files) |
 | Board stock = D3100 v20 (reporte previo del usuario) | **DISPROVED — es `hc1600a@dbE3100v20` (E3100)** | DTB stock decompilado nodo board (SD `/mnt/g/cubegm/dtb.bin`, sha `1258f1eb...`) |
 | Board E3100 existe en el SDK | **DISPROVED (no existe)** | `grep -ri e3100` en SDK = 0 → board propia obligatoria (Fase 4) |
 | Memoria Linux stock = 254 MiB (como SDK d3100_v20) | **DISPROVED — es `reg=<0x0 0xaf91e50>` ≈ 176 MiB** (AVP reserva ~80 MiB) | DTB stock memory node |

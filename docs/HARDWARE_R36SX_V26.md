@@ -16,8 +16,8 @@
 
 | Dato | Valor | Fuente |
 |---|---|---|
-| Kernel stock | **4.4.186-release**, `#7 PREEMPT` | vermagic del `vmlinux.uImage` de la SD: `linsen.chen@hichip01` (ingeniero HiChip) |
-| Toolchain fábrica | **gcc 6.3.0, Codescape GNU Tools 2018.09-02 for MIPS MTI Linux** — **IDÉNTICO al que usa el SDK y nuestro build** | vermagic stock == nuestro vermagic (solo cambia host/usuario/fecha) |
+| Kernel stock | **4.4.186-release**, `#7 PREEMPT` | vermagic del `vmlinux.uImage` de la SD: `linsen.chen@hichip01` (entorno de build original — ver nota) |
+| Toolchain fábrica | **gcc 6.3.0, Codescape GNU Tools 2018.09-02 for MIPS MTI Linux** — idéntico al toolchain de nuestro build | cadena de compilador embebida en el vermagic stock == cadena embebida en nuestro vmlinux (`.comment` de ambos: mismo Codescape 2018.09-02; evidencia COMPLEMENTARIA — la prueba primaria de nuestro build está en docs/TOOLCHAIN_PROVENANCE.md, .cmd files) |
 | uImage stock | gzip, Load `0x80000000`, Entry `0x803337c0`, 3,905,970 B, sha `53b3e0b3...` | mkimage -l SD |
 | AVP stock | `avp.uImage`, standalone, Load=Entry `0x8bda4000`, 1,381,540 B payload, gzip, sha `a9788995...` | mkimage -l SD |
 | DTB stock | v17, 33,137 B, sha `1258f1eb...` (golden) | SD `/mnt/g/cubegm/dtb.bin` |

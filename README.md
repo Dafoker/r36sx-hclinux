@@ -15,8 +15,8 @@ Engineering project building our own kernel/DTB/rootfs for the R36SX V2.6 from t
 | Subsystem | Status | Evidence |
 |---|---|---|
 | SDK audit (H1–H11) | **STATIC PASS** — full pipeline mapped with evidence | `docs/SDK_AUDIT.md` |
-| Vendor baseline build (d3100_v20, kernel-only) | **BUILD PASS** — same toolchain as factory (vermagic match) | `docs/experiments/2026-09-14_vendor-baseline-d3100-v20.md` |
-| Board identity (physical) | **CONFIRMED: E3100v20** (not D3100) — custom board port required | `docs/HARDWARE_R36SX_V26.md` |
+| Vendor baseline build (d3100_v20, kernel-only) | **BUILD PASS** — cross-compilation & patch provenance PROVEN (.cmd files + patch log V=1) | `docs/TOOLCHAIN_PROVENANCE.md` · `docs/PATCH_PROVENANCE.md` |
+| Board identity (physical) | **CONFIRMED: E3100v20** (chipid exists in SDK enum, no board files; 8 documented differences) | `docs/BOARD_IDENTITY.md` · `docs/HARDWARE_R36SX_V26.md` |
 | Custom board `r36sx-v26` | **PENDING (Fase 4)** | — |
 | Kernel own build / DTB own | **PENDING (Fase 5)** | — |
 | TreeFrogUI contract | **PENDING (Fase 6)** | — |

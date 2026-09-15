@@ -9,6 +9,9 @@
 | Decisiones durables | `DECISIONS.md` | ADR-001..N |
 | Fuentes externas, hashes, inventario | `manifests/SOURCES.sha256`, `docs/SOURCE_INVENTORY.md` | SDK inmutable |
 | Auditoría del SDK (kernel, toolchains, DTS, AVP, Buildroot) | `docs/SDK_AUDIT.md` | Fase 1 — fuente de evidencia vendor |
+| **Provenance del toolchain (cross-compile probado)** | `docs/TOOLCHAIN_PROVENANCE.md` | Fase 2.5 — gate AGENTS §14 |
+| **Provenance de patches (41 + inyección BSP)** | `docs/PATCH_PROVENANCE.md` | Fase 2.5 — gate AGENTS §14 |
+| **Identidad de board E3100 vs D3100** | `docs/BOARD_IDENTITY.md` | Fase 2.5 — base de Fase 4 |
 | Arquitectura del sistema | `docs/ARCHITECTURE.md` | Visión general |
 | Cadena de boot | `docs/BOOT_CHAIN.md` | BootROM → bootloader → AVP → kernel |
 | Hardware R36SX V2.6 | `docs/HARDWARE_R36SX_V26.md` | Fase 3 |
