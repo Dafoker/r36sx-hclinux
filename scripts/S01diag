@@ -1,0 +1,8 @@
+#!/bin/sh
+# S01diag — mínimo y temprano: captura dmesg del boot al arrancar.
+# Corre primero en rcS (S01 < S02klogd). Sin $() ni date (busybox robusto).
+LOG=/mnt/sdcard/cubegm/dmesg_boot.log
+dmesg > "$LOG" 2>&1
+ls -la /dev/ > /mnt/sdcard/cubegm/dmesg_dev.log 2>&1
+echo done > /mnt/sdcard/cubegm/dmesg_flag.log
+exit 0

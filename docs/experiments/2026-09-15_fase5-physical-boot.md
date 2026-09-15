@@ -134,12 +134,21 @@ Requiere dmesg/serial para discriminar.
 
 **Inconsistencia observada:** tests #1/#2 (kernel r36sx-v26 sin S50diag) mostraron SPLASH (kernel llega a userspace) pero test #3 (con S50diag) dio PANTALLA NEGRA. Esto sugiere boot inestable o que S50diag (busybox `$()`/date) interfirió. La inyección de scripts en rcS NO es una vía fiable aquí — descartada.
 
+# Exploración de cubegm (SO del desarrollador) — punto de bifurcación
+
+**El usuario propuso que el punto de bifurcación R36SX v2.6 está en `cubegm/`.** Hallazgos:
+- **`modules/4.4.186-release/`** contiene solo `usb_f_mass_storage.ko` y `usb_f_mtp.ko` (gadget USB). El resto del kernel de fábrica es **monolithic** (drivers en vmlinux, no .ko).
+- **`driver.so` == `driver_r36sx.so`** (hash idéntico `58b180a2`). La UI usa `driver.so` genérico; `driver_r36sx.so` NO difiere. Los `/dev` que abre son los estándar HiChip (auddec, backlight, check_adc1, dis, fb0, ge, input/event0, mem, mmz, persistentmem, sndC0i2so, standby). `setting.xml` `<autorun driver="" />` (vacío → usa driver.so).
+- **Conclusión:** la bifurcación R36SX NO está en un driver .so de la UI ni en módulos. La UI depende de los `/dev` estándar HiChip. El kernel de fábrica es monolithic; la bifurcación R36SX v2.6 está en la **config del kernel + DTB**, no en drivers userland.
+- **Comparación de compatibles:** nuestro kernel compila MÁS drivers que el stock (spi, nfc, i2c, watchdog, lvds, irc, hwspinlock) porque el config vendor es genérico de todas las boards. El stock es más específico. NO es un driver faltante.
+
+**Estado del diagnóstico de inyección:** S50diag (kernel r36sx-v26) NO generó `diag_boot_*.log` → el kernel r36sx-v26 no llegó a rcS en el test #3 (pantalla negra). Pero tests #1/#2 (sin S50diag) SÍ mostraron splash → el kernel SÍ llega a userspace cuando S50diag no interfiere. El `diag_19700101_000030.log` en cubegm es del STOCK (FrogShell), no del kernel propio.
+
 # Next action
 
-- **Ruta directa al objetivo (boot correcto + reemplazo total):** reconstruir el config del kernel de fábrica. Evidencia clave: **uImage stock 3,905,906 B vs nuestro 2,700,962 B** (~45% más grande) → el config de fábrica es sustancialmente distinto al vendor SDK (muchos más drivers/subsistemas). El SDK NO tiene el config R36SX (solo boards vendor: d3100_p1, projector, c3100, etc.).
-- Método: extraer el config/símbolos del kernel de fábrica desde `vmlinux.bin` stock descomprimido (comparar drivers presentes). El objetivo es reconstruir un kernel que la UI de fábrica acepte.
-- Alternativa: usar el kernel de fábrica como baseline directo si es viable (reemplazo total = kernel + DTB + rootfs propios, no solo vmlinux.uImage).
-- (B) Script serial listo (ADR-011) como respaldo, pero se prioriza la ruta de config/símbolos sin hardware.
+- **Capturar el dmesg del kernel r36sx-v26 PROPIO** de forma robusta (S50diag en rcS parece interferir → probar un S50diag mínimo y temprano, o serial ADR-011).
+- Objetivo final: reconstruir config del kernel de fábrica (monolithic, específico R36SX) para el reemplazo total. El SDK vendor-config es genérico; falta el delta específico R36SX v2.6.
+- (B) Script serial listo (ADR-011).
 
 # Decision
 
