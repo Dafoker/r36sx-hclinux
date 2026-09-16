@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6j — FASE 5 EN CURSO: re-test #1 sin dmesg (inferencia kernel mmc), S11diag v2 montaje manual, uImage 6d44c1b7 desplegado, re-test #2 pendiente)
+**Actualizado:** 2026-09-16 (Iteración 6r — FASE 5: variante NO-GE REFUTADA; SD en stock golden; bloqueador sin resolver, requiere serial ADR-011)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -31,14 +31,13 @@ Completar Fase 5: backup SD (PASO 1 OK) → artefactos verificados (PASO 2 OK) �
 
 ## PHYSICAL STATUS
 
-**RE-TEST #1 (0fef5fd1) — NO dmesg. Hipótesis kernel-mmc. S11diag v2 desplegado, RE-TEST #2 pendiente.**
-- **Resultado RE-TEST #1:** boot `0fef5fd1` (S11diag v1) → 1ª vez pantalla negra, reboot → splash TreeFrogUI sin menú. **NO se generó `dmesg_boot.log`** (confirmado en G:).
-- **Inferencia (no conjetura):** S11diag v1 esperaba `/media/*/cubegm` 20s; S99app espera `/media/*/cubegm/icube` para siempre. Ambos dependen de que la SD se monte en `/media` vía mdev→mount-helper.sh. Como ni el log ni el menú aparecen, **la SD no se monta** → candidato: kernel mmc (MMC_DW/HC_SDIO) no detecta la tarjeta en runtime (config SÍ tiene MMC/VFAT). DTB es semánticamente idéntico al stock.
-- **S11diag v2:** captura dmesg a `/tmp` siempre + **monta manualmente la SD** (mmcblk0p1/p2) si mdev no la monta + vuelca mmc/sysfs/input/fb/dtb/mtd/iomem. Embebido verificado (MATCH).
-- **uImage `6d44c1b7...`** 4,354,009 B (initramfs dev + S11diag v2). Desplegado en G: `6d44c1b7...` (stock.bak `53b3e0b3` intacto, dtb `1258f1eb`/avp `a9788995` sin tocar).
-- **RE-TEST FÍSICO #2 PENDIENTE:** bootear → S11diag v2 escribirá `G:\cubegm\dmesg_boot.log` (montaje manual incluido). Traer la SD al PC y leerlo.
-- Si `dmesg_boot.log` sigue sin aparecer → confirmar kernel mmc roto → serial ADR-011, o buscar quirk/config mmc del kernel de fábrica.
-- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (`97086531ea...`). NOR/bootloader/AVP INTACTOS.
+**BLOQUEADOR SIN RESOLVER — el kernel propio no llega a montar la SD en runtime.** SD en estado golden (stock `53b3e0b3`).
+- **Evidencia acumulada:** (1) todos los S11diag (v1-v5) jamás escribieron `dmesg_boot.log` ni mostraron beacon; (2) 'please insert tf card' (AVP esperando SD) aparece desde el inicio; (3) la pantalla parece estar controlada por el AVP (los writes de Linux a fb0 son invisibles).
+- **Config/driver ESTÁTICAMENTE correctos** (verificado exhaustivamente): driver `hichip,dw-mshc` (HC_SDIO) presente/linkado, clocks (fixed-clocks vía of_clk_init) OK, pinctrl OK, VFAT OK, ABI /dev de driver_r36sx.so cubierta. El fallo es **runtime**.
+- **Variante NO-GE (`cd37a60f`, CONFIG_HC_GE=n) REFUTADA:** sigue 'insert tf card', sin log. GE no era la causa.
+- **Causas runtime posibles:** (a) hang en init de dispositivos antes de userspace (mmc 0.26s, musb 0.35s, check_adc, etc.) — requiere dmesg para localizar; (b) mmc no detecta la tarjeta; (c) drivers propietarios de fábrica ausentes (`decrypt_sector_data`, `ZZd2C`).
+- **VÍA DEFINITIVA: serial (ADR-011)** — DTB serial-only + cable USB-TTL. Sin cable, el diagnóstico es ciego.
+- Rollback a stock `53b3e0b3` verificado; dtb `1258f1eb`/avp `a9788995` intactos. Backup golden `97086531ea...`. NOR/bootloader/AVP INTACTOS.
 ## SOURCE SDK SHA256
 
 `e3211b41f8d649c7d7838f7f19b8cca5cf30ba6cb1ff9545be6943845fbf8d5d` — /mnt/d/GitHub/KERNEL/hclinux-2024.02.y.2.tar.gz
@@ -59,12 +58,10 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **BOOT FÍSICO #2:** con la SD (kernel `6d44c1b7` + S11diag v2) insertada, bootear la consola. S11diag v2 monta la SD manualmente si hace falta y escribe `G:\cubegm\dmesg_boot.log` con el estado mmc/input/fb/dtb y el dmesg completo.
-2. **Traer la SD al PC**, leer `G:\cubegm\dmesg_boot.log` y entregarlo.
-3. Verificar en el log: ¿`mmcblk0`/`mmcblk0p1` aparece? ¿errores del controlador MMC/SDIO? → confirmar/refutar la hipótesis kernel-mmc.
-4. Comparar con el dmesg stock (`docs/experiments/evidence-stock-dmesg.md`) → identificar el driver/config mmc que falta → re-build → re-test.
-5. Si `dmesg_boot.log` NO se genera aun con montaje manual → kernel no llega a rcS, o mmc roto definitivo → serial ADR-011.
-6. Documentar y actualizar GitHub al cierre.
+1. **VÍA A (recomendada, definitiva):** conseguir un cable USB-TTL (115200 8N1) y desplegar el DTB de diagnóstico serial-only (`scripts/diagnose_boot_serial.sh`, ADR-011) para capturar el dmesg de NUESTRO kernel y localizar el hang exacto.
+2. **VÍA B (sin cable):** continuar variantes de init de dispositivos a ciegas (musb/check_adc/nand/etc.), usando como señal si aparece `dmesg_boot.log` en la SD (implica kernel llega a userspace + mmc funciona).
+3. Restaurar en el overlay: S41hcdaemon/S99app desde `.orig` (actualmente son no-op para diagnóstico).
+4. Documentar y actualizar GitHub al cierre de cada iteración.
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |
