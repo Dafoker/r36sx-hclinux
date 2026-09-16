@@ -1,85 +1,75 @@
 #!/bin/sh
-# S11diag v2 — diagnóstico de boot del kernel propio, robusto.
-# 1) captura dmesg+estado a /tmp inmediatamente (siempre corre)
-# 2) espera /media/*/cubegm (mdev) hasta 30s
-# 3) si no aparece, MONTAR manualmente la SD (probar mmcblk0p1/p2) y copiar ahi
-# 4) vuelca todo lo que ayuda a diagnosticar mmc/input/fb/dtb
-# Escribe progreso a /dev/console (visible si la consola lo muestra).
-TMPLOG=/tmp/dmesg_boot.log
-echo "S11diag v2 RAN at $(date)" > /dev/console 2>&1
+# S11diag v3 — diagnóstico con SALIDA EN PANTALLA (tty1/console) para leer el estado del MMC.
+# No requiere serial ni SD montada. Imprime el estado del controlador mmc a /dev/console
+# y PAUSA para que el usuario lea y teclee la línea. Escribe dmesg a /tmp y a la SD si puede.
+C=/dev/console
 
-{
-  echo "===== S11diag v2 capture $(date) ====="
-  echo "cmdline: $(cat /proc/cmdline 2>/dev/null)"
-  echo "--- uname ---"
-  uname -a 2>/dev/null
-  echo "--- /proc/mounts ---"
-  cat /proc/mounts 2>/dev/null
-  echo "--- /sys/block ---"
-  ls -la /sys/block/ 2>/dev/null
-  echo "--- /dev/mmcblk* ---"
-  ls -la /dev/mmcblk* 2>/dev/null
-  echo "--- /dev (full) ---"
-  ls -la /dev/ 2>/dev/null
-  echo "--- mmc sysfs size ---"
-  cat /sys/block/mmcblk0/size 2>/dev/null
-  cat /sys/block/mmcblk0/device/type 2>/dev/null
-  echo "--- /sys/class/mmc_host ---"
-  ls -la /sys/class/mmc_host/ 2>/dev/null
-  echo "--- input ---"
-  ls -la /dev/input/ 2>/dev/null
-  cat /proc/bus/input/devices 2>/dev/null
-  echo "--- framebuffer ---"
-  cat /proc/fb 2>/dev/null
-  ls -la /dev/fb* 2>/dev/null
-  echo "--- mtd ---"
-  cat /proc/mtd 2>/dev/null
-  echo "--- modules ---"
-  cat /proc/modules 2>/dev/null
-  echo "--- iomem (head) ---"
-  cat /proc/iomem 2>/dev/null | head -40
-  echo "--- device-tree statuses (seleccion) ---"
-  for p in /proc/device-tree/*; do
-    s=$(cat "$p/status" 2>/dev/null)
-    [ -n "$s" ] && echo "$(basename $p): $s"
-  done
-  echo "--- DMESG FULL ---"
-  dmesg 2>/dev/null
-} > "$TMPLOG" 2>&1
+say(){ echo "$@" > "$C" 2>&1; }
 
-echo "S11diag v2: /tmp log $TMPLOG ($(stat -c %s "$TMPLOG" 2>/dev/null) bytes)" > /dev/console 2>&1
+say ""
+say "================ S11DIAG V3 ================"
+say "MMC_DETECT=?"
+say "============================================"
 
-# --- intentar llevarlo a la SD ---
-SDPATH=""
-# 1) esperar mdev /media
-n=0
-while [ $n -lt 30 ]; do
-    for subdir in /media/*/cubegm; do
-        if [ -d "$subdir" ]; then SDPATH="$subdir/dmesg_boot.log"; break 2; fi
-    done
-    n=$((n + 1)); sleep 1
+MMC=""
+for d in /dev/mmcblk*; do
+  [ -e "$d" ] && MMC="$MMC $d"
+done
+if [ -n "$MMC" ]; then
+  say "MMC_DETECT=YES DEV=$MMC"
+else
+  say "MMC_DETECT=NO (sin /dev/mmcblk*)"
+fi
+
+# sysfs mmc host
+MH=$(ls /sys/class/mmc_host/ 2>/dev/null)
+say "MMC_HOST=[$MH]"
+for h in /sys/class/mmc_host/*/mmc*; do
+  [ -d "$h" ] && say "  card: $(basename $h) name=$(cat $h/name 2>/dev/null)"
 done
 
-# 2) si no, montar manualmente
-if [ -z "$SDPATH" ]; then
-    echo "S11diag v2: /media/*/cubegm no aparecio, montaje manual..." > /dev/console 2>&1
-    mkdir -p /tmp/sd
-    for dev in /dev/mmcblk0p1 /dev/mmcblk0 /dev/mmcblk1p1 /dev/mmcblk1; do
-        if [ -e "$dev" ]; then
-            echo "S11diag v2: probando montar $dev" > /dev/console 2>&1
-            if mount -t vfat "$dev" /tmp/sd 2>/dev/null; then
-                echo "S11diag v2: $dev montado en /tmp/sd" > /dev/console 2>&1
-                if [ -d /tmp/sd/cubegm ]; then SDPATH=/tmp/sd/cubegm/dmesg_boot.log; fi
-                break
-            fi
-        fi
-    done
+# intentar montar la SD (manual, por si mdev fallo)
+say "MNT_PROBE=..."
+mkdir -p /tmp/sd
+MNT_OK=NO
+for dev in /dev/mmcblk0p1 /dev/mmcblk1p1; do
+  if [ -e "$dev" ]; then
+    if mount -t vfat "$dev" /tmp/sd 2>/dev/null; then
+      MNT_OK=YES
+      say "MNT_OK=YES dev=$dev"
+      break
+    else
+      say "MNT_FAIL dev=$dev"
+    fi
+  fi
+done
+[ "$MNT_OK" = YES ] && say "MNT_CUBEGM=$([ -d /tmp/sd/cubegm ] && echo YES || echo NO)"
+
+# capturar dmesg
+TMPLOG=/tmp/dmesg_boot.log
+{ echo "===== S11diag v3 capture $(date) ====="
+  echo "cmdline: $(cat /proc/cmdline 2>/dev/null)"
+  echo "uname: $(uname -a 2>/dev/null)"
+  echo "--- /dev/mmcblk* ---"; ls -la /dev/mmcblk* 2>/dev/null
+  echo "--- /sys/class/mmc_host ---"; ls -la /sys/class/mmc_host/ 2>/dev/null
+  echo "--- mmc sysfs ---"
+  cat /sys/block/mmcblk0/size /sys/block/mmcblk0/device/type 2>/dev/null
+  echo "--- /proc/mounts ---"; cat /proc/mounts 2>/dev/null
+  echo "--- /dev (full) ---"; ls -la /dev/ 2>/dev/null
+  echo "--- input ---"; ls -la /dev/input/ 2>/dev/null
+  echo "--- DMESG (mmc/clk/err) ---"; dmesg 2>/dev/null | grep -iE 'mmc|dw|mshc|sdio|clk|clock|hichip|error|fail'
+  echo "--- DMESG FULL ---"; dmesg 2>/dev/null
+} > "$TMPLOG" 2>&1
+say "LOG=/tmp/dmesg_boot.log ($(stat -c%s "$TMPLOG" 2>/dev/null) bytes)"
+
+# escribir a la SD si se pudo montar
+if [ "$MNT_OK" = YES ]; then
+  cp "$TMPLOG" /tmp/sd/cubegm/dmesg_boot.log 2>/dev/null && say "COPIADO a SD cubegm/dmesg_boot.log"
+  # tambien a la raiz por si acaso
+  cp "$TMPLOG" /tmp/sd/dmesg_boot_root.log 2>/dev/null
 fi
 
-if [ -n "$SDPATH" ]; then
-    cp "$TMPLOG" "$SDPATH" 2>/dev/null
-    echo "S11diag v2 DONE -> $SDPATH" > /dev/console 2>&1
-else
-    echo "S11diag v2: NO se pudo escribir a SD (solo /tmp, se perdera)" > /dev/console 2>&1
-fi
+say "=== FIN S11DIAG V3 — espera 60s para lectura ==="
+say "REPORTAME: MMC_DETECT=... y MNT_OK=..."
+sleep 60
 exit 0
