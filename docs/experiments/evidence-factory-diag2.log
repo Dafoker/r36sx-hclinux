@@ -1,0 +1,484 @@
+=== DIAG2 FÁBRICA — Thu Jan  1 00:00:33 UTC 1970 ===
+host: Linux buildroot 4.4.186-release #7 PREEMPT Thu Dec 18 16:55:03 CST 2025 mips GNU/Linux
+cmdline: root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug
+
+===== A. /proc/config.gz (CONFIG_IKCONFIG_PROC) — el config EXACTO de fábrica =====
+NO existe /proc/config.gz — la fábrica NO tiene IKCONFIG_PROC. Imposible extraer config por esta vía.
+
+===== B. Controlador mmc / binding del driver (qué maneja la SD) =====
+-- /sys/class/mmc_host/ --
+total 0
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 .
+drwxr-xr-x   49 root     root             0 Jan  1 00:00 ..
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 mmc0 -> ../../devices/platform/soc/1884c000.mmc/mmc_host/mmc0
+== /sys/class/mmc_host/mmc0 ==
+   modalias: 
+   driver:  
+   driver_name: 
+-- plataform drivers mmc/dw --
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 dw_mmc
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 dw_mmc_hc
+-- binding dw_mmc_hc (driver hichip) --
+total 0
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 .
+drwxr-xr-x   23 root     root             0 Jan  1 00:00 ..
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1884c000.mmc -> ../../../../devices/platform/soc/1884c000.mmc
+--w-------    1 root     root          4096 Jan  1 00:00 bind
+--w-------    1 root     root          4096 Jan  1 00:00 uevent
+--w-------    1 root     root          4096 Jan  1 00:00 unbind
+-- binding dwmmc / dw_mmc (estándar) --
+/sys/bus/platform/drivers/dw_mmc/:
+total 0
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 .
+drwxr-xr-x   23 root     root             0 Jan  1 00:00 ..
+--w-------    1 root     root          4096 Jan  1 00:00 bind
+--w-------    1 root     root          4096 Jan  1 00:00 uevent
+--w-------    1 root     root          4096 Jan  1 00:00 unbind
+-- dispositivos de plataforma con mmc en modalias --
+1884c000.mmc: of:NmmcT<NULL>Chichip,dw-mshc
+soc:clocks:mmcclk: of:NmmcclkT<NULL>Cfixed-clock
+
+===== C. /proc/device-tree runtime (como lo ve el kernel de fábrica) =====
+-- árbol de device-tree (nombres de nodos) --
+-- nodo mmc (search) --
+
+===== C2. Cómo monta la SD la fábrica =====
+-- /proc/mounts (solo sd/media/fat) --
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+-- /etc/mdev.conf --
+[hs]d[a-z][0-9]?   0:0   664     */etc/mdev/mount-helper.sh
+mmcblk[0-9]p[0-9]  0:0   664     */etc/mdev/mount-helper.sh
+mmcblk[0-9]        0:0   664     */etc/mdev/mount-helper.sh
+$MODALIAS=usb:v0BDApF179.*  0:0   664     */etc/probe8188.sh
+$MODALIAS=usb:v0BDApC811.*  0:0   664     */etc/probe8811.sh
+$MODALIAS=usb:v0BDApB733.*  0:0   664     */etc/probe8731bu.sh
+$MODALIAS=usb:v0BDApF72B.*  0:0   664     */etc/probe8731bu.sh
+$MODALIAS=usb:v0BDAp8731.*  0:0   664     */etc/probe8731au.sh
+$MODALIAS=usb:v007Ap8890.*  0:0   664     */etc/probe6132b.sh
+$MODALIAS=usb:vA69Cp8D8.*n00	0:0   664     */etc/probeaic8800d_fw.sh
+$MODALIAS=usb:vA69Cp8D8.*n02	0:0   664     */etc/probeaic8800d.sh
+$MODALIAS=sdio:c07v024CdC822*  0:0   664     */etc/probe8822cs.sh
+$MODALIAS=sdio:c07v024Cd8723*  0:0   664     */etc/probe8723as.sh
+ttyUSB[0-9]        0:5     0666     */etc/setconsole.sh
+-- /etc/fstab --
+# <file system>	<mount pt>	<type>	<options>	<dump>	<pass>
+/dev/root	/		ext2	rw,noauto	0	1
+proc		/proc		proc	defaults	0	0
+devpts		/dev/pts	devpts	defaults,gid=5,mode=620,ptmxmode=0666	0	0
+tmpfs		/dev/shm	tmpfs	mode=0777	0	0
+tmpfs		/tmp		tmpfs	mode=1777	0	0
+tmpfs		/run		tmpfs	mode=0755,nosuid,nodev	0	0
+sysfs		/sys		sysfs	defaults	0	0
+-- /etc/mdev/mount-helper.sh (head) --
+#!/bin/sh
+# TreeFrogUI OTG-storage hotplug integration.
+#
+# Stock mdev invokes this for both MMC and USB block events. Only USB SCSI
+# disks (sdX) belong here: mounting mmcblk0 would hide the system card under
+# the OTG mountpoint. A connected drive is mounted once at /media/hdd; FrogUI
+# exposes it as the "OTG" ROM source when /media/hdd/roms exists.
+
+LOCK=/var/lock/treefrog-otg-mount.lock
+MOUNTPOINT=/media/hdd
+LOG=/mnt/sdcard/log.txt
+
+log() {
+    [ -f "$LOG" ] || return 0
+    printf 'OTG: %s\n' "$*" >> "$LOG"
+}
+
+name=${MDEV:-${DEVNAME##*/}}
+case "$name" in
+    sd[a-z]|sd[a-z][0-9]|sd[a-z][0-9][0-9]) ;;
+    *) exit 0 ;;
+esac
+
+mkdir -p /var/lock "$MOUNTPOINT" 2>/dev/null || exit 0
+exec 200>"$LOCK"
+flock -n 200 || exit 0
+
+mounted_device() {
+    awk -v mountpoint="$MOUNTPOINT" '$2 == mountpoint { print $1; exit }' /proc/mounts
+}
+-- blkid --
+/dev/mmcblk0p1: LABEL="R36SX" UUID="66A5-C883"
+-- /sys/block/mmcblk0 --
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 mmcblk0 -> ../devices/platform/soc/1884c000.mmc/mmc_host/mmc0/mmc0:aaaa/block/mmcblk0
+124735488
+SD
+SD64G
+
+===== D. dmesg (completo) =====
+[    0.000000] Linux version 4.4.186-release (linsen.chen@hichip01) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #7 PREEMPT Thu Dec 18 16:55:03 CST 2025
+[    0.000000] MIPS: machine is Hichip hc16xx
+[    0.000000] CPU0 revision is: 0001974c (MIPS 74Kc)
+[    0.000000] FPU revision is: 01739300
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 0af91e50 @ 00000000 (usable)
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x000000000af90fff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000000af90fff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000000af90fff]
+[    0.000000] On node 0 totalpages: 44945
+[    0.000000] free_area_init_node: node 0, pgdat 8047b440, node_mem_map 81020ae0
+[    0.000000]   Normal zone: 352 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 44945 pages, LIFO batch:7
+[    0.000000] Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+[    0.000000] Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+[    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 44593
+[    0.000000] Kernel command line: root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug
+[    0.000000] IRQ lockup detection disabled
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Writing ErrCtl register=00000000
+[    0.000000] Readback ErrCtl register=00000000
+[    0.000000] Memory: 169148K/179780K available (3304K kernel code, 140K rwdata, 1148K rodata, 3912K init, 202K bss, 10632K reserved, 0K cma-reserved)
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] 	Build-time adjustment of leaf fanout to 32.
+[    0.000000] NR_IRQS:128
+[    0.000000] CPU Clock: 1188MHz
+[    0.000000] clocksource_probe: no matching clocksources found
+[    0.000000] clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3217610179 ns
+[    0.000007] sched_clock: 32 bits at 594MHz, resolution 1ns, wraps every 3615292415ns
+[    0.000252] Console: colour dummy device 80x25
+[    0.000845] console [tty1] enabled
+[    0.000891] Calibrating delay loop... 589.82 BogoMIPS (lpj=294912)
+[    0.009067] pid_max: default: 32768 minimum: 301
+[    0.009266] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.009311] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.012320] devtmpfs: initialized
+[    0.019334] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+[    0.019504] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    0.019751] pinctrl core: initialized pinctrl subsystem
+[    0.020300] NET: Registered protocol family 16
+[    0.102309] SCSI subsystem initialized
+[    0.102616] usbcore: registered new interface driver usbfs
+[    0.102756] usbcore: registered new interface driver hub
+[    0.103718] usbcore: registered new device driver usb
+[    0.107332] clocksource: Switched to clocksource MIPS
+[    0.151941] NET: Registered protocol family 1
+[    0.242011] fuse init (API version 7.23)
+[    0.249732] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.249830] io scheduler noop registered (default)
+[    0.250057] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.253650] SCSI Media Changer driver v0.25 
+[    0.255565] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.255641] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    0.256018] usbcore: registered new interface driver usb-storage
+[    0.256838] Synopsys Designware Multimedia Card Interface Driver
+[    0.260763] dw_mmc_hc 1884c000.mmc: num-slots property not found, assuming 1 slot is available
+[    0.260852] dw_mmc_hc 1884c000.mmc: fifo-depth property not found, using value of FIFOTH register as default
+[    0.260935] dw_mmc_hc 1884c000.mmc: host clk=198000000
+[    0.260972] dw_mmc_hc 1884c000.mmc: setup source clock : 0x3 (0x0:49MHZ 0x1:99Mhz 0x2:150Mhz 0x3:198Mhz)
+[    0.261028] dw_mmc_hc 1884c000.mmc: IDMAC supports 32-bit address mode.
+[    0.261086] dw_mmc_hc 1884c000.mmc: Using internal DMA controller.
+[    0.261142] dw_mmc_hc 1884c000.mmc: Version ID is 270a
+[    0.261214] dw_mmc_hc 1884c000.mmc: DW MMC controller at irq 10,32 bit host data width,128 deep fifo
+[    0.261547] dw_mmc_hc 1884c000.mmc: No vmmc regulator found
+[    0.261611] dw_mmc_hc 1884c000.mmc: No vqmmc regulator found
+[    0.262659] usbcore: registered new interface driver usbhid
+[    0.262724] usbhid: USB HID core driver
+[    0.294407] dw_mmc_hc 1884c000.mmc: 1 slots initialized
+[    0.294999] virtuart init ok
+[    0.296044] kshmdev init ok
+[    0.298560] m25p80 spi32766.0: found 25HD40, expected m25p80
+[    0.298692] m25p80 spi32766.0: 25HD40 (512 Kbytes)
+[    0.304686] 4 ofpart partitions found on MTD device spi32766.0
+[    0.304752] Creating 4 MTD partitions on "spi32766.0":
+[    0.304790] 0x000000000000-0x000000080000 : "nor"
+[    0.307081] 0x000000000000-0x00000006c000 : "boot"
+[    0.309823] 0x00000006c000-0x000000070000 : "eromfs"
+[    0.313067] 0x000000070000-0x000000080000 : "persistentmem"
+[    0.337032] fb node name: fb0!
+[    0.337151] fb0 enable!
+[    0.344023] fb node name: fb1!
+[    0.344084] fb1 enable!
+[    0.346275] ---> usb#0 reset
+[    0.352222] musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+[    0.352242] musb-hdrc: MHDRC RTL version 2.0 
+[    0.352281] musb-hdrc musb-hdrc.0.auto: MUSB HDRC host driver
+[    0.352485] musb-hdrc musb-hdrc.0.auto: new USB bus registered, assigned bus number 1
+[    0.352750] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    0.352796] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.352846] usb usb1: Product: MUSB HDRC host driver
+[    0.352877] usb usb1: Manufacturer: Linux 4.4.186-release musb-hcd
+[    0.352910] usb usb1: SerialNumber: musb-hdrc.0.auto
+[    0.354207] hub 1-0:1.0: USB hub found
+[    0.354459] hub 1-0:1.0: 1 port detected
+[    0.354832] ---> usb#0 reset
+[    0.358599] mmc0: new high speed SDXC card at address aaaa
+[    0.360463] mmcblk0: mmc0:aaaa SD64G 59.5 GiB 
+[    0.362321] ---> usb#0 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+[    0.362522] [decrypt_sector_data][1487] 0x0 0x0
+[    0.362791]  mmcblk0: p1
+[    0.368440] ---> usb#1 reset
+[    0.373683] musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+[    0.373702] musb-hdrc: MHDRC RTL version 2.0 
+[    0.373742] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+[    0.373825] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 2
+[    0.374091] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    0.374141] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.374190] usb usb2: Product: MUSB HDRC host driver
+[    0.374221] usb usb2: Manufacturer: Linux 4.4.186-release musb-hcd
+[    0.374253] usb usb2: SerialNumber: musb-hdrc.1.auto
+[    0.375495] hub 2-0:1.0: USB hub found
+[    0.375636] hub 2-0:1.0: 1 port detected
+[    0.375984] ---> usb#1 reset
+[    0.381145] ---> usb#1 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+[    0.385539] reg_base: b8806000, reg_size: 8192, sys_reg_base: b8800000,  irq: 9
+[    0.387887] hcge 18806000.ge: Init GE success.
+[    0.388933] NET: Registered protocol family 17
+[    0.389071] NET: Registered protocol family 15
+[    0.404198] name:check_adc1
+[    0.405059] name:check_adc5
+[    0.424520] Freeing unused kernel memory: 3912K
+[    1.786013] [decrypt_sector_data][1487] 0x0 0x0
+[    3.037586] FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[    3.044660] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+[    4.269462] map ge register to userspace. off = 0
+[    6.134393] random: nonblocking pool is initialized
+[    6.463784] map ge register to userspace. off = 0
+[    8.412123] map ge register to userspace. off = 0
+[   11.245679] map ge register to userspace. off = 0
+[   11.716861] map ge register to userspace. off = 0
+[   35.861481] [decrypt_sector_data][1487] 0x0 0x0
+
+===== D2. dmesg filtrado mmc/clock/sdio/pinctrl/error =====
+[    0.000000] Linux version 4.4.186-release (linsen.chen@hichip01) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #7 PREEMPT Thu Dec 18 16:55:03 CST 2025
+[    0.000000] MIPS: machine is Hichip hc16xx
+[    0.000000] CPU Clock: 1188MHz
+[    0.000000] clocksource_probe: no matching clocksources found
+[    0.000000] clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3217610179 ns
+[    0.000007] sched_clock: 32 bits at 594MHz, resolution 1ns, wraps every 3615292415ns
+[    0.019334] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+[    0.019751] pinctrl core: initialized pinctrl subsystem
+[    0.107332] clocksource: Switched to clocksource MIPS
+[    0.260763] dw_mmc_hc 1884c000.mmc: num-slots property not found, assuming 1 slot is available
+[    0.260852] dw_mmc_hc 1884c000.mmc: fifo-depth property not found, using value of FIFOTH register as default
+[    0.260935] dw_mmc_hc 1884c000.mmc: host clk=198000000
+[    0.260972] dw_mmc_hc 1884c000.mmc: setup source clock : 0x3 (0x0:49MHZ 0x1:99Mhz 0x2:150Mhz 0x3:198Mhz)
+[    0.261028] dw_mmc_hc 1884c000.mmc: IDMAC supports 32-bit address mode.
+[    0.261086] dw_mmc_hc 1884c000.mmc: Using internal DMA controller.
+[    0.261142] dw_mmc_hc 1884c000.mmc: Version ID is 270a
+[    0.261214] dw_mmc_hc 1884c000.mmc: DW MMC controller at irq 10,32 bit host data width,128 deep fifo
+[    0.261547] dw_mmc_hc 1884c000.mmc: No vmmc regulator found
+[    0.261611] dw_mmc_hc 1884c000.mmc: No vqmmc regulator found
+[    0.294407] dw_mmc_hc 1884c000.mmc: 1 slots initialized
+[    0.358599] mmc0: new high speed SDXC card at address aaaa
+[    0.360463] mmcblk0: mmc0:aaaa SD64G 59.5 GiB 
+[    0.362791]  mmcblk0: p1
+[    3.037586] FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[    3.044660] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+
+===== D3. /dev =====
+total 4
+drwxr-xr-x    5 root     root             0 Jan  1 00:00 .
+drwxr-xr-x   18 root     root             0 Dec 18  2025 ..
+-rw-r--r--    1 root     root             0 Jan  1 00:00 .udev
+crw-rw----    1 root     root      235,   0 Jan  1 00:00 ZZd2C
+crw-rw----    1 root     root      250,   0 Jan  1 00:00 auddec
+crw-rw----    1 root     root      249,   0 Jan  1 00:00 audsink
+crw-rw----    1 root     root      247,   0 Jan  1 00:00 avsync0
+crw-rw----    1 root     root      234,   0 Jan  1 00:00 backlight
+drwxr-xr-x    3 root     root             0 Jan  1 00:00 bus
+crw-rw----    1 root     root      230,   0 Jan  1 00:00 check_adc1
+crw-rw----    1 root     root      229,   0 Jan  1 00:00 check_adc5
+crw--w----    1 root     root        5,   1 Jan  1 00:00 console
+crw-rw----    1 root     root       10,  62 Jan  1 00:00 cpu_dma_latency
+crw-rw----    1 root     root      241,   0 Jan  1 00:00 dis
+crw-rw----    1 root     root       29,   0 Jan  1 00:00 fb0
+crw-rw----    1 root     root       29,   1 Jan  1 00:00 fb1
+crw-rw----    1 root     root        1,   7 Jan  1 00:00 full
+crw-rw----    1 root     root       10, 229 Jan  1 00:00 fuse
+crw-rw----    1 root     root      231,   0 Jan  1 00:00 ge
+crw-rw----    1 root     root      237,   0 Jan  1 00:00 hdmi
+crw-rw----    1 root     root      238,   0 Jan  1 00:00 hdmi_rx
+crw-rw----    1 root     root        1,  11 Jan  1 00:00 kmsg
+crw-rw----    1 root     root      251,   0 Jan  1 00:00 kshmdev
+-rw-r--r--    1 root     root             1 Jan  1 00:00 mdev.seq
+crw-rw----    1 root     root        1,   1 Jan  1 00:00 mem
+crw-rw----    1 root     root       10,  59 Jan  1 00:00 memory_bandwidth
+crw-rw----    1 root     root      233,   0 Jan  1 00:00 mipi
+brw-rw-r--    1 root     root      179,   0 Jan  1 00:00 mmcblk0
+brw-rw-r--    1 root     root      179,   1 Jan  1 00:00 mmcblk0p1
+crw-rw----    1 root     root      232,   0 Jan  1 00:00 mmz
+crw-rw----    1 root     root       90,   0 Jan  1 00:00 mtd0
+crw-rw----    1 root     root       90,   1 Jan  1 00:00 mtd0ro
+crw-rw----    1 root     root       90,   2 Jan  1 00:00 mtd1
+crw-rw----    1 root     root       90,   3 Jan  1 00:00 mtd1ro
+crw-rw----    1 root     root       90,   4 Jan  1 00:00 mtd2
+crw-rw----    1 root     root       90,   5 Jan  1 00:00 mtd2ro
+crw-rw----    1 root     root       90,   6 Jan  1 00:00 mtd3
+crw-rw----    1 root     root       90,   7 Jan  1 00:00 mtd3ro
+brw-rw----    1 root     root       31,   0 Jan  1 00:00 mtdblock0
+brw-rw----    1 root     root       31,   1 Jan  1 00:00 mtdblock1
+brw-rw----    1 root     root       31,   2 Jan  1 00:00 mtdblock2
+brw-rw----    1 root     root       31,   3 Jan  1 00:00 mtdblock3
+crw-rw----    1 root     root       10,  61 Jan  1 00:00 network_latency
+crw-rw----    1 root     root       10,  60 Jan  1 00:00 network_throughput
+crw-rw----    1 root     root        1,   3 Jan  1 00:00 null
+crw-rw----    1 root     root       10,  63 Jan  1 00:00 persistentmem
+crw-rw----    1 root     root      239,   0 Jan  1 00:00 pq
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 pts
+crw-rw----    1 root     root        1,   8 Jan  1 00:00 random
+drwxrwxrwx    2 root     root             0 Jan  1 00:00 shm
+crw-rw----    1 root     root      244,   0 Jan  1 00:00 sndC0i2si
+crw-rw----    1 root     root      245,   0 Jan  1 00:00 sndC0i2so
+crw-rw----    1 root     root      243,   0 Jan  1 00:00 sndC0spo
+crw-rw----    1 root     root      153,   0 Jan  1 00:00 spidev32766.1
+crw-rw----    1 root     root      236,   0 Jan  1 00:00 standby
+crw-rw----    1 root     root        5,   0 Jan  1 00:00 tty
+crw-rw----    1 root     root        4,   0 Jan  1 00:00 tty0
+crw-rw----    1 root     root        4,   1 Jan  1 00:00 tty1
+crw-rw----    1 root     root        4,  10 Jan  1 00:00 tty10
+crw-rw----    1 root     root        4,  11 Jan  1 00:00 tty11
+crw-rw----    1 root     root        4,  12 Jan  1 00:00 tty12
+crw-rw----    1 root     root        4,  13 Jan  1 00:00 tty13
+crw-rw----    1 root     root        4,  14 Jan  1 00:00 tty14
+crw-rw----    1 root     root        4,  15 Jan  1 00:00 tty15
+crw-rw----    1 root     root        4,  16 Jan  1 00:00 tty16
+crw-rw----    1 root     root        4,  17 Jan  1 00:00 tty17
+crw-rw----    1 root     root        4,  18 Jan  1 00:00 tty18
+crw-rw----    1 root     root        4,  19 Jan  1 00:00 tty19
+crw-rw----    1 root     root        4,   2 Jan  1 00:00 tty2
+crw-rw----    1 root     root        4,  20 Jan  1 00:00 tty20
+crw-rw----    1 root     root        4,  21 Jan  1 00:00 tty21
+crw-rw----    1 root     root        4,  22 Jan  1 00:00 tty22
+crw-rw----    1 root     root        4,  23 Jan  1 00:00 tty23
+crw-rw----    1 root     root        4,  24 Jan  1 00:00 tty24
+crw-rw----    1 root     root        4,  25 Jan  1 00:00 tty25
+crw-rw----    1 root     root        4,  26 Jan  1 00:00 tty26
+crw-rw----    1 root     root        4,  27 Jan  1 00:00 tty27
+crw-rw----    1 root     root        4,  28 Jan  1 00:00 tty28
+crw-rw----    1 root     root        4,  29 Jan  1 00:00 tty29
+crw-rw----    1 root     root        4,   3 Jan  1 00:00 tty3
+crw-rw----    1 root     root        4,  30 Jan  1 00:00 tty30
+crw-rw----    1 root     root        4,  31 Jan  1 00:00 tty31
+crw-rw----    1 root     root        4,  32 Jan  1 00:00 tty32
+crw-rw----    1 root     root        4,  33 Jan  1 00:00 tty33
+crw-rw----    1 root     root        4,  34 Jan  1 00:00 tty34
+crw-rw----    1 root     root        4,  35 Jan  1 00:00 tty35
+crw-rw----    1 root     root        4,  36 Jan  1 00:00 tty36
+crw-rw----    1 root     root        4,  37 Jan  1 00:00 tty37
+crw-rw----    1 root     root        4,  38 Jan  1 00:00 tty38
+crw-rw----    1 root     root        4,  39 Jan  1 00:00 tty39
+crw-rw----    1 root     root        4,   4 Jan  1 00:00 tty4
+crw-rw----    1 root     root        4,  40 Jan  1 00:00 tty40
+crw-rw----    1 root     root        4,  41 Jan  1 00:00 tty41
+crw-rw----    1 root     root        4,  42 Jan  1 00:00 tty42
+crw-rw----    1 root     root        4,  43 Jan  1 00:00 tty43
+crw-rw----    1 root     root        4,  44 Jan  1 00:00 tty44
+crw-rw----    1 root     root        4,  45 Jan  1 00:00 tty45
+crw-rw----    1 root     root        4,  46 Jan  1 00:00 tty46
+crw-rw----    1 root     root        4,  47 Jan  1 00:00 tty47
+crw-rw----    1 root     root        4,  48 Jan  1 00:00 tty48
+crw-rw----    1 root     root        4,  49 Jan  1 00:00 tty49
+crw-rw----    1 root     root        4,   5 Jan  1 00:00 tty5
+crw-rw----    1 root     root        4,  50 Jan  1 00:00 tty50
+crw-rw----    1 root     root        4,  51 Jan  1 00:00 tty51
+crw-rw----    1 root     root        4,  52 Jan  1 00:00 tty52
+crw-rw----    1 root     root        4,  53 Jan  1 00:00 tty53
+crw-rw----    1 root     root        4,  54 Jan  1 00:00 tty54
+crw-rw----    1 root     root        4,  55 Jan  1 00:00 tty55
+crw-rw----    1 root     root        4,  56 Jan  1 00:00 tty56
+crw-rw----    1 root     root        4,  57 Jan  1 00:00 tty57
+crw-rw----    1 root     root        4,  58 Jan  1 00:00 tty58
+crw-rw----    1 root     root        4,  59 Jan  1 00:00 tty59
+crw-rw----    1 root     root        4,   6 Jan  1 00:00 tty6
+crw-rw----    1 root     root        4,  60 Jan  1 00:00 tty60
+crw-rw----    1 root     root        4,  61 Jan  1 00:00 tty61
+crw-rw----    1 root     root        4,  62 Jan  1 00:00 tty62
+crw-rw----    1 root     root        4,  63 Jan  1 00:00 tty63
+crw-rw----    1 root     root        4,   7 Jan  1 00:00 tty7
+crw-rw----    1 root     root        4,   8 Jan  1 00:00 tty8
+crw-rw----    1 root     root        4,   9 Jan  1 00:00 tty9
+crw-rw----    1 root     root        4,  64 Jan  1 00:00 ttyS0
+crw-rw----    1 root     root        4,  65 Jan  1 00:00 ttyS1
+crw-rw----    1 root     root        4,  66 Jan  1 00:00 ttyS2
+crw-rw----    1 root     root        4,  67 Jan  1 00:00 ttyS3
+crw-rw----    1 root     root      240,   0 Jan  1 00:00 tv_decoder
+crw-rw----    1 root     root        1,   9 Jan  1 00:00 urandom
+crw-rw----    1 root     root        7,   0 Jan  1 00:00 vcs
+crw-rw----    1 root     root        7,   1 Jan  1 00:00 vcs1
+crw-rw----    1 root     root        7, 128 Jan  1 00:00 vcsa
+crw-rw----    1 root     root        7, 129 Jan  1 00:00 vcsa1
+crw-rw----    1 root     root      248,   0 Jan  1 00:00 viddec
+crw-rw----    1 root     root      242,   0 Jan  1 00:00 vidsink
+crw-rw----    1 root     root      246,   0 Jan  1 00:00 vindvp
+crw-rw----    1 root     root      252,   0 Jan  1 00:00 virtuart
+crw-rw----    1 root     root        1,   5 Jan  1 00:00 zero
+
+===== D4. /proc/modules =====
+
+===== D5. /proc/mtd =====
+dev:    size   erasesize  name
+mtd0: 00080000 00001000 "nor"
+mtd1: 0006c000 00001000 "boot"
+mtd2: 00004000 00001000 "eromfs"
+mtd3: 00010000 00001000 "persistentmem"
+
+===== D6. procesos =====
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  186 root     [writeback]
+  188 root     [crypto]
+  189 root     [bioset]
+  191 root     [kblockd]
+  291 root     [rpcwork0]
+  292 root     [rpcwork1]
+  293 root     [rpcwork2]
+  294 root     [rpcwork3]
+  295 root     [rpcwork4]
+  296 root     [rpcwork5]
+  297 root     [rpcwork6]
+  298 root     [rpcwork7]
+  300 root     [kworker/0:1]
+  307 root     [kswapd0]
+  308 root     [fsnotify_mark]
+  354 root     [kworker/u2:2]
+  369 root     [spi32766]
+  373 root     [bioset]
+  378 root     [bioset]
+  384 root     [bioset]
+  389 root     [bioset]
+  439 root     [bioset]
+  440 root     [mmcqd/0]
+  463 root     [deferwq]
+  527 root     hcdaemon
+  539 root     [kworker/0:1H]
+  543 root     /bin/sh --
+  544 root     /mnt/sdcard/cubegm/icube
+  546 root     [rkgame]
+  551 root     /bin/sh /tmp/treefrog-zhijack.sh
+  556 root     /usr/bin/cubevol
+  570 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+  572 root     picoarch /mnt/sdcard/cubegm/cores/frogshell_libretro.so /mnt/sdcard/cubegm/cores/frogshell_libretro.so
+  587 root     /bin/sh /mnt/sdcard/diag2.sh
+  680 root     [kworker/0:2]
+  690 root     ps w
+
+=== FIN DIAG2 ===
