@@ -1,38 +1,85 @@
 #!/bin/sh
-# S11diag — captura dmesg del boot a la SD (inyectado en el initramfs embebido).
-# Se ejecuta DESPUÉS de S10mdev, ANTES de S99app (UI). Corre en rcS del initramfs.
-# La SD NO está montada aún en /mnt/sdcard (eso lo hace S99app). Aquí se ESPERA
-# a que mdev monte la SD en /media/<subdir> y se escribe en <subdir>/cubegm/.
-LOG=""
-n=0
-while [ $n -lt 40 ]; do
-    for subdir in /media/*/cubegm; do
-        if [ -d "$subdir" ]; then
-            LOG="$subdir/dmesg_boot.log"
-            break 2
-        fi
-    done
-    n=$((n + 1))
-    sleep 0.5
-done
-# Último recurso (no debería pasar): dmesg perdido en RAM
-if [ -z "$LOG" ]; then
-    LOG=/tmp/dmesg_boot.log
-fi
+# S11diag v2 — diagnóstico de boot del kernel propio, robusto.
+# 1) captura dmesg+estado a /tmp inmediatamente (siempre corre)
+# 2) espera /media/*/cubegm (mdev) hasta 30s
+# 3) si no aparece, MONTAR manualmente la SD (probar mmcblk0p1/p2) y copiar ahi
+# 4) vuelca todo lo que ayuda a diagnosticar mmc/input/fb/dtb
+# Escribe progreso a /dev/console (visible si la consola lo muestra).
+TMPLOG=/tmp/dmesg_boot.log
+echo "S11diag v2 RAN at $(date)" > /dev/console 2>&1
 
 {
-    echo "===== dmesg capture $(date) ====="
-    echo "cmdline: $(cat /proc/cmdline 2>/dev/null)"
-    echo "--- modules ---"
-    cat /proc/modules 2>/dev/null
-    echo "--- devices ---"
-    ls -la /dev/ 2>/dev/null
-    echo "--- mtd ---"
-    cat /proc/mtd 2>/dev/null
-    echo "--- iomem ---"
-    cat /proc/iomem 2>/dev/null | head -60
-    echo "--- DMESG (full) ---"
-    dmesg 2>/dev/null
-} > "$LOG" 2>&1
-echo "S11diag done -> $LOG" > /dev/console 2>&1
+  echo "===== S11diag v2 capture $(date) ====="
+  echo "cmdline: $(cat /proc/cmdline 2>/dev/null)"
+  echo "--- uname ---"
+  uname -a 2>/dev/null
+  echo "--- /proc/mounts ---"
+  cat /proc/mounts 2>/dev/null
+  echo "--- /sys/block ---"
+  ls -la /sys/block/ 2>/dev/null
+  echo "--- /dev/mmcblk* ---"
+  ls -la /dev/mmcblk* 2>/dev/null
+  echo "--- /dev (full) ---"
+  ls -la /dev/ 2>/dev/null
+  echo "--- mmc sysfs size ---"
+  cat /sys/block/mmcblk0/size 2>/dev/null
+  cat /sys/block/mmcblk0/device/type 2>/dev/null
+  echo "--- /sys/class/mmc_host ---"
+  ls -la /sys/class/mmc_host/ 2>/dev/null
+  echo "--- input ---"
+  ls -la /dev/input/ 2>/dev/null
+  cat /proc/bus/input/devices 2>/dev/null
+  echo "--- framebuffer ---"
+  cat /proc/fb 2>/dev/null
+  ls -la /dev/fb* 2>/dev/null
+  echo "--- mtd ---"
+  cat /proc/mtd 2>/dev/null
+  echo "--- modules ---"
+  cat /proc/modules 2>/dev/null
+  echo "--- iomem (head) ---"
+  cat /proc/iomem 2>/dev/null | head -40
+  echo "--- device-tree statuses (seleccion) ---"
+  for p in /proc/device-tree/*; do
+    s=$(cat "$p/status" 2>/dev/null)
+    [ -n "$s" ] && echo "$(basename $p): $s"
+  done
+  echo "--- DMESG FULL ---"
+  dmesg 2>/dev/null
+} > "$TMPLOG" 2>&1
+
+echo "S11diag v2: /tmp log $TMPLOG ($(stat -c %s "$TMPLOG" 2>/dev/null) bytes)" > /dev/console 2>&1
+
+# --- intentar llevarlo a la SD ---
+SDPATH=""
+# 1) esperar mdev /media
+n=0
+while [ $n -lt 30 ]; do
+    for subdir in /media/*/cubegm; do
+        if [ -d "$subdir" ]; then SDPATH="$subdir/dmesg_boot.log"; break 2; fi
+    done
+    n=$((n + 1)); sleep 1
+done
+
+# 2) si no, montar manualmente
+if [ -z "$SDPATH" ]; then
+    echo "S11diag v2: /media/*/cubegm no aparecio, montaje manual..." > /dev/console 2>&1
+    mkdir -p /tmp/sd
+    for dev in /dev/mmcblk0p1 /dev/mmcblk0 /dev/mmcblk1p1 /dev/mmcblk1; do
+        if [ -e "$dev" ]; then
+            echo "S11diag v2: probando montar $dev" > /dev/console 2>&1
+            if mount -t vfat "$dev" /tmp/sd 2>/dev/null; then
+                echo "S11diag v2: $dev montado en /tmp/sd" > /dev/console 2>&1
+                if [ -d /tmp/sd/cubegm ]; then SDPATH=/tmp/sd/cubegm/dmesg_boot.log; fi
+                break
+            fi
+        fi
+    done
+fi
+
+if [ -n "$SDPATH" ]; then
+    cp "$TMPLOG" "$SDPATH" 2>/dev/null
+    echo "S11diag v2 DONE -> $SDPATH" > /dev/console 2>&1
+else
+    echo "S11diag v2: NO se pudo escribir a SD (solo /tmp, se perdera)" > /dev/console 2>&1
+fi
 exit 0

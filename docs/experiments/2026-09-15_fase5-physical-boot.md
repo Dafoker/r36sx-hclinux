@@ -277,3 +277,42 @@ done
 
 - **S11diag corregido y desplegado como herramienta de diagnóstico no-ciega.** El próximo boot físico capturará el dmesg del kernel propio para discriminar la causa raíz del boot parcial sin serial.
 - Re-test físico pendiente de ejecución por el usuario (STOP CONDITION §5/§10: boot físico + lectura de SD).
+
+
+---
+
+# RE-TEST FÍSICO #1 (2026-09-15, Iteración 6j) — sin dmesg; hipótesis kernel-mmc; S11diag v2
+
+## Resultado del boot del kernel 0fef5fd1 (S11diag v1)
+
+- Usuario: 1ª vez **pantalla negra**; tras esperar, **reboot** → **splash TreeFrogUI sin menú**.
+- **NO se generó `G:\cubegm\dmesg_boot.log`** (verificado por WSL: el archivo no existe).
+- `G:\cubegm\vmlinux.uImage` seguía = `0fef5fd1` (nuestro kernel seguía desplegado).
+
+## Análisis del mecanismo de montaje (initramfs dev)
+
+- `etc/mdev.conf`:
+  - `mmcblk[0-9]p[0-9]  0:0 664 */etc/mdev/mount-helper.sh`
+- `etc/mdev/mount-helper.sh`: blkid del device + `mount ... /media/<tipo>`.
+- `S99app.wait_for_media_ready()`: bucle infinito hasta que existe `/media/<subdir>/cubegm/icube`; luego `mount --bind /media/$MNTDIR /mnt/sdcard` y lanza `icube.sh`.
+- S10mdev: monta tmpfs en /media + `mdev -s` + uevent_helper=/sbin/mdev.
+
+**Conclusión:** tanto S11diag v1 (espera `/media/*/cubegm` 20s) como S99app (espera `/media/*/cubegm/icube` para siempre) dependen de que **la SD se monte en `/media`** vía mdev→mount-helper. Como ni el log ni el menú aparecieron, **la SD no se montó**. Dado que el config del kernel SÍ tiene MMC_DW/VFAT/HC_SDIO y el DTB es semánticamente idéntico al stock, la hipótesis más fuerte es que **el kernel mmc de nuestro build no detecta/inicializa la SD en runtime** (driver/config del controlador difiere del de fábrica).
+
+## S11diag v2 (montaje manual + diagnóstico mmc)
+
+Para (a) confirmar la hipótesis y (b) obtener el dmesg aunque mdev falle, S11diag v2:
+1. Captura dmesg + estado (mmc/sysfs/input/fb/dtb/mtd/iomem/modules) a `/tmp/dmesg_boot.log` SIEMPRE.
+2. Espera `/media/*/cubegm` hasta 30s.
+3. Si no aparece, **monta manualmente** `/dev/mmcblk0p1` (y variantes) a `/tmp/sd` y copia ahí.
+4. Escribe progreso a `/dev/console`.
+
+## Re-build + deploy
+
+- **uImage `6d44c1b7...`** 4,354,009 B. S11diag v2 verificado embebido (diff MATCH vs fuente).
+- Desplegado en `G:\cubegm\vmlinux.uImage = 6d44c1b7...`. `stock.bak 53b3e0b3` intacto; `dtb.bin 1258f1eb` y `avp.uImage a9788995` sin tocar. Backup SD presente.
+- Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-devrootfs-s11diag-v2`.
+
+## RE-TEST FÍSICO #2 (pendiente)
+
+Bootear la consola con `6d44c1b7`; S11diag v2 escribirá `G:\cubegm\dmesg_boot.log`. Al leerlo: verificar si aparece `mmcblk0`/`mmcblk0p1` y si hay errores del controlador MMC/SDIO → confirmar o refutar la hipótesis kernel-mmc.

@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-15 (Iteración 6i — FASE 5 EN CURSO: S11diag FIX + uImage 0fef5fd1 desplegado, re-test físico pendiente)
+**Actualizado:** 2026-09-15 (Iteración 6j — FASE 5 EN CURSO: re-test #1 sin dmesg (inferencia kernel mmc), S11diag v2 montaje manual, uImage 6d44c1b7 desplegado, re-test #2 pendiente)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -31,15 +31,14 @@ Completar Fase 5: backup SD (PASO 1 OK) → artefactos verificados (PASO 2 OK) �
 
 ## PHYSICAL STATUS
 
-**S11diag FIX + RE-TEST FÍSICO PENDIENTE (boot para capturar dmesg).**
-- **CAUSA RAÍZ (confirmada):** el kernel de fábrica embebe su rootfs como initramfs en el vmlinux. Resuelto con initramfs del desarrollador embebido.
-- **Bug encontrado y arreglado (6i):** S11diag corría en S11 (antes de S99app), cuando la SD aún no está montada. `LOG=/media/*/cubegm/dmesg_boot.log` (glob literal, sin expandir) fallaba → no capturaba dmesg. Reescrito con wait-loop (hasta 20s) esperando `/media/*/cubegm`.
-- **uImage `0fef5fd1...`** 4,354,188 B (initramfs del desarrollador + S11diag fix, hcdaemon real 610KB). Gates TOOLCHAIN/PATCH/DTB SEMANTIC PASS. kernel.config `793a3ab7`. **Desplegado en G: `0fef5fd1...`** (stock.bak `53b3e0b3` intacto; dtb.bin/avp.uImage sin tocar).
-- **RE-TEST FÍSICO PENDIENTE:** bootear la consola. Al arrancar, S11diag escribirá `G:\cubegm\dmesg_boot.log` con el dmesg del kernel propio. Traer la SD al PC y leerlo → comparar contra stock (`docs/experiments/evidence-stock-dmesg.md`) → identificar el driver/config que falta.
-- Si NO se genera `dmesg_boot.log`: el kernel no llegó a rcS/initramfs (más grave; capturar via serial ADR-011, o revisar CONFIG_INITRAMFS_SOURCE).
-- **ADR-011:** diagnóstico serial requiere DTB serial-only NO-baseline (`scripts/diagnose_boot_serial.sh`). Cable USB-C OTG NO sirve (solo MTP/PTP).
-- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (sha256 `97086531ea...`).
-- NOR/bootloader/AVP INTACTOS. Solo `vmlinux.uImage` en SD (ahora `0fef5fd1`).
+**RE-TEST #1 (0fef5fd1) — NO dmesg. Hipótesis kernel-mmc. S11diag v2 desplegado, RE-TEST #2 pendiente.**
+- **Resultado RE-TEST #1:** boot `0fef5fd1` (S11diag v1) → 1ª vez pantalla negra, reboot → splash TreeFrogUI sin menú. **NO se generó `dmesg_boot.log`** (confirmado en G:).
+- **Inferencia (no conjetura):** S11diag v1 esperaba `/media/*/cubegm` 20s; S99app espera `/media/*/cubegm/icube` para siempre. Ambos dependen de que la SD se monte en `/media` vía mdev→mount-helper.sh. Como ni el log ni el menú aparecen, **la SD no se monta** → candidato: kernel mmc (MMC_DW/HC_SDIO) no detecta la tarjeta en runtime (config SÍ tiene MMC/VFAT). DTB es semánticamente idéntico al stock.
+- **S11diag v2:** captura dmesg a `/tmp` siempre + **monta manualmente la SD** (mmcblk0p1/p2) si mdev no la monta + vuelca mmc/sysfs/input/fb/dtb/mtd/iomem. Embebido verificado (MATCH).
+- **uImage `6d44c1b7...`** 4,354,009 B (initramfs dev + S11diag v2). Desplegado en G: `6d44c1b7...` (stock.bak `53b3e0b3` intacto, dtb `1258f1eb`/avp `a9788995` sin tocar).
+- **RE-TEST FÍSICO #2 PENDIENTE:** bootear → S11diag v2 escribirá `G:\cubegm\dmesg_boot.log` (montaje manual incluido). Traer la SD al PC y leerlo.
+- Si `dmesg_boot.log` sigue sin aparecer → confirmar kernel mmc roto → serial ADR-011, o buscar quirk/config mmc del kernel de fábrica.
+- Backup golden: `~/backups/r36sx-sd-files-20260915.tar.gz` (`97086531ea...`). NOR/bootloader/AVP INTACTOS.
 ## SOURCE SDK SHA256
 
 `e3211b41f8d649c7d7838f7f19b8cca5cf30ba6cb1ff9545be6943845fbf8d5d` — /mnt/d/GitHub/KERNEL/hclinux-2024.02.y.2.tar.gz
@@ -60,11 +59,12 @@ Fase 4 completa: DTB SEMANTIC PASS (0 diff) + TOOLCHAIN/PATCH PROVENANCE PASS + 
 
 ## NEXT EXACT ACTION
 
-1. **BOOT FÍSICO DIAGNÓSTICO:** con la SD (kernel `0fef5fd1` + S11diag) insertada y expulsada limpiamente, bootear la consola R36SX. S11diag escribirá el dmesg a `G:\cubegm\dmesg_boot.log` (espera hasta 20s a que la SD se monte en `/media`). No hace falta que la UI llegue al menú: solo el boot hasta rcS.
-2. **Traer la SD al PC** (G:), leer `G:\cubegm\dmesg_boot.log` y entregarlo al agente.
-3. Comparar el dmesg del kernel propio contra el stock (`docs/experiments/evidence-stock-dmesg.md`) → identificar el driver/config que falta → re-build → re-test.
-4. Si `dmesg_boot.log` NO se genera: el kernel no llegó a rcS/initramfs → serial ADR-011, o verificar que el initramfs se embebió (CONFIG_INITRAMFS_SOURCE → rootfs-dev.cpio).
-5. Documentar y actualizar GitHub al cierre.
+1. **BOOT FÍSICO #2:** con la SD (kernel `6d44c1b7` + S11diag v2) insertada, bootear la consola. S11diag v2 monta la SD manualmente si hace falta y escribe `G:\cubegm\dmesg_boot.log` con el estado mmc/input/fb/dtb y el dmesg completo.
+2. **Traer la SD al PC**, leer `G:\cubegm\dmesg_boot.log` y entregarlo.
+3. Verificar en el log: ¿`mmcblk0`/`mmcblk0p1` aparece? ¿errores del controlador MMC/SDIO? → confirmar/refutar la hipótesis kernel-mmc.
+4. Comparar con el dmesg stock (`docs/experiments/evidence-stock-dmesg.md`) → identificar el driver/config mmc que falta → re-build → re-test.
+5. Si `dmesg_boot.log` NO se genera aun con montaje manual → kernel no llega a rcS, o mmc roto definitivo → serial ADR-011.
+6. Documentar y actualizar GitHub al cierre.
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |
