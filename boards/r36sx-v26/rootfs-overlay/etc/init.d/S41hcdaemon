@@ -1,1 +1,2 @@
-hcdaemon&
+#!/bin/sh
+true
