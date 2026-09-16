@@ -49,3 +49,25 @@ y cubegm-montaje.
 - El bloqueador es exclusivamente el kernel: (a) hang en init de dispositivos antes de userspace,
   o (b) el controlador mmc (`hichip,dw-mshc`) no detecta la tarjeta. Requiere dmesg (serial ADR-011)
   o variantes de config del kernel con señal = "aparece dmesg_boot.log en la SD".
+
+
+---
+
+# Addendum 2026-09-16 — Comparación DTB mmc/clocks/pinctrl (STOCK vs NUESTRO)
+
+## Método
+
+Decompilar dtb.bin nuestro (04fb8383) y el stock de la SD (1258f1eb) y comparar nodos mmc/clocks/pinctrl.
+
+## Resultado — IDÉNTICOS
+
+- mmc@1884C000: mismas propiedades exactas (hichip,dw-mshc, clocks=<0x0e 0x0e>, clock-names="biu\0ciu",
+  pinctrl-0=<0x0f>, bus-width=<4>, sd-uhs-sdr12/25, broken-cd, reg=<0x1884c000 0x2000>, card-detect-delay=0xc8).
+- clocks/mmcclk: fixed-clock 198MHz (0xbcd3d80), phandle 0x0e.
+- f900/fdig: idénticos. pctl_sdio: GPIO_T_00..05 = 0xf9.
+
+## Conclusión
+
+El DTB NO es el problema (mmc/clocks/pinctrl idénticos al stock). Con initramfs y cubegm ya descartados,
+queda SOLO el config de kernel como variable. El vendor compila MÁS drivers (spi/nfc/i2c/watchdog/lvds/irc/
+hwspinlock) que la fábrica; candidato: un driver extra probea un periférico que cuelga el bus antes del mmc.
