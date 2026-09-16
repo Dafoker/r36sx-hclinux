@@ -20,3 +20,10 @@ CONFIG_RD_LZO=y
 CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v26/rootfs-dev.cpio"
 # Fase 5 diagnostico: desactivar GE (motor 2D) — sospechoso de hang tras fb (0.385s), frágil en R36SX.
 # CONFIG_HC_GE is not set
+# CONFIG_HC_WDT is not set
+# CONFIG_HC_IRC is not set
+# CONFIG_HC_HWSPINLOCK is not set
+# CONFIG_HC_LVDS is not set
+# CONFIG_HC_NAND is not set
+# CONFIG_HC_TOE is not set
+# CONFIG_HC_I2C is not set
