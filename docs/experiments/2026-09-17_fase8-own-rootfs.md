@@ -118,3 +118,8 @@ zhijack.sh: congela icube + mata rkgame al arrancar (solo son vehículo), auto-l
 ✅ boot propios · ✅ menú · ✅ launcher eliminado · ✅ dieta
 ❌ audio juegos · ❌ música · ❌ video · ❌ salida de cores (= 1 causa raíz AVP)
 ⏳ 8e clean-install (TreeFrogUI fuera de cubegm)
+# Ronda diag9-1 (kernel 8f) + incidente stock-boot (2026-09-17)
+
+- **diag9 ronda-1** (evidence-diag9-ownkernel.log): opens media OK (auddec/audsink/viddec/vidsink/avsync0/sndC0i2so/kshmdev/mmz/virtuart/ZZd2C rc=0 — el AVP ACEPTA los opens de media); 4 rechazados con error proxy (sndC0spo/sndC0i2si/vindvp/pq — probablemente servicios ausentes en este build del AVP en AMBOS kernels — confirmar en ronda 2); ioctls de picoarch: cero errores kernel-side (el fallo queda acotado a la capa ioctl post-open); virtuart mudo a los 18s.
+- **BLANCO DEL RE AFINADO**: el protocolo open funciona (nombres/servicios reconocidos por el AVP) → el drift ABI está en los OPCODES/STRUCTS de los ioctls post-open — superficie chica para el diff binario (tabla de dispatch del proxy).
+- **INCIDENTE**: boot stock sin menú tras el swap — causa: icube seguía renombrado (icube.disabled) de la prueba 8d. **El kernel de FÁBRICA necesita cubegm/icube (su S99app lo espera); los kernels 8d/8f NO**. PROTOCOLO: todo swap a stock requiere icube presente. Restaurado y verificado.
