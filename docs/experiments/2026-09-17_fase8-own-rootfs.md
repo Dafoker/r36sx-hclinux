@@ -123,3 +123,11 @@ zhijack.sh: congela icube + mata rkgame al arrancar (solo son vehículo), auto-l
 - **diag9 ronda-1** (evidence-diag9-ownkernel.log): opens media OK (auddec/audsink/viddec/vidsink/avsync0/sndC0i2so/kshmdev/mmz/virtuart/ZZd2C rc=0 — el AVP ACEPTA los opens de media); 4 rechazados con error proxy (sndC0spo/sndC0i2si/vindvp/pq — probablemente servicios ausentes en este build del AVP en AMBOS kernels — confirmar en ronda 2); ioctls de picoarch: cero errores kernel-side (el fallo queda acotado a la capa ioctl post-open); virtuart mudo a los 18s.
 - **BLANCO DEL RE AFINADO**: el protocolo open funciona (nombres/servicios reconocidos por el AVP) → el drift ABI está en los OPCODES/STRUCTS de los ioctls post-open — superficie chica para el diff binario (tabla de dispatch del proxy).
 - **INCIDENTE**: boot stock sin menú tras el swap — causa: icube seguía renombrado (icube.disabled) de la prueba 8d. **El kernel de FÁBRICA necesita cubegm/icube (su S99app lo espera); los kernels 8d/8f NO**. PROTOCOLO: todo swap a stock requiere icube presente. Restaurado y verificado.
+# Ronda diag9-2 (STOCK) — comparativa final: ABI de opens IDENTICO (2026-09-17)
+
+- evidence-diag9-stock.log (`diag9_avp_19700101_000026.log`): opens idénticos a nuestro kernel (media rc=0; los mismos 4 rechazados sndC0spo/sndC0i2si/vindvp/pq con los mismos `proxy_open failed!!!!` a [31.1s]) → **los 4 rechazos son NORMALES del hardware** (sin SPDIF/I2S-in/video-in en este build del AVP) — no son nuestro bug.
+- virtuart mudo en ambos kernels.
+- **CONCLUSIÓN EMPÍRICA FINAL: la capa opens/servicios es IDENTICA stock↔nuestro. El drift ABI está 100% en la capa de ioctls post-open** — el interpose versión-dependiente del proxy (`avp_ioctl_preproc/postproc`: kshm handles, SND_IOCTL_GET_HW_INFO) donde el SDK Jul-2024 puede diferir del fábrica Dic-2025.
+- SD restaurada a nuestro kernel 8f (`d104f4d7`) — punto exacto de desarrollo.
+- Nota: el kernel stock imprime timestamps (CONFIG_PRINTK_TIME=y) — el nuestro no (vendor baseline off); única diff cosmética del log.
+- **Estrategia C afinada al máximo**: RE del proxy de fábrica (en stock.bin, localizable vía sus pr_err strings idénticos) → diff del dispatch de ioctls vs nuestro avp-proxy.c → parche.

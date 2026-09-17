@@ -1,0 +1,235 @@
+=== DIAG9 — SONDA AVP — Thu Jan  1 00:00:26 UTC 1970 ===
+kernel: Linux version 4.4.186-release (linsen.chen@hichip01) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #7 PREEMPT Thu Dec 18 16:55:03 CST 2025
+uptime: 26.99
+
+--- 1. lectura pasiva de /dev/virtuart (3s) ---
+bytes leidos del virtuart: 0
+(el AVP no escribio nada en el virtuart)
+
+--- 2. open() probe de nodos media (errno revela el estado del driver) ---
+  /dev/auddec: open rc=0 
+  /dev/audsink: open rc=0 
+  /dev/viddec: open rc=0 
+  /dev/vidsink: open rc=0 
+  /dev/avsync0: open rc=0 
+  /dev/sndC0i2so: open rc=0 
+  /dev/sndC0spo: open rc=1 /mnt/sdcard/diag9.sh: line 45: can't create /dev/sndC0spo: Operation not permitted
+  /dev/sndC0i2si: open rc=1 /mnt/sdcard/diag9.sh: line 45: can't create /dev/sndC0i2si: Operation not permitted
+  /dev/vindvp: open rc=1 /mnt/sdcard/diag9.sh: line 45: can't create /dev/vindvp: Operation not permitted
+  /dev/pq: open rc=1 /mnt/sdcard/diag9.sh: line 45: can't create /dev/pq: Operation not permitted
+  /dev/kshmdev: open rc=0 
+  /dev/mmz: open rc=0 
+  /dev/virtuart: open rc=0 
+  /dev/ZZd2C: open rc=0 
+
+--- 3. dmesg completo ---
+[    0.000000] Linux version 4.4.186-release (linsen.chen@hichip01) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #7 PREEMPT Thu Dec 18 16:55:03 CST 2025
+[    0.000000] MIPS: machine is Hichip hc16xx
+[    0.000000] CPU0 revision is: 0001974c (MIPS 74Kc)
+[    0.000000] FPU revision is: 01739300
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 0af91e50 @ 00000000 (usable)
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x000000000af90fff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000000af90fff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000000af90fff]
+[    0.000000] On node 0 totalpages: 44945
+[    0.000000] free_area_init_node: node 0, pgdat 8047b440, node_mem_map 81020ae0
+[    0.000000]   Normal zone: 352 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 44945 pages, LIFO batch:7
+[    0.000000] Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+[    0.000000] Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+[    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 44593
+[    0.000000] Kernel command line: root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug
+[    0.000000] IRQ lockup detection disabled
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Writing ErrCtl register=00000000
+[    0.000000] Readback ErrCtl register=00000000
+[    0.000000] Memory: 169148K/179780K available (3304K kernel code, 140K rwdata, 1148K rodata, 3912K init, 202K bss, 10632K reserved, 0K cma-reserved)
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] 	Build-time adjustment of leaf fanout to 32.
+[    0.000000] NR_IRQS:128
+[    0.000000] CPU Clock: 1188MHz
+[    0.000000] clocksource_probe: no matching clocksources found
+[    0.000000] clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3217610179 ns
+[    0.000007] sched_clock: 32 bits at 594MHz, resolution 1ns, wraps every 3615292415ns
+[    0.000253] Console: colour dummy device 80x25
+[    0.000845] console [tty1] enabled
+[    0.000890] Calibrating delay loop... 589.82 BogoMIPS (lpj=294912)
+[    0.009067] pid_max: default: 32768 minimum: 301
+[    0.009266] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.009312] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.012299] devtmpfs: initialized
+[    0.019313] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+[    0.019485] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    0.019737] pinctrl core: initialized pinctrl subsystem
+[    0.020293] NET: Registered protocol family 16
+[    0.101821] SCSI subsystem initialized
+[    0.102253] usbcore: registered new interface driver usbfs
+[    0.102397] usbcore: registered new interface driver hub
+[    0.103368] usbcore: registered new device driver usb
+[    0.106736] clocksource: Switched to clocksource MIPS
+[    0.151078] NET: Registered protocol family 1
+[    0.240344] fuse init (API version 7.23)
+[    0.247984] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.248080] io scheduler noop registered (default)
+[    0.248303] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.252007] SCSI Media Changer driver v0.25 
+[    0.253946] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.254020] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    0.254390] usbcore: registered new interface driver usb-storage
+[    0.255221] Synopsys Designware Multimedia Card Interface Driver
+[    0.256329] dw_mmc_hc 1884c000.mmc: num-slots property not found, assuming 1 slot is available
+[    0.256418] dw_mmc_hc 1884c000.mmc: fifo-depth property not found, using value of FIFOTH register as default
+[    0.256501] dw_mmc_hc 1884c000.mmc: host clk=198000000
+[    0.256536] dw_mmc_hc 1884c000.mmc: setup source clock : 0x3 (0x0:49MHZ 0x1:99Mhz 0x2:150Mhz 0x3:198Mhz)
+[    0.256592] dw_mmc_hc 1884c000.mmc: IDMAC supports 32-bit address mode.
+[    0.256649] dw_mmc_hc 1884c000.mmc: Using internal DMA controller.
+[    0.256703] dw_mmc_hc 1884c000.mmc: Version ID is 270a
+[    0.256906] dw_mmc_hc 1884c000.mmc: DW MMC controller at irq 10,32 bit host data width,128 deep fifo
+[    0.257037] dw_mmc_hc 1884c000.mmc: No vmmc regulator found
+[    0.257081] dw_mmc_hc 1884c000.mmc: No vqmmc regulator found
+[    0.261547] usbcore: registered new interface driver usbhid
+[    0.261610] usbhid: USB HID core driver
+[    0.289807] dw_mmc_hc 1884c000.mmc: 1 slots initialized
+[    0.290392] virtuart init ok
+[    0.291465] kshmdev init ok
+[    0.294387] m25p80 spi32766.0: found 25HD40, expected m25p80
+[    0.294462] m25p80 spi32766.0: 25HD40 (512 Kbytes)
+[    0.300183] 4 ofpart partitions found on MTD device spi32766.0
+[    0.300249] Creating 4 MTD partitions on "spi32766.0":
+[    0.300287] 0x000000000000-0x000000080000 : "nor"
+[    0.302410] 0x000000000000-0x00000006c000 : "boot"
+[    0.305327] 0x00000006c000-0x000000070000 : "eromfs"
+[    0.307981] 0x000000070000-0x000000080000 : "persistentmem"
+[    0.332563] fb node name: fb0!
+[    0.332623] fb0 enable!
+[    0.339549] fb node name: fb1!
+[    0.339609] fb1 enable!
+[    0.341850] ---> usb#0 reset
+[    0.347815] musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+[    0.347836] musb-hdrc: MHDRC RTL version 2.0 
+[    0.347891] musb-hdrc musb-hdrc.0.auto: MUSB HDRC host driver
+[    0.347980] musb-hdrc musb-hdrc.0.auto: new USB bus registered, assigned bus number 1
+[    0.348235] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    0.348282] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.348332] usb usb1: Product: MUSB HDRC host driver
+[    0.348363] usb usb1: Manufacturer: Linux 4.4.186-release musb-hcd
+[    0.348426] usb usb1: SerialNumber: musb-hdrc.0.auto
+[    0.349639] hub 1-0:1.0: USB hub found
+[    0.349896] hub 1-0:1.0: 1 port detected
+[    0.350258] ---> usb#0 reset
+[    0.354000] mmc0: new high speed SDXC card at address aaaa
+[    0.356388] ---> usb#0 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+[    0.358816] mmcblk0: mmc0:aaaa SD64G 59.5 GiB 
+[    0.360872] [decrypt_sector_data][1487] 0x0 0x0
+[    0.361120]  mmcblk0: p1
+[    0.363709] ---> usb#1 reset
+[    0.369223] musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+[    0.369243] musb-hdrc: MHDRC RTL version 2.0 
+[    0.369281] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+[    0.369371] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 2
+[    0.369644] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    0.369694] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.369810] usb usb2: Product: MUSB HDRC host driver
+[    0.369847] usb usb2: Manufacturer: Linux 4.4.186-release musb-hcd
+[    0.369880] usb usb2: SerialNumber: musb-hdrc.1.auto
+[    0.371013] hub 2-0:1.0: USB hub found
+[    0.371156] hub 2-0:1.0: 1 port detected
+[    0.371506] ---> usb#1 reset
+[    0.376709] ---> usb#1 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+[    0.381155] reg_base: b8806000, reg_size: 8192, sys_reg_base: b8800000,  irq: 9
+[    0.383621] hcge 18806000.ge: Init GE success.
+[    0.384664] NET: Registered protocol family 17
+[    0.384963] NET: Registered protocol family 15
+[    0.399565] name:check_adc1
+[    0.400434] name:check_adc5
+[    0.419896] Freeing unused kernel memory: 3912K
+[    1.782516] [decrypt_sector_data][1487] 0x0 0x0
+[    3.034878] FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[    3.042033] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+[    4.267026] map ge register to userspace. off = 0
+[    6.404330] random: nonblocking pool is initialized
+[    6.483213] map ge register to userspace. off = 0
+[    8.442594] map ge register to userspace. off = 0
+[   14.153094] map ge register to userspace. off = 0
+[   14.770913] map ge register to userspace. off = 0
+[   16.583473] map ge register to userspace. off = 0
+[   17.067997] map ge register to userspace. off = 0
+[   31.111529] open /dev/sndC0spo err
+[   31.111597] err: proxy_open sndC0spo failed!!!!
+[   31.120995] open /dev/sndC0i2si err
+[   31.121066] err: proxy_open sndC0i2si failed!!!!
+[   31.126130] open /dev/vindvp err
+[   31.126236] err: proxy_open vindvp failed!!!!
+[   31.133829] open /dev/pq err
+[   31.133893] err: proxy_open pq failed!!!!
+
+--- 3b. dmesg filtrado proxy/rpc/avp/audio ---
+[    0.291465] kshmdev init ok
+[   31.111529] open /dev/sndC0spo err
+[   31.111597] err: proxy_open sndC0spo failed!!!!
+[   31.120995] open /dev/sndC0i2si err
+[   31.121066] err: proxy_open sndC0i2si failed!!!!
+[   31.126236] err: proxy_open vindvp failed!!!!
+[   31.133893] err: proxy_open pq failed!!!!
+
+--- 4. procesos ---
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  186 root     [writeback]
+  188 root     [crypto]
+  189 root     [bioset]
+  191 root     [kblockd]
+  291 root     [rpcwork0]
+  292 root     [rpcwork1]
+  293 root     [rpcwork2]
+  294 root     [rpcwork3]
+  295 root     [rpcwork4]
+  296 root     [rpcwork5]
+  297 root     [rpcwork6]
+  298 root     [rpcwork7]
+  300 root     [kworker/0:1]
+  307 root     [kswapd0]
+  308 root     [fsnotify_mark]
+  354 root     [kworker/u2:2]
+  356 root     [kworker/u2:3]
+  370 root     [spi32766]
+  374 root     [bioset]
+  379 root     [bioset]
+  385 root     [bioset]
+  390 root     [bioset]
+  440 root     [bioset]
+  441 root     [mmcqd/0]
+  464 root     [deferwq]
+  528 root     hcdaemon
+  540 root     [kworker/0:1H]
+  544 root     /bin/sh --
+  545 root     /mnt/sdcard/cubegm/icube
+  547 root     [rkgame]
+  552 root     /bin/sh /tmp/treefrog-zhijack.sh
+  557 root     /usr/bin/cubevol
+  571 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+  586 root     picoarch /mnt/sdcard/cubegm/cores/frogshell_libretro.so /mnt/sdcard/cubegm/cores/frogshell_libretro.so
+  601 root     /bin/sh /mnt/sdcard/diag9.sh
+  629 root     ps w
+
+=== FIN DIAG9 ===
