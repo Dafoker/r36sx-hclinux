@@ -1,6 +1,6 @@
 # docs/TREEFROGUI_COMPATIBILITY.md — Contrato TreeFrogUI
 
-**Estado:** EN CURSO (Fase 6, iteración 7a). Upstream: https://github.com/tzubertowski/TreeFrogUI
+**Estado:** CERRADO (Fase 6 DONE, 2026-09-17) — contrato validado físicamente. Upstream: https://github.com/tzubertowski/TreeFrogUI
 **Validación física base:** Fase 5 PHYSICAL PASS (2026-09-16, kernel propio `017adf3b` — menú TreeFrogUI navegable y funcional).
 
 ## Matriz de dependencias
@@ -34,8 +34,19 @@ Fuentes de evidencia: **6m** = ingeniería inversa cubegm (`docs/experiments/202
 - Config del kernel validado físicamente: **vendor baseline + CHECK_ADC + initramfs stock-parity CPIO CRUDO** (fragment `r36sx-v26.config.fragment`).
 - La SD se monta en `/media/mmc` (mdev) y se bind-mounta a `/mnt/sdcard` Y `/lib` (los .so de la UI se cargan desde la SD — 6l).
 
-## Pendiente Fase 6
+## PROBABLEs confirmados con evidencia viva (diag8 7c-vs-fábrica)
 
-1. DIAG6X on-device (fds vivos por proceso) → confirmar PROBABLEs + documentar el proceso exacto del menú.
-2. Formalizar el contrato (qué debe garantizar todo kernel futuro de r36sx-v26 para que TreeFrogUI funcione).
-3. Integra con docs/BOARD_PORT.md + HARDWARE_R36SX_V26.md.
+- Los fds abiertos por proceso son IDÉNTICOS bajo stock y bajo kernel propio — la app-layer no distingue kernels.
+- Input: pipeline `cubevol gpio → /tmp/joy_key` (sin evdev en ningún kernel — 6m/7b).
+- Media (auddec/viddec/sndC0*): proxies AMPRPC → AVP. **FUNCIONA con kernel fábrica, MUERTE con kernel propio** — causa diferida (hipótesis: mismatch media-proxy SDK-Jul-2024 vs AVP-fábrica-Dic-2025). Ver docs/experiments/2026-09-17_fase6-diag6x-analysis.md.
+
+## CONTRATO (lo que todo kernel futuro r36sx-v26 debe garantizar)
+
+1. Drivers Linux-puro: HC_GE, HC_HWSPINLOCK, HC_CHECK_ADC, fb (fb0/fb1), dw-mmc, input-poll (userspace cubevol), GPIO/mem.
+2. Initramfs con la cadena S41hcdaemon (`hcdaemon&`) + S99app (wait media → binds /mnt/sdcard,/lib,/usr,/bin,/sbin → swap → icube.sh) — o equivalentes propios (Fase 8).
+3. NO hardware-init de periféricos compartidos con el AVP sin entender el ownership (lección 6w→7e).
+4. Para MEDIA completa: se requiere resolver el ABI proxy↔AVP de fábrica (pendiente — USB-TTL/RE binaria).
+
+## Limitación conocida (documentada, diferida)
+
+Audio en TODO + video decode + salida de cores bajo kernel propio — ver experimento 2026-09-17.

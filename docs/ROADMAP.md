@@ -15,7 +15,7 @@ BootROM → bootloader (stock) → AVP/HCRTOS (stock, preservado) → **kernel p
 | **3. Hardware R36SX V2.6** | Documentar hardware real (DTS stock, logs físicos si el usuario aporta) | `docs/HARDWARE_R36SX_V26.md` con fuentes | ✅ DONE (evidencia física SD stock G: read-only; board E3100v20, 176MiB) |
 | **4. Board propia** | `boards/r36sx-v26/` derivada por evidencia, no copia ciega | Diferencias vs vendor documentadas + BUILD PASS | ✅ DONE (4A stock model + 4B build: DTB SEMANTIC PASS 0-diff, config delta 0, provenance PASS — ADR-010) |
 | **5. Primer kernel propio** | Reemplazar SOLO kernel/DTB; resto stock | PHYSICAL PASS (boot + TreeFrogUI stock) | ✅ **DONE 2026-09-16 (iteración 6x)**: kernel propio `017adf3b` bootea al MENÚ TreeFrogUI navegable/funcional; rollback stock.bak disponible |
-| **6. Contrato TreeFrogUI** | Matriz de dependencias reales (fb, input, audio, ioctl, /dev/dis...) | `docs/TREEFROGUI_COMPATIBILITY.md` | PENDIENTE |
+| **6. Contrato TreeFrogUI** | Matriz de dependencias reales (fb, input, audio, ioctl, /dev/dis...) | `docs/TREEFROGUI_COMPATIBILITY.md` | ✅ **DONE 2026-09-17**: matriz viva validada (diag6x/diag8, fds idénticos stock↔propio); media AVP = limitación conocida diferida (mismatch proxy/AVP, hipótesis) |
 | **7. Optimizaciones** | Una hipótesis por experimento, contra baseline | Cada una: resultado + decisión ADR si durable | PENDIENTE |
 | **8. Rootfs propio** | Buildroot controlado + picoarch + TreeFrogUI | CLEAN-INSTALL PHYSICAL PASS | PENDIENTE |
 | **9. Kernel 5.12.4** | Solo con 4.4.186 known-good físico | Comparación regresión vs golden | DIFERIDO |

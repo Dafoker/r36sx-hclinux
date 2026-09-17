@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (Iteración 7d — 7c DESPLEGADO Y REFUTADO (síntomas idénticos); comparativa interrupts 7c-vs-fábrica en curso)
+**Actualizado:** 2026-09-17 (Fase 6 CERRADA — contrato validado, media = limitación conocida diferida; consola en STOCK para uso diario; Fase 8 (rootfs propio) EN ARRANQUE)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -13,7 +13,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT OBJECTIVE
 
-Curar los defectos funcionales post-PHYSICAL-PASS con kernel propio: (1) audio muerto en TODO (juegos/música/video); (2) video sin imagen; (3) salida de FrogShell/emuladores colgada (pantalla crema). Hipótesis 7c: driver extra HC_I2C interfiere con el bus del códec de audio del AVP. Deploy del 7c staged + test físico.
+Iniciar **Fase 8: rootfs propio via Buildroot** — reemplazar el initramfs extraído-del-stock por un rootfs 100% nuestro (busybox+init scripts propios) manteniendo el contrato de arranque (montar SD → binds → icube.sh → menú). El fix de media queda DIFERIDO (limitación conocida; vía: USB-TTL + diff binario avp-proxy).
 
 ## CURRENT HEAD
 
@@ -64,13 +64,9 @@ Test físico 6w (splash+batería, sin menú, kernel íntegro post-boot) + build 
 
 ## NEXT EXACT ACTION
 
-1. **DIAG8 bajo 7c** (desplegado ya en G:\diag8.sh v2): boot → FrogShell → `sh /mnt/sdcard/diag8.sh` → traer SD con `cubegm/diag8_*.log`.
-2. **Swap a stock.bak** (yo ejecuto el protocolo) → boot fábrica → `sh /mnt/sdcard/diag8.sh` → traer SD (baseline).
-3. **DIFF interrupts/devices/iomem 7c vs fábrica** → localizar el servicio AVP (audio/video) sin IRQ o sin registro bajo nuestro kernel.
-4. Vía definitiva si el diff no basta: serial ADR-011 (USB-TTL en ttyS1 @18818600, 115200n8).
-2. **FASE 6:** contrato TreeFrogUI sobre kernel propio (docs/TREEFROGUI_COMPATIBILITY.md) — la UI ya corre; formalizar el contrato.
-3. Decidir kernel de uso diario (6x desplegado vs rollback stock) con el usuario.
-4. Documentar y actualizar GitHub al cierre de cada iteración.
+1. **Fase 8a — plan del rootfs propio:** definir alcance del primer incremento: Buildroot rootfs mínimo (busybox propio + S10mdev/S99app equivalentes escritos por nosotros + launch de icube.sh) → embebido como initramfs (CONFIG_INITRAMFS_SOURCE=rootfs-own.cpio) → boot al menú con userland 100% propio. SUCCESS = menú navegable con rootfs propio (media seguirá muda — limitación conocida).
+2. **Comprar cable USB-TTL** (paralelo) — desbloquea el diagnóstico de media (ADR-011) y todo debugging futuro.
+3. Testing kernel propio: usar staging (`7e da76d6ea` / `6x 017adf3b`) en SD de pruebas; consola diaria queda en STOCK.
 
 ## REFERENCIA RÁPIDA
 
