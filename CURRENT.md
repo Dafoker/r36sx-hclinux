@@ -58,7 +58,7 @@ Test físico 6w (splash+batería, sin menú, kernel íntegro post-boot) + build 
 
 ## NEXT EXACT ACTION
 
-1. **EVIDENCIA ON-DEVICE (opcional, recomendada):** ejecutar diagnose/diag2 via FrogShell con NUESTRO kernel corriendo → capturar /proc/version, /proc/cmdline, ls /dev (ge incluido) → documentar en el experimento.
+1. **DIAG6X ON-DEVICE (script listo en `G:\diag6x.sh`):** boot consola (kernel 6x) → FrogShell → `sh /mnt/sdcard/diag6x.sh` → traer la SD → analizar `cubegm/diag6x_*.log` (identidad kernel + fds /dev vivos por proceso = contrato Fase 6).
 2. **FASE 6:** contrato TreeFrogUI sobre kernel propio (docs/TREEFROGUI_COMPATIBILITY.md) — la UI ya corre; formalizar el contrato.
 3. Decidir kernel de uso diario (6x desplegado vs rollback stock) con el usuario.
 4. Documentar y actualizar GitHub al cierre de cada iteración.
