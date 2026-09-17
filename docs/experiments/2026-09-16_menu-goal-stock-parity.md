@@ -55,4 +55,34 @@ Hipótesis: el menú requiere `/dev/ge` (ABI de driver_r36sx.so, iteración 6m) 
 
 **BUILD PASS (2026-09-16 22:0x):** uImage `017adf3b07832643a38f2d784be52d522f2e1f300b17fa974e0c38820011cf19`, 4,348,576 B, gzip, Load 0x80000000 / Entry 0x803E3AC0, **hcrc y dcrc VERIFICADOS**. Initramfs embebido CPIO CRUDO 3,849,216 B == stock (diff -r vacío; S41=`hcdaemon&` real). Gates: DTB SEMANTIC PASS (en build) + TOOLCHAIN/PATCH (sin cambios desde 6w). `.config`: HC_GE=y, HC_WDT=y, HC_HWSPINLOCK=y, HC_I2C=y, RD_*=n. Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-menu-6x`.
 
-Estado: DEPLOY+TEST FÍSICO PENDIENTE (autorización requerida).
+# RESULTADO DEL TEST FÍSICO 6x — PHYSICAL PASS (2026-09-16/17 noche)
+
+> "La consola booteó correctamente, llegó al menú principal de TreeFrogUI y fue navegable y funcional." (usuario, evidencia física)
+
+**FASE 5 COMPLETA: el kernel propio bootea la consola real hasta el MENÚ TreeFrogUI funcional.**
+
+## Verificación post-boot (SD en PC)
+
+- `G:\cubegm\vmlinux.uImage` == `017adf3b...` (build 6x, ÍNTegro tras el boot — el dispositivo leyó NUESTRO kernel)
+- `stock.bak` == `53b3e0b3` intacto · `dtb.bin` == `1258f1eb` stock intacto · `avp.uImage` == `a9788995` stock intacto
+- Cadena de procedencia: build `images/` == staging == SD == `017adf3b` · ep `0x803E3AC0` (distintivo del build propio; stock `0x803337C0`)
+- Sin escrituras nuevas en la SD post-boot (normal: la consola solo escribe en cambios de estado)
+
+## Causa raíz de TODOS los fallos previos (confirmación triple)
+
+1. Hasta 6f: kernel sin initramfs embebido → sin rootfs.
+2. 6h–6v: S41hcdaemon/S99app no-ops → la cadena de arranque del menú estaba amputada por diseño (diagnóstico).
+3. 6w: drivers NOEXTRA desactivados (GE/WDT/IRC/HWSPINLOCK/LVDS/NAND/TOE/I2C off) → la capa del menú (que requiere /dev/ge y hwspinlock) no arrancaba; con initramfs real aparecía la capa UI (batería) pero no el menú.
+
+La solución 6x: **vendor baseline + CHECK_ADC + initramfs stock-parity CPIO CRUDO + S41/S99 reales.**
+
+## Qué es NUESTRO y qué es stock (estado del sistema que bootea)
+
+- **Kernel (vmlinux): 100% NUESTRO** — pipeline propio (4.4.186 vanilla + BSP vendor rsync + 41 patches + board r36sx-v26 + Codescape 6.3.0 + initramfs embebido por nuestro build_kernel.sh). Provenance gates PASS.
+- Initramfs embebido: contenido byte-fiel del stock (deliberado — SO del desarrollador, con S41/S99 reales).
+- DTB en SD: stock, intocado (≡ nuestro DTB semantic 0-diff). AVP/bootloader: stock, intocados (ADR-008).
+- cubegm/UI: stock TreeFrogUI de la SD.
+
+## Pendiente opcional (evidencia definitiva on-device)
+
+Capturar `/proc/version` del kernel corriendo (esperado: `Linux version 4.4.186-release (dafunknoise@DFNK) ...`) via FrogShell/diagnose_console — para el expediente PHYSICAL del repo.
