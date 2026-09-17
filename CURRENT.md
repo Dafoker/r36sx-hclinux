@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (Iteración 7c — Fase 5 PHYSICAL PASS; Fase 6 en curso: defectos AVP-media (audio/video/salida-cores) bajo kernel propio; build 7c lean-fábrica STAGED, deploy pendiente)
+**Actualizado:** 2026-09-17 (Iteración 7d — 7c DESPLEGADO Y REFUTADO (síntomas idénticos); comparativa interrupts 7c-vs-fábrica en curso)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -64,10 +64,10 @@ Test físico 6w (splash+batería, sin menú, kernel íntegro post-boot) + build 
 
 ## NEXT EXACT ACTION
 
-1. **DEPLOY 7c** (primera acción de la sesión): pre-check hash G: == `017adf3b` (6x) → copiar staging `vmlinux.uImage-r36sx-v26-menu-7c` (`15ad1cb7...`) → G:\cubegm\vmlinux.uImage → read-back ×2. stock.bak YA existe.
-2. **TEST FÍSICO 7c**: boot → ¿audio en juegos? ¿música? ¿video con imagen+sonido? ¿salir de FrogShell/emulador vuelve al menú?
-3. Si 7c cura → documentar config lean-fábrica como baseline board (ADR candidato) + bisect opcional (I2C causa).
-4. Si 7c NO cura → `sh /mnt/sdcard/diag8.sh` CON un video reproduciéndose → boot stock.bak → diag8 baseline → comparar /proc/interrupts → serial ADR-011 (USB-TTL) como vía definitiva.
+1. **DIAG8 bajo 7c** (desplegado ya en G:\diag8.sh v2): boot → FrogShell → `sh /mnt/sdcard/diag8.sh` → traer SD con `cubegm/diag8_*.log`.
+2. **Swap a stock.bak** (yo ejecuto el protocolo) → boot fábrica → `sh /mnt/sdcard/diag8.sh` → traer SD (baseline).
+3. **DIFF interrupts/devices/iomem 7c vs fábrica** → localizar el servicio AVP (audio/video) sin IRQ o sin registro bajo nuestro kernel.
+4. Vía definitiva si el diff no basta: serial ADR-011 (USB-TTL en ttyS1 @18818600, 115200n8).
 2. **FASE 6:** contrato TreeFrogUI sobre kernel propio (docs/TREEFROGUI_COMPATIBILITY.md) — la UI ya corre; formalizar el contrato.
 3. Decidir kernel de uso diario (6x desplegado vs rollback stock) con el usuario.
 4. Documentar y actualizar GitHub al cierre de cada iteración.

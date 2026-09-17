@@ -79,8 +79,16 @@ SOLO nuestro (extras vendor-baseline): **`i2c /dev entries driver`** (HC_I2C), *
 
 `diag8.sh` desplegado a G:\ (interrupts/iomem/mmz/fds por proceso — correr con un video activo; también sirve de baseline bajo stock si 7c no cura).
 
-# Próximos pasos (sesión siguiente)
+# RESULTADO TEST FÍSICO 7c (2026-09-17) — hipótesis I2C REFUTADA
 
-1. Deploy 7c (protocolo verificado) → boot → test: ¿audio en juegos? ¿video con imagen+sonido? ¿salida de FrogShell/emuladores al menú?
-2. Si 7c cura → documentar config lean-fábrica como baseline board; bisect opcional (confirmar I2C como causa).
-3. Si 7c NO cura → diag8 con reproducción activa + boot stock.bak + diag8 baseline + comparar /proc/interrupts → serial ADR-011 como vía definitiva.
+Deploy 7c verificado (read-back ×2 `15ad1cb7` en G:). Boot OK al menú. **Síntomas IDÉNTICOS a 6x**: juegos sin sonido + salida de emulador colgada (pantalla crema); música sin sonido; video sin imagen ni sonido; salida de FrogShell colgada (pantalla amarilla).
+
+⇒ **Los drivers extras (HC_I2C/IRC/WDT/NAND/TOE/LVDS) NO son la causa.** La causa está en otra diferencia fábrica↔nuestro. Diferencias restantes: (a) hook propietario `[decrypt_sector_data]` ×3 (solo fábrica, ausente del SDK); (b) `unable to open an initial console` (devtmpfs esconde /dev/console del initramfs — fábrica usa /dev estático); (c) `devpts bogus options`/ptmxmode; (d) stack TCP completo + squashfs (inocuos aparentemente); (e) tamaño kernel (3304K vs 4010K código) → timing de arranque distinto (posible raza AMPRPC con AVP).
+
+# Iteración 7d — comparativa interrupts (plan)
+
+`diag8.sh` v2 desplegado (snapshot doble /proc/interrupts con delta 10s + /proc/devices + /proc/misc + /proc/iomem + mmz + sysfs + fds). Protocolo:
+1. diag8 bajo 7c (idle en FrogShell) → captura nuestro estado.
+2. Swap a stock.bak → diag8 bajo fábrica (idle) → baseline.
+3. Diff: IRQs registradas vs ausentes + contadores → localizar el servicio AVP (audio/video) que no recibe/manda interrupciones bajo nuestro kernel.
+4. Vía definitiva si el diff no basta: serial ADR-011 (USB-TTL, ttyS1 @18818600 115200n8).
