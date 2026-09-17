@@ -58,7 +58,7 @@ Test físico 6w (splash+batería, sin menú, kernel íntegro post-boot) + build 
 
 ## NEXT EXACT ACTION
 
-1. **DIAG6X ON-DEVICE (script listo en `G:\diag6x.sh`):** boot consola (kernel 6x) → FrogShell → `sh /mnt/sdcard/diag6x.sh` → traer la SD → analizar `cubegm/diag6x_*.log` (identidad kernel + fds /dev vivos por proceso = contrato Fase 6).
+1. **DIAG7 (test causal bind /etc, `G:\diag7.sh` desplegado):** boot consola (6x) → FrogShell → `sh /mnt/sdcard/diag7.sh` → con el bind montado (si rc=0), PROBAR video + volver-de-FrogShell → traer la SD con el log. Si funcionan con bind = causa raíz confirmada → investigar fallo del bind en contexto S99app bajo nuestro kernel. Si persisten: control con stock.bak para atribuir kernel vs TreeFrogUI v1.5.0_j.
 2. **FASE 6:** contrato TreeFrogUI sobre kernel propio (docs/TREEFROGUI_COMPATIBILITY.md) — la UI ya corre; formalizar el contrato.
 3. Decidir kernel de uso diario (6x desplegado vs rollback stock) con el usuario.
 4. Documentar y actualizar GitHub al cierre de cada iteración.

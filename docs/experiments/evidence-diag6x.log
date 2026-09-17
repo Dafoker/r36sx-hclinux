@@ -1,0 +1,1003 @@
+=== DIAG6X KERNEL PROPIO — Thu Jan  1 00:00:32 UTC 1970 ===
+
+===== A. IDENTIDAD KERNEL (esperado: dafunknoise@DFNK, #14 o similar) =====
+uname -a: Linux buildroot 4.4.186-release #18 PREEMPT Wed Sep 16 23:48:13 -05 2026 mips GNU/Linux
+-- /proc/version --
+Linux version 4.4.186-release (dafunknoise@DFNK) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #18 PREEMPT Wed Sep 16 23:48:13 -05 2026
+-- /proc/cmdline --
+root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug
+-- /proc/cpuinfo (head) --
+system type		: Hichip HC16xx Board
+machine			: Hichip hc16xx
+processor		: 0
+cpu model		: MIPS 74Kc V4.12  FPU V0.0
+BogoMIPS		: 589.82
+wait instruction	: yes
+microsecond timers	: yes
+tlb_entries		: 32
+extra interrupt vector	: yes
+hardware watchpoint	: yes, count: 4, address/irw mask: [0x0ffc, 0x0ffc, 0x0ffb, 0x0ffb]
+isa			: mips1 mips2 mips32r1 mips32r2
+ASEs implemented	: mips16 dsp dsp2
+-- uptime --
+32.43 12.97
+
+===== B. ABI /dev TreeFrogUI — existencia por nodo =====
+OK      /dev/auddec
+OK      /dev/backlight
+FALTA   /dev/check_adc0
+OK      /dev/check_adc1
+FALTA   /dev/check_adc2
+FALTA   /dev/check_adc3
+FALTA   /dev/check_adc4
+OK      /dev/check_adc5
+OK      /dev/dis
+OK      /dev/fb0
+OK      /dev/fb1
+OK      /dev/ge
+FALTA   /dev/input/event0
+FALTA   /dev/input/event1
+OK      /dev/mmz
+OK      /dev/persistentmem
+OK      /dev/sndC0i2so
+FALTA   /dev/sndC0i2so_left
+FALTA   /dev/sndC0i2so_right
+OK      /dev/standby
+OK      /dev/watchdog
+FALTA   /dev/misc
+FALTA   /dev/zap
+OK      /dev/zero
+OK      /dev/tty1
+OK      /dev/ttyS0
+-- /dev completo --
+total 4
+drwxr-xr-x    6 root     root             0 Jan  1 00:00 .
+drwxr-xr-x   18 root     root             0 Sep 15  2026 ..
+-rw-r--r--    1 root     root             0 Jan  1 00:00 .udev
+crw-rw----    1 root     root      235,   0 Jan  1 00:00 ZZd2C
+crw-rw----    1 root     root      250,   0 Jan  1 00:00 auddec
+crw-rw----    1 root     root      249,   0 Jan  1 00:00 audsink
+crw-rw----    1 root     root      247,   0 Jan  1 00:00 avsync0
+crw-rw----    1 root     root      234,   0 Jan  1 00:00 backlight
+drwxr-xr-x    3 root     root             0 Jan  1 00:00 bus
+crw-rw----    1 root     root      230,   0 Jan  1 00:00 check_adc1
+crw-rw----    1 root     root      229,   0 Jan  1 00:00 check_adc5
+crw--w----    1 root     root        5,   1 Jan  1 00:00 console
+crw-rw----    1 root     root       10,  61 Jan  1 00:00 cpu_dma_latency
+crw-rw----    1 root     root      241,   0 Jan  1 00:00 dis
+crw-rw----    1 root     root       10,  63 Jan  1 00:00 dumpstack
+crw-rw----    1 root     root       29,   0 Jan  1 00:00 fb0
+crw-rw----    1 root     root       29,   1 Jan  1 00:00 fb1
+crw-rw----    1 root     root        1,   7 Jan  1 00:00 full
+crw-rw----    1 root     root       10, 229 Jan  1 00:00 fuse
+crw-rw----    1 root     root      231,   0 Jan  1 00:00 ge
+crw-rw----    1 root     root      237,   0 Jan  1 00:00 hdmi
+crw-rw----    1 root     root      238,   0 Jan  1 00:00 hdmi_rx
+crw-rw----    1 root     root        1,  11 Jan  1 00:00 kmsg
+crw-rw----    1 root     root      251,   0 Jan  1 00:00 kshmdev
+-rw-r--r--    1 root     root             1 Jan  1 00:00 mdev.seq
+crw-rw----    1 root     root        1,   1 Jan  1 00:00 mem
+crw-rw----    1 root     root       10,  58 Jan  1 00:00 memory_bandwidth
+crw-rw----    1 root     root      233,   0 Jan  1 00:00 mipi
+brw-rw-r--    1 root     root      179,   0 Jan  1 00:00 mmcblk0
+brw-rw-r--    1 root     root      179,   1 Jan  1 00:00 mmcblk0p1
+crw-rw----    1 root     root      232,   0 Jan  1 00:00 mmz
+crw-rw----    1 root     root       90,   0 Jan  1 00:00 mtd0
+crw-rw----    1 root     root       90,   1 Jan  1 00:00 mtd0ro
+crw-rw----    1 root     root       90,   2 Jan  1 00:00 mtd1
+crw-rw----    1 root     root       90,   3 Jan  1 00:00 mtd1ro
+crw-rw----    1 root     root       90,   4 Jan  1 00:00 mtd2
+crw-rw----    1 root     root       90,   5 Jan  1 00:00 mtd2ro
+crw-rw----    1 root     root       90,   6 Jan  1 00:00 mtd3
+crw-rw----    1 root     root       90,   7 Jan  1 00:00 mtd3ro
+brw-rw----    1 root     root       31,   0 Jan  1 00:00 mtdblock0
+brw-rw----    1 root     root       31,   1 Jan  1 00:00 mtdblock1
+brw-rw----    1 root     root       31,   2 Jan  1 00:00 mtdblock2
+brw-rw----    1 root     root       31,   3 Jan  1 00:00 mtdblock3
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 net
+crw-rw----    1 root     root       10,  60 Jan  1 00:00 network_latency
+crw-rw----    1 root     root       10,  59 Jan  1 00:00 network_throughput
+crw-rw----    1 root     root        1,   3 Jan  1 00:00 null
+crw-rw----    1 root     root       10,  62 Jan  1 00:00 persistentmem
+crw-rw----    1 root     root      239,   0 Jan  1 00:00 pq
+crw-rw----    1 root     root        5,   2 Jan  1 00:00 ptmx
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 pts
+crw-rw----    1 root     root        2, 176 Jan  1 00:00 ptya0
+crw-rw----    1 root     root        2, 177 Jan  1 00:00 ptya1
+crw-rw----    1 root     root        2, 178 Jan  1 00:00 ptya2
+crw-rw----    1 root     root        2, 179 Jan  1 00:00 ptya3
+crw-rw----    1 root     root        2, 180 Jan  1 00:00 ptya4
+crw-rw----    1 root     root        2, 181 Jan  1 00:00 ptya5
+crw-rw----    1 root     root        2, 182 Jan  1 00:00 ptya6
+crw-rw----    1 root     root        2, 183 Jan  1 00:00 ptya7
+crw-rw----    1 root     root        2, 184 Jan  1 00:00 ptya8
+crw-rw----    1 root     root        2, 185 Jan  1 00:00 ptya9
+crw-rw----    1 root     root        2, 186 Jan  1 00:00 ptyaa
+crw-rw----    1 root     root        2, 187 Jan  1 00:00 ptyab
+crw-rw----    1 root     root        2, 188 Jan  1 00:00 ptyac
+crw-rw----    1 root     root        2, 189 Jan  1 00:00 ptyad
+crw-rw----    1 root     root        2, 190 Jan  1 00:00 ptyae
+crw-rw----    1 root     root        2, 191 Jan  1 00:00 ptyaf
+crw-rw----    1 root     root        2, 192 Jan  1 00:00 ptyb0
+crw-rw----    1 root     root        2, 193 Jan  1 00:00 ptyb1
+crw-rw----    1 root     root        2, 194 Jan  1 00:00 ptyb2
+crw-rw----    1 root     root        2, 195 Jan  1 00:00 ptyb3
+crw-rw----    1 root     root        2, 196 Jan  1 00:00 ptyb4
+crw-rw----    1 root     root        2, 197 Jan  1 00:00 ptyb5
+crw-rw----    1 root     root        2, 198 Jan  1 00:00 ptyb6
+crw-rw----    1 root     root        2, 199 Jan  1 00:00 ptyb7
+crw-rw----    1 root     root        2, 200 Jan  1 00:00 ptyb8
+crw-rw----    1 root     root        2, 201 Jan  1 00:00 ptyb9
+crw-rw----    1 root     root        2, 202 Jan  1 00:00 ptyba
+crw-rw----    1 root     root        2, 203 Jan  1 00:00 ptybb
+crw-rw----    1 root     root        2, 204 Jan  1 00:00 ptybc
+crw-rw----    1 root     root        2, 205 Jan  1 00:00 ptybd
+crw-rw----    1 root     root        2, 206 Jan  1 00:00 ptybe
+crw-rw----    1 root     root        2, 207 Jan  1 00:00 ptybf
+crw-rw----    1 root     root        2, 208 Jan  1 00:00 ptyc0
+crw-rw----    1 root     root        2, 209 Jan  1 00:00 ptyc1
+crw-rw----    1 root     root        2, 210 Jan  1 00:00 ptyc2
+crw-rw----    1 root     root        2, 211 Jan  1 00:00 ptyc3
+crw-rw----    1 root     root        2, 212 Jan  1 00:00 ptyc4
+crw-rw----    1 root     root        2, 213 Jan  1 00:00 ptyc5
+crw-rw----    1 root     root        2, 214 Jan  1 00:00 ptyc6
+crw-rw----    1 root     root        2, 215 Jan  1 00:00 ptyc7
+crw-rw----    1 root     root        2, 216 Jan  1 00:00 ptyc8
+crw-rw----    1 root     root        2, 217 Jan  1 00:00 ptyc9
+crw-rw----    1 root     root        2, 218 Jan  1 00:00 ptyca
+crw-rw----    1 root     root        2, 219 Jan  1 00:00 ptycb
+crw-rw----    1 root     root        2, 220 Jan  1 00:00 ptycc
+crw-rw----    1 root     root        2, 221 Jan  1 00:00 ptycd
+crw-rw----    1 root     root        2, 222 Jan  1 00:00 ptyce
+crw-rw----    1 root     root        2, 223 Jan  1 00:00 ptycf
+crw-rw----    1 root     root        2, 224 Jan  1 00:00 ptyd0
+crw-rw----    1 root     root        2, 225 Jan  1 00:00 ptyd1
+crw-rw----    1 root     root        2, 226 Jan  1 00:00 ptyd2
+crw-rw----    1 root     root        2, 227 Jan  1 00:00 ptyd3
+crw-rw----    1 root     root        2, 228 Jan  1 00:00 ptyd4
+crw-rw----    1 root     root        2, 229 Jan  1 00:00 ptyd5
+crw-rw----    1 root     root        2, 230 Jan  1 00:00 ptyd6
+crw-rw----    1 root     root        2, 231 Jan  1 00:00 ptyd7
+crw-rw----    1 root     root        2, 232 Jan  1 00:00 ptyd8
+crw-rw----    1 root     root        2, 233 Jan  1 00:00 ptyd9
+crw-rw----    1 root     root        2, 234 Jan  1 00:00 ptyda
+crw-rw----    1 root     root        2, 235 Jan  1 00:00 ptydb
+crw-rw----    1 root     root        2, 236 Jan  1 00:00 ptydc
+crw-rw----    1 root     root        2, 237 Jan  1 00:00 ptydd
+crw-rw----    1 root     root        2, 238 Jan  1 00:00 ptyde
+crw-rw----    1 root     root        2, 239 Jan  1 00:00 ptydf
+crw-rw----    1 root     root        2, 240 Jan  1 00:00 ptye0
+crw-rw----    1 root     root        2, 241 Jan  1 00:00 ptye1
+crw-rw----    1 root     root        2, 242 Jan  1 00:00 ptye2
+crw-rw----    1 root     root        2, 243 Jan  1 00:00 ptye3
+crw-rw----    1 root     root        2, 244 Jan  1 00:00 ptye4
+crw-rw----    1 root     root        2, 245 Jan  1 00:00 ptye5
+crw-rw----    1 root     root        2, 246 Jan  1 00:00 ptye6
+crw-rw----    1 root     root        2, 247 Jan  1 00:00 ptye7
+crw-rw----    1 root     root        2, 248 Jan  1 00:00 ptye8
+crw-rw----    1 root     root        2, 249 Jan  1 00:00 ptye9
+crw-rw----    1 root     root        2, 250 Jan  1 00:00 ptyea
+crw-rw----    1 root     root        2, 251 Jan  1 00:00 ptyeb
+crw-rw----    1 root     root        2, 252 Jan  1 00:00 ptyec
+crw-rw----    1 root     root        2, 253 Jan  1 00:00 ptyed
+crw-rw----    1 root     root        2, 254 Jan  1 00:00 ptyee
+crw-rw----    1 root     root        2, 255 Jan  1 00:00 ptyef
+crw-rw----    1 root     root        2,   0 Jan  1 00:00 ptyp0
+crw-rw----    1 root     root        2,   1 Jan  1 00:00 ptyp1
+crw-rw----    1 root     root        2,   2 Jan  1 00:00 ptyp2
+crw-rw----    1 root     root        2,   3 Jan  1 00:00 ptyp3
+crw-rw----    1 root     root        2,   4 Jan  1 00:00 ptyp4
+crw-rw----    1 root     root        2,   5 Jan  1 00:00 ptyp5
+crw-rw----    1 root     root        2,   6 Jan  1 00:00 ptyp6
+crw-rw----    1 root     root        2,   7 Jan  1 00:00 ptyp7
+crw-rw----    1 root     root        2,   8 Jan  1 00:00 ptyp8
+crw-rw----    1 root     root        2,   9 Jan  1 00:00 ptyp9
+crw-rw----    1 root     root        2,  10 Jan  1 00:00 ptypa
+crw-rw----    1 root     root        2,  11 Jan  1 00:00 ptypb
+crw-rw----    1 root     root        2,  12 Jan  1 00:00 ptypc
+crw-rw----    1 root     root        2,  13 Jan  1 00:00 ptypd
+crw-rw----    1 root     root        2,  14 Jan  1 00:00 ptype
+crw-rw----    1 root     root        2,  15 Jan  1 00:00 ptypf
+crw-rw----    1 root     root        2,  16 Jan  1 00:00 ptyq0
+crw-rw----    1 root     root        2,  17 Jan  1 00:00 ptyq1
+crw-rw----    1 root     root        2,  18 Jan  1 00:00 ptyq2
+crw-rw----    1 root     root        2,  19 Jan  1 00:00 ptyq3
+crw-rw----    1 root     root        2,  20 Jan  1 00:00 ptyq4
+crw-rw----    1 root     root        2,  21 Jan  1 00:00 ptyq5
+crw-rw----    1 root     root        2,  22 Jan  1 00:00 ptyq6
+crw-rw----    1 root     root        2,  23 Jan  1 00:00 ptyq7
+crw-rw----    1 root     root        2,  24 Jan  1 00:00 ptyq8
+crw-rw----    1 root     root        2,  25 Jan  1 00:00 ptyq9
+crw-rw----    1 root     root        2,  26 Jan  1 00:00 ptyqa
+crw-rw----    1 root     root        2,  27 Jan  1 00:00 ptyqb
+crw-rw----    1 root     root        2,  28 Jan  1 00:00 ptyqc
+crw-rw----    1 root     root        2,  29 Jan  1 00:00 ptyqd
+crw-rw----    1 root     root        2,  30 Jan  1 00:00 ptyqe
+crw-rw----    1 root     root        2,  31 Jan  1 00:00 ptyqf
+crw-rw----    1 root     root        2,  32 Jan  1 00:00 ptyr0
+crw-rw----    1 root     root        2,  33 Jan  1 00:00 ptyr1
+crw-rw----    1 root     root        2,  34 Jan  1 00:00 ptyr2
+crw-rw----    1 root     root        2,  35 Jan  1 00:00 ptyr3
+crw-rw----    1 root     root        2,  36 Jan  1 00:00 ptyr4
+crw-rw----    1 root     root        2,  37 Jan  1 00:00 ptyr5
+crw-rw----    1 root     root        2,  38 Jan  1 00:00 ptyr6
+crw-rw----    1 root     root        2,  39 Jan  1 00:00 ptyr7
+crw-rw----    1 root     root        2,  40 Jan  1 00:00 ptyr8
+crw-rw----    1 root     root        2,  41 Jan  1 00:00 ptyr9
+crw-rw----    1 root     root        2,  42 Jan  1 00:00 ptyra
+crw-rw----    1 root     root        2,  43 Jan  1 00:00 ptyrb
+crw-rw----    1 root     root        2,  44 Jan  1 00:00 ptyrc
+crw-rw----    1 root     root        2,  45 Jan  1 00:00 ptyrd
+crw-rw----    1 root     root        2,  46 Jan  1 00:00 ptyre
+crw-rw----    1 root     root        2,  47 Jan  1 00:00 ptyrf
+crw-rw----    1 root     root        2,  48 Jan  1 00:00 ptys0
+crw-rw----    1 root     root        2,  49 Jan  1 00:00 ptys1
+crw-rw----    1 root     root        2,  50 Jan  1 00:00 ptys2
+crw-rw----    1 root     root        2,  51 Jan  1 00:00 ptys3
+crw-rw----    1 root     root        2,  52 Jan  1 00:00 ptys4
+crw-rw----    1 root     root        2,  53 Jan  1 00:00 ptys5
+crw-rw----    1 root     root        2,  54 Jan  1 00:00 ptys6
+crw-rw----    1 root     root        2,  55 Jan  1 00:00 ptys7
+crw-rw----    1 root     root        2,  56 Jan  1 00:00 ptys8
+crw-rw----    1 root     root        2,  57 Jan  1 00:00 ptys9
+crw-rw----    1 root     root        2,  58 Jan  1 00:00 ptysa
+crw-rw----    1 root     root        2,  59 Jan  1 00:00 ptysb
+crw-rw----    1 root     root        2,  60 Jan  1 00:00 ptysc
+crw-rw----    1 root     root        2,  61 Jan  1 00:00 ptysd
+crw-rw----    1 root     root        2,  62 Jan  1 00:00 ptyse
+crw-rw----    1 root     root        2,  63 Jan  1 00:00 ptysf
+crw-rw----    1 root     root        2,  64 Jan  1 00:00 ptyt0
+crw-rw----    1 root     root        2,  65 Jan  1 00:00 ptyt1
+crw-rw----    1 root     root        2,  66 Jan  1 00:00 ptyt2
+crw-rw----    1 root     root        2,  67 Jan  1 00:00 ptyt3
+crw-rw----    1 root     root        2,  68 Jan  1 00:00 ptyt4
+crw-rw----    1 root     root        2,  69 Jan  1 00:00 ptyt5
+crw-rw----    1 root     root        2,  70 Jan  1 00:00 ptyt6
+crw-rw----    1 root     root        2,  71 Jan  1 00:00 ptyt7
+crw-rw----    1 root     root        2,  72 Jan  1 00:00 ptyt8
+crw-rw----    1 root     root        2,  73 Jan  1 00:00 ptyt9
+crw-rw----    1 root     root        2,  74 Jan  1 00:00 ptyta
+crw-rw----    1 root     root        2,  75 Jan  1 00:00 ptytb
+crw-rw----    1 root     root        2,  76 Jan  1 00:00 ptytc
+crw-rw----    1 root     root        2,  77 Jan  1 00:00 ptytd
+crw-rw----    1 root     root        2,  78 Jan  1 00:00 ptyte
+crw-rw----    1 root     root        2,  79 Jan  1 00:00 ptytf
+crw-rw----    1 root     root        2,  80 Jan  1 00:00 ptyu0
+crw-rw----    1 root     root        2,  81 Jan  1 00:00 ptyu1
+crw-rw----    1 root     root        2,  82 Jan  1 00:00 ptyu2
+crw-rw----    1 root     root        2,  83 Jan  1 00:00 ptyu3
+crw-rw----    1 root     root        2,  84 Jan  1 00:00 ptyu4
+crw-rw----    1 root     root        2,  85 Jan  1 00:00 ptyu5
+crw-rw----    1 root     root        2,  86 Jan  1 00:00 ptyu6
+crw-rw----    1 root     root        2,  87 Jan  1 00:00 ptyu7
+crw-rw----    1 root     root        2,  88 Jan  1 00:00 ptyu8
+crw-rw----    1 root     root        2,  89 Jan  1 00:00 ptyu9
+crw-rw----    1 root     root        2,  90 Jan  1 00:00 ptyua
+crw-rw----    1 root     root        2,  91 Jan  1 00:00 ptyub
+crw-rw----    1 root     root        2,  92 Jan  1 00:00 ptyuc
+crw-rw----    1 root     root        2,  93 Jan  1 00:00 ptyud
+crw-rw----    1 root     root        2,  94 Jan  1 00:00 ptyue
+crw-rw----    1 root     root        2,  95 Jan  1 00:00 ptyuf
+crw-rw----    1 root     root        2,  96 Jan  1 00:00 ptyv0
+crw-rw----    1 root     root        2,  97 Jan  1 00:00 ptyv1
+crw-rw----    1 root     root        2,  98 Jan  1 00:00 ptyv2
+crw-rw----    1 root     root        2,  99 Jan  1 00:00 ptyv3
+crw-rw----    1 root     root        2, 100 Jan  1 00:00 ptyv4
+crw-rw----    1 root     root        2, 101 Jan  1 00:00 ptyv5
+crw-rw----    1 root     root        2, 102 Jan  1 00:00 ptyv6
+crw-rw----    1 root     root        2, 103 Jan  1 00:00 ptyv7
+crw-rw----    1 root     root        2, 104 Jan  1 00:00 ptyv8
+crw-rw----    1 root     root        2, 105 Jan  1 00:00 ptyv9
+crw-rw----    1 root     root        2, 106 Jan  1 00:00 ptyva
+crw-rw----    1 root     root        2, 107 Jan  1 00:00 ptyvb
+crw-rw----    1 root     root        2, 108 Jan  1 00:00 ptyvc
+crw-rw----    1 root     root        2, 109 Jan  1 00:00 ptyvd
+crw-rw----    1 root     root        2, 110 Jan  1 00:00 ptyve
+crw-rw----    1 root     root        2, 111 Jan  1 00:00 ptyvf
+crw-rw----    1 root     root        2, 112 Jan  1 00:00 ptyw0
+crw-rw----    1 root     root        2, 113 Jan  1 00:00 ptyw1
+crw-rw----    1 root     root        2, 114 Jan  1 00:00 ptyw2
+crw-rw----    1 root     root        2, 115 Jan  1 00:00 ptyw3
+crw-rw----    1 root     root        2, 116 Jan  1 00:00 ptyw4
+crw-rw----    1 root     root        2, 117 Jan  1 00:00 ptyw5
+crw-rw----    1 root     root        2, 118 Jan  1 00:00 ptyw6
+crw-rw----    1 root     root        2, 119 Jan  1 00:00 ptyw7
+crw-rw----    1 root     root        2, 120 Jan  1 00:00 ptyw8
+crw-rw----    1 root     root        2, 121 Jan  1 00:00 ptyw9
+crw-rw----    1 root     root        2, 122 Jan  1 00:00 ptywa
+crw-rw----    1 root     root        2, 123 Jan  1 00:00 ptywb
+crw-rw----    1 root     root        2, 124 Jan  1 00:00 ptywc
+crw-rw----    1 root     root        2, 125 Jan  1 00:00 ptywd
+crw-rw----    1 root     root        2, 126 Jan  1 00:00 ptywe
+crw-rw----    1 root     root        2, 127 Jan  1 00:00 ptywf
+crw-rw----    1 root     root        2, 128 Jan  1 00:00 ptyx0
+crw-rw----    1 root     root        2, 129 Jan  1 00:00 ptyx1
+crw-rw----    1 root     root        2, 130 Jan  1 00:00 ptyx2
+crw-rw----    1 root     root        2, 131 Jan  1 00:00 ptyx3
+crw-rw----    1 root     root        2, 132 Jan  1 00:00 ptyx4
+crw-rw----    1 root     root        2, 133 Jan  1 00:00 ptyx5
+crw-rw----    1 root     root        2, 134 Jan  1 00:00 ptyx6
+crw-rw----    1 root     root        2, 135 Jan  1 00:00 ptyx7
+crw-rw----    1 root     root        2, 136 Jan  1 00:00 ptyx8
+crw-rw----    1 root     root        2, 137 Jan  1 00:00 ptyx9
+crw-rw----    1 root     root        2, 138 Jan  1 00:00 ptyxa
+crw-rw----    1 root     root        2, 139 Jan  1 00:00 ptyxb
+crw-rw----    1 root     root        2, 140 Jan  1 00:00 ptyxc
+crw-rw----    1 root     root        2, 141 Jan  1 00:00 ptyxd
+crw-rw----    1 root     root        2, 142 Jan  1 00:00 ptyxe
+crw-rw----    1 root     root        2, 143 Jan  1 00:00 ptyxf
+crw-rw----    1 root     root        2, 144 Jan  1 00:00 ptyy0
+crw-rw----    1 root     root        2, 145 Jan  1 00:00 ptyy1
+crw-rw----    1 root     root        2, 146 Jan  1 00:00 ptyy2
+crw-rw----    1 root     root        2, 147 Jan  1 00:00 ptyy3
+crw-rw----    1 root     root        2, 148 Jan  1 00:00 ptyy4
+crw-rw----    1 root     root        2, 149 Jan  1 00:00 ptyy5
+crw-rw----    1 root     root        2, 150 Jan  1 00:00 ptyy6
+crw-rw----    1 root     root        2, 151 Jan  1 00:00 ptyy7
+crw-rw----    1 root     root        2, 152 Jan  1 00:00 ptyy8
+crw-rw----    1 root     root        2, 153 Jan  1 00:00 ptyy9
+crw-rw----    1 root     root        2, 154 Jan  1 00:00 ptyya
+crw-rw----    1 root     root        2, 155 Jan  1 00:00 ptyyb
+crw-rw----    1 root     root        2, 156 Jan  1 00:00 ptyyc
+crw-rw----    1 root     root        2, 157 Jan  1 00:00 ptyyd
+crw-rw----    1 root     root        2, 158 Jan  1 00:00 ptyye
+crw-rw----    1 root     root        2, 159 Jan  1 00:00 ptyyf
+crw-rw----    1 root     root        2, 160 Jan  1 00:00 ptyz0
+crw-rw----    1 root     root        2, 161 Jan  1 00:00 ptyz1
+crw-rw----    1 root     root        2, 162 Jan  1 00:00 ptyz2
+crw-rw----    1 root     root        2, 163 Jan  1 00:00 ptyz3
+crw-rw----    1 root     root        2, 164 Jan  1 00:00 ptyz4
+crw-rw----    1 root     root        2, 165 Jan  1 00:00 ptyz5
+crw-rw----    1 root     root        2, 166 Jan  1 00:00 ptyz6
+crw-rw----    1 root     root        2, 167 Jan  1 00:00 ptyz7
+crw-rw----    1 root     root        2, 168 Jan  1 00:00 ptyz8
+crw-rw----    1 root     root        2, 169 Jan  1 00:00 ptyz9
+crw-rw----    1 root     root        2, 170 Jan  1 00:00 ptyza
+crw-rw----    1 root     root        2, 171 Jan  1 00:00 ptyzb
+crw-rw----    1 root     root        2, 172 Jan  1 00:00 ptyzc
+crw-rw----    1 root     root        2, 173 Jan  1 00:00 ptyzd
+crw-rw----    1 root     root        2, 174 Jan  1 00:00 ptyze
+crw-rw----    1 root     root        2, 175 Jan  1 00:00 ptyzf
+crw-rw----    1 root     root        1,   8 Jan  1 00:00 random
+drwxrwxrwx    2 root     root             0 Jan  1 00:00 shm
+crw-rw----    1 root     root      244,   0 Jan  1 00:00 sndC0i2si
+crw-rw----    1 root     root      245,   0 Jan  1 00:00 sndC0i2so
+crw-rw----    1 root     root      243,   0 Jan  1 00:00 sndC0spo
+crw-rw----    1 root     root      153,   0 Jan  1 00:00 spidev32766.1
+crw-rw----    1 root     root      236,   0 Jan  1 00:00 standby
+crw-rw----    1 root     root        5,   0 Jan  1 00:00 tty
+crw-rw----    1 root     root        4,   0 Jan  1 00:00 tty0
+crw-rw----    1 root     root        4,   1 Jan  1 00:00 tty1
+crw-rw----    1 root     root        4,  10 Jan  1 00:00 tty10
+crw-rw----    1 root     root        4,  11 Jan  1 00:00 tty11
+crw-rw----    1 root     root        4,  12 Jan  1 00:00 tty12
+crw-rw----    1 root     root        4,  13 Jan  1 00:00 tty13
+crw-rw----    1 root     root        4,  14 Jan  1 00:00 tty14
+crw-rw----    1 root     root        4,  15 Jan  1 00:00 tty15
+crw-rw----    1 root     root        4,  16 Jan  1 00:00 tty16
+crw-rw----    1 root     root        4,  17 Jan  1 00:00 tty17
+crw-rw----    1 root     root        4,  18 Jan  1 00:00 tty18
+crw-rw----    1 root     root        4,  19 Jan  1 00:00 tty19
+crw-rw----    1 root     root        4,   2 Jan  1 00:00 tty2
+crw-rw----    1 root     root        4,  20 Jan  1 00:00 tty20
+crw-rw----    1 root     root        4,  21 Jan  1 00:00 tty21
+crw-rw----    1 root     root        4,  22 Jan  1 00:00 tty22
+crw-rw----    1 root     root        4,  23 Jan  1 00:00 tty23
+crw-rw----    1 root     root        4,  24 Jan  1 00:00 tty24
+crw-rw----    1 root     root        4,  25 Jan  1 00:00 tty25
+crw-rw----    1 root     root        4,  26 Jan  1 00:00 tty26
+crw-rw----    1 root     root        4,  27 Jan  1 00:00 tty27
+crw-rw----    1 root     root        4,  28 Jan  1 00:00 tty28
+crw-rw----    1 root     root        4,  29 Jan  1 00:00 tty29
+crw-rw----    1 root     root        4,   3 Jan  1 00:00 tty3
+crw-rw----    1 root     root        4,  30 Jan  1 00:00 tty30
+crw-rw----    1 root     root        4,  31 Jan  1 00:00 tty31
+crw-rw----    1 root     root        4,  32 Jan  1 00:00 tty32
+crw-rw----    1 root     root        4,  33 Jan  1 00:00 tty33
+crw-rw----    1 root     root        4,  34 Jan  1 00:00 tty34
+crw-rw----    1 root     root        4,  35 Jan  1 00:00 tty35
+crw-rw----    1 root     root        4,  36 Jan  1 00:00 tty36
+crw-rw----    1 root     root        4,  37 Jan  1 00:00 tty37
+crw-rw----    1 root     root        4,  38 Jan  1 00:00 tty38
+crw-rw----    1 root     root        4,  39 Jan  1 00:00 tty39
+crw-rw----    1 root     root        4,   4 Jan  1 00:00 tty4
+crw-rw----    1 root     root        4,  40 Jan  1 00:00 tty40
+crw-rw----    1 root     root        4,  41 Jan  1 00:00 tty41
+crw-rw----    1 root     root        4,  42 Jan  1 00:00 tty42
+crw-rw----    1 root     root        4,  43 Jan  1 00:00 tty43
+crw-rw----    1 root     root        4,  44 Jan  1 00:00 tty44
+crw-rw----    1 root     root        4,  45 Jan  1 00:00 tty45
+crw-rw----    1 root     root        4,  46 Jan  1 00:00 tty46
+crw-rw----    1 root     root        4,  47 Jan  1 00:00 tty47
+crw-rw----    1 root     root        4,  48 Jan  1 00:00 tty48
+crw-rw----    1 root     root        4,  49 Jan  1 00:00 tty49
+crw-rw----    1 root     root        4,   5 Jan  1 00:00 tty5
+crw-rw----    1 root     root        4,  50 Jan  1 00:00 tty50
+crw-rw----    1 root     root        4,  51 Jan  1 00:00 tty51
+crw-rw----    1 root     root        4,  52 Jan  1 00:00 tty52
+crw-rw----    1 root     root        4,  53 Jan  1 00:00 tty53
+crw-rw----    1 root     root        4,  54 Jan  1 00:00 tty54
+crw-rw----    1 root     root        4,  55 Jan  1 00:00 tty55
+crw-rw----    1 root     root        4,  56 Jan  1 00:00 tty56
+crw-rw----    1 root     root        4,  57 Jan  1 00:00 tty57
+crw-rw----    1 root     root        4,  58 Jan  1 00:00 tty58
+crw-rw----    1 root     root        4,  59 Jan  1 00:00 tty59
+crw-rw----    1 root     root        4,   6 Jan  1 00:00 tty6
+crw-rw----    1 root     root        4,  60 Jan  1 00:00 tty60
+crw-rw----    1 root     root        4,  61 Jan  1 00:00 tty61
+crw-rw----    1 root     root        4,  62 Jan  1 00:00 tty62
+crw-rw----    1 root     root        4,  63 Jan  1 00:00 tty63
+crw-rw----    1 root     root        4,   7 Jan  1 00:00 tty7
+crw-rw----    1 root     root        4,   8 Jan  1 00:00 tty8
+crw-rw----    1 root     root        4,   9 Jan  1 00:00 tty9
+crw-rw----    1 root     root        4,  64 Jan  1 00:00 ttyS0
+crw-rw----    1 root     root        4,  65 Jan  1 00:00 ttyS1
+crw-rw----    1 root     root        4,  66 Jan  1 00:00 ttyS2
+crw-rw----    1 root     root        4,  67 Jan  1 00:00 ttyS3
+crw-rw----    1 root     root        3, 176 Jan  1 00:00 ttya0
+crw-rw----    1 root     root        3, 177 Jan  1 00:00 ttya1
+crw-rw----    1 root     root        3, 178 Jan  1 00:00 ttya2
+crw-rw----    1 root     root        3, 179 Jan  1 00:00 ttya3
+crw-rw----    1 root     root        3, 180 Jan  1 00:00 ttya4
+crw-rw----    1 root     root        3, 181 Jan  1 00:00 ttya5
+crw-rw----    1 root     root        3, 182 Jan  1 00:00 ttya6
+crw-rw----    1 root     root        3, 183 Jan  1 00:00 ttya7
+crw-rw----    1 root     root        3, 184 Jan  1 00:00 ttya8
+crw-rw----    1 root     root        3, 185 Jan  1 00:00 ttya9
+crw-rw----    1 root     root        3, 186 Jan  1 00:00 ttyaa
+crw-rw----    1 root     root        3, 187 Jan  1 00:00 ttyab
+crw-rw----    1 root     root        3, 188 Jan  1 00:00 ttyac
+crw-rw----    1 root     root        3, 189 Jan  1 00:00 ttyad
+crw-rw----    1 root     root        3, 190 Jan  1 00:00 ttyae
+crw-rw----    1 root     root        3, 191 Jan  1 00:00 ttyaf
+crw-rw----    1 root     root        3, 192 Jan  1 00:00 ttyb0
+crw-rw----    1 root     root        3, 193 Jan  1 00:00 ttyb1
+crw-rw----    1 root     root        3, 194 Jan  1 00:00 ttyb2
+crw-rw----    1 root     root        3, 195 Jan  1 00:00 ttyb3
+crw-rw----    1 root     root        3, 196 Jan  1 00:00 ttyb4
+crw-rw----    1 root     root        3, 197 Jan  1 00:00 ttyb5
+crw-rw----    1 root     root        3, 198 Jan  1 00:00 ttyb6
+crw-rw----    1 root     root        3, 199 Jan  1 00:00 ttyb7
+crw-rw----    1 root     root        3, 200 Jan  1 00:00 ttyb8
+crw-rw----    1 root     root        3, 201 Jan  1 00:00 ttyb9
+crw-rw----    1 root     root        3, 202 Jan  1 00:00 ttyba
+crw-rw----    1 root     root        3, 203 Jan  1 00:00 ttybb
+crw-rw----    1 root     root        3, 204 Jan  1 00:00 ttybc
+crw-rw----    1 root     root        3, 205 Jan  1 00:00 ttybd
+crw-rw----    1 root     root        3, 206 Jan  1 00:00 ttybe
+crw-rw----    1 root     root        3, 207 Jan  1 00:00 ttybf
+crw-rw----    1 root     root        3, 208 Jan  1 00:00 ttyc0
+crw-rw----    1 root     root        3, 209 Jan  1 00:00 ttyc1
+crw-rw----    1 root     root        3, 210 Jan  1 00:00 ttyc2
+crw-rw----    1 root     root        3, 211 Jan  1 00:00 ttyc3
+crw-rw----    1 root     root        3, 212 Jan  1 00:00 ttyc4
+crw-rw----    1 root     root        3, 213 Jan  1 00:00 ttyc5
+crw-rw----    1 root     root        3, 214 Jan  1 00:00 ttyc6
+crw-rw----    1 root     root        3, 215 Jan  1 00:00 ttyc7
+crw-rw----    1 root     root        3, 216 Jan  1 00:00 ttyc8
+crw-rw----    1 root     root        3, 217 Jan  1 00:00 ttyc9
+crw-rw----    1 root     root        3, 218 Jan  1 00:00 ttyca
+crw-rw----    1 root     root        3, 219 Jan  1 00:00 ttycb
+crw-rw----    1 root     root        3, 220 Jan  1 00:00 ttycc
+crw-rw----    1 root     root        3, 221 Jan  1 00:00 ttycd
+crw-rw----    1 root     root        3, 222 Jan  1 00:00 ttyce
+crw-rw----    1 root     root        3, 223 Jan  1 00:00 ttycf
+crw-rw----    1 root     root        3, 224 Jan  1 00:00 ttyd0
+crw-rw----    1 root     root        3, 225 Jan  1 00:00 ttyd1
+crw-rw----    1 root     root        3, 226 Jan  1 00:00 ttyd2
+crw-rw----    1 root     root        3, 227 Jan  1 00:00 ttyd3
+crw-rw----    1 root     root        3, 228 Jan  1 00:00 ttyd4
+crw-rw----    1 root     root        3, 229 Jan  1 00:00 ttyd5
+crw-rw----    1 root     root        3, 230 Jan  1 00:00 ttyd6
+crw-rw----    1 root     root        3, 231 Jan  1 00:00 ttyd7
+crw-rw----    1 root     root        3, 232 Jan  1 00:00 ttyd8
+crw-rw----    1 root     root        3, 233 Jan  1 00:00 ttyd9
+crw-rw----    1 root     root        3, 234 Jan  1 00:00 ttyda
+crw-rw----    1 root     root        3, 235 Jan  1 00:00 ttydb
+crw-rw----    1 root     root        3, 236 Jan  1 00:00 ttydc
+crw-rw----    1 root     root        3, 237 Jan  1 00:00 ttydd
+crw-rw----    1 root     root        3, 238 Jan  1 00:00 ttyde
+crw-rw----    1 root     root        3, 239 Jan  1 00:00 ttydf
+crw-rw----    1 root     root        3, 240 Jan  1 00:00 ttye0
+crw-rw----    1 root     root        3, 241 Jan  1 00:00 ttye1
+crw-rw----    1 root     root        3, 242 Jan  1 00:00 ttye2
+crw-rw----    1 root     root        3, 243 Jan  1 00:00 ttye3
+crw-rw----    1 root     root        3, 244 Jan  1 00:00 ttye4
+crw-rw----    1 root     root        3, 245 Jan  1 00:00 ttye5
+crw-rw----    1 root     root        3, 246 Jan  1 00:00 ttye6
+crw-rw----    1 root     root        3, 247 Jan  1 00:00 ttye7
+crw-rw----    1 root     root        3, 248 Jan  1 00:00 ttye8
+crw-rw----    1 root     root        3, 249 Jan  1 00:00 ttye9
+crw-rw----    1 root     root        3, 250 Jan  1 00:00 ttyea
+crw-rw----    1 root     root        3, 251 Jan  1 00:00 ttyeb
+crw-rw----    1 root     root        3, 252 Jan  1 00:00 ttyec
+crw-rw----    1 root     root        3, 253 Jan  1 00:00 ttyed
+crw-rw----    1 root     root        3, 254 Jan  1 00:00 ttyee
+crw-rw----    1 root     root        3, 255 Jan  1 00:00 ttyef
+crw-rw----    1 root     root        3,   0 Jan  1 00:00 ttyp0
+crw-rw----    1 root     root        3,   1 Jan  1 00:00 ttyp1
+crw-rw----    1 root     root        3,   2 Jan  1 00:00 ttyp2
+crw-rw----    1 root     root        3,   3 Jan  1 00:00 ttyp3
+crw-rw----    1 root     root        3,   4 Jan  1 00:00 ttyp4
+crw-rw----    1 root     root        3,   5 Jan  1 00:00 ttyp5
+crw-rw----    1 root     root        3,   6 Jan  1 00:00 ttyp6
+crw-rw----    1 root     root        3,   7 Jan  1 00:00 ttyp7
+crw-rw----    1 root     root        3,   8 Jan  1 00:00 ttyp8
+crw-rw----    1 root     root        3,   9 Jan  1 00:00 ttyp9
+crw-rw----    1 root     root        3,  10 Jan  1 00:00 ttypa
+crw-rw----    1 root     root        3,  11 Jan  1 00:00 ttypb
+crw-rw----    1 root     root        3,  12 Jan  1 00:00 ttypc
+crw-rw----    1 root     root        3,  13 Jan  1 00:00 ttypd
+crw-rw----    1 root     root        3,  14 Jan  1 00:00 ttype
+crw-rw----    1 root     root        3,  15 Jan  1 00:00 ttypf
+crw-rw----    1 root     root        3,  16 Jan  1 00:00 ttyq0
+crw-rw----    1 root     root        3,  17 Jan  1 00:00 ttyq1
+crw-rw----    1 root     root        3,  18 Jan  1 00:00 ttyq2
+crw-rw----    1 root     root        3,  19 Jan  1 00:00 ttyq3
+crw-rw----    1 root     root        3,  20 Jan  1 00:00 ttyq4
+crw-rw----    1 root     root        3,  21 Jan  1 00:00 ttyq5
+crw-rw----    1 root     root        3,  22 Jan  1 00:00 ttyq6
+crw-rw----    1 root     root        3,  23 Jan  1 00:00 ttyq7
+crw-rw----    1 root     root        3,  24 Jan  1 00:00 ttyq8
+crw-rw----    1 root     root        3,  25 Jan  1 00:00 ttyq9
+crw-rw----    1 root     root        3,  26 Jan  1 00:00 ttyqa
+crw-rw----    1 root     root        3,  27 Jan  1 00:00 ttyqb
+crw-rw----    1 root     root        3,  28 Jan  1 00:00 ttyqc
+crw-rw----    1 root     root        3,  29 Jan  1 00:00 ttyqd
+crw-rw----    1 root     root        3,  30 Jan  1 00:00 ttyqe
+crw-rw----    1 root     root        3,  31 Jan  1 00:00 ttyqf
+crw-rw----    1 root     root        3,  32 Jan  1 00:00 ttyr0
+crw-rw----    1 root     root        3,  33 Jan  1 00:00 ttyr1
+crw-rw----    1 root     root        3,  34 Jan  1 00:00 ttyr2
+crw-rw----    1 root     root        3,  35 Jan  1 00:00 ttyr3
+crw-rw----    1 root     root        3,  36 Jan  1 00:00 ttyr4
+crw-rw----    1 root     root        3,  37 Jan  1 00:00 ttyr5
+crw-rw----    1 root     root        3,  38 Jan  1 00:00 ttyr6
+crw-rw----    1 root     root        3,  39 Jan  1 00:00 ttyr7
+crw-rw----    1 root     root        3,  40 Jan  1 00:00 ttyr8
+crw-rw----    1 root     root        3,  41 Jan  1 00:00 ttyr9
+crw-rw----    1 root     root        3,  42 Jan  1 00:00 ttyra
+crw-rw----    1 root     root        3,  43 Jan  1 00:00 ttyrb
+crw-rw----    1 root     root        3,  44 Jan  1 00:00 ttyrc
+crw-rw----    1 root     root        3,  45 Jan  1 00:00 ttyrd
+crw-rw----    1 root     root        3,  46 Jan  1 00:00 ttyre
+crw-rw----    1 root     root        3,  47 Jan  1 00:00 ttyrf
+crw-rw----    1 root     root        3,  48 Jan  1 00:00 ttys0
+crw-rw----    1 root     root        3,  49 Jan  1 00:00 ttys1
+crw-rw----    1 root     root        3,  50 Jan  1 00:00 ttys2
+crw-rw----    1 root     root        3,  51 Jan  1 00:00 ttys3
+crw-rw----    1 root     root        3,  52 Jan  1 00:00 ttys4
+crw-rw----    1 root     root        3,  53 Jan  1 00:00 ttys5
+crw-rw----    1 root     root        3,  54 Jan  1 00:00 ttys6
+crw-rw----    1 root     root        3,  55 Jan  1 00:00 ttys7
+crw-rw----    1 root     root        3,  56 Jan  1 00:00 ttys8
+crw-rw----    1 root     root        3,  57 Jan  1 00:00 ttys9
+crw-rw----    1 root     root        3,  58 Jan  1 00:00 ttysa
+crw-rw----    1 root     root        3,  59 Jan  1 00:00 ttysb
+crw-rw----    1 root     root        3,  60 Jan  1 00:00 ttysc
+crw-rw----    1 root     root        3,  61 Jan  1 00:00 ttysd
+crw-rw----    1 root     root        3,  62 Jan  1 00:00 ttyse
+crw-rw----    1 root     root        3,  63 Jan  1 00:00 ttysf
+crw-rw----    1 root     root        3,  64 Jan  1 00:00 ttyt0
+crw-rw----    1 root     root        3,  65 Jan  1 00:00 ttyt1
+crw-rw----    1 root     root        3,  66 Jan  1 00:00 ttyt2
+crw-rw----    1 root     root        3,  67 Jan  1 00:00 ttyt3
+crw-rw----    1 root     root        3,  68 Jan  1 00:00 ttyt4
+crw-rw----    1 root     root        3,  69 Jan  1 00:00 ttyt5
+crw-rw----    1 root     root        3,  70 Jan  1 00:00 ttyt6
+crw-rw----    1 root     root        3,  71 Jan  1 00:00 ttyt7
+crw-rw----    1 root     root        3,  72 Jan  1 00:00 ttyt8
+crw-rw----    1 root     root        3,  73 Jan  1 00:00 ttyt9
+crw-rw----    1 root     root        3,  74 Jan  1 00:00 ttyta
+crw-rw----    1 root     root        3,  75 Jan  1 00:00 ttytb
+crw-rw----    1 root     root        3,  76 Jan  1 00:00 ttytc
+crw-rw----    1 root     root        3,  77 Jan  1 00:00 ttytd
+crw-rw----    1 root     root        3,  78 Jan  1 00:00 ttyte
+crw-rw----    1 root     root        3,  79 Jan  1 00:00 ttytf
+crw-rw----    1 root     root        3,  80 Jan  1 00:00 ttyu0
+crw-rw----    1 root     root        3,  81 Jan  1 00:00 ttyu1
+crw-rw----    1 root     root        3,  82 Jan  1 00:00 ttyu2
+crw-rw----    1 root     root        3,  83 Jan  1 00:00 ttyu3
+crw-rw----    1 root     root        3,  84 Jan  1 00:00 ttyu4
+crw-rw----    1 root     root        3,  85 Jan  1 00:00 ttyu5
+crw-rw----    1 root     root        3,  86 Jan  1 00:00 ttyu6
+crw-rw----    1 root     root        3,  87 Jan  1 00:00 ttyu7
+crw-rw----    1 root     root        3,  88 Jan  1 00:00 ttyu8
+crw-rw----    1 root     root        3,  89 Jan  1 00:00 ttyu9
+crw-rw----    1 root     root        3,  90 Jan  1 00:00 ttyua
+crw-rw----    1 root     root        3,  91 Jan  1 00:00 ttyub
+crw-rw----    1 root     root        3,  92 Jan  1 00:00 ttyuc
+crw-rw----    1 root     root        3,  93 Jan  1 00:00 ttyud
+crw-rw----    1 root     root        3,  94 Jan  1 00:00 ttyue
+crw-rw----    1 root     root        3,  95 Jan  1 00:00 ttyuf
+crw-rw----    1 root     root        3,  96 Jan  1 00:00 ttyv0
+crw-rw----    1 root     root        3,  97 Jan  1 00:00 ttyv1
+crw-rw----    1 root     root        3,  98 Jan  1 00:00 ttyv2
+crw-rw----    1 root     root        3,  99 Jan  1 00:00 ttyv3
+crw-rw----    1 root     root        3, 100 Jan  1 00:00 ttyv4
+crw-rw----    1 root     root        3, 101 Jan  1 00:00 ttyv5
+crw-rw----    1 root     root        3, 102 Jan  1 00:00 ttyv6
+crw-rw----    1 root     root        3, 103 Jan  1 00:00 ttyv7
+crw-rw----    1 root     root        3, 104 Jan  1 00:00 ttyv8
+crw-rw----    1 root     root        3, 105 Jan  1 00:00 ttyv9
+crw-rw----    1 root     root        3, 106 Jan  1 00:00 ttyva
+crw-rw----    1 root     root        3, 107 Jan  1 00:00 ttyvb
+crw-rw----    1 root     root        3, 108 Jan  1 00:00 ttyvc
+crw-rw----    1 root     root        3, 109 Jan  1 00:00 ttyvd
+crw-rw----    1 root     root        3, 110 Jan  1 00:00 ttyve
+crw-rw----    1 root     root        3, 111 Jan  1 00:00 ttyvf
+crw-rw----    1 root     root        3, 112 Jan  1 00:00 ttyw0
+crw-rw----    1 root     root        3, 113 Jan  1 00:00 ttyw1
+crw-rw----    1 root     root        3, 114 Jan  1 00:00 ttyw2
+crw-rw----    1 root     root        3, 115 Jan  1 00:00 ttyw3
+crw-rw----    1 root     root        3, 116 Jan  1 00:00 ttyw4
+crw-rw----    1 root     root        3, 117 Jan  1 00:00 ttyw5
+crw-rw----    1 root     root        3, 118 Jan  1 00:00 ttyw6
+crw-rw----    1 root     root        3, 119 Jan  1 00:00 ttyw7
+crw-rw----    1 root     root        3, 120 Jan  1 00:00 ttyw8
+crw-rw----    1 root     root        3, 121 Jan  1 00:00 ttyw9
+crw-rw----    1 root     root        3, 122 Jan  1 00:00 ttywa
+crw-rw----    1 root     root        3, 123 Jan  1 00:00 ttywb
+crw-rw----    1 root     root        3, 124 Jan  1 00:00 ttywc
+crw-rw----    1 root     root        3, 125 Jan  1 00:00 ttywd
+crw-rw----    1 root     root        3, 126 Jan  1 00:00 ttywe
+crw-rw----    1 root     root        3, 127 Jan  1 00:00 ttywf
+crw-rw----    1 root     root        3, 128 Jan  1 00:00 ttyx0
+crw-rw----    1 root     root        3, 129 Jan  1 00:00 ttyx1
+crw-rw----    1 root     root        3, 130 Jan  1 00:00 ttyx2
+crw-rw----    1 root     root        3, 131 Jan  1 00:00 ttyx3
+crw-rw----    1 root     root        3, 132 Jan  1 00:00 ttyx4
+crw-rw----    1 root     root        3, 133 Jan  1 00:00 ttyx5
+crw-rw----    1 root     root        3, 134 Jan  1 00:00 ttyx6
+crw-rw----    1 root     root        3, 135 Jan  1 00:00 ttyx7
+crw-rw----    1 root     root        3, 136 Jan  1 00:00 ttyx8
+crw-rw----    1 root     root        3, 137 Jan  1 00:00 ttyx9
+crw-rw----    1 root     root        3, 138 Jan  1 00:00 ttyxa
+crw-rw----    1 root     root        3, 139 Jan  1 00:00 ttyxb
+crw-rw----    1 root     root        3, 140 Jan  1 00:00 ttyxc
+crw-rw----    1 root     root        3, 141 Jan  1 00:00 ttyxd
+crw-rw----    1 root     root        3, 142 Jan  1 00:00 ttyxe
+crw-rw----    1 root     root        3, 143 Jan  1 00:00 ttyxf
+crw-rw----    1 root     root        3, 144 Jan  1 00:00 ttyy0
+crw-rw----    1 root     root        3, 145 Jan  1 00:00 ttyy1
+crw-rw----    1 root     root        3, 146 Jan  1 00:00 ttyy2
+crw-rw----    1 root     root        3, 147 Jan  1 00:00 ttyy3
+crw-rw----    1 root     root        3, 148 Jan  1 00:00 ttyy4
+crw-rw----    1 root     root        3, 149 Jan  1 00:00 ttyy5
+crw-rw----    1 root     root        3, 150 Jan  1 00:00 ttyy6
+crw-rw----    1 root     root        3, 151 Jan  1 00:00 ttyy7
+crw-rw----    1 root     root        3, 152 Jan  1 00:00 ttyy8
+crw-rw----    1 root     root        3, 153 Jan  1 00:00 ttyy9
+crw-rw----    1 root     root        3, 154 Jan  1 00:00 ttyya
+crw-rw----    1 root     root        3, 155 Jan  1 00:00 ttyyb
+crw-rw----    1 root     root        3, 156 Jan  1 00:00 ttyyc
+crw-rw----    1 root     root        3, 157 Jan  1 00:00 ttyyd
+crw-rw----    1 root     root        3, 158 Jan  1 00:00 ttyye
+crw-rw----    1 root     root        3, 159 Jan  1 00:00 ttyyf
+crw-rw----    1 root     root        3, 160 Jan  1 00:00 ttyz0
+crw-rw----    1 root     root        3, 161 Jan  1 00:00 ttyz1
+crw-rw----    1 root     root        3, 162 Jan  1 00:00 ttyz2
+crw-rw----    1 root     root        3, 163 Jan  1 00:00 ttyz3
+crw-rw----    1 root     root        3, 164 Jan  1 00:00 ttyz4
+crw-rw----    1 root     root        3, 165 Jan  1 00:00 ttyz5
+crw-rw----    1 root     root        3, 166 Jan  1 00:00 ttyz6
+crw-rw----    1 root     root        3, 167 Jan  1 00:00 ttyz7
+crw-rw----    1 root     root        3, 168 Jan  1 00:00 ttyz8
+crw-rw----    1 root     root        3, 169 Jan  1 00:00 ttyz9
+crw-rw----    1 root     root        3, 170 Jan  1 00:00 ttyza
+crw-rw----    1 root     root        3, 171 Jan  1 00:00 ttyzb
+crw-rw----    1 root     root        3, 172 Jan  1 00:00 ttyzc
+crw-rw----    1 root     root        3, 173 Jan  1 00:00 ttyzd
+crw-rw----    1 root     root        3, 174 Jan  1 00:00 ttyze
+crw-rw----    1 root     root        3, 175 Jan  1 00:00 ttyzf
+crw-rw----    1 root     root      240,   0 Jan  1 00:00 tv_decoder
+crw-rw----    1 root     root       10,  57 Jan  1 00:00 ubi_ctrl
+crw-rw----    1 root     root        1,   9 Jan  1 00:00 urandom
+crw-rw----    1 root     root        7,   0 Jan  1 00:00 vcs
+crw-rw----    1 root     root        7,   1 Jan  1 00:00 vcs1
+crw-rw----    1 root     root        7, 128 Jan  1 00:00 vcsa
+crw-rw----    1 root     root        7, 129 Jan  1 00:00 vcsa1
+crw-rw----    1 root     root      248,   0 Jan  1 00:00 viddec
+crw-rw----    1 root     root      242,   0 Jan  1 00:00 vidsink
+crw-rw----    1 root     root      246,   0 Jan  1 00:00 vindvp
+crw-rw----    1 root     root      252,   0 Jan  1 00:00 virtuart
+crw-rw----    1 root     root       10, 130 Jan  1 00:00 watchdog
+crw-rw----    1 root     root      254,   0 Jan  1 00:00 watchdog0
+crw-rw----    1 root     root        1,   5 Jan  1 00:00 zero
+
+===== C. fds /dev ABIERTOS por proceso (dependencias reales del contrato) =====
+pid 1 [init       ] ->console 
+pid 1079 [hcdaemon ] ->ZZd2C console null 
+pid 1095 [/bin/sh -- ] ->console tty 
+pid 1096 [/mnt/sdcard/cubegm/icube ] ->console null 
+pid 1103 [/bin/sh /tmp/treefrog-zhijack.sh ] ->auddec check_adc1 console fb0 ge mem null 
+pid 1108 [/usr/bin/cubevol ] ->check_adc1 check_adc5 console dis fb1 hdmi mem null 
+pid 1122 [/mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8 ] ->auddec check_adc1 fb0 ge mem null 
+pid 1124 [picoarch /mnt/sdcard/cubegm/cores/frogshell_libretro.so /mnt/sdcard/cubegm/cores/frogshell_libretro.so ] ->auddec check_adc1 check_adc5 fb0 ge mem null 
+
+===== D. maps: librerías de icube/rkgame/picoarch/hcdaemon (libs desde SD/bind) =====
+== pid 1079 [hcdaemon ] ==
+== pid 1096 [/mnt/sdcard/cubegm/icube ] ==
+/lib/ld.so.1
+/mnt/sdcard/cubegm/icube
+/mnt/sdcard/cubegm/lib/libc.so.6
+== pid 1103 [/bin/sh /tmp/treefrog-zhijack.sh ] ==
+/lib/ld.so.1
+/mnt/sdcard/cubegm/lib/libc.so.6
+/mnt/sdcard/cubegm/lib/libresolv.so.2
+== pid 1124 [picoarch /mnt/sdcard/cubegm/cores/frogshell_libretro.so /mnt/sdcard/cubegm/cores/frogshell_libretro.so ] ==
+/lib/ld.so.1
+/mnt/sdcard/cubegm/cores/frogshell_libretro.so
+/mnt/sdcard/cubegm/driver_r36sx.so
+/mnt/sdcard/cubegm/lib/libSDL-1.2.so.0
+/mnt/sdcard/cubegm/lib/libc.so.6
+/mnt/sdcard/cubegm/lib/libdl.so.2
+/mnt/sdcard/cubegm/lib/libgcc_s.so.1
+/mnt/sdcard/cubegm/lib/libm.so.6
+/mnt/sdcard/cubegm/lib/libpng16.so.16
+/mnt/sdcard/cubegm/lib/libpthread.so.0
+/mnt/sdcard/cubegm/lib/libstdc++.so.6
+/mnt/sdcard/cubegm/picoarch
+/mnt/sdcard/cubegm/usr/lib/libz.so.1
+
+===== E. /proc/mounts =====
+rootfs / rootfs rw 0 0
+devtmpfs /dev devtmpfs rw,relatime,mode=0755 0 0
+proc /proc proc rw,relatime 0 0
+devpts /dev/pts devpts rw,relatime,gid=5,mode=620 0 0
+tmpfs /dev/shm tmpfs rw,relatime,mode=0777 0 0
+tmpfs /tmp tmpfs rw,relatime,mode=1777 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,relatime,mode=0755 0 0
+sysfs /sys sysfs rw,relatime 0 0
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+
+===== E2. input =====
+
+===== E3. graphics/fb =====
+total 0
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 .
+drwxr-xr-x   53 root     root             0 Jan  1 00:00 ..
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 fb0 -> ../../devices/platform/soc/1883a000.fb0/graphics/fb0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 fb1 -> ../../devices/platform/soc/1883a080.fb1/graphics/fb1
+640,11040
+
+===== E4. procesos =====
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  897 root     [kworker/u2:2]
+  911 root     [spi32766]
+  915 root     [bioset]
+  920 root     [bioset]
+  926 root     [bioset]
+  931 root     [bioset]
+  982 root     [bioset]
+  983 root     [mmcqd/0]
+ 1013 root     [deferwq]
+ 1079 root     hcdaemon
+ 1091 root     [kworker/0:1H]
+ 1095 root     /bin/sh --
+ 1096 root     /mnt/sdcard/cubegm/icube
+ 1098 root     [rkgame]
+ 1103 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1108 root     /usr/bin/cubevol
+ 1122 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1124 root     picoarch /mnt/sdcard/cubegm/cores/frogshell_libretro.so /mnt/sdcard/cubegm/cores/frogshell_libretro.so
+ 1139 root     /bin/sh /mnt/sdcard/diag6x.sh
+ 1361 root     ps w
+
+===== F. dmesg COMPLETO (kernel propio 6x) =====
+Linux version 4.4.186-release (dafunknoise@DFNK) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #18 PREEMPT Wed Sep 16 23:48:13 -05 2026
+MIPS: machine is Hichip hc16xx
+CPU0 revision is: 0001974c (MIPS 74Kc)
+FPU revision is: 01739300
+Determined physical RAM map:
+ memory: 0af91e50 @ 00000000 (usable)
+Initrd not found or empty - disabling initrd
+Zone ranges:
+  Normal   [mem 0x0000000000000000-0x000000000af90fff]
+Movable zone start for each node
+Early memory node ranges
+  node   0: [mem 0x0000000000000000-0x000000000af90fff]
+Initmem setup node 0 [mem 0x0000000000000000-0x000000000af90fff]
+On node 0 totalpages: 44945
+free_area_init_node: node 0, pgdat 8055f1d0, node_mem_map 81020ae0
+  Normal zone: 352 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 44945 pages, LIFO batch:7
+Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+pcpu-alloc: [0] 0 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 44593
+Kernel command line: root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug
+IRQ lockup detection disabled
+PID hash table entries: 1024 (order: 0, 4096 bytes)
+Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+Writing ErrCtl register=00000000
+Readback ErrCtl register=00000000
+Memory: 168184K/179780K available (4010K kernel code, 173K rwdata, 1320K rodata, 3960K init, 205K bss, 11596K reserved, 0K cma-reserved)
+Preemptible hierarchical RCU implementation.
+	Build-time adjustment of leaf fanout to 32.
+NR_IRQS:128
+CPU Clock: 1188MHz
+clocksource_probe: no matching clocksources found
+clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3217610179 ns
+sched_clock: 32 bits at 594MHz, resolution 1ns, wraps every 3615292415ns
+Console: colour dummy device 80x25
+console [tty1] enabled
+Calibrating delay loop... 589.82 BogoMIPS (lpj=294912)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+devtmpfs: initialized
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+futex hash table entries: 256 (order: -1, 3072 bytes)
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+clocksource: Switched to clocksource MIPS
+NET: Registered protocol family 2
+TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+fuse init (API version 7.23)
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+io scheduler noop registered (default)
+Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+18818300.uart: ttyS0 at MMIO 0x18818300 (irq = 16, base_baud = 115200) is a 16550A
+18818600.uart: ttyS1 at MMIO 0x18818600 (irq = 17, base_baud = 115200) is a 16550A
+SCSI Media Changer driver v0.25 
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+usbcore: registered new interface driver usb-storage
+i2c /dev entries driver
+IR NEC protocol handler initialized
+Synopsys Designware Multimedia Card Interface Driver
+dw_mmc_hc 1884c000.mmc: num-slots property not found, assuming 1 slot is available
+dw_mmc_hc 1884c000.mmc: fifo-depth property not found, using value of FIFOTH register as default
+dw_mmc_hc 1884c000.mmc: host clk=198000000
+dw_mmc_hc 1884c000.mmc: setup source clock : 0x3 (0x0:49MHZ 0x1:99Mhz 0x2:150Mhz 0x3:198Mhz)
+dw_mmc_hc 1884c000.mmc: IDMAC supports 32-bit address mode.
+dw_mmc_hc 1884c000.mmc: Using internal DMA controller.
+dw_mmc_hc 1884c000.mmc: Version ID is 270a
+dw_mmc_hc 1884c000.mmc: DW MMC controller at irq 10,32 bit host data width,128 deep fifo
+dw_mmc_hc 1884c000.mmc: No vmmc regulator found
+dw_mmc_hc 1884c000.mmc: No vqmmc regulator found
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+dw_mmc_hc 1884c000.mmc: 1 slots initialized
+virtuart init ok
+kshmdev init ok
+m25p80 spi32766.0: found 25HD40, expected m25p80
+m25p80 spi32766.0: 25HD40 (512 Kbytes)
+4 ofpart partitions found on MTD device spi32766.0
+Creating 4 MTD partitions on "spi32766.0":
+0x000000000000-0x000000080000 : "nor"
+0x000000000000-0x00000006c000 : "boot"
+0x00000006c000-0x000000070000 : "eromfs"
+0x000000070000-0x000000080000 : "persistentmem"
+fb node name: fb0!
+fb0 enable!
+fb node name: fb1!
+fb1 enable!
+---> usb#0 reset
+musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+musb-hdrc: MHDRC RTL version 2.0 
+musb-hdrc musb-hdrc.0.auto: MUSB HDRC host driver
+musb-hdrc musb-hdrc.0.auto: new USB bus registered, assigned bus number 1
+usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb1: Product: MUSB HDRC host driver
+usb usb1: Manufacturer: Linux 4.4.186-release musb-hcd
+usb usb1: SerialNumber: musb-hdrc.0.auto
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+---> usb#0 reset
+mmc0: new high speed SDXC card at address aaaa
+mmcblk0: mmc0:aaaa SD64G 59.5 GiB 
+---> usb#0 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+ mmcblk0: p1
+---> usb#1 reset
+musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+musb-hdrc: MHDRC RTL version 2.0 
+musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 2
+usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb2: Product: MUSB HDRC host driver
+usb usb2: Manufacturer: Linux 4.4.186-release musb-hcd
+usb usb2: SerialNumber: musb-hdrc.1.auto
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 1 port detected
+---> usb#1 reset
+---> usb#1 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+reg_base: b8806000, reg_size: 8192, sys_reg_base: b8800000,  irq: 9
+hcge 18806000.ge: Init GE success.
+NET: Registered protocol family 17
+bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+name:check_adc1
+name:check_adc5
+Warning: unable to open an initial console.
+Freeing unused kernel memory: 3960K
+devpts: called with bogus options
+FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+map ge register to userspace. off = 0
+random: nonblocking pool is initialized
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+
+===== F2. dmesg filtrado (mmc/ge/adc/fb/hichip/avp/amprpc) =====
+MIPS: machine is Hichip hc16xx
+dw_mmc_hc 1884c000.mmc: num-slots property not found, assuming 1 slot is available
+dw_mmc_hc 1884c000.mmc: fifo-depth property not found, using value of FIFOTH register as default
+dw_mmc_hc 1884c000.mmc: host clk=198000000
+dw_mmc_hc 1884c000.mmc: setup source clock : 0x3 (0x0:49MHZ 0x1:99Mhz 0x2:150Mhz 0x3:198Mhz)
+dw_mmc_hc 1884c000.mmc: IDMAC supports 32-bit address mode.
+dw_mmc_hc 1884c000.mmc: Using internal DMA controller.
+dw_mmc_hc 1884c000.mmc: Version ID is 270a
+dw_mmc_hc 1884c000.mmc: DW MMC controller at irq 10,32 bit host data width,128 deep fifo
+dw_mmc_hc 1884c000.mmc: No vmmc regulator found
+dw_mmc_hc 1884c000.mmc: No vqmmc regulator found
+dw_mmc_hc 1884c000.mmc: 1 slots initialized
+fb node name: fb0!
+fb0 enable!
+fb node name: fb1!
+fb1 enable!
+mmc0: new high speed SDXC card at address aaaa
+mmcblk0: mmc0:aaaa SD64G 59.5 GiB 
+ mmcblk0: p1
+hcge 18806000.ge: Init GE success.
+name:check_adc1
+name:check_adc5
+FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+
+=== FIN DIAG6X ===
