@@ -13,8 +13,14 @@
 #
 # Iteración 6w: paridad total con el kernel de FÁBRICA — forense del binario
 # 53b3e0b3 demuestra que el stock embebe el cpio CRUDO de 380 archivos (sin
-# compresión RD_*). Se desactivan los RD_* para embeber crudo igual que fábrica
-# (elimina la clase de fallo "unpack de initramfs gzip" y acorta el binario).
+# compresión RD_*). Se desactivan los RD_* para embeber crudo igual que fábrica.
+#
+# Iteración 6x: se RETIRAN las desactivaciones NOEXTRA (GE/WDT/IRC/HWSPINLOCK/
+# LVDS/NAND/TOE/I2C) — la refutación 6r fue inválida (se testeó con S41/S99 no-op:
+# el menú no podía arrancar por diseño). Test físico 6w (S41/S99 reales): splash +
+# icono de batería (capa UI visible por primera vez) pero sin menú → sospecha:
+# /dev/ge (ABI de driver_r36sx.so) y hwspinlock (AMPRPC AVP) ausentes por
+# CONFIG_HC_GE/HC_HWSPINLOCK=n. Config = vendor baseline + CHECK_ADC.
 CONFIG_CHECK_ADC=y
 CONFIG_BLK_DEV_INITRD=y
 # CONFIG_RD_GZIP is not set
@@ -24,12 +30,3 @@ CONFIG_BLK_DEV_INITRD=y
 # CONFIG_RD_LZO is not set
 # CONFIG_RD_LZ4 is not set
 CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v26/rootfs-dev.cpio"
-# Fase 5 diagnostico: desactivar GE (motor 2D) — sospechoso de hang tras fb (0.385s), frágil en R36SX.
-# CONFIG_HC_GE is not set
-# CONFIG_HC_WDT is not set
-# CONFIG_HC_IRC is not set
-# CONFIG_HC_HWSPINLOCK is not set
-# CONFIG_HC_LVDS is not set
-# CONFIG_HC_NAND is not set
-# CONFIG_HC_TOE is not set
-# CONFIG_HC_I2C is not set

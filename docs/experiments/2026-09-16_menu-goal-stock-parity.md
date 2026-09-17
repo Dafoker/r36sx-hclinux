@@ -39,4 +39,20 @@ Primer build con la cadena completa hasta el menú INTACTA: S41hcdaemon real →
 
 # Estado
 
-DEPLOY+TEST FÍSICO PENDIENTE (autorización requerida — protocolo Fase 5): backup stock.bak → swap → read-back ×2 → boot → ¿MENÚ TreeFrogUI? Rollback probado (6r/6v) si falla.
+DEPLOY ejecutado y verificado (2026-09-16 20:48): backup `stock.bak` (53b3e0b3) + swap 6w + read-back ×2 OK.
+
+# Resultado del test físico 6w (2026-09-16 noche)
+
+- Consola enciende → **logo TreeFrogUI** → **icono de batería arriba a la derecha (NOVO: primera vez en todos los tests que aparece un elemento de la capa UI)** → se queda ahí; **NO llega al menú**.
+- Kernel desplegado **íntegro post-boot** (hash re-verificado en la SD tras el test) — descarta corrupción de SD en el boot.
+- Cero escrituras nuevas en la SD (inconcluso: el stock tampoco escribe en boot normal — menu.log/favorites.lst fechan de 1/1/1980).
+- Interpretación: el logo lo dibuja el AVP (ya salía en 6b con kernel sin rootfs); el **icono de batería apunta a la capa UI (icube/rkgame) ejecutándose desde la SD** → cadena Linux→initramfs→SD→UI parcialmente viva; hang en la capa del MENÚ (rkgame→zhijack→picoarch).
+- **La refutación NO-GE de 6r queda INVALIDADA**: se testeó con S41hcdaemon/S99app no-op — el menú no podía arrancar por diseño; el observable "insert tf card" no discriminaba nada del menú.
+
+# Iteración 6x — drivers NOEXTRA reactivados
+
+Hipótesis: el menú requiere `/dev/ge` (ABI de driver_r36sx.so, iteración 6m) y hwspinlock (AMPRPC AVP) — ambos desactivados por el fragmento NOEXTRA heredado. Acción: retirar TODAS las desactivaciones NOEXTRA (GE/WDT/IRC/HWSPINLOCK/LVDS/NAND/TOE/I2C) → config = **vendor baseline + CHECK_ADC** (delta mínimo).
+
+**BUILD PASS (2026-09-16 22:0x):** uImage `017adf3b07832643a38f2d784be52d522f2e1f300b17fa974e0c38820011cf19`, 4,348,576 B, gzip, Load 0x80000000 / Entry 0x803E3AC0, **hcrc y dcrc VERIFICADOS**. Initramfs embebido CPIO CRUDO 3,849,216 B == stock (diff -r vacío; S41=`hcdaemon&` real). Gates: DTB SEMANTIC PASS (en build) + TOOLCHAIN/PATCH (sin cambios desde 6w). `.config`: HC_GE=y, HC_WDT=y, HC_HWSPINLOCK=y, HC_I2C=y, RD_*=n. Staging: `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-menu-6x`.
+
+Estado: DEPLOY+TEST FÍSICO PENDIENTE (autorización requerida).
