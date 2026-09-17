@@ -92,3 +92,22 @@ Deploy 7c verificado (read-back ×2 `15ad1cb7` en G:). Boot OK al menú. **Sínt
 2. Swap a stock.bak → diag8 bajo fábrica (idle) → baseline.
 3. Diff: IRQs registradas vs ausentes + contadores → localizar el servicio AVP (audio/video) que no recibe/manda interrupciones bajo nuestro kernel.
 4. Vía definitiva si el diff no basta: serial ADR-011 (USB-TTL, ttyS1 @18818600 115200n8).
+
+# RESULTADO 7e (2026-09-17) — of_serial/UART REFUTADO + estado estratégico
+
+- Deploy 7e verificado (`da76d6ea`, of_serial 0 símbolos en vmlinux). Boot OK al menú. **Síntomas IDÉNTICOS**: audio muerto en todo, video sin imagen, salidas colgadas. **Hipótesis UART-poke REFUTADA.**
+- Hipótesis restante (fuerte): **mismatch de versión media-proxy ↔ firmware AVP** — el stack Linux del SDK es Jul-2024; el kernel de fábrica (Dic-2025) y su AVP probablemente llevan un avp-proxy/protocolo AMPRPC de media MÁS NUEVO. El canal AMPRPC está sano (heartbeat IRQ 66 a la misma tasa en ambos kernels: ~300/s), los proxies se registran, los procesos son idénticos — pero el servicio de media del AVP no responde a las llamadas de nuestro proxy.
+- Evidencia acumulada que soporta el mismatch: la fábrica incluye código ausente del SDK (`[decrypt_sector_data]`, driver `ttyHC`) → su fuente ≠ nuestro SDK; media = la ÚNICA familia de funciones que depende del ABI proxy-AVP; todo lo demás (Linux puro) funciona.
+- Vías para retomar (cuando se decida): (1) cable USB-TTL (ADR-011) — ver el protocolo en vivo y los errores del proxy en runtime; (2) comparación binaria del avp-proxy compilado de fábrica (en `stock.bin`) vs el nuestro — RE de marshaling; (3) conseguir un SDK más nuevo (GitLab HiChip privado — improbable).
+- **Decisión estratégica (usuario): el fix de media NO bloquea las fases restantes** — se documenta como LIMITACIÓN CONOCIDA del kernel propio actual.
+
+# Estado de fases al cierre de esta sesión
+
+| Fase | Estado |
+|---|---|
+| 0-4 | DONE |
+| 5 PHYSICAL PASS | DONE (6x: menú navegable; `/proc/version` propio on-device) |
+| 6 Contrato TreeFrogUI | **ESENCIALMENTE DONE** — matriz viva documentada (diag6x/diag8), validada física y diferencialmente (6w-vs-6x para GE; stock-vs-ours para media). LIMITACIÓN CONOCIDA: media AVP (audio/video/salida de cores) bajo kernel propio — hipótesis mismatch proxy/AVP. |
+| 7 Optimizaciones | No iniciada — no bloqueada por media |
+| 8 Rootfs propio (Buildroot) | No iniciada — el DESARROLLO no está bloqueado (rootfs/Linux puro); el PRODUCTO final sí requerirá media |
+| 9 Kernel 5.12.4 | Diferida (vendor: USB/SDIO rotos ahí) |
