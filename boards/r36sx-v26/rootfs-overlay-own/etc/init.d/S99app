@@ -1,6 +1,10 @@
 #!/bin/sh
 #
-# Start the preinit
+# Start the preinit — Fase 8d: lanzamiento DIRECTO de TreeFrogUI (zhijack.sh)
+# Sin la capa lanzadora de fábrica (icube/rkgame/libemu_tfhijack).
+# zhijack.sh: congela icube + mata rkgame (no-ops si no existen — diseñado
+# para dispositivos sin icube tipo SF3500), auto-lanza cubevol (input
+# gpio->/tmp/joy_key), escribe tfdevice.env y ejecuta picoarch+frogui.
 #
 
 MNTDIR=""
@@ -9,7 +13,7 @@ wait_for_media_ready()
 	while true
 	do
 		for subdir in $(ls /media); do
-			if [ -e /media/$subdir/cubegm/icube ] ; then
+			if [ -e /media/$subdir/cubegm/zhijack.sh ] ; then
 				MNTDIR=$subdir
 				return
 			fi
@@ -17,6 +21,13 @@ wait_for_media_ready()
 
 		sleep 0.5
 	done
+}
+
+launch_treefrog()
+{
+	# Fase 8d: arranque directo — el env que ponía icube.sh
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mnt/sdcard/cubegm/lib:/mnt/sdcard/cubegm/usr/lib
+	/mnt/sdcard/cubegm/zhijack.sh &
 }
 
 wait_for_media_ready
@@ -59,12 +70,11 @@ if [ $memsize -le 128000 ] ; then
 		swapon /mnt/sdcard/cubegm/pagefile.sys
 		if [ $? -eq 0 ] && [ $(free | grep Swap | awk '{print $2}') -gt 0 ]; then
 			echo "Swap space activated successfully"
-			/mnt/sdcard/cubegm/icube.sh &
+			launch_treefrog
 		else
 			echo "Failed to activate swap space"
-			# You can add error handling here if needed
 		fi
 	fi
 else
-/mnt/sdcard/cubegm/icube.sh &
+	launch_treefrog
 fi

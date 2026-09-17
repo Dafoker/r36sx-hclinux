@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (Fase 8c desplegada y PHYSICAL PASS ✅ — kernel+userland propios, rootfs dietado 10,4 MiB, uImage 6,80 MiB, tracer auto-limitante; menú en 8,4s; siguiente: 8d icube-direct)
+**Actualizado:** 2026-09-17 (Fase 8d PHYSICAL PASS ✅ — icube-direct: launcher de fábrica ELIMINADO del boot; menú ~8,1s; boot path 100% nuestro salvo hcdaemon+zhijack/TreeFrogUI de la SD)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -13,7 +13,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT OBJECTIVE
 
-Fase 8a/8c LOGRADAS. Siguiente: **8d icube-direct** (S99app lanza zhijack.sh — elimina la cadena de fábrica ~2,9s de boot + prueba renombrando icube). Después: 8e clean-install (relocar TreeFrogUI fuera de cubegm), media fix (USB-TTL, paralelo), Fase 7 (trim glibc + mount-helper).
+Fase 8a/8c/8d LOGRADAS. Opciones siguientes: (a) **boot-opt 8f**: fase de montaje SD 1,1→5,5s (mdev+mount-helper sleeps del vendor) — objetivo menú ~4-5s; (b) **8e clean-install**: relocar stack TreeFrogUI fuera de cubegm/ (decisión de diseño con el ecosistema del usuario); (c) media fix con USB-TTL.
 
 ## CURRENT HEAD
 

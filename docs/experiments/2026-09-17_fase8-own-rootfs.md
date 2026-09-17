@@ -65,3 +65,23 @@ Evidencia `evidence-fase8-boottrace.log` (vivo, desde la SD):
 ## Siguiente: 8d — icube-direct (lanzar zhijack.sh desde nuestro S99app)
 
 zhijack.sh: congela icube + mata rkgame al arrancar (solo son vehículo), auto-lanza cubevol (input), soporta dispositivos sin icube (SF3500). Nuestro S99app-direct: espera `/cubegm/zhijack.sh` + `LD_LIBRARY_PATH` (lo que ponía icube.sh) + lanza zhijack. Prueba definitiva: renombrar `icube` en la SD.
+
+# Iteración 8d — ICUBE-DIRECT (2026-09-17, PHYSICAL PASS) — cadena de fábrica ELIMINADA
+
+- S99app-direct: espera `/cubegm/zhijack.sh` (no icube) + `LD_LIBRARY_PATH` (lo que ponía icube.sh) + lanza `zhijack.sh` directamente. uImage `03807054` (payload 7,124,711 B).
+- **Prueba definitiva**: `icube` RENOMBRADO a `icube.disabled` en la SD — y la consola **bootea al menú navegable igual**.
+- **Evidencia** `evidence-fase8d-boottrace.log`: ps SIN icube NI rkgame — cadena limpia: `zhijack(RAM) → cubevol → nosleep → picoarch+frogui_libretro.so`.
+- Timeline 8d: init@1,07s → **menú@~8,1s** (8c era 8,38s). El launcher-chain solo costaba ~0,3s.
+- **Descubrimiento de optimización**: el pozo real de boot es la **fase de montaje SD (1,1→5,5s)**: mdev hotplug + `mount-helper.sh` (sleeps del vendor) + binds; luego ~2,5s de arranque zhijack→picoarch→frogui (lado TreeFrogUI).
+
+## Arquitectura del boot tras 8d (estado actual)
+
+```
+[bootloader+AVP stock] → KERNEL NUESTRO (userland propio embebido)
+  → linuxrc→busybox(nuestro) → rcS(nuestro)
+  → S10mdev(nuestro) → mdev → mount-helper(nuestro, copia del contrato)
+  → S41hcdaemon → hcdaemon (única pieza fábrica, estática)
+  → S99app(NUESTRO, 8d-direct) → zhijack.sh (TreeFrogUI del usuario)
+  → cubevol + nosleep + picoarch + frogui_libretro.so = MENÚ
+  [icube/rkgame/libemu_tfhijack: ELIMINADOS del boot path]
+```
