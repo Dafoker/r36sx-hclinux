@@ -1,0 +1,51 @@
+=== DIAG7 Thu Jan  1 00:00:35 UTC 1970 ===
+kernel: Linux version 4.4.186-release (dafunknoise@DFNK) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #18 PREEMPT Wed Sep 16 23:48:13 -05 2026
+
+-- binds actuales (lib/usr/bin/sbin/etc) --
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+
+-- rootfs/etc en SD: PRESENTE
+
+-- INTENTO MANUAL: mount --bind /media/mmc/rootfs/etc /etc --
+rc=0  (0 = exito)
+
+-- /proc/mounts tras el intento (/etc) --
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+
+-- contenido de /etc ahora --
+fstab
+group
+hostname
+hosts
+init.d
+inittab
+issue
+mdev
+mdev.conf
+nsswitch.conf
+os-release
+passwd
+profile
+profile.d
+protocols
+services
+shadow
+shells
+sysctl.conf
+udhcpd.conf
+
+-- (extra) rootfs/bin: mount/busybox --
+-rwxrwxrwx    1 root     root        867948 Jan  3  2025 /media/mmc/rootfs/bin/busybox
+-rwxrwxrwx    1 root     root        867948 Jan  3  2025 /media/mmc/rootfs/bin/mount
+
+>>> BIND EXITOSO — /etc de la SD AHORA MONTADO. PROBAR AHORA MISMO:
+>>>   1. reproducir un video del menu
+>>>   2. entrar a FrogShell y volver al menu
+>>> Si funcionan con el bind montado = causa raiz confirmada.
+
+=== FIN DIAG7 ===

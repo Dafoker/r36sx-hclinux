@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (Iteración 6x-RESULT — **FASE 5 COMPLETA: PHYSICAL PASS** — kernel propio bootea la consola al MENÚ TreeFrogUI navegable y funcional)
+**Actualizado:** 2026-09-17 (Iteración 7c — Fase 5 PHYSICAL PASS; Fase 6 en curso: defectos AVP-media (audio/video/salida-cores) bajo kernel propio; build 7c lean-fábrica STAGED, deploy pendiente)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -13,7 +13,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT OBJECTIVE
 
-Fase 5 alcanzada. Nuevos objetivos: (a) evidencia definitiva on-device — capturar /proc/version del kernel propio via FrogShell (esperado: `Linux version 4.4.186-release (dafunknoise@DFNK)`); (b) iniciar Fase 6: contrato TreeFrogUI sobre kernel propio (docs/TREEFROGUI_COMPATIBILITY.md); (c) decidir con el usuario si el 6x queda como kernel de uso diario en la SD.
+Curar los defectos funcionales post-PHYSICAL-PASS con kernel propio: (1) audio muerto en TODO (juegos/música/video); (2) video sin imagen; (3) salida de FrogShell/emuladores colgada (pantalla crema). Hipótesis 7c: driver extra HC_I2C interfiere con el bus del códec de audio del AVP. Deploy del 7c staged + test físico.
 
 ## CURRENT HEAD
 
@@ -52,13 +52,22 @@ Contexto de los fallos previos (resuelto): (stock `53b3e0b3` desplegado, verific
 2. Bare-metal mips32-mti-elf (AVP/hcboot propios) — privado (ADR-008; no bloquea lo actual).
 3. Kernel config de fábrica exacto no extraíble (sin IKCONFIG) — 6w logra paridad estructural vía forense binaria.
 
+## CURRENT ITERATION (7c) — estado al cierre de sesión 16/17-sep
+
+- **7c STAGED** (`D:\R36SX\staging\vmlinux.uImage-r36sx-v26-menu-7c`, sha256 `15ad1cb7...`): 6x MINUS {HC_I2C, HC_IRC, HC_WDT, HC_NAND, HC_TOE, HC_LVDS}, KEEP {HC_GE, HC_HWSPINLOCK}. Initramfs CRUDO == stock, hcrc+dcrc VALIDOS, DTB SEMANTIC PASS.
+- **SD actual**: 6x `017adf3b` desplegado; `stock.bak` golden `53b3e0b3` intacto; scripts en raíz: diag6x.sh, diag7.sh, diag8.sh.
+- Evidencia en repo: evidence-diag6x.log, evidence-diag7-1/2.log, evidence-factory-diag2.log, docs/experiments/2026-09-17_fase6-diag6x-analysis.md (matriz de síntomas + diff dmesg + hipótesis).
+
 ## LAST VALIDATED ACTION
 
 Test físico 6w (splash+batería, sin menú, kernel íntegro post-boot) + build 6x verificado (vendor baseline + CHECK_ADC + initramfs stock-parity, hcrc+dcrc OK). Experimento: docs/experiments/2026-09-16_menu-goal-stock-parity.md (addendum 6x).
 
 ## NEXT EXACT ACTION
 
-1. **DIAG7 (test causal bind /etc, `G:\diag7.sh` desplegado):** boot consola (6x) → FrogShell → `sh /mnt/sdcard/diag7.sh` → con el bind montado (si rc=0), PROBAR video + volver-de-FrogShell → traer la SD con el log. Si funcionan con bind = causa raíz confirmada → investigar fallo del bind en contexto S99app bajo nuestro kernel. Si persisten: control con stock.bak para atribuir kernel vs TreeFrogUI v1.5.0_j.
+1. **DEPLOY 7c** (primera acción de la sesión): pre-check hash G: == `017adf3b` (6x) → copiar staging `vmlinux.uImage-r36sx-v26-menu-7c` (`15ad1cb7...`) → G:\cubegm\vmlinux.uImage → read-back ×2. stock.bak YA existe.
+2. **TEST FÍSICO 7c**: boot → ¿audio en juegos? ¿música? ¿video con imagen+sonido? ¿salir de FrogShell/emulador vuelve al menú?
+3. Si 7c cura → documentar config lean-fábrica como baseline board (ADR candidato) + bisect opcional (I2C causa).
+4. Si 7c NO cura → `sh /mnt/sdcard/diag8.sh` CON un video reproduciéndose → boot stock.bak → diag8 baseline → comparar /proc/interrupts → serial ADR-011 (USB-TTL) como vía definitiva.
 2. **FASE 6:** contrato TreeFrogUI sobre kernel propio (docs/TREEFROGUI_COMPATIBILITY.md) — la UI ya corre; formalizar el contrato.
 3. Decidir kernel de uso diario (6x desplegado vs rollback stock) con el usuario.
 4. Documentar y actualizar GitHub al cierre de cada iteración.

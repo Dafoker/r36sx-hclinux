@@ -48,6 +48,39 @@ mmc idéntico a fábrica (`dw_mmc_hc 1884c000.mmc: host clk=198000000, Version 2
 
 `G:\diag7.sh` + `scripts/diag7.sh` (sha256 ee57975c...): intenta el bind MANUAL desde FrogShell, captura errno, y si tiene éxito lo DEJA MONTADO para probar inmediatamente video + volver-de-FrogShell. Resultado pendiente del usuario.
 
-# Estado
+# Resultado diag7 (noche 16/17-sep) — hipótesis /etc REFUTADA
 
-PENDIENTE: usuario ejecuta `sh /mnt/sdcard/diag7.sh` en la consola, prueba video + salida de FrogShell con el bind activo, y trae la SD con el log. Si el bind manual confirma la causa → investigar por qué el mismo comando falla en el contexto S99app bajo nuestro kernel (y fix). Si el bind manual falla → errno guiará la causa kernel. Control alternativo si síntomas persisten con bind activo: boot con stock.bak + misma SD para atribuir kernel vs sync TreeFrogUI v1.5.0_j.
+- diag7 ×2 (evidence-diag7-1/2.log): **el bind /etc FUNCIONÓ en boot** (montado nativamente en los arranques de hoy; la ausencia en la captura DIAG6X fue una anomalía one-off). Bind manual rc=0 (doble montado inofensivo).
+- **Los síntomas persisten CON el bind activo** → el /etc NO es la causa.
+
+# Matriz de síntomas refinada (tests físicos del usuario con 6x)
+
+| Función | Estado | Vía |
+|---|---|---|
+| Menú TreeFrogUI (navegar/lanzar) | ✅ | Linux puro: fb0 + GE |
+| Juegos (emulación) | ✅ funcionan, **sin sonido** | core Linux + audio vía AVP ❌ |
+| Música (canción) | ❌ "reproduce" pero silencio | decode AVP ❌ |
+| Video | ❌ "reproduce" sin imagen NI sonido | decode AVP ❌ |
+| Salir de FrogShell / emulador → menú | ❌ cuelga, **pantalla crema** | descarga de core / retorno al menú |
+| ROMs recién instaladas | ✅ funcionan (FB/GB/etc.) | mmc/SD ✅ |
+
+⇒ **Todo lo puramente Linux funciona; todo lo mediado por el AVP (audio en cualquier forma, decode de video) está muerto; y la salida de cores cuelga** (posible espera infinita en un servicio AVP).
+
+# Diff dmesg fábrica ↔ nuestro (evidencia hard)
+
+SOLO fábrica: `[decrypt_sector_data][1487] 0x0 0x0` ×3 (hook propietario ausente del SDK; 6l correcta), `NET: Registered protocol family 15`.
+SOLO nuestro (extras vendor-baseline): **`i2c /dev entries driver`** (HC_I2C), **`IR NEC protocol handler`** (HC_IRC), ubi/watchdog (HC_NAND→UBI, HC_WDT), `squashfs`, bridge/TCP (HC_TOE), **`Warning: unable to open an initial console.`** (devtmpfs montado sobre /dev esconde el /dev/console del initramfs — factory usa /dev estático), `devpts: called with bogus options` (ptmxmode sin DEVPTS_MULTIPLE_INSTANCES en vendor baseline).
+
+# Hipótesis 7c y build
+
+**Hipótesis principal: HC_I2C (driver extra) claima el controlador I2C que el AVP usa para configurar el códec de audio** → audio muerto en todo; video_player cuelga esperando la pista de audio → sin imagen; descarga de cores puede colgarse en drain de audio → pantalla crema.
+
+**BUILD 7c = lean-fábrica**: quitar `HC_I2C, HC_IRC, HC_WDT, HC_NAND, HC_TOE, HC_LVDS` (nadie los abre — fds diag6x; panel MIPI-DSI no LVDS; NOR es SPI-m25p80 no NAND); MANTENER `HC_GE` + `HC_HWSPINLOCK` (probados requeridos por el menú: 6w-vs-6x). uImage `15ad1cb72161900ce626b15693a976c28d08a5462949e508b8bb4fbad106f558`, 4,338,380 B, Load 0x80000000 / Entry 0x803DF5C0, initramfs CPIO CRUDO == stock (diff -r vacío), hcrc+dcrc VALIDOS. **STAGED en `D:\R36SX\staging\vmlinux.uImage-r36sx-v26-menu-7c` — NO desplegado** (la SD sigue con 6x `017adf3b`; stock.bak golden intacto).
+
+`diag8.sh` desplegado a G:\ (interrupts/iomem/mmz/fds por proceso — correr con un video activo; también sirve de baseline bajo stock si 7c no cura).
+
+# Próximos pasos (sesión siguiente)
+
+1. Deploy 7c (protocolo verificado) → boot → test: ¿audio en juegos? ¿video con imagen+sonido? ¿salida de FrogShell/emuladores al menú?
+2. Si 7c cura → documentar config lean-fábrica como baseline board; bisect opcional (confirmar I2C como causa).
+3. Si 7c NO cura → diag8 con reproducción activa + boot stock.bak + diag8 baseline + comparar /proc/interrupts → serial ADR-011 como vía definitiva.

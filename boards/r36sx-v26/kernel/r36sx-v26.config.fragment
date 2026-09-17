@@ -1,26 +1,23 @@
 # Kernel config fragment para r36sx-v26 (board-specific kernel config deltas)
 # Aplicado por Buildroot via BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES.
 #
-# Fase 5 — CAUSA RAÍZ: el kernel de fábrica de la R36SX embebe su rootfs como
-# initramfs dentro del vmlinux (cpio 070701 + etc/init.d/rcS + usr/bin/hcdaemon
-# verificados en el uImage stock). Para replicar fielmente el arranque de fábrica,
-# usamos el INITRAMFS DEL DESARROLLADOR (extraído del uImage stock) como rootfs
-# embebido. CONFIG_INITRAMFS_SOURCE apunta al cpio del initramfs del desarrollador
-# (rootfs-dev.cpio, generado desde boards/r36sx-v26/rootfs-overlay).
+# Fase 5 — initramfs del desarrollador (extraído del uImage stock) embebido:
+# CONFIG_INITRAMFS_SOURCE apunta a rootfs-dev.cpio (desde rootfs-overlay).
+# BR2_TARGET_ROOTFS_INITRAMFS desactivado (Buildroot no sobreescribe la fuente).
 #
-# Nota: BR2_TARGET_ROOTFS_INITRAMFS desactivado (Buildroot no sobreescribe
-# CONFIG_INITRAMFS_SOURCE con su rootfs; usamos el del desarrollador).
+# Iteración 6w: RD_* off — forense: el kernel de FÁBRICA embebe el cpio CRUDO.
+# Iteración 6x: drivers vendor baseline COMPLETOS (GE/HWSPINLOCK probados REQUERIDOS
+# por el menú: 6w sin GE = batería sin menú; 6x con GE = menú completo).
 #
-# Iteración 6w: paridad total con el kernel de FÁBRICA — forense del binario
-# 53b3e0b3 demuestra que el stock embebe el cpio CRUDO de 380 archivos (sin
-# compresión RD_*). Se desactivan los RD_* para embeber crudo igual que fábrica.
-#
-# Iteración 6x: se RETIRAN las desactivaciones NOEXTRA (GE/WDT/IRC/HWSPINLOCK/
-# LVDS/NAND/TOE/I2C) — la refutación 6r fue inválida (se testeó con S41/S99 no-op:
-# el menú no podía arrancar por diseño). Test físico 6w (S41/S99 reales): splash +
-# icono de batería (capa UI visible por primera vez) pero sin menú → sospecha:
-# /dev/ge (ABI de driver_r36sx.so) y hwspinlock (AMPRPC AVP) ausentes por
-# CONFIG_HC_GE/HC_HWSPINLOCK=n. Config = vendor baseline + CHECK_ADC.
+# Iteración 7c (lean-fábrica): tras el PHYSICAL PASS 6x, defectos funcionales:
+# audio muerto en TODO (juegos/música/video), video sin imagen, salida de cores
+# colgada (pantalla crema). Diff dmesg fábrica↔nuestro muestra drivers EXTRAS
+# nuestros que la fábrica NO tiene: i2c-dev, IR NEC, ubi/watchdog, squashfs,
+# bridge. Sospechoso principal: HC_I2C (controlador compartido con el AVP que
+# configura el códec de audio). Se remueven los extras con evidencia de no-uso
+# (fds diag6x: nadie abre i2c/ir/watchdog/nand/toe; panel es MIPI-DSI, no LVDS):
+#   REMOVE: HC_I2C, HC_IRC, HC_WDT, HC_NAND, HC_TOE, HC_LVDS
+#   MANTENER: HC_GE, HC_HWSPINLOCK (requeridos por el menú — probado 6w vs 6x)
 CONFIG_CHECK_ADC=y
 CONFIG_BLK_DEV_INITRD=y
 # CONFIG_RD_GZIP is not set
@@ -30,3 +27,10 @@ CONFIG_BLK_DEV_INITRD=y
 # CONFIG_RD_LZO is not set
 # CONFIG_RD_LZ4 is not set
 CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v26/rootfs-dev.cpio"
+# --- 7c lean-fábrica: extras vs fábrica removidos (evidencia: dmesg diff + fds diag6x) ---
+# CONFIG_HC_I2C is not set
+# CONFIG_HC_IRC is not set
+# CONFIG_HC_WDT is not set
+# CONFIG_HC_NAND is not set
+# CONFIG_HC_TOE is not set
+# CONFIG_HC_LVDS is not set
