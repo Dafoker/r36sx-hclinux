@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (Fase 6 CERRADA — contrato validado, media = limitación conocida diferida; consola en STOCK para uso diario; Fase 8 (rootfs propio) EN ARRANQUE)
+**Actualizado:** 2026-09-17 (Fase 8a PHYSICAL PASS ✅ — consola bootea al menú con kernel propio + USERLAND 100% propio; 8b desplegado)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -13,7 +13,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT OBJECTIVE
 
-Iniciar **Fase 8: rootfs propio via Buildroot** — reemplazar el initramfs extraído-del-stock por un rootfs 100% nuestro (busybox+init scripts propios) manteniendo el contrato de arranque (montar SD → binds → icube.sh → menú). El fix de media queda DIFERIDO (limitación conocida; vía: USB-TTL + diff binario avp-proxy).
+Fase 8a LOGRADA. Siguiente: (1) 8c-dieta (defconfig slim + S09trace self-limiting → uImage ~5-7 MiB); (2) media fix diferido (USB-TTL); (3) Fase 8 CLEAN-INSTALL final (requiere media).
 
 ## CURRENT HEAD
 

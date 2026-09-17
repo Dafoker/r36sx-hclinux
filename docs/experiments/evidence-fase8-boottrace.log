@@ -1,0 +1,965 @@
+T0 uptime=1.34 kernel=4.4.186-release
+=== uptime=1.36 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1023 root     {rcS} /bin/sh /etc/init.d/rcS
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S10mdev} /bin/sh /etc/init.d/S10mdev start
+ 1049 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+=== uptime=3.46 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1023 root     {rcS} /bin/sh /etc/init.d/rcS
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S10mdev} /bin/sh /etc/init.d/S10mdev start
+ 1052 root     mdev -s
+ 1055 root     {mount-helper.sh} /bin/sh /etc/mdev/mount-helper.sh
+ 1063 root     sleep 1
+ 1065 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+=== uptime=5.51 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1023 root     {rcS} /bin/sh /etc/init.d/rcS
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S10mdev} /bin/sh /etc/init.d/S10mdev start
+ 1052 root     mdev -s
+ 1074 root     {mount-helper.sh} /bin/sh /etc/mdev/mount-helper.sh
+ 1093 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+=== uptime=7.75 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     rkgame
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1165 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=10.68 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1191 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=12.81 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1200 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=14.92 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1206 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=17.03 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1215 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=19.16 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1221 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=21.25 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1227 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=23.34 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1233 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=25.45 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1239 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=27.54 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1245 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=29.64 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1251 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=31.73 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1184 root     /mnt/sdcard/cubegm/video_player /mnt/sdcard/roms/music/Grabación que te tomas y tan 110 BPM.mp3
+ 1257 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=33.83 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1264 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1273 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+=== uptime=35.95 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1134 root     hcdaemon
+ 1144 root     [kworker/0:1H]
+ 1150 root     /bin/sh --
+ 1151 root     /mnt/sdcard/cubegm/icube
+ 1153 root     [rkgame]
+ 1158 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1164 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1264 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1281 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0

@@ -26,7 +26,8 @@ CONFIG_BLK_DEV_INITRD=y
 # CONFIG_RD_XZ is not set
 # CONFIG_RD_LZO is not set
 # CONFIG_RD_LZ4 is not set
-CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v26/rootfs-dev.cpio"
+# Fase 8a: rootfs 100% PROPIO (Buildroot userland + overlay minimo + hcdaemon de fabrica)
+CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v26/rootfs-own.cpio"
 # --- 7c lean-fábrica: extras vs fábrica removidos (evidencia: dmesg diff + fds diag6x) ---
 # CONFIG_HC_I2C is not set
 # CONFIG_HC_IRC is not set

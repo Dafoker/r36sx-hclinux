@@ -1,0 +1,19 @@
+#!/bin/sh
+# S09trace — trazador de boot (Fase 8): snapshots de estado cada 2s a /tmp,
+# copia viva a la SD en cuanto /media/*/cubegm aparece. Diagnostico ciego resuelto.
+LOG=/tmp/boottrace.log
+: > "$LOG"
+echo "T0 uptime=$(cut -d' ' -f1 /proc/uptime) kernel=$(uname -r)" >> "$LOG"
+(
+  while true; do
+    {
+      echo "=== uptime=$(cut -d' ' -f1 /proc/uptime) ==="
+      ps w 2>/dev/null
+      grep -E "sdcard|/media|/lib | /bin | /sbin | /usr | /etc |swap" /proc/mounts 2>/dev/null
+    } >> "$LOG"
+    for d in /media/*/cubegm; do
+      [ -d "$d" ] && cp "$LOG" "$d/boottrace.log" 2>/dev/null && sync
+    done
+    sleep 2
+  done
+) &

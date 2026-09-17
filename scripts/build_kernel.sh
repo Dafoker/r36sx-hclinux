@@ -34,12 +34,11 @@ if [ -d "$OVERLAY_SRC" ]; then
   mkdir -p "$BD/rootfs-overlay"
   cp -r "$OVERLAY_SRC"/. "$BD/rootfs-overlay/"
 fi
-# generar initramfs del desarrollador (rootfs-dev.cpio) desde el overlay, si el fragmento lo referencia
-KDEV="$W/artifacts/$BOARD/rootfs-dev.cpio"
-if [ -d "$OVERLAY_SRC" ] && grep -q "rootfs-dev.cpio" "$KFRAG" 2>/dev/null; then
-  mkdir -p "$(dirname "$KDEV")"
-  ( cd "$OVERLAY_SRC" && find . | cpio -o -H newc -R 0:0 2>/dev/null > "$KDEV" )
-  echo "initramfs dev: $KDEV ($(stat -c%s "$KDEV") bytes)"
+# Fase 8a: overlay propio minimo -> workspace (el defconfig lo referencia)
+OVERLAY_OWN="$R/boards/$BOARD/rootfs-overlay-own"
+if [ -d "$OVERLAY_OWN" ]; then
+  mkdir -p "$BD/rootfs-overlay-own"
+  cp -r "$OVERLAY_OWN"/. "$BD/rootfs-overlay-own/"
 fi
 
 # 4. entorno validado (docs/BUILD.md + TOOLCHAIN_PROVENANCE)
@@ -49,6 +48,32 @@ export HOST_EXTRACFLAGS="-fcommon"
 
 mkdir -p "$O" ; cd "$S/buildroot"
 make O="$O" BR2_EXTERNAL="$S" "$(basename "$DEF_REPO")" > "$LOG" 2>&1
+
+# Fase 8a: generar ROOTFS PROPIO (Buildroot cpio) si el fragmento lo referencia
+if grep -q "rootfs-own.cpio" "$KFRAG" 2>/dev/null; then
+  # limpiar target contaminado de overlays anteriores (una sola vez)
+  if [ ! -f "$O/.fase8-target-cleaned" ]; then
+    rm -rf "$O/target"; find "$O/build" -name .stamp_target_installed -delete 2>/dev/null
+    touch "$O/.fase8-target-cleaned"; echo "fase8: target limpio (re-finalize forzado)"
+  fi
+  # bootstrap: el kernel puede rebuildarse durante rootfs-cpio y necesita que el
+  # cpio EXISTA (primera corrida). Placeholder = overlay-own empaquetado; luego
+  # se sobreescribe con el cpio real y linux-rebuild re-embebe.
+  KOWN="$W/artifacts/$BOARD/rootfs-own.cpio"
+  mkdir -p "$(dirname "$KOWN")"
+  if [ ! -s "$KOWN" ]; then
+    ( cd "$R/boards/$BOARD/rootfs-overlay-own" && find . | cpio -o -H newc -R 0:0 2>/dev/null > "$KOWN" )
+    echo "fase8: bootstrap placeholder cpio ($(stat -c%s "$KOWN") B)"
+  fi
+  make O="$O" BR2_EXTERNAL="$S" rootfs-cpio >> "$LOG" 2>&1 || { echo "ROOTFS-CPIO FAIL — tail:"; tail -15 "$LOG"; exit 1; }
+  cp "$O/images/rootfs.cpio" "$KOWN"
+  echo "rootfs-own: $KOWN ($(stat -c%s "$KOWN") bytes)"
+  export KOWN_FRESH=1
+fi
+# Fase 8a: forzar re-link del kernel para embeber el cpio recien generado
+if [ -n "${KOWN_FRESH:-}" ]; then
+  make O="$O" linux-rebuild >> "$LOG" 2>&1 || { echo "LINUX-REBUILD FAIL — tail:"; tail -15 "$LOG"; exit 1; }
+fi
 make O="$O" -j16 >> "$LOG" 2>&1 || { echo "BUILD FAIL — tail:"; tail -25 "$LOG"; exit 1; }
 # nota: 'bootloader.bin not found' en target-post-image = esperado (ADR-008)
 

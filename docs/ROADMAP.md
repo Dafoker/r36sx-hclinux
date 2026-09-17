@@ -17,7 +17,7 @@ BootROM → bootloader (stock) → AVP/HCRTOS (stock, preservado) → **kernel p
 | **5. Primer kernel propio** | Reemplazar SOLO kernel/DTB; resto stock | PHYSICAL PASS (boot + TreeFrogUI stock) | ✅ **DONE 2026-09-16 (iteración 6x)**: kernel propio `017adf3b` bootea al MENÚ TreeFrogUI navegable/funcional; rollback stock.bak disponible |
 | **6. Contrato TreeFrogUI** | Matriz de dependencias reales (fb, input, audio, ioctl, /dev/dis...) | `docs/TREEFROGUI_COMPATIBILITY.md` | ✅ **DONE 2026-09-17**: matriz viva validada (diag6x/diag8, fds idénticos stock↔propio); media AVP = limitación conocida diferida (mismatch proxy/AVP, hipótesis) |
 | **7. Optimizaciones** | Una hipótesis por experimento, contra baseline | Cada una: resultado + decisión ADR si durable | PENDIENTE |
-| **8. Rootfs propio** | Buildroot controlado + picoarch + TreeFrogUI | CLEAN-INSTALL PHYSICAL PASS | PENDIENTE |
+| **8. Rootfs propio** | Buildroot controlado + picoarch + TreeFrogUI | CLEAN-INSTALL PHYSICAL PASS | 🔶 **EN CURSO — 8a INCREMENTO HECHO 2026-09-17**: userland 100% propio bootea al menú (PHYSICAL PASS 8b `38c9749d`); pendientes: dieta 27 MiB, media AVP, S09trace self-limiting |
 | **9. Kernel 5.12.4** | Solo con 4.4.186 known-good físico | Comparación regresión vs golden | DIFERIDO |
 
 ## Formato de experimento (docs/experiments/YYYY-MM-DD_<nombre>.md)
