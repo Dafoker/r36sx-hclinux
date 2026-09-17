@@ -85,3 +85,10 @@ zhijack.sh: congela icube + mata rkgame al arrancar (solo son vehículo), auto-l
   → cubevol + nosleep + picoarch + frogui_libretro.so = MENÚ
   [icube/rkgame/libemu_tfhijack: ELIMINADOS del boot path]
 ```
+
+# Iteración 8f — boot-opt (2026-09-17) — sin ganancia visible; cambios conservados
+
+- S99app: montaje DIRECTO de /dev/mmcblk0p1 (sin esperar mdev -s) + poll 0.5→0.1s. mount-helper: sleep vendor 1→0.2s (camino coldplug). uImage `d104f4d7`.
+- **Test físico: boot sigue ~8s** — sin ganancia perceptible. El timeline percibido: kernel+unpack ~1s, montaje ~1-2s (el directo puede haber fallado silenciosamente o no era el cuello), **init TreeFrogUI (zhijack→cubevol→picoarch→frogui, recursos ui_*.cpd) ~4-5s = el floor dominante** (lado TreeFrogUI, no nuestro kernel).
+- Decisión del usuario: ~8s aceptado; el floor de TreeFrogUI se optimiza en SU repo (frogui init/parse), no aquí. Cambios 8f conservados (beneficiosos/inofensivos).
+- PRIORIDAD PIVOT (usuario): **fix de raíz del problema AVP-media** (audio/video/salida de cores) como requisito de Fase 8 completa.

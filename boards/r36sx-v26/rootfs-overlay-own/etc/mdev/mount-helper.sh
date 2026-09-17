@@ -42,7 +42,7 @@ if [ -z ${DEVPATH} ]; then
     #print_device_info
     #echo "Devpath is not vaild, ignore this action" >> $LOG
     #exit 0
-    sleep 1
+    sleep 0.2
 fi
 
 case $ACTION in

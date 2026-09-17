@@ -1,15 +1,18 @@
 #!/bin/sh
 #
 # Start the preinit — Fase 8d: lanzamiento DIRECTO de TreeFrogUI (zhijack.sh)
-# Sin la capa lanzadora de fábrica (icube/rkgame/libemu_tfhijack).
-# zhijack.sh: congela icube + mata rkgame (no-ops si no existen — diseñado
-# para dispositivos sin icube tipo SF3500), auto-lanza cubevol (input
-# gpio->/tmp/joy_key), escribe tfdevice.env y ejecuta picoarch+frogui.
+# Fase 8f: montaje DIRECTO de la SD (la particion existe desde ~0.4s de uptime;
+# el scan mdev -s + sleep del vendor costaba ~2s). Fallback: mdev hotplug.
 #
 
 MNTDIR=""
 wait_for_media_ready()
 {
+	# 8f: montaje directo inmediato — no esperar el scan mdev
+	if [ -e /dev/mmcblk0p1 ] && ! grep -q "^/dev/mmcblk0p1 " /proc/mounts ; then
+		mkdir -p /media/mmc
+		mount -t vfat -o iocharset=utf8 /dev/mmcblk0p1 /media/mmc 2>/dev/null
+	fi
 	while true
 	do
 		for subdir in $(ls /media); do
@@ -19,7 +22,7 @@ wait_for_media_ready()
 			fi
 		done
 
-		sleep 0.5
+		sleep 0.1
 	done
 }
 

@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (Fase 8d PHYSICAL PASS ✅ — icube-direct: launcher de fábrica ELIMINADO del boot; menú ~8,1s; boot path 100% nuestro salvo hcdaemon+zhijack/TreeFrogUI de la SD)
+**Actualizado:** 2026-09-17 (8f boot-opt: sin ganancia (~8s aceptado). PIVOT: fix AVP-media = requisito de Fase 8 COMPLETA — estrategias A/B/C/D activas)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
