@@ -1,0 +1,257 @@
+=== DIAG8 Thu Jan  1 00:01:29 UTC 1970 ===
+kernel: Linux version 4.4.186-release (linsen.chen@hichip01) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #7 PREEMPT Thu Dec 18 16:55:03 CST 2025
+
+-- /proc/interrupts SNAPSHOT 1 --
+           CPU0       
+  7:     211037      MIPS   7  timer
+  9:       1248   sys_irq   4  18806000.ge
+ 10:      13435   sys_irq  10  dw-mci
+ 11:          0   sys_irq   0  18800044.gpio, 188000c4.gpio, 188000e4.gpio, 18800344.gpio
+ 35:          2   sys_irq  35  1882e000.spi
+ 50:          0   sys_irq  50  musb-hdrc.1.auto
+ 51:          0   sys_irq  51  musb-hdrc.1.auto
+ 52:          0   sys_irq  52  musb-hdrc.0.auto
+ 53:          0   sys_irq  53  musb-hdrc.0.auto
+ 66:      34189   sys_irq  66  18800800.amprpc
+ERR:          0
+
+-- /proc/devices (drivers char/block registrados) --
+Character devices:
+  1 mem
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  7 vcs
+ 10 misc
+ 13 input
+ 21 sg
+ 29 fb
+ 86 ch
+ 90 mtd
+153 spi
+180 usb
+189 usb_device
+204 ttyHC
+229 hc_checkadc_class
+230 hc_checkadc_class
+231 ge
+232 mmz
+233 mipi
+234 backlight
+235 ZZd2C
+236 standby
+237 hdmi
+238 hdmi_rx
+239 pq
+240 tv_decoder
+241 dis
+242 vidsink
+243 sndC0spo
+244 sndC0i2si
+245 sndC0i2so
+246 vindvp
+247 avsync0
+248 viddec
+249 audsink
+250 auddec
+251 kshmdev
+252 virtuart
+253 bsg
+254 watchdog
+
+Block devices:
+259 blkext
+  8 sd
+ 31 mtdblock
+ 65 sd
+ 66 sd
+ 67 sd
+ 68 sd
+ 69 sd
+ 70 sd
+ 71 sd
+128 sd
+129 sd
+130 sd
+131 sd
+132 sd
+133 sd
+134 sd
+135 sd
+179 mmc
+
+-- /proc/misc --
+ 59 memory_bandwidth
+ 60 network_throughput
+ 61 network_latency
+ 62 cpu_dma_latency
+ 63 persistentmem
+229 fuse
+
+-- /proc/iomem --
+00000000-0af91e4f : System RAM
+  00000000-0033a4cf : Kernel code
+  0033a4d0-0047dfff : Kernel data
+18800044-1880005f : /soc/gpio@18800044
+188000c4-188000df : /soc/gpio@188000c4
+188000e4-188000ff : /soc/gpio@188000e4
+18800344-1880035f : /soc/gpio@18800344
+188004a0-188004cf : GPIO_L
+188004e0-1880050f : GPIO_B
+18800520-1880054f : GPIO_R
+18800560-1880058f : GPIO_T
+18806000-18807fff : /soc/ge@18806000
+18844000-18844fff : /soc/usb@18844000
+  18844000-18844fff : /soc/usb@18844000
+1884c000-1884dfff : /soc/mmc@1884C000
+18850000-18850fff : /soc/usb@18850000
+  18850000-18850fff : /soc/usb@18850000
+
+-- mmz --
+
+-- nodos media presentes --
+crw-rw----    1 root     root      235,   0 Jan  1 00:00 /dev/ZZd2C
+crw-rw----    1 root     root      250,   0 Jan  1 00:00 /dev/auddec
+crw-rw----    1 root     root      249,   0 Jan  1 00:00 /dev/audsink
+crw-rw----    1 root     root      247,   0 Jan  1 00:00 /dev/avsync0
+crw-rw----    1 root     root      251,   0 Jan  1 00:00 /dev/kshmdev
+crw-rw----    1 root     root      232,   0 Jan  1 00:00 /dev/mmz
+crw-rw----    1 root     root      239,   0 Jan  1 00:00 /dev/pq
+crw-rw----    1 root     root      248,   0 Jan  1 00:00 /dev/viddec
+crw-rw----    1 root     root      242,   0 Jan  1 00:00 /dev/vidsink
+crw-rw----    1 root     root      246,   0 Jan  1 00:00 /dev/vindvp
+
+-- sysfs: kernel y class (top) --
+config
+debug
+fscaps
+mm
+notes
+rcu_expedited
+uevent_helper
+uevent_seqnum
+ZZd2C_class
+auddec_class
+audsink_class
+avsync0_class
+backlight_class
+bdi
+block
+bsg
+check_adc1
+check_adc5
+dis_class
+ge
+gpio
+graphics
+hdmi_class
+hdmi_rx_class
+input
+kshmdev_class
+mem
+mipi_class
+misc
+mmc_host
+mmz_class
+mtd
+net
+pq_class
+scsi_changer
+scsi_device
+scsi_disk
+scsi_generic
+scsi_host
+sndC0i2si_class
+sndC0i2so_class
+sndC0spo_class
+spi_master
+spidev
+standby_class
+tty
+tv_decoder_class
+udc
+vc
+viddec_class
+vidsink_class
+vindvp_class
+virtuart_class
+vtconsole
+watchdog
+
+-- fds /dev abiertos por proceso --
+pid 1 [init       ] ->console 
+pid 527 [hcdaemon ] ->ZZd2C console null 
+pid 543 [/bin/sh -- ] ->console tty 
+pid 544 [/mnt/sdcard/cubegm/icube ] ->console null 
+pid 551 [/bin/sh /tmp/treefrog-zhijack.sh ] ->auddec check_adc1 console fb0 ge mem null 
+pid 556 [/usr/bin/cubevol ] ->check_adc1 check_adc5 console dis fb1 hdmi mem null 
+pid 570 [/mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8 ] ->auddec check_adc1 fb0 ge mem null 
+pid 629 [picoarch /mnt/sdcard/cubegm/cores/frogshell_libretro.so /mnt/sdcard/cubegm/cores/frogshell_libretro.so ] ->auddec check_adc1 check_adc5 fb0 ge mem null 
+
+-- delta: esperando 10s --
+-- /proc/interrupts SNAPSHOT 2 (tras 10s) --
+           CPU0       
+  7:     241688      MIPS   7  timer
+  9:       1704   sys_irq   4  18806000.ge
+ 10:      13545   sys_irq  10  dw-mci
+ 11:          0   sys_irq   0  18800044.gpio, 188000c4.gpio, 188000e4.gpio, 18800344.gpio
+ 35:          2   sys_irq  35  1882e000.spi
+ 50:          0   sys_irq  50  musb-hdrc.1.auto
+ 51:          0   sys_irq  51  musb-hdrc.1.auto
+ 52:          0   sys_irq  52  musb-hdrc.0.auto
+ 53:          0   sys_irq  53  musb-hdrc.0.auto
+ 66:      39448   sys_irq  66  18800800.amprpc
+ERR:          0
+
+-- procesos --
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  186 root     [writeback]
+  188 root     [crypto]
+  189 root     [bioset]
+  191 root     [kblockd]
+  291 root     [rpcwork0]
+  292 root     [rpcwork1]
+  293 root     [rpcwork2]
+  294 root     [rpcwork3]
+  295 root     [rpcwork4]
+  296 root     [rpcwork5]
+  297 root     [rpcwork6]
+  298 root     [rpcwork7]
+  300 root     [kworker/0:1]
+  307 root     [kswapd0]
+  308 root     [fsnotify_mark]
+  354 root     [kworker/u2:2]
+  363 root     [spi32766]
+  373 root     [bioset]
+  378 root     [bioset]
+  384 root     [bioset]
+  389 root     [bioset]
+  439 root     [bioset]
+  441 root     [mmcqd/0]
+  463 root     [deferwq]
+  527 root     hcdaemon
+  539 root     [kworker/0:1H]
+  543 root     /bin/sh --
+  544 root     /mnt/sdcard/cubegm/icube
+  546 root     [rkgame]
+  551 root     /bin/sh /tmp/treefrog-zhijack.sh
+  556 root     /usr/bin/cubevol
+  570 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+  629 root     picoarch /mnt/sdcard/cubegm/cores/frogshell_libretro.so /mnt/sdcard/cubegm/cores/frogshell_libretro.so
+  644 root     /bin/sh /mnt/sdcard/diag8.sh
+  811 root     ps w
+
+=== FIN DIAG8 ===

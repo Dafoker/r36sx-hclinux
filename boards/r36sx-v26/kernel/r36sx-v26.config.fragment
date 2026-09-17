@@ -34,3 +34,12 @@ CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v2
 # CONFIG_HC_NAND is not set
 # CONFIG_HC_TOE is not set
 # CONFIG_HC_LVDS is not set
+# --- 7e (post-diag8-diff): la fábrica NUNCA hardware-inicializa los bloques UART
+# --- (sus uarts van por el driver vendor ttyHC; el 8250 solo imprime banner sin puertos).
+# --- Nuestro of_serial SÍ probea ttyS0/ttyS1@18818300/18818600 y ESCRIBE sus registros
+# --- (dmesg + iomem "serial") — posible interferencia con periféricos compartidos del AVP.
+# --- SERIAL_8250 no se puede apagar (select del Kconfig de la máquina MIPS); la perilla
+# --- quirúrgica es SERIAL_OF_PLATFORM (quien reclama los nodos DTB). Inittab usa getty
+# --- en console (no ttyS) → seguro.
+# CONFIG_SERIAL_OF_PLATFORM is not set
+# CONFIG_HC_P2P is not set
