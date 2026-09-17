@@ -92,3 +92,29 @@ zhijack.sh: congela icube + mata rkgame al arrancar (solo son vehículo), auto-l
 - **Test físico: boot sigue ~8s** — sin ganancia perceptible. El timeline percibido: kernel+unpack ~1s, montaje ~1-2s (el directo puede haber fallado silenciosamente o no era el cuello), **init TreeFrogUI (zhijack→cubevol→picoarch→frogui, recursos ui_*.cpd) ~4-5s = el floor dominante** (lado TreeFrogUI, no nuestro kernel).
 - Decisión del usuario: ~8s aceptado; el floor de TreeFrogUI se optimiza en SU repo (frogui init/parse), no aquí. Cambios 8f conservados (beneficiosos/inofensivos).
 - PRIORIDAD PIVOT (usuario): **fix de raíz del problema AVP-media** (audio/video/salida de cores) como requisito de Fase 8 completa.
+
+# Iteración 8g — PIVOT: fix AVP-media (análisis + estrategias, 2026-09-17)
+
+## Diagnóstico consolidado del problema AVP
+
+- Transporte AMPRPC SANO bajo nuestro kernel (IRQ 66 ~300/s igual que fábrica; kshmdev ok; rpcwork activos; ZZd2C funciona — hcdaemon lo usa).
+- El AVP ACKa las llamadas: **dmesg sin UN solo pr_err del avp-proxy** — sin timeouts kernel-side visibles.
+- Muerto: SOLO la familia media (audio en todo, decode video) + salida de cores (cuelga en drain de audio).
+- Refutado con builds limpios: drivers extra (7c), UART probe (7e), /etc bind (7b), contenido SD/TreeFrogUI (funciona en stock).
+- **Evidencia nueva (avp.uImage decompilado strings)**: el AVP de fábrica = build `avp-custom` desde `buildroot/output/E3100_R36/` — MISMA línea hclinux que nuestro SDK (FreeRTOS/MIPS32_HC16xx, estructura idéntica) → **drift de versión dentro de la misma familia** (ABI con IDs/structs evolucionados, Dic-2025 vs Jul-2024). Parcheable por RE.
+
+## Estrategias (ranked)
+
+| # | Estrategia | Costo | Estado |
+|---|---|---|---|
+| A | Cable USB-TTL (ttyS1@18818600 115200) — dmesg en vivo durante reproducción | ~$5-10 | USUARIO: pedirlo |
+| B | **diag9**: consola del AVP (avpconsole//dev/virtuart) + open-probe de nodos + dmesg fresco — comparativa stock-vs-nuestro | $0 | **DESPLEGADO (G:\diag9.sh)** |
+| C | Diff binario avp-proxy fábrica (stock.bin) vs nuestro avp-proxy.c → parchear ABI | 1-3 días RE | EN ARRANQUE |
+| D | SDK más nuevo vía ecosistema (tzubertowski/comunidades HC16xx: SF3500/GB350/R36SX) | un mensaje | USUARIO: opcional |
+| E | Driver I2S propio sin AVP (último recurso) | semanas | No recomendado |
+
+## Checklist Fase 8 COMPLETA (acordado con usuario: todo debe funcionar)
+
+✅ boot propios · ✅ menú · ✅ launcher eliminado · ✅ dieta
+❌ audio juegos · ❌ música · ❌ video · ❌ salida de cores (= 1 causa raíz AVP)
+⏳ 8e clean-install (TreeFrogUI fuera de cubegm)
