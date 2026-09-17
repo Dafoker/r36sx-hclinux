@@ -2,7 +2,7 @@
 
 **Reproducible Linux/HCLinux platform for the R36SX V2.6 handheld console (HiChip HC1600A, MIPS32r2 little-endian) — with TreeFrogUI as the target frontend.**
 
-[![Status](https://img.shields.io/badge/Fase%202-VENDOR%20BASELINE%20BUILD%20PASS-brightgreen)]() [![Kernel](https://img.shields.io/badge/kernel-4.4.186-blue)]() [![Validation](https://img.shields.io/badge/physical-N%2FA%20(not%20flashed)-orange)]()
+[![Status](https://img.shields.io/badge/Fase%202-VENDOR%20BASELINE%20BUILD%20PASS-brightgreen)]() [![Kernel](https://img.shields.io/badge/kernel-4.4.186-blue)]() [![Validation](https://img.shields.io/badge/physical-Fase%205%20in%20progress-orange)]()
 
 ## What this is
 
@@ -10,11 +10,11 @@ Engineering project building our own kernel/DTB/rootfs for the R36SX V2.6 from t
 
 **Hardware target (physical evidence):** SoC HC1600A · board `hc1600a@dbE3100v20` · 256 MiB RAM (176 MiB visible to stock Linux) · Linux 4.4.186 stock · display 1280x720 (fb0 @0x18808000) · console=tty1.
 
-## Current state (2026-09-14)
+## Current state (2026-09-16)
 
-**Vendor pipeline build: PASS · R36SX custom board build: PASS · Physical boot: NOT YET TESTED**
+**Vendor pipeline build: PASS · R36SX custom board build: PASS · Fase 5 physical boot: IN PROGRESS — boot parcial (splash, sin menú); iteración 6w menu-goal pendiente de test**
 
-What works: full vendor kernel pipeline reproduced end-to-end with proven provenance; stock hardware model fully reconstructed from the real console DTB (memory map 256 MiB = Linux 175.57 + AVP 80.43, MIPI-DSI panel r63311, console identity node, 3-partition NOR + SD boot); custom board `r36sx-v26` builds a kernel whose DTB is **semantically identical to stock (0 allowed differences)**. What doesn't yet: physical testing on the console (Fase 5, needs explicit authorization), TreeFrogUI integration (Fase 6), AVP/hcboot compilation (bare-metal toolchain unavailable — GitLab HiChip private).
+What works: full vendor kernel pipeline reproduced end-to-end with proven provenance; stock hardware model fully reconstructed from the real console DTB (memory map 256 MiB = Linux 175.57 + AVP 80.43, MIPI-DSI panel r63311, console identity node, 3-partition NOR + SD boot); custom board `r36sx-v26` builds a kernel whose DTB is **semantically identical to stock (0 allowed differences)**; Fase 5 iteration 6w achieves **stock-parity initramfs** (real S41hcdaemon/S99app boot chain + raw cpio embedded like factory, verified == stock). What doesn't yet: reach the TreeFrogUI menu with our own kernel (Fase 5 physical test of 6w pending); TreeFrogUI integration (Fase 6); AVP/hcboot compilation (bare-metal toolchain unavailable — GitLab HiChip private).
 
 | Subsystem | Status | Evidence |
 |---|---|---|
@@ -23,7 +23,7 @@ What works: full vendor kernel pipeline reproduced end-to-end with proven proven
 | Stock hardware model (4A) | **PASS** — DTB decompiled (roundtrip SEMANTIC), memory map exact, panel MIPI-DSI r63311 demonstrated, 15 formal deltas | `docs/DTS_STOCK_MODEL.md` · `docs/R36SX_D3100_DELTA.md` |
 | **Custom board r36sx-v26 (4B)** | **BUILD PASS — DTB semantically IDENTICAL to stock (allowlist 0); kernel .config == vendor; provenance gates PASS** | `docs/experiments/2026-09-14_r36sx-v26-board.md` |
 | TreeFrogUI contract | PENDING (Fase 6) | — |
-| Physical validation | **NOT YET TESTED — nothing flashed; nothing deployed** (Fase 5 requires explicit authorization + rollback protocol) | `docs/ai/HARDWARE_SAFETY.md` |
+| Physical validation | **IN PROGRESS (Fase 5)** — own kernel boots partially (splash, no menu); rollback verified; iteración 6w menu-goal (stock-parity initramfs) pending physical test | `docs/ai/HARDWARE_SAFETY.md` |
 
 What works: full vendor kernel pipeline reproduced end-to-end (kernel+DTB+uImage+rootfs), physical hardware documented from stock SD (read-only). What doesn't yet: custom board DTS, own kernel on device, AVP/hcboot compilation (bare-metal toolchain unavailable — GitLab HiChip is private), TreeFrogUI integration.
 

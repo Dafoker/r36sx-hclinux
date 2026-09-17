@@ -10,13 +10,19 @@
 #
 # Nota: BR2_TARGET_ROOTFS_INITRAMFS desactivado (Buildroot no sobreescribe
 # CONFIG_INITRAMFS_SOURCE con su rootfs; usamos el del desarrollador).
+#
+# Iteración 6w: paridad total con el kernel de FÁBRICA — forense del binario
+# 53b3e0b3 demuestra que el stock embebe el cpio CRUDO de 380 archivos (sin
+# compresión RD_*). Se desactivan los RD_* para embeber crudo igual que fábrica
+# (elimina la clase de fallo "unpack de initramfs gzip" y acorta el binario).
 CONFIG_CHECK_ADC=y
 CONFIG_BLK_DEV_INITRD=y
-CONFIG_RD_GZIP=y
-CONFIG_RD_BZIP2=y
-CONFIG_RD_LZMA=y
-CONFIG_RD_XZ=y
-CONFIG_RD_LZO=y
+# CONFIG_RD_GZIP is not set
+# CONFIG_RD_BZIP2 is not set
+# CONFIG_RD_LZMA is not set
+# CONFIG_RD_XZ is not set
+# CONFIG_RD_LZO is not set
+# CONFIG_RD_LZ4 is not set
 CONFIG_INITRAMFS_SOURCE="/home/dafunknoise/work/r36sx-hclinux/artifacts/r36sx-v26/rootfs-dev.cpio"
 # Fase 5 diagnostico: desactivar GE (motor 2D) — sospechoso de hang tras fb (0.385s), frágil en R36SX.
 # CONFIG_HC_GE is not set

@@ -38,7 +38,7 @@ fi
 KDEV="$W/artifacts/$BOARD/rootfs-dev.cpio"
 if [ -d "$OVERLAY_SRC" ] && grep -q "rootfs-dev.cpio" "$KFRAG" 2>/dev/null; then
   mkdir -p "$(dirname "$KDEV")"
-  ( cd "$OVERLAY_SRC" && find . | cpio -o -H newc 2>/dev/null > "$KDEV" )
+  ( cd "$OVERLAY_SRC" && find . | cpio -o -H newc -R 0:0 2>/dev/null > "$KDEV" )
   echo "initramfs dev: $KDEV ($(stat -c%s "$KDEV") bytes)"
 fi
 
