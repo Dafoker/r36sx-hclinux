@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (Fase 8a PHYSICAL PASS ✅ — consola bootea al menú con kernel propio + USERLAND 100% propio; 8b desplegado)
+**Actualizado:** 2026-09-17 (Fase 8c desplegada y PHYSICAL PASS ✅ — kernel+userland propios, rootfs dietado 10,4 MiB, uImage 6,80 MiB, tracer auto-limitante; menú en 8,4s; siguiente: 8d icube-direct)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -13,7 +13,7 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT OBJECTIVE
 
-Fase 8a LOGRADA. Siguiente: (1) 8c-dieta (defconfig slim + S09trace self-limiting → uImage ~5-7 MiB); (2) media fix diferido (USB-TTL); (3) Fase 8 CLEAN-INSTALL final (requiere media).
+Fase 8a/8c LOGRADAS. Siguiente: **8d icube-direct** (S99app lanza zhijack.sh — elimina la cadena de fábrica ~2,9s de boot + prueba renombrando icube). Después: 8e clean-install (relocar TreeFrogUI fuera de cubegm), media fix (USB-TTL, paralelo), Fase 7 (trim glibc + mount-helper).
 
 ## CURRENT HEAD
 
@@ -64,7 +64,7 @@ Test físico 6w (splash+batería, sin menú, kernel íntegro post-boot) + build 
 
 ## NEXT EXACT ACTION
 
-1. **Fase 8a — plan del rootfs propio:** definir alcance del primer incremento: Buildroot rootfs mínimo (busybox propio + S10mdev/S99app equivalentes escritos por nosotros + launch de icube.sh) → embebido como initramfs (CONFIG_INITRAMFS_SOURCE=rootfs-own.cpio) → boot al menú con userland 100% propio. SUCCESS = menú navegable con rootfs propio (media seguirá muda — limitación conocida).
+1. **8d icube-direct:** S99app-direct (espera zhijack.sh + LD_LIBRARY_PATH + lanza zhijack) → deploy → renombrar icube en SD → test: menú + boot más rápido (~2,9s menos) + boottrace.
 2. **Comprar cable USB-TTL** (paralelo) — desbloquea el diagnóstico de media (ADR-011) y todo debugging futuro.
 3. Testing kernel propio: usar staging (`7e da76d6ea` / `6x 017adf3b`) en SD de pruebas; consola diaria queda en STOCK.
 

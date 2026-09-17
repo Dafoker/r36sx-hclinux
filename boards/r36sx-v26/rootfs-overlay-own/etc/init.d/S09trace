@@ -1,11 +1,13 @@
 #!/bin/sh
-# S09trace — trazador de boot (Fase 8): snapshots de estado cada 2s a /tmp,
-# copia viva a la SD en cuanto /media/*/cubegm aparece. Diagnostico ciego resuelto.
+# S09trace — trazador de boot AUTO-LIMITANTE (8c): snapshots a /tmp cada 2s,
+# copia a la SD cuando /media/*/cubegm aparece. TERMINA al detectar picoarch
+# (boot completo) o tras 300s. Copia final a la SD en ambos casos.
 LOG=/tmp/boottrace.log
 : > "$LOG"
 echo "T0 uptime=$(cut -d' ' -f1 /proc/uptime) kernel=$(uname -r)" >> "$LOG"
 (
-  while true; do
+  N=0
+  while [ $N -lt 150 ]; do
     {
       echo "=== uptime=$(cut -d' ' -f1 /proc/uptime) ==="
       ps w 2>/dev/null
@@ -14,6 +16,18 @@ echo "T0 uptime=$(cut -d' ' -f1 /proc/uptime) kernel=$(uname -r)" >> "$LOG"
     for d in /media/*/cubegm; do
       [ -d "$d" ] && cp "$LOG" "$d/boottrace.log" 2>/dev/null && sync
     done
+    if pidof picoarch >/dev/null 2>&1; then
+      echo "=== BOOT COMPLETO: picoarch detectado ===" >> "$LOG"
+      for d in /media/*/cubegm; do
+        [ -d "$d" ] && cp "$LOG" "$d/boottrace.log" 2>/dev/null && sync
+      done
+      exit 0
+    fi
+    N=$((N+1))
     sleep 2
+  done
+  echo "=== TIMEOUT 300s sin picoarch ===" >> "$LOG"
+  for d in /media/*/cubegm; do
+    [ -d "$d" ] && cp "$LOG" "$d/boottrace.log" 2>/dev/null && sync
   done
 ) &
