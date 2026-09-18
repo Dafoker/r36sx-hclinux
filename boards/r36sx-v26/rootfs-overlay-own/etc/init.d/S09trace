@@ -1,33 +1,74 @@
 #!/bin/sh
-# S09trace — trazador de boot AUTO-LIMITANTE (8c): snapshots a /tmp cada 2s,
-# copia a la SD cuando /media/*/cubegm aparece. TERMINA al detectar picoarch
-# (boot completo) o tras 300s. Copia final a la SD en ambos casos.
+# S09trace v4 (9d) — nunca bloquea: toda interaccion con virtuart en bg+kill.
+# Guarda: timeline + virtuart_boot.log (cada snapshot) + delta IRQ66 + dmesg tails.
 LOG=/tmp/boottrace.log
-: > "$LOG"
+V=/tmp/virtuart.log
+IRQ=/tmp/irq66.log
+: > "$LOG"; : > "$V"; : > "$IRQ"
 echo "T0 uptime=$(cut -d' ' -f1 /proc/uptime) kernel=$(uname -r)" >> "$LOG"
+
+# lector persistente del virtuart (bg; muere al final del script)
+( while true; do cat /dev/virtuart >> "$V" 2>/dev/null; usleep 300000; done ) &
+VREADER=$!
+
+# probe no-bloqueante: writes en bg + kill
+avp_write() {
+  printf "$1" > /dev/virtuart 2>/dev/null &
+  WP=$!
+  sleep 1
+  kill $WP 2>/dev/null
+}
+
 (
   N=0
   while [ $N -lt 150 ]; do
     {
       echo "=== uptime=$(cut -d' ' -f1 /proc/uptime) ==="
       ps w 2>/dev/null
-      grep -E "sdcard|/media|/lib | /bin | /sbin | /usr | /etc |swap" /proc/mounts 2>/dev/null
+      grep -E "sdcard|/media| /lib | /bin | /sbin | /usr | /etc |swap" /proc/mounts 2>/dev/null
+      grep -E "^ *66:" /proc/interrupts 2>/dev/null
     } >> "$LOG"
     for d in /media/*/cubegm; do
-      [ -d "$d" ] && cp "$LOG" "$d/boottrace.log" 2>/dev/null && sync
+      [ -d "$d" ] && {
+        cp "$LOG" "$d/boottrace.log" 2>/dev/null
+        cp "$V" "$d/virtuart_boot.log" 2>/dev/null
+        sync
+      }
     done
+    # probe del shell NSH: no bloqueante, una vez picoarch vive
     if pidof picoarch >/dev/null 2>&1; then
-      echo "=== BOOT COMPLETO: picoarch detectado ===" >> "$LOG"
+      echo "=== picoarch ON: probing AVP (bg+kill) ===" >> "$LOG"
+      avp_write "\r\n"
+      avp_write "help\r\n"
+      avp_write "ps\r\n"
+      sleep 3
+      echo "=== virtuart capturado hasta ahora ===" >> "$LOG"
+      cat "$V" >> "$LOG"
+      echo "=== dmesg tail ===" >> "$LOG"
+      dmesg 2>/dev/null >> "$LOG"
       for d in /media/*/cubegm; do
-        [ -d "$d" ] && cp "$LOG" "$d/boottrace.log" 2>/dev/null && sync
+        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; sync; }
       done
+      echo "=== probe ronda 1 lista — seguimos monitoreando 60s ===" >> "$LOG"
+      M=0
+      while [ $M -lt 30 ]; do
+        grep -E "^ *66:" /proc/interrupts 2>/dev/null >> "$LOG"
+        for d in /media/*/cubegm; do
+          [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; sync; }
+        done
+        M=$((M+1))
+        sleep 2
+      done
+      echo "=== FIN MONITOREO 60s ===" >> "$LOG"
+      cat "$V" >> "$LOG"
+      for d in /media/*/cubegm; do
+        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; sync; }
+      done
+      kill $VREADER 2>/dev/null
       exit 0
     fi
     N=$((N+1))
     sleep 2
   done
-  echo "=== TIMEOUT 300s sin picoarch ===" >> "$LOG"
-  for d in /media/*/cubegm; do
-    [ -d "$d" ] && cp "$LOG" "$d/boottrace.log" 2>/dev/null && sync
-  done
+  kill $VREADER 2>/dev/null
 ) &

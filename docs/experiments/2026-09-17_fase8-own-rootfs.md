@@ -139,3 +139,28 @@ zhijack.sh: congela icube + mata rkgame al arrancar (solo son vehículo), auto-l
 - **Defconfig activo**: PREBUILTS_AUDDRIVER + VIDDRIVER_DECODER_FULL + MP3/AAC/AACEL/PCM/FLAC/VORB/WMA/OPUS/RA decoders + AMPRPC(8 threads) + KSHM dualcore + VIRTUART(NSH shell) + MIPI + I2S-out + STANDBY.
 - **Hipotesis a testear**: par proxy(Jul-2024)+AVP(Jul-2024) consistente → media funcional (vs proxy(Jul-2024)+AVP-fabrica(Dic-2025) mismatch).
 - **DEPLOY PENDIENTE**: backup de avp.uImage de fabrica (a9788995) → swap → boot con kernel 8f → TEST MEDIA (audio juegos/musica/video/salida cores).
+# Iteración 9f/9g — Proxy-RE con debug amprpc: EL BUG ESTÁ EN USERSPACE (2026-09-18)
+
+## Setup
+- Kernel 9f/9g: avp_ioctl/avp_open con printk de debug (hasta 500 entradas). AVP = FABRICA (a9788995). S09trace captura dmesg completo.
+
+## Hallazgo REVOLUCIONARIO (9g, evidence-9g-boottrace.log — 38KB, amprpc[1-114]):
+- **AMPRPC funciona PERFECTAMENTE**: 114 llamadas, TODAS exitosas, CERO timeouts. El AVP de fábrica responde a TODO.
+- **picoarch NUNCA inicializa el audio**: CERO llamadas a AUDDEC_INIT, SND_IOCTL_HW_PARAMS, SND_IOCTL_GET_HW_INFO, SND_IOCTL_START, SND_IOCTL_XFER. snd_xfer NUNCA se ejecuta.
+- Solo cubevol usa el audio (SET/GET_VOLUME, SET_HDMI_MUTE) — gestión de volumen sin datos PCM.
+- El HDMI_TX polling (cmd=0x40041C02, cubevol) corre infinitamente — posible lead para el hang de salida.
+- **CONCLUSIÓN: el fallo NO está en el kernel ni en el AVP. Está en USERSPACE — picoarch/driver_r36sx.so falla silenciosamente antes de intentar usar el kernel.**
+
+## Decodificación de ioctls observados (MIPS o32):
+| cmd | type | nr | significado | ret |
+|---|---|---|---|---|
+| 0x4001080C | SND(8) | 12 | GET_VOLUME (READ,1B) | 0→100 |
+| 0x20000822 | SND(8) | 34 | SET_HDMI_MUTE (NONE,0B) | 0 |
+| 0x8001080B | SND(8) | 11 | SET_VOLUME (WRITE,1B) | 0 |
+| 0x40041C02 | HDMI_TX(28) | 2 | polling (READ,4B) | 0 |
+| 0xC00C0E0C | DIS(14) | 12 | display ioctl | 0 |
+| 0x80140E09 | DIS(14) | 9 | display ioctl | 0 |
+| 0x800C0E04 | DIS(14) | 4 | display ioctl | 0 |
+
+## Siguiente: debug de TreeFrogUI userspace
+- `log.txt` creado en G:\ — zhijack.sh lo detecta y habilita debug logging de picoarch + driver_r36sx.so → los errores de audio aparecerán en la SD.

@@ -1,0 +1,311 @@
+T0 uptime=1.08 kernel=4.4.186-release
+=== uptime=1.11 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  903 root     [kworker/u2:4]
+  907 root     [spi32766]
+  912 root     [bioset]
+  918 root     [bioset]
+  923 root     [bioset]
+  928 root     [bioset]
+  976 root     [bioset]
+  979 root     [mmcqd/0]
+ 1002 root     [deferwq]
+ 1024 root     {rcS} /bin/sh /etc/init.d/rcS
+ 1028 root     /sbin/syslogd -n
+ 1032 root     /sbin/klogd -n
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1047 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1048 root     {S10mdev} /bin/sh /etc/init.d/S10mdev start
+ 1052 root     usleep 300000
+ 1053 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+ 66:         13   sys_irq  66  18800800.amprpc
+=== uptime=3.57 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  903 root     [kworker/u2:4]
+  907 root     [spi32766]
+  912 root     [bioset]
+  918 root     [bioset]
+  923 root     [bioset]
+  928 root     [bioset]
+  976 root     [bioset]
+  979 root     [mmcqd/0]
+ 1002 root     [deferwq]
+ 1028 root     /sbin/syslogd -n
+ 1032 root     /sbin/klogd -n
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1047 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1117 root     hcdaemon
+ 1128 root     [kworker/0:1H]
+ 1135 root     {zhijack.sh} /bin/sh /mnt/sdcard/cubegm/zhijack.sh
+ 1136 root     /bin/sh --
+ 1139 root     ps w
+ 1140 root     usleep 300000
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:         97   sys_irq  66  18800800.amprpc
+=== uptime=6.60 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  894 root     [kworker/u2:3]
+  903 root     [kworker/u2:4]
+  907 root     [spi32766]
+  912 root     [bioset]
+  918 root     [bioset]
+  923 root     [bioset]
+  928 root     [bioset]
+  976 root     [bioset]
+  979 root     [mmcqd/0]
+ 1002 root     [deferwq]
+ 1028 root     /sbin/syslogd -n
+ 1032 root     /sbin/klogd -n
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1047 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1117 root     hcdaemon
+ 1128 root     [kworker/0:1H]
+ 1135 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1136 root     /bin/sh --
+ 1165 root     /usr/bin/cubevol
+ 1173 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1175 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1187 root     usleep 300000
+ 1189 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:        459   sys_irq  66  18800800.amprpc
+=== picoarch ON: probing AVP (bg+kill) ===
+=== virtuart capturado hasta ahora ===
+VER:VIDDRIVER(Dec 26 2024 15:11:15)
+open /dev/persistentmem failed
+get tvtype in sysdata fail,from dts:15
+KdwaYewCiBETqFZPvtZFqORuSKMqoSzp 0
+b_hdmi_output = 1
+data = 0x5780074
+data = 0x1f00010
+b_hdmi_output = 1
+open /dev/persistentmem failed
+get_dts_panel_info 67 109 19 1 640 480
+Unplug_card_display_display_init 310
+CFG 48K
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# help
+
+Commands available:
+  help                 Show available cmds
+  exit                 Exit from current cmd set
+  history              Show history cmds
+  reset                reset system
+  dumpstack            memory status entry
+  quit                 Quit virtual uart console
+  gpio                 gpio pin val
+  elog                 elog cmds entry
+  mem                  memory status entry
+  softirqresched       set softirq resched priority
+  softirq              set softirq priority
+  sde                  SDE tool
+  dither               
+  test_mem_wr_speed    test mem write speed
+  test_mem_rd_speed    test mem read speed
+  swxf                 swxf
+  reset_hrx_audio      reset hdmi rx audio
+  os                   os cmds entry
+  nsh                  Enter NSH cmds
+  drcoff               drcoff
+  drcon                drcon
+  i2soinfo             i2soinfo()
+  enejtag              enejtag()
+  disejtag             disejtag()
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# ps
+Invalid command "ps"
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# init:active 0x8c0caa00
+=== dmesg tail ===
+amprpc[73]: IOCTL fd=7 cmd=0x4001080C sz=1amprpc[74]: IOCTL cmd=0x4001080C -> ret=0
+amprpc[75]: OPEN /dev/sndC0i2so -> fd=7amprpc[76]: IOCTL fd=7 cmd=0x20000822 sz=0
+amprpc[77]: IOCTL cmd=0x20000822 -> ret=0amprpc[78]: OPEN /dev/sndC0i2so -> fd=7
+amprpc[79]: IOCTL fd=7 cmd=0x8001080B sz=1amprpc[80]: IOCTL cmd=0x8001080B -> ret=0
+amprpc[81]: IOCTL fd=7 cmd=0x4001080C sz=1amprpc[82]: IOCTL cmd=0x4001080C -> ret=100
+amprpc[83]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[84]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[85]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[86]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[87]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[88]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[89]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[90]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[91]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[92]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[93]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[94]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[95]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[96]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[97]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[98]: IOCTL cmd=0x40041C02 -> ret=0
+amprpc[99]: IOCTL fd=4 cmd=0x40041C02 sz=4amprpc[100]: IOCTL cmd=0x40041C02 -> ret=0
+map ge register to userspace. off = 0
+=== probe ronda 1 lista — seguimos monitoreando 60s ===
+ 66:       4028   sys_irq  66  18800800.amprpc
+ 66:       4988   sys_irq  66  18800800.amprpc
+ 66:       5783   sys_irq  66  18800800.amprpc
+ 66:       6590   sys_irq  66  18800800.amprpc
+ 66:       7382   sys_irq  66  18800800.amprpc
+ 66:       8192   sys_irq  66  18800800.amprpc
+ 66:       8990   sys_irq  66  18800800.amprpc
+ 66:       9807   sys_irq  66  18800800.amprpc
+ 66:      10612   sys_irq  66  18800800.amprpc
+ 66:      11426   sys_irq  66  18800800.amprpc
+ 66:      12236   sys_irq  66  18800800.amprpc
+ 66:      13046   sys_irq  66  18800800.amprpc
+ 66:      13842   sys_irq  66  18800800.amprpc
+ 66:      14658   sys_irq  66  18800800.amprpc
+ 66:      15462   sys_irq  66  18800800.amprpc
+ 66:      16273   sys_irq  66  18800800.amprpc
+ 66:      17075   sys_irq  66  18800800.amprpc
+ 66:      17890   sys_irq  66  18800800.amprpc
+ 66:      18694   sys_irq  66  18800800.amprpc
+ 66:      19508   sys_irq  66  18800800.amprpc
+ 66:      20315   sys_irq  66  18800800.amprpc
+ 66:      21129   sys_irq  66  18800800.amprpc
+ 66:      21943   sys_irq  66  18800800.amprpc
+ 66:      22766   sys_irq  66  18800800.amprpc
+ 66:      23564   sys_irq  66  18800800.amprpc
+ 66:      24374   sys_irq  66  18800800.amprpc
+ 66:      25183   sys_irq  66  18800800.amprpc
+ 66:      25992   sys_irq  66  18800800.amprpc
+ 66:      26808   sys_irq  66  18800800.amprpc
+ 66:      27547   sys_irq  66  18800800.amprpc
+=== FIN MONITOREO 60s ===
+VER:VIDDRIVER(Dec 26 2024 15:11:15)
+open /dev/persistentmem failed
+get tvtype in sysdata fail,from dts:15
+KdwaYewCiBETqFZPvtZFqORuSKMqoSzp 0
+b_hdmi_output = 1
+data = 0x5780074
+data = 0x1f00010
+b_hdmi_output = 1
+open /dev/persistentmem failed
+get_dts_panel_info 67 109 19 1 640 480
+Unplug_card_display_display_init 310
+CFG 48K
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# help
+
+Commands available:
+  help                 Show available cmds
+  exit                 Exit from current cmd set
+  history              Show history cmds
+  reset                reset system
+  dumpstack            memory status entry
+  quit                 Quit virtual uart console
+  gpio                 gpio pin val
+  elog                 elog cmds entry
+  mem                  memory status entry
+  softirqresched       set softirq resched priority
+  softirq              set softirq priority
+  sde                  SDE tool
+  dither               
+  test_mem_wr_speed    test mem write speed
+  test_mem_rd_speed    test mem read speed
+  swxf                 swxf
+  reset_hrx_audio      reset hdmi rx audio
+  os                   os cmds entry
+  nsh                  Enter NSH cmds
+  drcoff               drcoff
+  drcon                drcon
+  i2soinfo             i2soinfo()
+  enejtag              enejtag()
+  disejtag             disejtag()
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# ps
+Invalid command "ps"
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# init:active 0x8c0caa00

@@ -1,0 +1,214 @@
+T0 uptime=1.08 kernel=4.4.186-release
+=== uptime=1.11 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  906 root     [spi32766]
+  910 root     [bioset]
+  916 root     [bioset]
+  921 root     [bioset]
+  926 root     [bioset]
+  974 root     [bioset]
+  977 root     [mmcqd/0]
+ 1000 root     [deferwq]
+ 1022 root     {rcS} /bin/sh /etc/init.d/rcS
+ 1026 root     /sbin/syslogd -n
+ 1030 root     /sbin/klogd -n
+ 1044 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S10mdev} /bin/sh /etc/init.d/S10mdev start
+ 1048 root     cat /dev/virtuart
+ 1050 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+ 66:          0   sys_irq  66  18800800.amprpc
+=== uptime=3.53 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  906 root     [spi32766]
+  910 root     [bioset]
+  916 root     [bioset]
+  921 root     [bioset]
+  926 root     [bioset]
+  974 root     [bioset]
+  977 root     [mmcqd/0]
+ 1000 root     [deferwq]
+ 1026 root     /sbin/syslogd -n
+ 1030 root     /sbin/klogd -n
+ 1044 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1048 root     cat /dev/virtuart
+ 1104 root     hcdaemon
+ 1115 root     [kworker/0:1H]
+ 1120 root     {zhijack.sh} /bin/sh /mnt/sdcard/cubegm/zhijack.sh
+ 1121 root     /bin/sh --
+ 1123 root     ps w
+ 1124 root     mkdir /tmp/zhijack.lock
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:          0   sys_irq  66  18800800.amprpc
+=== uptime=6.35 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  906 root     [spi32766]
+  910 root     [bioset]
+  916 root     [bioset]
+  921 root     [bioset]
+  926 root     [bioset]
+  974 root     [bioset]
+  977 root     [mmcqd/0]
+ 1000 root     [deferwq]
+ 1026 root     /sbin/syslogd -n
+ 1030 root     /sbin/klogd -n
+ 1044 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1048 root     cat /dev/virtuart
+ 1104 root     hcdaemon
+ 1115 root     [kworker/0:1H]
+ 1120 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1121 root     /bin/sh --
+ 1144 root     /usr/bin/cubevol
+ 1147 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1149 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1151 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:          0   sys_irq  66  18800800.amprpc
+=== picoarch ON: probing AVP (bg+kill) ===
+=== virtuart capturado hasta ahora ===
+=== dmesg tail ===
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 1 port detected
+---> usb#1 reset
+---> usb#1 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+reg_base: b8806000, reg_size: 8192, sys_reg_base: b8800000,  irq: 9
+hcge 18806000.ge: Init GE success.
+NET: Registered protocol family 17
+bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+name:check_adc1
+name:check_adc5
+Freeing unused kernel memory: 10916K
+devpts: called with bogus options
+FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+random: nonblocking pool is initialized
+=== probe ronda 1 lista — seguimos monitoreando 60s ===
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+ 66:          0   sys_irq  66  18800800.amprpc
+=== FIN MONITOREO 60s ===
