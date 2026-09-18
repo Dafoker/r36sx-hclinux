@@ -61,6 +61,9 @@ avp_write() {
         sleep 2
       done
       echo "=== FIN MONITOREO 60s ===" >> "$LOG"
+      echo "=== DMESG FINAL (post-juego) ===" >> "$LOG"
+      dmesg 2>/dev/null >> "$LOG"
+      echo "=== VIRTUART FINAL ===" >> "$LOG"
       cat "$V" >> "$LOG"
       for d in /media/*/cubegm; do
         [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }

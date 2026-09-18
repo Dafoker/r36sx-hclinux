@@ -1,0 +1,628 @@
+
+=== picoarch init pid=573 ppid=552 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,5760 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1140 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,960 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1278 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,1440 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1278 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,3360 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1124 ppid=1103 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1124 ppid=1103 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1138 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6720 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1138 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1124 ppid=1103 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1137 ppid=1103 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,4320 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1124 ppid=1103 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1137 ppid=1103 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,3360 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1137 ppid=1103 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,9600 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1124 ppid=1103 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1143 ppid=1103 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1138 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,4320 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1151 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,4320 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1151 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,3360 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1104 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1138 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6720 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1151 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,8160 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1151 ppid=1104 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1118 ppid=1097 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1118 ppid=1097 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,9600 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1117 ppid=1096 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1130 ppid=1096 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6240 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1143 ppid=1096 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,9120 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1143 ppid=1096 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1117 ppid=1096 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1117 ppid=1096 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,4320 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=572 ppid=551 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=572 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6720 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=572 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=572 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,7680 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=572 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,7200 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=616 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,10080 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=629 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,10080 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=629 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,3360 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=629 ppid=551 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,8160 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1112 ppid=1091 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1112 ppid=1091 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,3360 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1112 ppid=1091 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1125 ppid=1091 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6240 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1138 ppid=1091 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2880 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1158 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1158 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,480 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1158 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1264 ppid=1158 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6240 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1159 ppid=1137 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1180 ppid=1137 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,1920 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1160 ppid=1138 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1149 ppid=1121 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1170 ppid=1121 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1146 ppid=1118 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1167 ppid=1118 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,9120 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1146 ppid=1118 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1146 ppid=1118 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,4320 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=573 ppid=552 ===
+PRE-FBIOPUT 480x854(v480x13664) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=586 ppid=552 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,7200 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=586 ppid=552 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,3360 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=586 ppid=552 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,1920 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1144 ppid=1117 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=1
+FBIOBLANK(1)=0 (0)=0 errno=1
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1146 ppid=1119 ===
+
+=== picoarch init pid=1149 ppid=1120 ===
+
+=== picoarch init pid=1174 ppid=1134 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1174 ppid=1134 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1174 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,9600 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1175 ppid=1135 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1778 ppid=1135 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,5760 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1174 ppid=1134 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1174 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,9120 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1174 ppid=1134 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1406 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6240 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1745 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6240 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1813 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1182 ppid=1133 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1182 ppid=1133 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,7200 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1183 ppid=1133 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1183 ppid=1133 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,480 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1134 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,4800 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1186 ppid=1135 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1186 ppid=1135 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2880 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1135 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1135 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,480 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1134 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1184 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1186 ppid=1134 ===
+PRE-FBIOPUT 720x1280(v720x5120) bpp=32 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1439 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,6240 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1439 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,0 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1439 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,1440 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1439 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,3360 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1439 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,480 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1779 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,4800 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1779 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,2400 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1779 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,8160 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0
+
+=== picoarch init pid=1916 ppid=1134 ===
+PRE-FBIOPUT 640x480(v640x11040) bpp=16 off=0,5760 rot=0
+FBIOPUT ret=0 errno=2
+FBIOBLANK(1)=0 (0)=0 errno=2
+POST-FBIOPUT 720x1280(v720x2560) bpp=32 off=0,0 rot=0

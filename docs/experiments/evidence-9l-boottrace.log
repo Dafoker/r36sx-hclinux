@@ -1,0 +1,1649 @@
+T0 uptime=1.08 kernel=4.4.186-release
+=== uptime=1.11 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  899 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1023 root     {rcS} /bin/sh /etc/init.d/rcS
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1047 root     {S10mdev} /bin/sh /etc/init.d/S10mdev start
+ 1051 root     usleep 300000
+ 1052 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+ 66:         15   sys_irq  66  18800800.amprpc
+=== uptime=3.58 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  899 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1116 root     hcdaemon
+ 1127 root     [kworker/0:1H]
+ 1134 root     {zhijack.sh} /bin/sh /mnt/sdcard/cubegm/zhijack.sh
+ 1135 root     /bin/sh --
+ 1138 root     ps w
+ 1139 root     usleep 300000
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:        104   sys_irq  66  18800800.amprpc
+=== uptime=6.60 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  899 root     [kworker/u2:3]
+  905 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1116 root     hcdaemon
+ 1127 root     [kworker/0:1H]
+ 1134 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1135 root     /bin/sh --
+ 1176 root     /usr/bin/cubevol
+ 1182 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1186 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1196 root     usleep 300000
+ 1198 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:        403   sys_irq  66  18800800.amprpc
+=== picoarch ON: probing AVP (bg+kill) ===
+=== virtuart capturado hasta ahora ===
+VER:VIDDRIVER(Dec 26 2024 15:11:15)
+open /dev/persistentmem failed
+get tvtype in sysdata fail,from dts:15
+KdwaYewCiBETqFZPvtZFqORuSKMqoSzp 0
+b_hdmi_output = 1
+data = 0x5780074
+data = 0x1f00010
+b_hdmi_output = 1
+open /dev/persistentmem failed
+get_dts_panel_info 67 109 19 1 640 480
+Unplug_card_display_display_init 310
+CFG 48K
+hc1600a@dbE3100v20# hdmi_tx_reg_set_phy_clk_dat_pwdown_hpg
+HDMI WAIT PHY RDY TIME OUT
+
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# help
+
+Commands available:
+  help                 Show available cmds
+  exit                 Exit from current cmd set
+  history              Show history cmds
+  reset                reset system
+  dumpstack            memory status entry
+  quit                 Quit virtual uart console
+  gpio                 gpio pin val
+  elog                 elog cmds entry
+  mem                  memory status entry
+  softirqresched       set softirq resched priority
+  softirq              set softirq priority
+  sde                  SDE tool
+  dither               
+  test_mem_wr_speed    test mem write speed
+  test_mem_rd_speed    test mem read speed
+  swxf                 swxf
+  reset_hrx_audio      reset hdmi rx audio
+  os                   os cmds entry
+  nsh                  Enter NSH cmds
+  drcoff               drcoff
+  drcon                drcon
+  i2soinfo             i2soinfo()
+  enejtag              enejtag()
+  disejtag             disejtag()
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# ps
+Invalid command "ps"
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# init:active 0x8c0caa00
+open /dev/sndC0i2so 10
+CFG 48K
+audio_info.ch_status 0x2000004
+=== dmesg tail ===
+Linux version 4.4.186-release (dafunknoise@DFNK) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #47 PREEMPT Fri Sep 18 10:22:58 -05 2026
+MIPS: machine is Hichip hc16xx
+CPU0 revision is: 0001974c (MIPS 74Kc)
+FPU revision is: 01739300
+Determined physical RAM map:
+ memory: 0af91e50 @ 00000000 (usable)
+Initrd not found or empty - disabling initrd
+Zone ranges:
+  Normal   [mem 0x0000000000000000-0x000000000af90fff]
+Movable zone start for each node
+Early memory node ranges
+  node   0: [mem 0x0000000000000000-0x000000000af90fff]
+Initmem setup node 0 [mem 0x0000000000000000-0x000000000af90fff]
+On node 0 totalpages: 44945
+free_area_init_node: node 0, pgdat 80553f40, node_mem_map 81056ae0
+  Normal zone: 352 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 44945 pages, LIFO batch:7
+Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+pcpu-alloc: [0] 0 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 44593
+Kernel command line: root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug
+IRQ lockup detection disabled
+PID hash table entries: 1024 (order: 0, 4096 bytes)
+Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+Writing ErrCtl register=00000000
+Readback ErrCtl register=00000000
+Memory: 161272K/179780K available (3978K kernel code, 169K rwdata, 1312K rodata, 10916K init, 205K bss, 18508K reserved, 0K cma-reserved)
+Preemptible hierarchical RCU implementation.
+	Build-time adjustment of leaf fanout to 32.
+NR_IRQS:128
+CPU Clock: 1188MHz
+clocksource_probe: no matching clocksources found
+clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3217610179 ns
+sched_clock: 32 bits at 594MHz, resolution 1ns, wraps every 3615292415ns
+Console: colour dummy device 80x25
+console [tty1] enabled
+Calibrating delay loop... 589.82 BogoMIPS (lpj=294912)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+devtmpfs: initialized
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+futex hash table entries: 256 (order: -1, 3072 bytes)
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+clocksource: Switched to clocksource MIPS
+NET: Registered protocol family 2
+TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+fuse init (API version 7.23)
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+io scheduler noop registered (default)
+Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+SCSI Media Changer driver v0.25 
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+usbcore: registered new interface driver usb-storage
+i2c /dev entries driver
+IR NEC protocol handler initialized
+Synopsys Designware Multimedia Card Interface Driver
+dw_mmc_hc 1884c000.mmc: num-slots property not found, assuming 1 slot is available
+dw_mmc_hc 1884c000.mmc: fifo-depth property not found, using value of FIFOTH register as default
+dw_mmc_hc 1884c000.mmc: host clk=198000000
+dw_mmc_hc 1884c000.mmc: setup source clock : 0x3 (0x0:49MHZ 0x1:99Mhz 0x2:150Mhz 0x3:198Mhz)
+dw_mmc_hc 1884c000.mmc: IDMAC supports 32-bit address mode.
+dw_mmc_hc 1884c000.mmc: Using internal DMA controller.
+dw_mmc_hc 1884c000.mmc: Version ID is 270a
+dw_mmc_hc 1884c000.mmc: DW MMC controller at irq 10,32 bit host data width,128 deep fifo
+dw_mmc_hc 1884c000.mmc: No vmmc regulator found
+dw_mmc_hc 1884c000.mmc: No vqmmc regulator found
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+dw_mmc_hc 1884c000.mmc: 1 slots initialized
+virtuart init ok
+kshmdev init ok
+m25p80 spi32766.0: found 25HD40, expected m25p80
+m25p80 spi32766.0: 25HD40 (512 Kbytes)
+4 ofpart partitions found on MTD device spi32766.0
+Creating 4 MTD partitions on "spi32766.0":
+0x000000000000-0x000000080000 : "nor"
+0x000000000000-0x00000006c000 : "boot"
+0x00000006c000-0x000000070000 : "eromfs"
+0x000000070000-0x000000080000 : "persistentmem"
+fb node name: fb0!
+fb0 enable!
+fb node name: fb1!
+fb1 enable!
+---> usb#0 reset
+mmc0: new high speed SDXC card at address aaaa
+musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+musb-hdrc: MHDRC RTL version 2.0 
+musb-hdrc musb-hdrc.0.auto: MUSB HDRC host driver
+musb-hdrc musb-hdrc.0.auto: new USB bus registered, assigned bus number 1
+usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb1: Product: MUSB HDRC host driver
+usb usb1: Manufacturer: Linux 4.4.186-release musb-hcd
+usb usb1: SerialNumber: musb-hdrc.0.auto
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+---> usb#0 reset
+mmcblk0: mmc0:aaaa SD64G 59.5 GiB 
+ mmcblk0: p1
+---> usb#0 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+---> usb#1 reset
+musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+musb-hdrc: MHDRC RTL version 2.0 
+musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 2
+usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb2: Product: MUSB HDRC host driver
+usb usb2: Manufacturer: Linux 4.4.186-release musb-hcd
+usb usb2: SerialNumber: musb-hdrc.1.auto
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 1 port detected
+---> usb#1 reset
+---> usb#1 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+reg_base: b8806000, reg_size: 8192, sys_reg_base: b8800000,  irq: 9
+hcge 18806000.ge: Init GE success.
+NET: Registered protocol family 17
+bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+name:check_adc1
+name:check_adc5
+Freeing unused kernel memory: 10916K
+devpts: called with bogus options
+amprpc[1]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[2]: OPEN /dev/virtuart_proxy -> fd=3amprpc[3]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[4]: OPEN /dev/virtuart_proxy -> fd=3amprpc[5]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[6]: OPEN /dev/virtuart_proxy -> fd=3<4>FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+amprpc[7]: OPEN /dev/ZZd2C -> fd=3
+amprpc[8]: OPEN /dev/virtuart_proxy -> fd=4amprpc[9]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[10]: OPEN /dev/virtuart_proxy -> fd=4amprpc[11]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[12]: OPEN /dev/virtuart_proxy -> fd=4amprpc[13]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[14]: OPEN /dev/dis -> fd=4amprpc[15]: IOCTL fd=4 cmd=0xC00C0E0C sz=12
+amprpc[16]: IOCTL cmd=0xC00C0E0C -> ret=0<5>random: nonblocking pool is initialized
+amprpc[17]: OPEN /dev/dis -> fd=4
+amprpc[18]: IOCTL fd=4 cmd=0x80140E09 sz=20amprpc[19]: IOCTL cmd=0x80140E09 -> ret=0
+amprpc[20]: OPEN /dev/hdmi -> fd=4amprpc[21]: OPEN /dev/virtuart_proxy -> fd=6
+amprpc[22]: OPEN /dev/dis -> fd=6amprpc[23]: IOCTL fd=6 cmd=0xC00C0E0C sz=12
+amprpc[24]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[25]: OPEN /dev/dis -> fd=6
+amprpc[26]: IOCTL fd=6 cmd=0xC00C0E0C sz=12amprpc[27]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[28]: OPEN /dev/dis -> fd=6amprpc[29]: IOCTL fd=6 cmd=0x800C0E04 sz=12
+amprpc[30]: IOCTL cmd=0x800C0E04 -> ret=0map ge register to userspace. off = 0
+amprpc[31]: OPEN /dev/virtuart_proxy -> fd=6
+amprpc[32]: OPEN /dev/dis -> fd=6amprpc[33]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[34]: OPEN /dev/virtuart_proxy -> fd=7amprpc[35]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[36]: OPEN /dev/virtuart_proxy -> fd=7amprpc[37]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[38]: OPEN /dev/virtuart_proxy -> fd=7amprpc[39]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[40]: OPEN /dev/virtuart_proxy -> fd=7amprpc[41]: OPEN /dev/dis -> fd=7
+amprpc[42]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[43]: IOCTL cmd=0xC00C0E0C -> ret=0map ge register to userspace. off = 0
+amprpc[44]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[45]: OPEN /dev/virtuart_proxy -> fd=7amprpc[46]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[47]: OPEN /dev/virtuart_proxy -> fd=7amprpc[48]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[49]: OPEN /dev/virtuart_proxy -> fd=7amprpc[50]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[51]: OPEN /dev/virtuart_proxy -> fd=7amprpc[52]: OPEN /dev/dis -> fd=7
+amprpc[53]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[54]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[55]: OPEN /dev/dis -> fd=7amprpc[56]: IOCTL fd=7 cmd=0xC00C0E0C sz=12
+amprpc[57]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[58]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[59]: OPEN /dev/avsync0 -> fd=7amprpc[60]: OPEN /dev/dis -> fd=8
+amprpc[61]: IOCTL fd=8 cmd=0x80140E09 sz=20amprpc[62]: IOCTL cmd=0x80140E09 -> ret=0
+amprpc[63]: OPEN /dev/virtuart_proxy -> fd=8amprpc[64]: OPEN /dev/auddec -> fd=8
+amprpc[65]: IOCTL fd=8 cmd=0x82780301 sz=632amprpc[66]: IOCTL cmd=0x82780301 -> ret=0
+amprpc[67]: IOCTL fd=8 cmd=0x40180500 sz=24amprpc[68]: IOCTL cmd=0x40180500 -> ret=0
+amprpc[69]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[70]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[71]: IOCTL fd=8 cmd=0x20000304 sz=0amprpc[72]: IOCTL cmd=0x20000304 -> ret=0
+amprpc[73]: IOCTL fd=7 cmd=0x20000203 sz=0amprpc[74]: IOCTL cmd=0x20000203 -> ret=0
+amprpc[75]: IOCTL fd=8 cmd=0x40041503 sz=4amprpc[76]: IOCTL cmd=0x40041503 -> ret=0
+amprpc[77]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[78]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[79]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[80]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[81]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[82]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[83]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[84]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[85]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[86]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[87]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[88]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[89]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[90]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[91]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[92]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[93]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[94]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[95]: OPEN /dev/virtuart_proxy -> fd=11amprpc[96]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[97]: IOCTL cmd=0x40040201 -> ret=0amprpc[98]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[99]: IOCTL cmd=0x40040201 -> ret=0amprpc[100]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[101]: IOCTL cmd=0x40040201 -> ret=0amprpc[102]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[103]: IOCTL cmd=0x40040201 -> ret=0amprpc[104]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[105]: IOCTL cmd=0x40040201 -> ret=0amprpc[106]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[107]: IOCTL cmd=0x40040201 -> ret=0amprpc[108]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[109]: IOCTL cmd=0x40040201 -> ret=0amprpc[110]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[111]: IOCTL cmd=0x40040201 -> ret=0amprpc[112]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[113]: IOCTL cmd=0x40040201 -> ret=0amprpc[114]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[115]: IOCTL cmd=0x40040201 -> ret=0amprpc[116]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[117]: IOCTL cmd=0x40040201 -> ret=0amprpc[118]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[119]: IOCTL cmd=0x40040201 -> ret=0amprpc[120]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[121]: IOCTL cmd=0x40040201 -> ret=0amprpc[122]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[123]: IOCTL cmd=0x40040201 -> ret=0amprpc[124]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[125]: IOCTL cmd=0x40040201 -> ret=0amprpc[126]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[127]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[128]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[129]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[130]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[131]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[132]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[133]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[134]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[135]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[136]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[137]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[138]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[139]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[140]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[141]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[142]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[143]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[144]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[145]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[146]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[147]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[148]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[149]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[150]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[151]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[152]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[153]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[154]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[155]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[156]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[157]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[158]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[159]: OPEN /dev/virtuart_proxy -> fd=11amprpc[160]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[161]: IOCTL cmd=0x40040201 -> ret=0amprpc[162]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[163]: IOCTL cmd=0x40040201 -> ret=0amprpc[164]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[165]: IOCTL cmd=0x40040201 -> ret=0amprpc[166]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[167]: IOCTL cmd=0x40040201 -> ret=0amprpc[168]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[169]: IOCTL cmd=0x40040201 -> ret=0amprpc[170]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[171]: IOCTL cmd=0x40040201 -> ret=0amprpc[172]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[173]: IOCTL cmd=0x40040201 -> ret=0amprpc[174]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[175]: IOCTL cmd=0x40040201 -> ret=0amprpc[176]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[177]: IOCTL cmd=0x40040201 -> ret=0amprpc[178]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[179]: IOCTL cmd=0x40040201 -> ret=0amprpc[180]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[181]: IOCTL cmd=0x40040201 -> ret=0amprpc[182]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[183]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[184]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[185]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[186]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[187]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[188]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[189]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[190]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[191]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[192]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[193]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[194]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[195]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[196]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[197]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[198]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[199]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[200]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[201]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[202]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[203]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[204]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[205]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[206]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[207]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[208]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[209]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[210]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[211]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[212]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[213]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[214]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[215]: OPEN /dev/virtuart_proxy -> fd=11amprpc[216]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[217]: IOCTL cmd=0x40040201 -> ret=0amprpc[218]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[219]: IOCTL cmd=0x40040201 -> ret=0amprpc[220]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[221]: IOCTL cmd=0x40040201 -> ret=0amprpc[222]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[223]: IOCTL cmd=0x40040201 -> ret=0amprpc[224]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[225]: IOCTL cmd=0x40040201 -> ret=0amprpc[226]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[227]: IOCTL cmd=0x40040201 -> ret=0amprpc[228]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[229]: IOCTL cmd=0x40040201 -> ret=0amprpc[230]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[231]: IOCTL cmd=0x40040201 -> ret=0amprpc[232]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[233]: IOCTL cmd=0x40040201 -> ret=0amprpc[234]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[235]: IOCTL cmd=0x40040201 -> ret=0amprpc[236]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[237]: IOCTL cmd=0x40040201 -> ret=0amprpc[238]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[239]: IOCTL cmd=0x40040201 -> ret=0amprpc[240]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[241]: IOCTL cmd=0x40040201 -> ret=0amprpc[242]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[243]: IOCTL cmd=0x40040201 -> ret=0amprpc[244]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[245]: IOCTL cmd=0x40040201 -> ret=0amprpc[246]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[247]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[248]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[249]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[250]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[251]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[252]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[253]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[254]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[255]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[256]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[257]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[258]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[259]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[260]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[261]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[262]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[263]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[264]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[265]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[266]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[267]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[268]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[269]: OPEN /dev/virtuart_proxy -> fd=11amprpc[270]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[271]: IOCTL cmd=0x40040201 -> ret=0amprpc[272]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[273]: IOCTL cmd=0x40040201 -> ret=0amprpc[274]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[275]: IOCTL cmd=0x40040201 -> ret=0
+=== probe ronda 1 lista — seguimos monitoreando 60s ===
+ 66:       4415   sys_irq  66  18800800.amprpc
+ 66:       5230   sys_irq  66  18800800.amprpc
+ 66:       6191   sys_irq  66  18800800.amprpc
+ 66:       7135   sys_irq  66  18800800.amprpc
+ 66:       7922   sys_irq  66  18800800.amprpc
+ 66:       8736   sys_irq  66  18800800.amprpc
+ 66:       9549   sys_irq  66  18800800.amprpc
+ 66:      10373   sys_irq  66  18800800.amprpc
+ 66:      11185   sys_irq  66  18800800.amprpc
+ 66:      11923   sys_irq  66  18800800.amprpc
+ 66:      14072   sys_irq  66  18800800.amprpc
+ 66:      14818   sys_irq  66  18800800.amprpc
+ 66:      15753   sys_irq  66  18800800.amprpc
+ 66:      16802   sys_irq  66  18800800.amprpc
+ 66:      17860   sys_irq  66  18800800.amprpc
+ 66:      18942   sys_irq  66  18800800.amprpc
+ 66:      20033   sys_irq  66  18800800.amprpc
+ 66:      20745   sys_irq  66  18800800.amprpc
+ 66:      22804   sys_irq  66  18800800.amprpc
+ 66:      23883   sys_irq  66  18800800.amprpc
+ 66:      25669   sys_irq  66  18800800.amprpc
+ 66:      26784   sys_irq  66  18800800.amprpc
+ 66:      27518   sys_irq  66  18800800.amprpc
+ 66:      28307   sys_irq  66  18800800.amprpc
+ 66:      29074   sys_irq  66  18800800.amprpc
+ 66:      31252   sys_irq  66  18800800.amprpc
+ 66:      32030   sys_irq  66  18800800.amprpc
+ 66:      32864   sys_irq  66  18800800.amprpc
+ 66:      33620   sys_irq  66  18800800.amprpc
+ 66:      35718   sys_irq  66  18800800.amprpc
+=== FIN MONITOREO 60s ===
+=== DMESG FINAL (post-juego) ===
+---> usb#1 reset
+musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+musb-hdrc: MHDRC RTL version 2.0 
+musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 2
+usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb2: Product: MUSB HDRC host driver
+usb usb2: Manufacturer: Linux 4.4.186-release musb-hcd
+usb usb2: SerialNumber: musb-hdrc.1.auto
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 1 port detected
+---> usb#1 reset
+---> usb#1 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+reg_base: b8806000, reg_size: 8192, sys_reg_base: b8800000,  irq: 9
+hcge 18806000.ge: Init GE success.
+NET: Registered protocol family 17
+bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+name:check_adc1
+name:check_adc5
+Freeing unused kernel memory: 10916K
+devpts: called with bogus options
+amprpc[1]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[2]: OPEN /dev/virtuart_proxy -> fd=3amprpc[3]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[4]: OPEN /dev/virtuart_proxy -> fd=3amprpc[5]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[6]: OPEN /dev/virtuart_proxy -> fd=3<4>FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+amprpc[7]: OPEN /dev/ZZd2C -> fd=3
+amprpc[8]: OPEN /dev/virtuart_proxy -> fd=4amprpc[9]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[10]: OPEN /dev/virtuart_proxy -> fd=4amprpc[11]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[12]: OPEN /dev/virtuart_proxy -> fd=4amprpc[13]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[14]: OPEN /dev/dis -> fd=4amprpc[15]: IOCTL fd=4 cmd=0xC00C0E0C sz=12
+amprpc[16]: IOCTL cmd=0xC00C0E0C -> ret=0<5>random: nonblocking pool is initialized
+amprpc[17]: OPEN /dev/dis -> fd=4
+amprpc[18]: IOCTL fd=4 cmd=0x80140E09 sz=20amprpc[19]: IOCTL cmd=0x80140E09 -> ret=0
+amprpc[20]: OPEN /dev/hdmi -> fd=4amprpc[21]: OPEN /dev/virtuart_proxy -> fd=6
+amprpc[22]: OPEN /dev/dis -> fd=6amprpc[23]: IOCTL fd=6 cmd=0xC00C0E0C sz=12
+amprpc[24]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[25]: OPEN /dev/dis -> fd=6
+amprpc[26]: IOCTL fd=6 cmd=0xC00C0E0C sz=12amprpc[27]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[28]: OPEN /dev/dis -> fd=6amprpc[29]: IOCTL fd=6 cmd=0x800C0E04 sz=12
+amprpc[30]: IOCTL cmd=0x800C0E04 -> ret=0map ge register to userspace. off = 0
+amprpc[31]: OPEN /dev/virtuart_proxy -> fd=6
+amprpc[32]: OPEN /dev/dis -> fd=6amprpc[33]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[34]: OPEN /dev/virtuart_proxy -> fd=7amprpc[35]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[36]: OPEN /dev/virtuart_proxy -> fd=7amprpc[37]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[38]: OPEN /dev/virtuart_proxy -> fd=7amprpc[39]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[40]: OPEN /dev/virtuart_proxy -> fd=7amprpc[41]: OPEN /dev/dis -> fd=7
+amprpc[42]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[43]: IOCTL cmd=0xC00C0E0C -> ret=0map ge register to userspace. off = 0
+amprpc[44]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[45]: OPEN /dev/virtuart_proxy -> fd=7amprpc[46]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[47]: OPEN /dev/virtuart_proxy -> fd=7amprpc[48]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[49]: OPEN /dev/virtuart_proxy -> fd=7amprpc[50]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[51]: OPEN /dev/virtuart_proxy -> fd=7amprpc[52]: OPEN /dev/dis -> fd=7
+amprpc[53]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[54]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[55]: OPEN /dev/dis -> fd=7amprpc[56]: IOCTL fd=7 cmd=0xC00C0E0C sz=12
+amprpc[57]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[58]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[59]: OPEN /dev/avsync0 -> fd=7amprpc[60]: OPEN /dev/dis -> fd=8
+amprpc[61]: IOCTL fd=8 cmd=0x80140E09 sz=20amprpc[62]: IOCTL cmd=0x80140E09 -> ret=0
+amprpc[63]: OPEN /dev/virtuart_proxy -> fd=8amprpc[64]: OPEN /dev/auddec -> fd=8
+amprpc[65]: IOCTL fd=8 cmd=0x82780301 sz=632amprpc[66]: IOCTL cmd=0x82780301 -> ret=0
+amprpc[67]: IOCTL fd=8 cmd=0x40180500 sz=24amprpc[68]: IOCTL cmd=0x40180500 -> ret=0
+amprpc[69]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[70]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[71]: IOCTL fd=8 cmd=0x20000304 sz=0amprpc[72]: IOCTL cmd=0x20000304 -> ret=0
+amprpc[73]: IOCTL fd=7 cmd=0x20000203 sz=0amprpc[74]: IOCTL cmd=0x20000203 -> ret=0
+amprpc[75]: IOCTL fd=8 cmd=0x40041503 sz=4amprpc[76]: IOCTL cmd=0x40041503 -> ret=0
+amprpc[77]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[78]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[79]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[80]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[81]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[82]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[83]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[84]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[85]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[86]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[87]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[88]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[89]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[90]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[91]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[92]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[93]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[94]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[95]: OPEN /dev/virtuart_proxy -> fd=11amprpc[96]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[97]: IOCTL cmd=0x40040201 -> ret=0amprpc[98]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[99]: IOCTL cmd=0x40040201 -> ret=0amprpc[100]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[101]: IOCTL cmd=0x40040201 -> ret=0amprpc[102]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[103]: IOCTL cmd=0x40040201 -> ret=0amprpc[104]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[105]: IOCTL cmd=0x40040201 -> ret=0amprpc[106]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[107]: IOCTL cmd=0x40040201 -> ret=0amprpc[108]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[109]: IOCTL cmd=0x40040201 -> ret=0amprpc[110]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[111]: IOCTL cmd=0x40040201 -> ret=0amprpc[112]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[113]: IOCTL cmd=0x40040201 -> ret=0amprpc[114]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[115]: IOCTL cmd=0x40040201 -> ret=0amprpc[116]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[117]: IOCTL cmd=0x40040201 -> ret=0amprpc[118]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[119]: IOCTL cmd=0x40040201 -> ret=0amprpc[120]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[121]: IOCTL cmd=0x40040201 -> ret=0amprpc[122]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[123]: IOCTL cmd=0x40040201 -> ret=0amprpc[124]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[125]: IOCTL cmd=0x40040201 -> ret=0amprpc[126]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[127]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[128]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[129]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[130]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[131]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[132]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[133]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[134]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[135]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[136]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[137]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[138]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[139]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[140]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[141]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[142]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[143]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[144]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[145]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[146]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[147]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[148]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[149]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[150]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[151]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[152]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[153]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[154]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[155]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[156]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[157]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[158]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[159]: OPEN /dev/virtuart_proxy -> fd=11amprpc[160]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[161]: IOCTL cmd=0x40040201 -> ret=0amprpc[162]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[163]: IOCTL cmd=0x40040201 -> ret=0amprpc[164]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[165]: IOCTL cmd=0x40040201 -> ret=0amprpc[166]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[167]: IOCTL cmd=0x40040201 -> ret=0amprpc[168]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[169]: IOCTL cmd=0x40040201 -> ret=0amprpc[170]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[171]: IOCTL cmd=0x40040201 -> ret=0amprpc[172]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[173]: IOCTL cmd=0x40040201 -> ret=0amprpc[174]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[175]: IOCTL cmd=0x40040201 -> ret=0amprpc[176]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[177]: IOCTL cmd=0x40040201 -> ret=0amprpc[178]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[179]: IOCTL cmd=0x40040201 -> ret=0amprpc[180]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[181]: IOCTL cmd=0x40040201 -> ret=0amprpc[182]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[183]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[184]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[185]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[186]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[187]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[188]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[189]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[190]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[191]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[192]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[193]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[194]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[195]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[196]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[197]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[198]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[199]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[200]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[201]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[202]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[203]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[204]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[205]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[206]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[207]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[208]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[209]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[210]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[211]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[212]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[213]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[214]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[215]: OPEN /dev/virtuart_proxy -> fd=11amprpc[216]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[217]: IOCTL cmd=0x40040201 -> ret=0amprpc[218]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[219]: IOCTL cmd=0x40040201 -> ret=0amprpc[220]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[221]: IOCTL cmd=0x40040201 -> ret=0amprpc[222]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[223]: IOCTL cmd=0x40040201 -> ret=0amprpc[224]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[225]: IOCTL cmd=0x40040201 -> ret=0amprpc[226]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[227]: IOCTL cmd=0x40040201 -> ret=0amprpc[228]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[229]: IOCTL cmd=0x40040201 -> ret=0amprpc[230]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[231]: IOCTL cmd=0x40040201 -> ret=0amprpc[232]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[233]: IOCTL cmd=0x40040201 -> ret=0amprpc[234]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[235]: IOCTL cmd=0x40040201 -> ret=0amprpc[236]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[237]: IOCTL cmd=0x40040201 -> ret=0amprpc[238]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[239]: IOCTL cmd=0x40040201 -> ret=0amprpc[240]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[241]: IOCTL cmd=0x40040201 -> ret=0amprpc[242]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[243]: IOCTL cmd=0x40040201 -> ret=0amprpc[244]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[245]: IOCTL cmd=0x40040201 -> ret=0amprpc[246]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[247]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[248]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[249]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[250]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[251]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[252]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[253]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[254]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[255]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[256]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[257]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[258]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[259]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[260]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[261]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[262]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[263]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[264]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[265]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[266]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[267]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[268]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[269]: OPEN /dev/virtuart_proxy -> fd=11amprpc[270]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[271]: IOCTL cmd=0x40040201 -> ret=0amprpc[272]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[273]: IOCTL cmd=0x40040201 -> ret=0amprpc[274]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[275]: IOCTL cmd=0x40040201 -> ret=0amprpc[276]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[277]: IOCTL cmd=0x40040201 -> ret=0amprpc[278]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[279]: IOCTL cmd=0x40040201 -> ret=0amprpc[280]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[281]: IOCTL cmd=0x40040201 -> ret=0amprpc[282]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[283]: IOCTL cmd=0x40040201 -> ret=0amprpc[284]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[285]: IOCTL cmd=0x40040201 -> ret=0amprpc[286]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[287]: IOCTL cmd=0x40040201 -> ret=0amprpc[288]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[289]: IOCTL cmd=0x40040201 -> ret=0amprpc[290]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[291]: IOCTL cmd=0x40040201 -> ret=0amprpc[292]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[293]: IOCTL cmd=0x40040201 -> ret=0amprpc[294]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[295]: IOCTL cmd=0x40040201 -> ret=0amprpc[296]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[297]: IOCTL cmd=0x40040201 -> ret=0amprpc[298]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[299]: IOCTL cmd=0x40040201 -> ret=0amprpc[300]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[301]: IOCTL cmd=0x40040201 -> ret=0amprpc[302]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[303]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[304]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[305]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[306]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[307]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[308]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[309]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[310]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[311]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[312]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[313]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[314]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[315]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[316]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[317]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[318]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[319]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[320]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[321]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[322]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[323]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[324]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[325]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[326]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[327]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[328]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[329]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[330]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[331]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[332]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[333]: OPEN /dev/virtuart_proxy -> fd=11amprpc[334]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[335]: IOCTL cmd=0x40040201 -> ret=0amprpc[336]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[337]: IOCTL cmd=0x40040201 -> ret=0amprpc[338]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[339]: IOCTL cmd=0x40040201 -> ret=0amprpc[340]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[341]: IOCTL cmd=0x40040201 -> ret=0amprpc[342]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[343]: IOCTL cmd=0x40040201 -> ret=0amprpc[344]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[345]: IOCTL cmd=0x40040201 -> ret=0amprpc[346]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[347]: IOCTL cmd=0x40040201 -> ret=0amprpc[348]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[349]: IOCTL cmd=0x40040201 -> ret=0amprpc[350]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[351]: IOCTL cmd=0x40040201 -> ret=0amprpc[352]: IOCTL fd=8 cmd=0x20000303 sz=0
+amprpc[353]: IOCTL cmd=0x20000303 -> ret=0amprpc[354]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[355]: IOCTL fd=8 cmd=0x20000305 sz=0amprpc[356]: IOCTL cmd=0x20000305 -> ret=0
+amprpc[357]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[358]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[359]: IOCTL fd=8 cmd=0x20000304 sz=0amprpc[360]: IOCTL cmd=0x20000304 -> ret=0
+amprpc[361]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[362]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[363]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[364]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[365]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[366]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[367]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[368]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[369]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[370]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[371]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[372]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[373]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[374]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[375]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[376]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[377]: OPEN /dev/virtuart_proxy -> fd=11amprpc[378]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[379]: IOCTL cmd=0x4008030A -> ret=0amprpc[380]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[381]: IOCTL cmd=0x4008030A -> ret=0amprpc[382]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[383]: IOCTL cmd=0x4008030A -> ret=0amprpc[384]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[385]: IOCTL cmd=0x4008030A -> ret=0amprpc[386]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[387]: IOCTL cmd=0x4008030A -> ret=0amprpc[388]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[389]: IOCTL cmd=0x4008030A -> ret=0amprpc[390]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[391]: IOCTL cmd=0x4008030A -> ret=0amprpc[392]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[393]: IOCTL cmd=0x4008030A -> ret=0amprpc[394]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[395]: IOCTL cmd=0x4008030A -> ret=0amprpc[396]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[397]: IOCTL cmd=0x4008030A -> ret=0amprpc[398]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[399]: IOCTL cmd=0x4008030A -> ret=0amprpc[400]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[401]: IOCTL cmd=0x4008030A -> ret=0amprpc[402]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[403]: IOCTL cmd=0x4008030A -> ret=0amprpc[404]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[405]: IOCTL cmd=0x4008030A -> ret=0amprpc[406]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[407]: IOCTL cmd=0x4008030A -> ret=0amprpc[408]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[409]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[410]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[411]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[412]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[413]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[414]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[415]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[416]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[417]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[418]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[419]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[420]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[421]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[422]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[423]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[424]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[425]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[426]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[427]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[428]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[429]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[430]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[431]: IOCTL fd=8 cmd=0x20000303 sz=0amprpc[432]: IOCTL cmd=0x20000303 -> ret=0
+amprpc[433]: OPEN /dev/virtuart_proxy -> fd=11amprpc[434]: IOCTL fd=8 cmd=0x20000305 sz=0
+amprpc[435]: IOCTL cmd=0x20000305 -> ret=0amprpc[436]: IOCTL fd=7 cmd=0x2000020C sz=0
+amprpc[437]: IOCTL cmd=0x2000020C -> ret=0amprpc[438]: IOCTL fd=8 cmd=0x20000304 sz=0
+amprpc[439]: IOCTL cmd=0x20000304 -> ret=0amprpc[440]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[441]: IOCTL cmd=0x4008030A -> ret=0amprpc[442]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[443]: IOCTL cmd=0x4008030A -> ret=0amprpc[444]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[445]: IOCTL cmd=0x4008030A -> ret=0amprpc[446]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[447]: IOCTL cmd=0x4008030A -> ret=0amprpc[448]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[449]: IOCTL cmd=0x4008030A -> ret=0amprpc[450]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[451]: IOCTL cmd=0x4008030A -> ret=0amprpc[452]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[453]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[454]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[455]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[456]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[457]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[458]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[459]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[460]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[461]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[462]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[463]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[464]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[465]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[466]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[467]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[468]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[469]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[470]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[471]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[472]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[473]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[474]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[475]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[476]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[477]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[478]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[479]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[480]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[481]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[482]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[483]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[484]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[485]: OPEN /dev/virtuart_proxy -> fd=11amprpc[486]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[487]: IOCTL cmd=0x4008030A -> ret=0amprpc[488]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[489]: IOCTL cmd=0x4008030A -> ret=0amprpc[490]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[491]: IOCTL cmd=0x4008030A -> ret=0amprpc[492]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[493]: IOCTL cmd=0x4008030A -> ret=0amprpc[494]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[495]: IOCTL cmd=0x4008030A -> ret=0amprpc[496]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[497]: IOCTL cmd=0x4008030A -> ret=0amprpc[498]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[499]: IOCTL cmd=0x4008030A -> ret=0amprpc[500]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[501]: IOCTL cmd=0x4008030A -> ret=0amprpc[502]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[503]: IOCTL cmd=0x4008030A -> ret=0amprpc[504]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[505]: IOCTL cmd=0x4008030A -> ret=0amprpc[506]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[507]: IOCTL cmd=0x4008030A -> ret=0amprpc[508]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[509]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[510]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[511]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[512]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[513]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[514]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[515]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[516]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[517]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[518]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[519]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[520]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[521]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[522]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[523]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[524]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[525]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[526]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[527]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[528]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[529]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[530]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[531]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[532]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[533]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[534]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[535]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[536]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[537]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[538]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[539]: OPEN /dev/virtuart_proxy -> fd=11amprpc[540]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[541]: IOCTL cmd=0x4008030A -> ret=0amprpc[542]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[543]: IOCTL cmd=0x4008030A -> ret=0amprpc[544]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[545]: IOCTL cmd=0x4008030A -> ret=0amprpc[546]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[547]: IOCTL cmd=0x4008030A -> ret=0amprpc[548]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[549]: IOCTL cmd=0x4008030A -> ret=0amprpc[550]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[551]: IOCTL cmd=0x4008030A -> ret=0amprpc[552]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[553]: IOCTL cmd=0x4008030A -> ret=0amprpc[554]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[555]: IOCTL cmd=0x4008030A -> ret=0amprpc[556]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[557]: IOCTL cmd=0x4008030A -> ret=0amprpc[558]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[559]: IOCTL cmd=0x4008030A -> ret=0amprpc[560]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[561]: IOCTL cmd=0x4008030A -> ret=0amprpc[562]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[563]: IOCTL cmd=0x4008030A -> ret=0amprpc[564]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[565]: IOCTL cmd=0x4008030A -> ret=0amprpc[566]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[567]: IOCTL cmd=0x4008030A -> ret=0amprpc[568]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[569]: IOCTL cmd=0x4008030A -> ret=0amprpc[570]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[571]: IOCTL cmd=0x4008030A -> ret=0amprpc[572]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[573]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[574]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[575]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[576]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[577]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[578]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[579]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[580]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[581]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[582]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[583]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[584]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[585]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[586]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[587]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[588]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[589]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[590]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[591]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[592]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[593]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[594]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[595]: OPEN /dev/virtuart_proxy -> fd=11amprpc[596]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[597]: IOCTL cmd=0x4008030A -> ret=0amprpc[598]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[599]: IOCTL cmd=0x4008030A -> ret=0amprpc[600]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[601]: IOCTL cmd=0x4008030A -> ret=0amprpc[602]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[603]: IOCTL cmd=0x4008030A -> ret=0amprpc[604]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[605]: IOCTL cmd=0x4008030A -> ret=0amprpc[606]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[607]: IOCTL cmd=0x4008030A -> ret=0amprpc[608]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[609]: IOCTL cmd=0x4008030A -> ret=0amprpc[610]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[611]: IOCTL cmd=0x4008030A -> ret=0amprpc[612]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[613]: IOCTL cmd=0x4008030A -> ret=0amprpc[614]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[615]: IOCTL cmd=0x4008030A -> ret=0amprpc[616]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[617]: IOCTL cmd=0x4008030A -> ret=0amprpc[618]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[619]: IOCTL cmd=0x4008030A -> ret=0amprpc[620]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[621]: IOCTL cmd=0x4008030A -> ret=0amprpc[622]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[623]: IOCTL cmd=0x4008030A -> ret=0amprpc[624]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[625]: IOCTL cmd=0x4008030A -> ret=0amprpc[626]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[627]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[628]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[629]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[630]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[631]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[632]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[633]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[634]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[635]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[636]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[637]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[638]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[639]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[640]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[641]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[642]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[643]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[644]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[645]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[646]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[647]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[648]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[649]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[650]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[651]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[652]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[653]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[654]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[655]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[656]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[657]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[658]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[659]: OPEN /dev/virtuart_proxy -> fd=11amprpc[660]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[661]: IOCTL cmd=0x4008030A -> ret=0amprpc[662]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[663]: IOCTL cmd=0x4008030A -> ret=0amprpc[664]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[665]: IOCTL cmd=0x4008030A -> ret=0amprpc[666]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[667]: IOCTL cmd=0x4008030A -> ret=0amprpc[668]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[669]: IOCTL cmd=0x4008030A -> ret=0amprpc[670]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[671]: IOCTL cmd=0x4008030A -> ret=0amprpc[672]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[673]: IOCTL cmd=0x4008030A -> ret=0amprpc[674]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[675]: IOCTL cmd=0x4008030A -> ret=0amprpc[676]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[677]: IOCTL cmd=0x4008030A -> ret=0amprpc[678]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[679]: IOCTL cmd=0x4008030A -> ret=0amprpc[680]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[681]: IOCTL cmd=0x4008030A -> ret=0amprpc[682]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[683]: IOCTL cmd=0x4008030A -> ret=0amprpc[684]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[685]: IOCTL cmd=0x4008030A -> ret=0amprpc[686]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[687]: IOCTL cmd=0x4008030A -> ret=0amprpc[688]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[689]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[690]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[691]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[692]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[693]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[694]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[695]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[696]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[697]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[698]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[699]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[700]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[701]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[702]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[703]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[704]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[705]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[706]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[707]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[708]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[709]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[710]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[711]: OPEN /dev/virtuart_proxy -> fd=11amprpc[712]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[713]: IOCTL cmd=0x4008030A -> ret=0amprpc[714]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[715]: IOCTL cmd=0x4008030A -> ret=0amprpc[716]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[717]: IOCTL cmd=0x4008030A -> ret=0amprpc[718]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[719]: IOCTL cmd=0x4008030A -> ret=0amprpc[720]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[721]: IOCTL cmd=0x4008030A -> ret=0amprpc[722]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[723]: IOCTL cmd=0x4008030A -> ret=0amprpc[724]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[725]: IOCTL cmd=0x4008030A -> ret=0amprpc[726]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[727]: IOCTL cmd=0x4008030A -> ret=0amprpc[728]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[729]: IOCTL cmd=0x4008030A -> ret=0amprpc[730]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[731]: IOCTL cmd=0x4008030A -> ret=0amprpc[732]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[733]: IOCTL cmd=0x4008030A -> ret=0amprpc[734]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[735]: IOCTL cmd=0x4008030A -> ret=0amprpc[736]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[737]: IOCTL cmd=0x4008030A -> ret=0amprpc[738]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[739]: IOCTL cmd=0x4008030A -> ret=0amprpc[740]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[741]: IOCTL cmd=0x4008030A -> ret=0amprpc[742]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[743]: IOCTL cmd=0x4008030A -> ret=0amprpc[744]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[745]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[746]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[747]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[748]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[749]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[750]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[751]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[752]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[753]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[754]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[755]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[756]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[757]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[758]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[759]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[760]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[761]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[762]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[763]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[764]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[765]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[766]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[767]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[768]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[769]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[770]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[771]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[772]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[773]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[774]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[775]: OPEN /dev/virtuart_proxy -> fd=11amprpc[776]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[777]: IOCTL cmd=0x4008030A -> ret=0amprpc[778]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[779]: IOCTL cmd=0x4008030A -> ret=0amprpc[780]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[781]: IOCTL cmd=0x4008030A -> ret=0amprpc[782]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[783]: IOCTL cmd=0x4008030A -> ret=0amprpc[784]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[785]: IOCTL cmd=0x4008030A -> ret=0amprpc[786]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[787]: IOCTL cmd=0x4008030A -> ret=0amprpc[788]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[789]: IOCTL cmd=0x4008030A -> ret=0amprpc[790]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[791]: IOCTL cmd=0x4008030A -> ret=0amprpc[792]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[793]: IOCTL cmd=0x4008030A -> ret=0amprpc[794]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[795]: IOCTL cmd=0x4008030A -> ret=0amprpc[796]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[797]: IOCTL cmd=0x4008030A -> ret=0amprpc[798]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[799]: IOCTL cmd=0x4008030A -> ret=0amprpc[800]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[801]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[802]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[803]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[804]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[805]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[806]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[807]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[808]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[809]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[810]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[811]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[812]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[813]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[814]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[815]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[816]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[817]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[818]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[819]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[820]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[821]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[822]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[823]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[824]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[825]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[826]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[827]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[828]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[829]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[830]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[831]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[832]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[833]: OPEN /dev/virtuart_proxy -> fd=11amprpc[834]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[835]: IOCTL cmd=0x4008030A -> ret=0amprpc[836]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[837]: IOCTL cmd=0x4008030A -> ret=0amprpc[838]: IOCTL fd=8 cmd=0x20000303 sz=0
+amprpc[839]: IOCTL cmd=0x20000303 -> ret=0amprpc[840]: IOCTL fd=8 cmd=0x20000305 sz=0
+amprpc[841]: IOCTL cmd=0x20000305 -> ret=0amprpc[842]: IOCTL fd=7 cmd=0x2000020C sz=0
+amprpc[843]: IOCTL cmd=0x2000020C -> ret=0amprpc[844]: IOCTL fd=8 cmd=0x20000304 sz=0
+amprpc[845]: IOCTL cmd=0x20000304 -> ret=0amprpc[846]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[847]: IOCTL cmd=0x4008030A -> ret=0amprpc[848]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[849]: IOCTL cmd=0x4008030A -> ret=0amprpc[850]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[851]: IOCTL cmd=0x4008030A -> ret=0amprpc[852]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[853]: IOCTL cmd=0x4008030A -> ret=0amprpc[854]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[855]: IOCTL cmd=0x4008030A -> ret=0amprpc[856]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[857]: IOCTL cmd=0x4008030A -> ret=0amprpc[858]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[859]: IOCTL cmd=0x4008030A -> ret=0amprpc[860]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[861]: IOCTL cmd=0x4008030A -> ret=0amprpc[862]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[863]: IOCTL cmd=0x4008030A -> ret=0amprpc[864]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[865]: IOCTL cmd=0x4008030A -> ret=0amprpc[866]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[867]: IOCTL cmd=0x4008030A -> ret=0amprpc[868]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[869]: IOCTL cmd=0x4008030A -> ret=0amprpc[870]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[871]: IOCTL cmd=0x4008030A -> ret=0amprpc[872]: IOCTL fd=8 cmd=0x20000303 sz=0
+amprpc[873]: OPEN /dev/virtuart_proxy -> fd=11amprpc[874]: IOCTL cmd=0x20000303 -> ret=0
+amprpc[875]: IOCTL fd=8 cmd=0x20000305 sz=0amprpc[876]: IOCTL cmd=0x20000305 -> ret=0
+amprpc[877]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[878]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[879]: IOCTL fd=8 cmd=0x20000304 sz=0amprpc[880]: IOCTL cmd=0x20000304 -> ret=0
+amprpc[881]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[882]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[883]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[884]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[885]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[886]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[887]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[888]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[889]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[890]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[891]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[892]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[893]: OPEN /dev/virtuart_proxy -> fd=11amprpc[894]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[895]: IOCTL cmd=0x4008030A -> ret=0amprpc[896]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[897]: IOCTL cmd=0x4008030A -> ret=0amprpc[898]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[899]: IOCTL cmd=0x4008030A -> ret=0amprpc[900]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[901]: IOCTL cmd=0x4008030A -> ret=0amprpc[902]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[903]: IOCTL cmd=0x4008030A -> ret=0amprpc[904]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[905]: IOCTL cmd=0x4008030A -> ret=0amprpc[906]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[907]: IOCTL cmd=0x4008030A -> ret=0amprpc[908]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[909]: IOCTL cmd=0x4008030A -> ret=0amprpc[910]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[911]: IOCTL cmd=0x4008030A -> ret=0amprpc[912]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[913]: IOCTL cmd=0x4008030A -> ret=0amprpc[914]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[915]: IOCTL cmd=0x4008030A -> ret=0amprpc[916]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[917]: IOCTL cmd=0x4008030A -> ret=0amprpc[918]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[919]: IOCTL cmd=0x4008030A -> ret=0amprpc[920]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[921]: IOCTL cmd=0x4008030A -> ret=0amprpc[922]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[923]: IOCTL cmd=0x4008030A -> ret=0amprpc[924]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[925]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[926]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[927]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[928]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[929]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[930]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[931]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[932]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[933]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[934]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[935]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[936]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[937]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[938]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[939]: IOCTL fd=8 cmd=0x20000303 sz=0amprpc[940]: IOCTL cmd=0x20000303 -> ret=0
+amprpc[941]: IOCTL fd=8 cmd=0x20000305 sz=0amprpc[942]: IOCTL cmd=0x20000305 -> ret=0
+amprpc[943]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[944]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[945]: IOCTL fd=8 cmd=0x20000304 sz=0amprpc[946]: IOCTL cmd=0x20000304 -> ret=0
+amprpc[947]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[948]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[949]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[950]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[951]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[952]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[953]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[954]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[955]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[956]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[957]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[958]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[959]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[960]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[961]: OPEN /dev/virtuart_proxy -> fd=11amprpc[962]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[963]: IOCTL cmd=0x4008030A -> ret=0amprpc[964]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[965]: IOCTL cmd=0x4008030A -> ret=0amprpc[966]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[967]: IOCTL cmd=0x4008030A -> ret=0amprpc[968]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[969]: IOCTL cmd=0x4008030A -> ret=0amprpc[970]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[971]: IOCTL cmd=0x4008030A -> ret=0amprpc[972]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[973]: IOCTL cmd=0x4008030A -> ret=0amprpc[974]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[975]: IOCTL cmd=0x4008030A -> ret=0amprpc[976]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[977]: IOCTL cmd=0x4008030A -> ret=0amprpc[978]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[979]: IOCTL cmd=0x4008030A -> ret=0amprpc[980]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[981]: IOCTL cmd=0x4008030A -> ret=0amprpc[982]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[983]: IOCTL cmd=0x4008030A -> ret=0amprpc[984]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[985]: IOCTL cmd=0x4008030A -> ret=0amprpc[986]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[987]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[988]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[989]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[990]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[991]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[992]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[993]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[994]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[995]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[996]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[997]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[998]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[999]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1000]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1001]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1002]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1003]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1004]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1005]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1006]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1007]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1008]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1009]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1010]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1011]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1012]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1013]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1014]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1015]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1016]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1017]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1018]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1019]: IOCTL cmd=0x4008030A -> ret=0amprpc[1020]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1021]: IOCTL cmd=0x4008030A -> ret=0amprpc[1022]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1023]: IOCTL cmd=0x4008030A -> ret=0amprpc[1024]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1025]: IOCTL cmd=0x4008030A -> ret=0amprpc[1026]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1027]: IOCTL cmd=0x4008030A -> ret=0amprpc[1028]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1029]: IOCTL cmd=0x4008030A -> ret=0amprpc[1030]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1031]: IOCTL cmd=0x4008030A -> ret=0amprpc[1032]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1033]: IOCTL cmd=0x4008030A -> ret=0amprpc[1034]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1035]: IOCTL cmd=0x4008030A -> ret=0amprpc[1036]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1037]: IOCTL cmd=0x4008030A -> ret=0amprpc[1038]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1039]: IOCTL cmd=0x4008030A -> ret=0amprpc[1040]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1041]: IOCTL cmd=0x4008030A -> ret=0amprpc[1042]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1043]: IOCTL cmd=0x4008030A -> ret=0amprpc[1044]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1045]: IOCTL cmd=0x4008030A -> ret=0amprpc[1046]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1047]: IOCTL cmd=0x4008030A -> ret=0amprpc[1048]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1049]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1050]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1051]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1052]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1053]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1054]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1055]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1056]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1057]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1058]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1059]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1060]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1061]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1062]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1063]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1064]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1065]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1066]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1067]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1068]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1069]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1070]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1071]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1072]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1073]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1074]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1075]: IOCTL cmd=0x4008030A -> ret=0amprpc[1076]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1077]: IOCTL cmd=0x4008030A -> ret=0amprpc[1078]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1079]: IOCTL cmd=0x4008030A -> ret=0amprpc[1080]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1081]: IOCTL cmd=0x4008030A -> ret=0amprpc[1082]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1083]: IOCTL cmd=0x4008030A -> ret=0amprpc[1084]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1085]: IOCTL cmd=0x4008030A -> ret=0amprpc[1086]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1087]: IOCTL cmd=0x4008030A -> ret=0amprpc[1088]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1089]: IOCTL cmd=0x4008030A -> ret=0amprpc[1090]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1091]: IOCTL cmd=0x4008030A -> ret=0amprpc[1092]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1093]: IOCTL cmd=0x4008030A -> ret=0amprpc[1094]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1095]: IOCTL cmd=0x4008030A -> ret=0amprpc[1096]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1097]: IOCTL cmd=0x4008030A -> ret=0amprpc[1098]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1099]: IOCTL cmd=0x4008030A -> ret=0amprpc[1100]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1101]: IOCTL cmd=0x4008030A -> ret=0amprpc[1102]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1103]: IOCTL cmd=0x4008030A -> ret=0amprpc[1104]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1105]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1106]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1107]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1108]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1109]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1110]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1111]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1112]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1113]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1114]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1115]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1116]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1117]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1118]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1119]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1120]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1121]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1122]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1123]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1124]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1125]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1126]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1127]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1128]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1129]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1130]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1131]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1132]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1133]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1134]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1135]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1136]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1137]: IOCTL cmd=0x4008030A -> ret=0amprpc[1138]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1139]: IOCTL cmd=0x4008030A -> ret=0amprpc[1140]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1141]: IOCTL cmd=0x4008030A -> ret=0amprpc[1142]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1143]: IOCTL cmd=0x4008030A -> ret=0amprpc[1144]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1145]: IOCTL cmd=0x4008030A -> ret=0amprpc[1146]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1147]: IOCTL cmd=0x4008030A -> ret=0amprpc[1148]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1149]: IOCTL cmd=0x4008030A -> ret=0amprpc[1150]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1151]: IOCTL cmd=0x4008030A -> ret=0amprpc[1152]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1153]: IOCTL cmd=0x4008030A -> ret=0amprpc[1154]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1155]: IOCTL cmd=0x4008030A -> ret=0amprpc[1156]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1157]: IOCTL cmd=0x4008030A -> ret=0amprpc[1158]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1159]: IOCTL cmd=0x4008030A -> ret=0amprpc[1160]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1161]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1162]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1163]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1164]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1165]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1166]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1167]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1168]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1169]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1170]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1171]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1172]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1173]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1174]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1175]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1176]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1177]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1178]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1179]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1180]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1181]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1182]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1183]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1184]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1185]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1186]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1187]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1188]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1189]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1190]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1191]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1192]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1193]: IOCTL cmd=0x4008030A -> ret=0amprpc[1194]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1195]: IOCTL cmd=0x4008030A -> ret=0amprpc[1196]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1197]: IOCTL cmd=0x4008030A -> ret=0amprpc[1198]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1199]: IOCTL cmd=0x4008030A -> ret=0amprpc[1200]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1201]: IOCTL cmd=0x4008030A -> ret=0amprpc[1202]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1203]: IOCTL cmd=0x4008030A -> ret=0amprpc[1204]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1205]: IOCTL cmd=0x4008030A -> ret=0amprpc[1206]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1207]: IOCTL cmd=0x4008030A -> ret=0amprpc[1208]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1209]: IOCTL cmd=0x4008030A -> ret=0amprpc[1210]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1211]: IOCTL cmd=0x4008030A -> ret=0amprpc[1212]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1213]: IOCTL cmd=0x4008030A -> ret=0amprpc[1214]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1215]: IOCTL cmd=0x4008030A -> ret=0amprpc[1216]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1217]: IOCTL cmd=0x4008030A -> ret=0amprpc[1218]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1219]: IOCTL cmd=0x4008030A -> ret=0amprpc[1220]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1221]: IOCTL cmd=0x4008030A -> ret=0amprpc[1222]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1223]: IOCTL cmd=0x4008030A -> ret=0amprpc[1224]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1225]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1226]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1227]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1228]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1229]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1230]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1231]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1232]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1233]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1234]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1235]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1236]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1237]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1238]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1239]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1240]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1241]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1242]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1243]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1244]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1245]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1246]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1247]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1248]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1249]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1250]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1251]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1252]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1253]: IOCTL cmd=0x4008030A -> ret=0amprpc[1254]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1255]: IOCTL cmd=0x4008030A -> ret=0amprpc[1256]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1257]: IOCTL cmd=0x4008030A -> ret=0amprpc[1258]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1259]: IOCTL cmd=0x4008030A -> ret=0amprpc[1260]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1261]: IOCTL cmd=0x4008030A -> ret=0amprpc[1262]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1263]: IOCTL cmd=0x4008030A -> ret=0amprpc[1264]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1265]: IOCTL cmd=0x4008030A -> ret=0amprpc[1266]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1267]: IOCTL cmd=0x4008030A -> ret=0amprpc[1268]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1269]: IOCTL cmd=0x4008030A -> ret=0amprpc[1270]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1271]: IOCTL cmd=0x4008030A -> ret=0amprpc[1272]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1273]: IOCTL cmd=0x4008030A -> ret=0amprpc[1274]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1275]: IOCTL cmd=0x4008030A -> ret=0amprpc[1276]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1277]: IOCTL cmd=0x4008030A -> ret=0amprpc[1278]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1279]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1280]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1281]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1282]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1283]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1284]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1285]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1286]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1287]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1288]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1289]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1290]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1291]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1292]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1293]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1294]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1295]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1296]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1297]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1298]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1299]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1300]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1301]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1302]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1303]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1304]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1305]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1306]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1307]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1308]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1309]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1310]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1311]: IOCTL cmd=0x4008030A -> ret=0amprpc[1312]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1313]: IOCTL cmd=0x4008030A -> ret=0amprpc[1314]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1315]: IOCTL cmd=0x4008030A -> ret=0amprpc[1316]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1317]: IOCTL cmd=0x4008030A -> ret=0amprpc[1318]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1319]: IOCTL cmd=0x4008030A -> ret=0amprpc[1320]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1321]: IOCTL cmd=0x4008030A -> ret=0amprpc[1322]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1323]: IOCTL cmd=0x4008030A -> ret=0amprpc[1324]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1325]: IOCTL cmd=0x4008030A -> ret=0amprpc[1326]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1327]: IOCTL cmd=0x4008030A -> ret=0amprpc[1328]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1329]: IOCTL cmd=0x4008030A -> ret=0amprpc[1330]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1331]: IOCTL cmd=0x4008030A -> ret=0amprpc[1332]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1333]: IOCTL cmd=0x4008030A -> ret=0amprpc[1334]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1335]: IOCTL cmd=0x4008030A -> ret=0amprpc[1336]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1337]: IOCTL cmd=0x4008030A -> ret=0amprpc[1338]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1339]: IOCTL cmd=0x4008030A -> ret=0amprpc[1340]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1341]: IOCTL cmd=0x4008030A -> ret=0amprpc[1342]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1343]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1344]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1345]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1346]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1347]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1348]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1349]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1350]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1351]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1352]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1353]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1354]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1355]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1356]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1357]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1358]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1359]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1360]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1361]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1362]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1363]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1364]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1365]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1366]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1367]: IOCTL cmd=0x4008030A -> ret=0amprpc[1368]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1369]: IOCTL cmd=0x4008030A -> ret=0amprpc[1370]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1371]: IOCTL cmd=0x4008030A -> ret=0amprpc[1372]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1373]: IOCTL cmd=0x4008030A -> ret=0amprpc[1374]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1375]: IOCTL cmd=0x4008030A -> ret=0amprpc[1376]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1377]: IOCTL cmd=0x4008030A -> ret=0amprpc[1378]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1379]: IOCTL cmd=0x4008030A -> ret=0amprpc[1380]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1381]: IOCTL cmd=0x4008030A -> ret=0amprpc[1382]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1383]: IOCTL cmd=0x4008030A -> ret=0amprpc[1384]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1385]: IOCTL cmd=0x4008030A -> ret=0amprpc[1386]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1387]: IOCTL cmd=0x4008030A -> ret=0amprpc[1388]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1389]: IOCTL cmd=0x4008030A -> ret=0amprpc[1390]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1391]: IOCTL cmd=0x4008030A -> ret=0amprpc[1392]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1393]: IOCTL cmd=0x4008030A -> ret=0amprpc[1394]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1395]: IOCTL cmd=0x4008030A -> ret=0amprpc[1396]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1397]: IOCTL cmd=0x4008030A -> ret=0amprpc[1398]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1399]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1400]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1401]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1402]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1403]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1404]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1405]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1406]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1407]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1408]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1409]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1410]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1411]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1412]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1413]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1414]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1415]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1416]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1417]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1418]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1419]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1420]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1421]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1422]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1423]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1424]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1425]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1426]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1427]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1428]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1429]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1430]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1431]: IOCTL cmd=0x4008030A -> ret=0amprpc[1432]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1433]: IOCTL cmd=0x4008030A -> ret=0amprpc[1434]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1435]: IOCTL cmd=0x4008030A -> ret=0amprpc[1436]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1437]: IOCTL cmd=0x4008030A -> ret=0amprpc[1438]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1439]: IOCTL cmd=0x4008030A -> ret=0amprpc[1440]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1441]: IOCTL cmd=0x4008030A -> ret=0amprpc[1442]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1443]: IOCTL cmd=0x4008030A -> ret=0amprpc[1444]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1445]: IOCTL cmd=0x4008030A -> ret=0amprpc[1446]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1447]: IOCTL cmd=0x4008030A -> ret=0amprpc[1448]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1449]: IOCTL cmd=0x4008030A -> ret=0amprpc[1450]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1451]: IOCTL cmd=0x4008030A -> ret=0amprpc[1452]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1453]: IOCTL cmd=0x4008030A -> ret=0amprpc[1454]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1455]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1456]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1457]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1458]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1459]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1460]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1461]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1462]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1463]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1464]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1465]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1466]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1467]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1468]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1469]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1470]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1471]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1472]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1473]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1474]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1475]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1476]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1477]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1478]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1479]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1480]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1481]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1482]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1483]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1484]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1485]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1486]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1487]: IOCTL cmd=0x4008030A -> ret=0amprpc[1488]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1489]: IOCTL cmd=0x4008030A -> ret=0amprpc[1490]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1491]: IOCTL cmd=0x4008030A -> ret=0amprpc[1492]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1493]: IOCTL cmd=0x4008030A -> ret=0amprpc[1494]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1495]: IOCTL cmd=0x4008030A -> ret=0amprpc[1496]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1497]: IOCTL cmd=0x4008030A -> ret=0amprpc[1498]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1499]: IOCTL cmd=0x4008030A -> ret=0amprpc[1500]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1501]: IOCTL cmd=0x4008030A -> ret=0amprpc[1502]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1503]: IOCTL cmd=0x4008030A -> ret=0amprpc[1504]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1505]: IOCTL cmd=0x4008030A -> ret=0amprpc[1506]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1507]: IOCTL cmd=0x4008030A -> ret=0amprpc[1508]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1509]: IOCTL cmd=0x4008030A -> ret=0amprpc[1510]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1511]: IOCTL cmd=0x4008030A -> ret=0amprpc[1512]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1513]: IOCTL cmd=0x4008030A -> ret=0amprpc[1514]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1515]: IOCTL cmd=0x4008030A -> ret=0amprpc[1516]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1517]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1518]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1519]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1520]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1521]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1522]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1523]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1524]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1525]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1526]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1527]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1528]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1529]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1530]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1531]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1532]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1533]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1534]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1535]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1536]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1537]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1538]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1539]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1540]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1541]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1542]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1543]: IOCTL cmd=0x4008030A -> ret=0amprpc[1544]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1545]: IOCTL cmd=0x4008030A -> ret=0amprpc[1546]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1547]: IOCTL cmd=0x4008030A -> ret=0amprpc[1548]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1549]: IOCTL cmd=0x4008030A -> ret=0amprpc[1550]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1551]: IOCTL cmd=0x4008030A -> ret=0amprpc[1552]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1553]: IOCTL cmd=0x4008030A -> ret=0amprpc[1554]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1555]: IOCTL cmd=0x4008030A -> ret=0amprpc[1556]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1557]: IOCTL cmd=0x4008030A -> ret=0amprpc[1558]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1559]: IOCTL cmd=0x4008030A -> ret=0amprpc[1560]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1561]: IOCTL cmd=0x4008030A -> ret=0amprpc[1562]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1563]: IOCTL cmd=0x4008030A -> ret=0amprpc[1564]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1565]: IOCTL cmd=0x4008030A -> ret=0amprpc[1566]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1567]: IOCTL cmd=0x4008030A -> ret=0amprpc[1568]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1569]: IOCTL cmd=0x4008030A -> ret=0amprpc[1570]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1571]: IOCTL cmd=0x4008030A -> ret=0amprpc[1572]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1573]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1574]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1575]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1576]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1577]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1578]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1579]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1580]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1581]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1582]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1583]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1584]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1585]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1586]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1587]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1588]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1589]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1590]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1591]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1592]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1593]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1594]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1595]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1596]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1597]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1598]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1599]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1600]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1601]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1602]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1603]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1604]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1605]: IOCTL cmd=0x4008030A -> ret=0amprpc[1606]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1607]: IOCTL cmd=0x4008030A -> ret=0amprpc[1608]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1609]: IOCTL cmd=0x4008030A -> ret=0amprpc[1610]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1611]: IOCTL cmd=0x4008030A -> ret=0amprpc[1612]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1613]: IOCTL cmd=0x4008030A -> ret=0amprpc[1614]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1615]: IOCTL cmd=0x4008030A -> ret=0amprpc[1616]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1617]: IOCTL cmd=0x4008030A -> ret=0amprpc[1618]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1619]: IOCTL cmd=0x4008030A -> ret=0amprpc[1620]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1621]: IOCTL cmd=0x4008030A -> ret=0amprpc[1622]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1623]: IOCTL cmd=0x4008030A -> ret=0amprpc[1624]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1625]: IOCTL cmd=0x4008030A -> ret=0amprpc[1626]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1627]: IOCTL cmd=0x4008030A -> ret=0amprpc[1628]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1629]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1630]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1631]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1632]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1633]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1634]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1635]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1636]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1637]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1638]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1639]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1640]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1641]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1642]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1643]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1644]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1645]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1646]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1647]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1648]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1649]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1650]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1651]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1652]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1653]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1654]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1655]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1656]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1657]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1658]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1659]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1660]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1661]: IOCTL cmd=0x4008030A -> ret=0amprpc[1662]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1663]: IOCTL cmd=0x4008030A -> ret=0amprpc[1664]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1665]: IOCTL cmd=0x4008030A -> ret=0amprpc[1666]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1667]: IOCTL cmd=0x4008030A -> ret=0amprpc[1668]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1669]: IOCTL cmd=0x4008030A -> ret=0amprpc[1670]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1671]: IOCTL cmd=0x4008030A -> ret=0amprpc[1672]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1673]: IOCTL cmd=0x4008030A -> ret=0amprpc[1674]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1675]: IOCTL cmd=0x4008030A -> ret=0amprpc[1676]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1677]: IOCTL cmd=0x4008030A -> ret=0amprpc[1678]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1679]: IOCTL cmd=0x4008030A -> ret=0amprpc[1680]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1681]: IOCTL cmd=0x4008030A -> ret=0amprpc[1682]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1683]: IOCTL cmd=0x4008030A -> ret=0amprpc[1684]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1685]: IOCTL cmd=0x4008030A -> ret=0amprpc[1686]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1687]: IOCTL cmd=0x4008030A -> ret=0amprpc[1688]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1689]: IOCTL cmd=0x4008030A -> ret=0amprpc[1690]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1691]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1692]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1693]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1694]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1695]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1696]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1697]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1698]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1699]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1700]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1701]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1702]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1703]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1704]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1705]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1706]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1707]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1708]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1709]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1710]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1711]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1712]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1713]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1714]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1715]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1716]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1717]: IOCTL cmd=0x4008030A -> ret=0amprpc[1718]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1719]: IOCTL cmd=0x4008030A -> ret=0amprpc[1720]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1721]: IOCTL cmd=0x4008030A -> ret=0amprpc[1722]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1723]: IOCTL cmd=0x4008030A -> ret=0amprpc[1724]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1725]: IOCTL cmd=0x4008030A -> ret=0amprpc[1726]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1727]: IOCTL cmd=0x4008030A -> ret=0amprpc[1728]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1729]: IOCTL cmd=0x4008030A -> ret=0amprpc[1730]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1731]: IOCTL cmd=0x4008030A -> ret=0amprpc[1732]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1733]: IOCTL cmd=0x4008030A -> ret=0amprpc[1734]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1735]: IOCTL cmd=0x4008030A -> ret=0amprpc[1736]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1737]: IOCTL cmd=0x4008030A -> ret=0amprpc[1738]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1739]: IOCTL cmd=0x4008030A -> ret=0amprpc[1740]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1741]: IOCTL cmd=0x4008030A -> ret=0amprpc[1742]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1743]: IOCTL cmd=0x4008030A -> ret=0amprpc[1744]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1745]: IOCTL cmd=0x4008030A -> ret=0amprpc[1746]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1747]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1748]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1749]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1750]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1751]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1752]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1753]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1754]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1755]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1756]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1757]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1758]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1759]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1760]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1761]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1762]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1763]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1764]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1765]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1766]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1767]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1768]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1769]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1770]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1771]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1772]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1773]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1774]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1775]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1776]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1777]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1778]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1779]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1780]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1781]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1782]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1783]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1784]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1785]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1786]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1787]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1788]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1789]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1790]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1791]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1792]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1793]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1794]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1795]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1796]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1797]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1798]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1799]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1800]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1801]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1802]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1803]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1804]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1805]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1806]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1807]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1808]: IOCTL cmd=0x4008030A -> ret=0amprpc[1809]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1810]: IOCTL cmd=0x4008030A -> ret=0amprpc[1811]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1812]: IOCTL cmd=0x4008030A -> ret=0amprpc[1813]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1814]: IOCTL cmd=0x4008030A -> ret=0amprpc[1815]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1816]: IOCTL cmd=0x4008030A -> ret=0amprpc[1817]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1818]: IOCTL cmd=0x4008030A -> ret=0amprpc[1819]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1820]: IOCTL cmd=0x4008030A -> ret=0amprpc[1821]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1822]: IOCTL cmd=0x4008030A -> ret=0amprpc[1823]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1824]: IOCTL cmd=0x4008030A -> ret=0amprpc[1825]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1826]: IOCTL cmd=0x4008030A -> ret=0amprpc[1827]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1828]: IOCTL cmd=0x4008030A -> ret=0amprpc[1829]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1830]: IOCTL cmd=0x4008030A -> ret=0amprpc[1831]: OPEN /dev/virtuart_proxy -> fd=11
+amprpc[1832]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1833]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1834]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1835]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1836]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1837]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1838]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1839]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1840]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1841]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1842]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1843]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1844]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1845]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1846]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1847]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1848]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1849]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1850]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1851]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1852]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1853]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1854]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1855]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1856]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1857]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1858]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1859]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1860]: IOCTL fd=8 cmd=0x4008030A sz=8amprpc[1861]: IOCTL cmd=0x4008030A -> ret=0
+amprpc[1862]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1863]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1864]: IOCTL cmd=0x4008030A -> ret=0amprpc[1865]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1866]: IOCTL cmd=0x4008030A -> ret=0amprpc[1867]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1868]: IOCTL cmd=0x4008030A -> ret=0amprpc[1869]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1870]: IOCTL cmd=0x4008030A -> ret=0amprpc[1871]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1872]: IOCTL cmd=0x4008030A -> ret=0amprpc[1873]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1874]: IOCTL cmd=0x4008030A -> ret=0amprpc[1875]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1876]: IOCTL cmd=0x4008030A -> ret=0amprpc[1877]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1878]: IOCTL cmd=0x4008030A -> ret=0amprpc[1879]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1880]: IOCTL cmd=0x4008030A -> ret=0amprpc[1881]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1882]: IOCTL cmd=0x4008030A -> ret=0amprpc[1883]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1884]: IOCTL cmd=0x4008030A -> ret=0amprpc[1885]: IOCTL fd=8 cmd=0x4008030A sz=8
+amprpc[1886]: IOCTL cmd=0x4008030A -> ret=0amprpc[1887]: IOCTL fd=8 cmd=0x20000302 sz=0
+amprpc[1888]: OPEN /dev/virtuart_proxy -> fd=11amprpc[1889]: IOCTL cmd=0x20000302 -> ret=0
+amprpc[1890]: IOCTL fd=7 cmd=0x8004020D sz=4amprpc[1891]: IOCTL cmd=0x8004020D -> ret=0
+amprpc[1892]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[1893]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[1894]: OPEN /dev/dis -> fd=7amprpc[1895]: IOCTL fd=7 cmd=0x800C0E04 sz=12
+amprpc[1896]: IOCTL cmd=0x800C0E04 -> ret=0amprpc[1897]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[1898]: OPEN /dev/virtuart_proxy -> fd=7amprpc[1899]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[1900]: OPEN /dev/dis -> fd=7amprpc[1901]: IOCTL fd=7 cmd=0xC00C0E0C sz=12
+amprpc[1902]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[1903]: OPEN /dev/dis -> fd=7
+amprpc[1904]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[1905]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[1906]: OPEN /dev/dis -> fd=7amprpc[1907]: IOCTL fd=7 cmd=0x800C0E04 sz=12
+amprpc[1908]: IOCTL cmd=0x800C0E04 -> ret=0map ge register to userspace. off = 0
+amprpc[1909]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[1910]: OPEN /dev/virtuart_proxy -> fd=7amprpc[1911]: OPEN /dev/dis -> fd=7
+amprpc[1912]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[1913]: IOCTL cmd=0xC00C0E0C -> ret=0map ge register to userspace. off = 0
+amprpc[1914]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[1915]: OPEN /dev/virtuart_proxy -> fd=7amprpc[1916]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[1917]: OPEN /dev/virtuart_proxy -> fd=7amprpc[1918]: OPEN /dev/dis -> fd=7
+amprpc[1919]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[1920]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[1921]: OPEN /dev/virtuart_proxy -> fd=7amprpc[1922]: OPEN /dev/dis -> fd=7
+amprpc[1923]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[1924]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[1925]: OPEN /dev/dis -> fd=7amprpc[1926]: IOCTL fd=7 cmd=0xC00C0E0C sz=12
+amprpc[1927]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[1928]: OPEN /dev/dis -> fd=7
+amprpc[1929]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[1930]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[1931]: OPEN /dev/dis -> fd=7amprpc[1932]: IOCTL fd=7 cmd=0x800C0E04 sz=12
+amprpc[1933]: IOCTL cmd=0x800C0E04 -> ret=0map ge register to userspace. off = 0
+amprpc[1934]: OPEN /dev/auddec -> fd=7
+amprpc[1935]: IOCTL fd=7 cmd=0x82780301 sz=632amprpc[1936]: IOCTL cmd=0x82780301 -> ret=0
+amprpc[1937]: IOCTL fd=7 cmd=0x40180500 sz=24amprpc[1938]: IOCTL cmd=0x40180500 -> ret=0
+amprpc[1939]: IOCTL fd=7 cmd=0x20000304 sz=0amprpc[1940]: IOCTL cmd=0x20000304 -> ret=0
+amprpc[1941]: IOCTL fd=7 cmd=0x40041503 sz=4amprpc[1942]: IOCTL cmd=0x40041503 -> ret=0
+amprpc[1943]: IOCTL fd=9 cmd=0x2000080F sz=0amprpc[1944]: IOCTL cmd=0x2000080F -> ret=0
+amprpc[1945]: IOCTL fd=7 cmd=0x40040308 sz=4amprpc[1946]: IOCTL cmd=0x40040308 -> ret=0
+amprpc[1947]: OPEN /dev/virtuart_proxy -> fd=9amprpc[1948]: IOCTL fd=7 cmd=0x40040308 sz=4
+amprpc[1949]: IOCTL cmd=0x40040308 -> ret=0amprpc[1950]: OPEN /dev/auddec -> fd=7
+amprpc[1951]: IOCTL fd=7 cmd=0x82780301 sz=632amprpc[1952]: IOCTL cmd=0x82780301 -> ret=0
+amprpc[1953]: IOCTL fd=7 cmd=0x40180500 sz=24amprpc[1954]: IOCTL cmd=0x40180500 -> ret=0
+amprpc[1955]: IOCTL fd=7 cmd=0x20000304 sz=0amprpc[1956]: IOCTL cmd=0x20000304 -> ret=0
+amprpc[1957]: IOCTL fd=7 cmd=0x40041503 sz=4amprpc[1958]: IOCTL cmd=0x40041503 -> ret=0
+amprpc[1959]: IOCTL fd=9 cmd=0x2000080F sz=0amprpc[1960]: IOCTL cmd=0x2000080F -> ret=0
+amprpc[1961]: OPEN /dev/virtuart_proxy -> fd=9amprpc[1962]: OPEN /dev/virtuart_proxy -> fd=9
+amprpc[1963]: OPEN /dev/virtuart_proxy -> fd=9amprpc[1964]: OPEN /dev/virtuart_proxy -> fd=9
+amprpc[1965]: OPEN /dev/virtuart_proxy -> fd=9amprpc[1966]: OPEN /dev/virtuart_proxy -> fd=9
+amprpc[1967]: OPEN /dev/virtuart_proxy -> fd=9amprpc[1968]: OPEN /dev/virtuart_proxy -> fd=9
+amprpc[1969]: OPEN /dev/dis -> fd=9amprpc[1970]: IOCTL fd=9 cmd=0xC00C0E0C sz=12
+amprpc[1971]: IOCTL cmd=0xC00C0E0C -> ret=0map ge register to userspace. off = 0
+amprpc[1972]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1973]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1974]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1975]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1976]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1977]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1978]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1979]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1980]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1981]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1982]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1983]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1984]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1985]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1986]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1987]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1988]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1989]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1990]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1991]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1992]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1993]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1994]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1995]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1996]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1997]: OPEN /dev/virtuart_proxy -> fd=10amprpc[1998]: OPEN /dev/virtuart_proxy -> fd=10
+amprpc[1999]: OPEN /dev/virtuart_proxy -> fd=10amprpc[2000]: OPEN /dev/virtuart_proxy -> fd=10
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+map ge register to userspace. off = 0
+=== VIRTUART FINAL ===
+VER:VIDDRIVER(Dec 26 2024 15:11:15)
+open /dev/persistentmem failed
+get tvtype in sysdata fail,from dts:15
+KdwaYewCiBETqFZPvtZFqORuSKMqoSzp 0
+b_hdmi_output = 1
+data = 0x5780074
+data = 0x1f00010
+b_hdmi_output = 1
+open /dev/persistentmem failed
+get_dts_panel_info 67 109 19 1 640 480
+Unplug_card_display_display_init 310
+CFG 48K
+hc1600a@dbE3100v20# hdmi_tx_reg_set_phy_clk_dat_pwdown_hpg
+HDMI WAIT PHY RDY TIME OUT
+
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# help
+
+Commands available:
+  help                 Show available cmds
+  exit                 Exit from current cmd set
+  history              Show history cmds
+  reset                reset system
+  dumpstack            memory status entry
+  quit                 Quit virtual uart console
+  gpio                 gpio pin val
+  elog                 elog cmds entry
+  mem                  memory status entry
+  softirqresched       set softirq resched priority
+  softirq              set softirq priority
+  sde                  SDE tool
+  dither               
+  test_mem_wr_speed    test mem write speed
+  test_mem_rd_speed    test mem read speed
+  swxf                 swxf
+  reset_hrx_audio      reset hdmi rx audio
+  os                   os cmds entry
+  nsh                  Enter NSH cmds
+  drcoff               drcoff
+  drcon                drcon
+  i2soinfo             i2soinfo()
+  enejtag              enejtag()
+  disejtag             disejtag()
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# ps
+Invalid command "ps"
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# init:active 0x8c0caa00
+open /dev/sndC0i2so 10
+CFG 48K
+audio_info.ch_status 0x2000004
+ctx->block_align 0, ctx->bitdepth 16
+init:active 0x8c0ca800
+ctx->block_align 0, ctx->bitdepth 16
+init:active 0x8c0caa00
+open /dev/sndC0i2so 9
+CFG 48K
+audio_info.ch_status 0x2000004
+ctx->block_align 0, ctx->bitdepth 16
+init:active 0x8c0ca800
+ctx->block_align 0, ctx->bitdepth 16
+init:active 0x8c0caa00
+VER:H264(Dec 26 2024 15:11:15)
+allocsz = 0x321b000
+vdec sync stc
+ctx->block_align 0, ctx->bitdepth 16
+init:active 0x8c0ca800
+ctx->block_align 0, ctx->bitdepth 16
+init:active 0x8c0caa00

@@ -2,7 +2,7 @@
 
 **Reproducible Linux/HCLinux platform for the R36SX V2.6 handheld console (HiChip HC1600A, MIPS32r2 little-endian) — with TreeFrogUI as the target frontend.**
 
-[![Status](https://img.shields.io/badge/Fase%202-VENDOR%20BASELINE%20BUILD%20PASS-brightgreen)]() [![Kernel](https://img.shields.io/badge/kernel-4.4.186-blue)]() [![Validation](https://img.shields.io/badge/physical-PASS-brightgreen)]()
+[![Status](https://img.shields.io/badge/Fase%208-ROOTFS%20OWN%20PHYSICAL%20PASS-brightgreen)]() [![Kernel](https://img.shields.io/badge/kernel-4.4.186-blue)]() [![Audio](https://img.shields.io/badge/AVP--media%20audio-PHYSICAL%20PASS-brightgreen)]() [![Video](https://img.shields.io/badge/AVP--media%20video-fix%20deployed%2C%20test%20pending-orange)]()
 
 ## What this is
 
@@ -10,11 +10,11 @@ Engineering project building our own kernel/DTB/rootfs for the R36SX V2.6 from t
 
 **Hardware target (physical evidence):** SoC HC1600A · board `hc1600a@dbE3100v20` · 256 MiB RAM (176 MiB visible to stock Linux) · Linux 4.4.186 stock · display 1280x720 (fb0 @0x18808000) · console=tty1.
 
-## Current state (2026-09-17)
+## Current state (2026-09-18)
 
-**Vendor pipeline build: PASS · R36SX custom board build: PASS · Fase 5 PHYSICAL PASS — our own kernel boots the console to the TreeFrogUI menu (navegable y funcional, iteración 6x)**
+**Fase 5 PHYSICAL PASS (own kernel boots to TreeFrogUI menu) · Fase 6 DONE (live contract matrix) · Fase 8: own Buildroot rootfs PHYSICAL PASS (10.4 MiB, factory launcher removed, ~8s to menu) · AVP-media: root cause found — factory↔SDK ABI drift (ADR-012): AUDIO fixed and PHYSICALLY PASSING (9l), VIDEO fix deployed to SD (9m), physical test pending.**
 
-What works: full vendor kernel pipeline reproduced end-to-end with proven provenance; stock hardware model fully reconstructed from the real console DTB; custom board `r36sx-v26` builds a kernel whose DTB is **semantically identical to stock**; **Fase 5 complete: the console boots OUR kernel (uImage `017adf3b`) to a fully functional TreeFrogUI menu** — achieved via stock-parity initramfs (real S41hcdaemon/S99app, raw cpio like factory) + vendor-baseline config + CHECK_ADC. What doesn't yet: TreeFrogUI contract formalization (Fase 6), own rootfs via Buildroot (Fase 8), AVP/hcboot compilation (bare-metal toolchain unavailable — GitLab HiChip private).
+What works: full vendor pipeline with proven provenance; custom board `r36sx-v26` (DTB semantically identical to stock); **our kernel + our Buildroot userland boots the console to a fully functional TreeFrogUI menu (~8s)** with the factory launcher chain removed (icube-direct); **game audio + music player audio work** (ABI fix: `audio_config` padding 24 B). What's pending: **video image** (same ABI fix for `video_config`, +20 B, deployed 9m — awaiting physical test), then Phase 8 is complete. AVP/hcboot CAN now be built (public Codescape 2019.09 bare-metal toolchain found; own avp.bin built in 9a) though the current strategy is proxy-side ABI alignment (ADR-012), not AVP replacement.
 
 | Subsystem | Status | Evidence |
 |---|---|---|
@@ -22,10 +22,13 @@ What works: full vendor kernel pipeline reproduced end-to-end with proven proven
 | Vendor baseline build (d3100_v20) | **BUILD PASS** + provenance PROVEN (.cmd files + patch log V=1) | `docs/TOOLCHAIN_PROVENANCE.md` · `docs/PATCH_PROVENANCE.md` |
 | Stock hardware model (4A) | **PASS** — DTB decompiled (roundtrip SEMANTIC), memory map exact, panel MIPI-DSI r63311 demonstrated, 15 formal deltas | `docs/DTS_STOCK_MODEL.md` · `docs/R36SX_D3100_DELTA.md` |
 | **Custom board r36sx-v26 (4B)** | **BUILD PASS — DTB semantically IDENTICAL to stock (allowlist 0); kernel .config == vendor; provenance gates PASS** | `docs/experiments/2026-09-14_r36sx-v26-board.md` |
-| TreeFrogUI contract | PENDING (Fase 6) | — |
-| Physical validation | **PASS (Fase 5, 2026-09-16)** — own kernel `017adf3b` boots the console to a functional, navigable TreeFrogUI menu; post-boot SD verification complete (kernel intact, stock dtb/avp untouched) | `docs/experiments/2026-09-16_menu-goal-stock-parity.md` |
+| TreeFrogUI contract (Fase 6) | **DONE** — live dependency matrix validated on-device (diag6x/diag8) | `docs/TREEFROGUI_COMPATIBILITY.md` |
+| **Own rootfs (Fase 8)** | **PHYSICAL PASS** — Buildroot userland 10.4 MiB, factory launcher removed (icube-direct), menu in ~8s | `docs/experiments/2026-09-17_fase8-own-rootfs.md` |
+| **AVP media: audio** | **PHYSICAL PASS (9l)** — root cause: factory↔SDK ABI drift (24 B in `audio_config`), fixed by UAPI padding (ADR-012) | `patches/kernel/0001-*` · `docs/experiments/evidence-9l-boottrace.log` |
+| **AVP media: video** | Fix deployed to SD (9m, +20 B `video_config`) — **physical test pending** | `docs/experiments/2026-09-18_fase9m-video-abi-fix.md` |
+| Physical validation | **PASS** — own kernel+rootfs boots the console to a functional, navigable TreeFrogUI menu; audio working in games and player | `docs/experiments/2026-09-16_menu-goal-stock-parity.md` · `CURRENT.md` |
 
-What works: full vendor kernel pipeline reproduced end-to-end (kernel+DTB+uImage+rootfs), physical hardware documented from stock SD (read-only). What doesn't yet: custom board DTS, own kernel on device, AVP/hcboot compilation (bare-metal toolchain unavailable — GitLab HiChip is private), TreeFrogUI integration.
+(See `CURRENT.md` for the operational snapshot and `CHANGELOG.md` for iteration history.)
 
 ## Architecture (confirmed)
 

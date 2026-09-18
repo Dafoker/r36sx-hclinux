@@ -14,7 +14,7 @@ Fuentes de evidencia: **6m** = ingeniería inversa cubegm (`docs/experiments/202
 | `check_adc1/check_adc5` (HC_CHECK_ADC) | batería/carga (driver_r36sx.so) | 6m ABI + 6x: icono batería visible (6w ya lo mostraba con CHECK_ADC=y) | **VALIDADO (6x PHYSICAL)** |
 | `input/event0` (HC input) | navegación/botones | 6x: menú "navegable y funcional" | **VALIDADO (6x PHYSICAL)** |
 | `/dev/dis` (display ioctl vendor) | ¿rotación/modo pantalla? | 6m ABI | PROBABLE — confirmar con DIAG6X (fds vivos) |
-| `sndC0i2so/auddec` (audio HC→AVP) | sonido UI/cores | 6m ABI | PROBABLE — confirmar con DIAG6X |
+| `sndC0i2so/auddec` (audio HC→AVP) | sonido UI/cores | 6m ABI | **VALIDADO — AUDIO PHYSICAL PASS (9l, ADR-012)** |
 | `mmz` (memoria multimedia compartida) | buffers AVP/AMPRPC | 6m ABI | PROBABLE — confirmar con DIAG6X |
 | `persistentmem` (persistentmem-fs) | saves/settings UI | 6m ABI + SDK persistentmem.bin | PROBABLE — confirmar con DIAG6X |
 | `standby` (power/sleep) | power management UI | 6m ABI | PROBABLE — confirmar con DIAG6X |
@@ -38,15 +38,15 @@ Fuentes de evidencia: **6m** = ingeniería inversa cubegm (`docs/experiments/202
 
 - Los fds abiertos por proceso son IDÉNTICOS bajo stock y bajo kernel propio — la app-layer no distingue kernels.
 - Input: pipeline `cubevol gpio → /tmp/joy_key` (sin evdev en ningún kernel — 6m/7b).
-- Media (auddec/viddec/sndC0*): proxies AMPRPC → AVP. **FUNCIONA con kernel fábrica, MUERTE con kernel propio** — causa diferida (hipótesis: mismatch media-proxy SDK-Jul-2024 vs AVP-fábrica-Dic-2025). Ver docs/experiments/2026-09-17_fase6-diag6x-analysis.md.
+- Media (auddec/viddec/sndC0*): proxies AMPRPC → AVP. **CAUSA RAÍZ CONFIRMADA 2026-09-18 (ADR-012): drift ABI de sizeof entre binarios userspace de fábrica (Dic-2025) y headers UAPI del SDK (Jul-2024)** — el sizeof queda codificado en el número de ioctl y el switch del avp-proxy no matcheaba → `KSHM_WRITE_HDL_ACCESS` nunca se enviaba. AUDIO: FIXED + PHYSICAL PASS (9l, padding 24 B `audio_config`). VIDEO: fix desplegado (9m, padding 20 B `video_config`), test físico pendiente. Ver docs/experiments/2026-09-18_fase9m-video-abi-fix.md.
 
 ## CONTRATO (lo que todo kernel futuro r36sx-v26 debe garantizar)
 
 1. Drivers Linux-puro: HC_GE, HC_HWSPINLOCK, HC_CHECK_ADC, fb (fb0/fb1), dw-mmc, input-poll (userspace cubevol), GPIO/mem.
 2. Initramfs con la cadena S41hcdaemon (`hcdaemon&`) + S99app (wait media → binds /mnt/sdcard,/lib,/usr,/bin,/sbin → swap → icube.sh) — o equivalentes propios (Fase 8).
 3. NO hardware-init de periféricos compartidos con el AVP sin entender el ownership (lección 6w→7e).
-4. Para MEDIA completa: se requiere resolver el ABI proxy↔AVP de fábrica (pendiente — USB-TTL/RE binaria).
+4. Para MEDIA completa: ABI proxy↔fábrica alineado por padding UAPI (ADR-012) — audio HECHO (9l), video en test (9m). Cualquier ioctl futuro que no matchee se diagnostica igual: amprpc debug on-device + scan `lui+ori` de los binarios de fábrica.
 
-## Limitación conocida (documentada, diferida)
+## Limitación conocida → RESUELTA (en verificación final)
 
-Audio en TODO + video decode + salida de cores bajo kernel propio — ver experimento 2026-09-17.
+Audio (9l PHYSICAL PASS) + video decode (9m desplegado, test pendiente) bajo kernel propio — la "limitación diferida" de Fase 6/7 era íntegramente el drift ABI (ADR-012).
