@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-17 (8f boot-opt: sin ganancia (~8s aceptado). PIVOT: fix AVP-media = requisito de Fase 8 COMPLETA — estrategias A/B/C/D activas)
+**Actualizado:** 2026-09-17 (Fase 9a: BUILD PROPIO DEL AVP COMPLETO — toolchain conseguido, avp.bin propio con strings idénticos a fábrica, uImage listo; DEPLOY+TEST pendiente = el momento de la verdad del media fix)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
