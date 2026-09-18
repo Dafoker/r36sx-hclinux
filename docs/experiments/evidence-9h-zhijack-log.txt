@@ -1,0 +1,52 @@
+=== zhijack boot [r36sx] 00:00:04 ===
+icube frozen, rkgame killed
+processes at boot:
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  906 root     [spi32766]
+  910 root     [bioset]
+  916 root     [bioset]
+  921 root     [bioset]
+  926 root     [bioset]
+  974 root     [bioset]
+  977 root     [mmcqd/0]
+ 1000 root     [deferwq]
+ 1026 root     /sbin/syslogd -n
+ 1030 root     /sbin/klogd -n
+ 1044 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1115 root     hcdaemon
+ 1126 root     [kworker/0:1H]
+ 1133 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1134 root     /bin/sh --
+ 1154 root     sleep 2
+ 1164 root     ps
+CPU frequency policy after performance request:
+/sys/devices/system/cpu/cpu*/cpufreq governor= cur= min= max= hwmax=
+--- iter 1: frogui ---

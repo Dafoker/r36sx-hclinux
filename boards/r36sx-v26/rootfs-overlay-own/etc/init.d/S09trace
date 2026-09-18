@@ -32,6 +32,7 @@ avp_write() {
       [ -d "$d" ] && {
         cp "$LOG" "$d/boottrace.log" 2>/dev/null
         cp "$V" "$d/virtuart_boot.log" 2>/dev/null
+        cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null
         sync
       }
     done
@@ -47,14 +48,14 @@ avp_write() {
       echo "=== dmesg tail ===" >> "$LOG"
       dmesg 2>/dev/null >> "$LOG"
       for d in /media/*/cubegm; do
-        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; sync; }
+        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
       done
       echo "=== probe ronda 1 lista — seguimos monitoreando 60s ===" >> "$LOG"
       M=0
       while [ $M -lt 30 ]; do
         grep -E "^ *66:" /proc/interrupts 2>/dev/null >> "$LOG"
         for d in /media/*/cubegm; do
-          [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; sync; }
+          [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
         done
         M=$((M+1))
         sleep 2
@@ -62,7 +63,7 @@ avp_write() {
       echo "=== FIN MONITOREO 60s ===" >> "$LOG"
       cat "$V" >> "$LOG"
       for d in /media/*/cubegm; do
-        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; sync; }
+        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
       done
       kill $VREADER 2>/dev/null
       exit 0

@@ -164,3 +164,20 @@ zhijack.sh: congela icube + mata rkgame al arrancar (solo son vehículo), auto-l
 
 ## Siguiente: debug de TreeFrogUI userspace
 - `log.txt` creado en G:\ — zhijack.sh lo detecta y habilita debug logging de picoarch + driver_r36sx.so → los errores de audio aparecerán en la SD.
+# Iteración 9h — treefrog_ui.log CAPTURADO: el audio driver SÍ inicializa pero ABORTA (2026-09-18)
+
+- S09trace ahora copia /tmp/treefrog_ui.log a la SD (junto con boottrace + virtuart).
+- **evidence-9h-treefrog-ui.log (15KB)**: la secuencia de audio cuando el juego (gpsp) arranca:
+  ```
+  sound_driver_init:251
+  p->fd = c                    ← /dev/auddec ABIERTO con fd asignado
+  AUDDEC_START                 ← el driver envía el comando
+  audio buffer size is 655359 bytes  ← el AVP responde con el buffer
+  volume is 100 / set volume to 100  ← el volumen funciona
+  sound_driver_deinit:264       ← INMEDIATAMENTE se desinicializa
+  ```
+- **El audio driver SÍ abre auddec, SÍ recibe respuesta del AVP (buffer size + volumen), pero algo falla silenciosamente y el driver se apaga.**
+- No hay mensaje de error explícito en treefrog_ui.log. El AUDDEC_INIT (configuración del formato) probablemente retorna un error que hace abortar.
+- **El audio NO es un problema del kernel ni del AVP** — el AVP responde correctamente. Es el driver_r36sx.so quien decide que el audio no está disponible y se apaga.
+- Siguiente: analizar los amprpc entries del boottrace COMPLETO para ver qué retorno recibe AUDDEC_INIT (el cmd que configura sample rate/channels) y por qué el driver decide abortar.
+- Files: evidence-9h-treefrog-ui.log + evidence-9h-boottrace.log + evidence-9h-zhijack-log.txt
