@@ -55,6 +55,24 @@ Evidencia que lo habilita: kernel propio con `CONFIG_MTD=y`+`MTD_M25P80` (SPI-NO
 ### Fase D-2 — build de nuestro hcboot (SIN RIESGO)
 Manual OPENCODE §12/§14: `mkboot`/`make hcboot-menuconfig` (defconfig `hichip_hc16xx_linux_bl_defconfig`); bootloader.bin = DDR-init + u-boot.bin (post-build genera). Nuestro build: DDR-init **byte-exacto de fábrica (del dump)** + hcboot con NOR-DTB `path-prefix="boot"`. Gate: comparar strings/símbolos contra el bootloader de fábrica del dump (mismo método que validó avp-own en 9a).
 
+---
+
+## Addendum 3 — D-2a investigación completa + PIVOTE DE PLAN (2026-09-19/20)
+
+**Formato HCFOTA descifrado** (generator + hcfota.h + upgrade.c): `hcfota_header` (crc/compress/version/board/product/flags de storage) + payload (DTB embebido + entries por partición con offset/length/erase_length) + CRC32; `-u`=sin-boot, `-r`=DDR-init, `-c`=versioncheck; el hcboot busca **`HCFOTA.bin` en la RAÍZ del medio**; trigger = `sysdata.ota_detect_modes` en persistentmem (modo SD=3); one-shot (limpia el flag tras intentar).
+
+**Bootloader de fábrica DESCOMPRIMIDO del dump** (LZMA @0x5e48, tamaño exacto 0x10cebc): build **"hcboot-custom" del proyecto factory `e3100_cube`** (¡el origen del nombre cubegm/!) — misma estructura de código que apps-bootloader del SDK (strings de build-paths lo prueban). **NOR-DTB de fábrica EXTRAÍDO** del payload (embebido @0xd3ec0, 0x80b0 B): decompilado = `external_files { path-prefix="cubegm"; dtb.bin/avp.uImage/vmlinux.uImage/xgame-logo.bmp }` — **el modelo mental queda verificado contra el binario REAL**.
+
+**HALLAZGO DECISIVO: el bootloader de fábrica NO tiene módulo de upgrade** — 0 strings de hcfota/upgrade ("Do not support upgrade…", "sd/emmc upgrade timeout", etc. ausentes). El factory hcboot se compiló SIN CONFIG_BOOT_UPGRADE_*. → **La vía HCFOTA es IMPOSIBLE como primera escritura. La vía real: escritura MTD directa desde nuestro Linux** (/dev/mtd0-3 vivos, driver M25P80, NOR despejado en runtime porque el kernel corre desde RAM).
+
+**Escalera 9a redirigida (vía MTD):**
+1. **D-2a'** (prueba de mecanismo, contenido idéntico): escribir los bytes EXACTOS del dump (`mtd1ro.bin`) sobre `/dev/mtd1` vía un mini-tool propio (`mtdnor`: MEMERASE por sectores + write O_SYNC + **readback byte-a-byte + sha256**) → reboot → consola idéntica = NOR escribible desde Linux + ciclo erase/write/verify PROBADO sin riesgo de contenido.
+2. **D-2b**: build de NUESTRO hcboot (habilitar BR2_TARGET_HCBOOT + bl defconfig dualcore; DDR-init de fábrica; DTB path-prefix="boot" **+ PATCH DUAL-PATH FALLBACK: si /boot falla → busca en cubegm/** — bootloader inbrickeable por diseño) → validación 9a (strings/símbolos vs fábrica) + DDR-init byte-exacto + estructura stub+LZMA equivalente.
+3. **D-2c** (flash propio, GO explícito): crear `/boot/` en la SD con los 4 archivos (cubegm intacto como fallback) → flash vía MTD + readback → reboot → el bootloader nuevo prefiere /boot/, cae a cubegm si algo falta.
+4. **D-3**: verificado el boot desde /boot/ → borrar cubegm/ al 100% → boot final.
+
+Riesgo residual acotado por: bytes de fábrica probados primero (D-2a'), bootloader dual-path (nunca queda sin camino de boot), dump NOR exacto para rollback, DDR-init byte-exacto. Único escenario de brick: escritura corrupta SIN readback (mitigado) o bootloader dual-path defectuoso (mitigado por D-2a' + validación strings).
+
 ### Fase D-3 — flash vía HCFOTA (EL paso de riesgo — requiere red completa + GO explícito)
 Manual §16.17: `hcfota` = upgrade oficial, "nor flash only, ya soportado": escribe flag en persistentmem → reboot → **hcboot lee hcfota.bin de un USB y re-flashea NOR**; también `hcfota <file-path>` desde Linux. PRE-REQUISITO ANTES DE FLASHEAR: entender y VERIFICAR la recuperación BootROM-level (HCPROGRAMMER USB — BR2_EXTERNAL_HCPROGRAMMER_USB_IRQ_DETECT_TIMEOUT=300 sugiere detección USB al boot) — si nuestro hcboot no arranca, la única vía es BootROM/JTAG. **PROHIBIDO flashear sin: (1) dump verificado, (2) hcfota.bin construido y validado, (3) mecanismo de recuperación probado con la consola sana, (4) GO explícito del usuario.**
 

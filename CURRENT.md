@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-19 (D-1 DONE: dump NOR verificado + layout mapeado + DDR-init de fábrica extraído + mecánica HCFOTA completa — camino a cubegm 0%)
+**Actualizado:** 2026-09-19/20 (D-2a-RESEARCH: HCFOTA descartado como primera vía — bootloader de fábrica SIN módulo upgrade; PIVOTE a escritura MTD directa; herramientas D-2a' construidas y pendientes de desplegar)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -9,13 +9,14 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT PHASE
 
-**FASE D (eliminar cubegm/ 100% vía bootloader propio) — D-1 COMPLETO.** Dump NOR bit-a-bit verificado (`D:\R36SX\nor-dump-20260919\`), layout mapeado (boot 0x0-0x6C000 / eromfs 0x6C000 / persistentmem 0x70000), DDR-init de fábrica extraído byte-exacto (`d944d9af…` — no coincide con ningún SDK), HCFOTA soporta modo `sd` (flash desde la SD), empaquetado = `HCFota_Generator`. **Siguiente: D-2** (build + validación en escalera).
+**FASE D (eliminar cubegm/ 100%) — mecanismo de primera escritura RESUELTO: escritura MTD directa desde nuestro Linux.** El bootloader de fábrica (descomprimido del dump: "hcboot-custom" de `e3100_cube`) NO tiene módulo upgrade → HCFOTA solo servirá DESPUÉS de tener nuestro bootloader. NOR-DTB de fábrica extraído (path-prefix="cubegm" confirmado en el binario real). Herramientas listas: `tools/mtdnor` + `tools/d2a_flash_factory.sh`.
 
 ## CURRENT OBJECTIVE
 
-1. **D-2a (probar el MECANISMO sin riesgo funcional)**: empaquetar el bootloader de FÁBRICA exacto (bytes del dump) como HCFOTA.bin → flash vía hcfota reboot sd → la consola debe re-arrancar idéntica → mecanismo PROBADO.
-2. **D-2b**: cambiar DTS `path-prefix="cubegm"`→`"boot"` + rebuild (mkboot/mkall + HCFota_Generator withboot, DDR-init de fábrica) + validar strings vs fábrica (método 9a) → flash → boot desde /boot/ → mover archivos → **borrar cubegm/ al 100%**.
-3. Requisito pendiente: herramienta `hcfota` userspace MIPS (SOURCE/hcfota, meson) para nuestro rootfs (o trigger manual del flag OTA).
+1. **Desplegar mtdnor + d2a_flash_factory.sh a la SD** (pendiente: SD no estaba montada al cierre) → **usuario ejecuta D-2a'**: re-escritura de los bytes EXACTOS de fábrica sobre /dev/mtd1 con doble verificación → reboot → consola idéntica = mecanismo MTD PROBADO.
+2. **D-2b**: habilitar BR2_TARGET_HCBOOT + bl defconfig dualcore + **patch fallback dual-path (/boot/ → cubegm/)** en apps-bootloader + DDR-init de fábrica (`d944d9af`) + DTB path-prefix="boot" → build → validación strings vs fábrica (método 9a).
+3. **D-2c (GO explícito)**: crear /boot/ con los 4 archivos (cubegm intacto) → flash MTD + readback → reboot.
+4. **D-3**: borrar cubegm/ al 100% → boot final.
 
 ## CURRENT HEAD
 
@@ -23,18 +24,18 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## KNOWN-GOOD STATE
 
-- **SD = instalación limpia + cubegm mínimo NOR (4 archivos) — PHYSICAL PASS.** Kernel 8e `f8fb6768`.
-- **Dump NOR (rollback exacto de fábrica)**: `D:\R36SX\nor-dump-20260919\` — mtd0-3 + `ddrinit-factory-12288.abs` + hashes.
-- Backup SD completo: `D:\R36SX\sd-clean-install-backup-20260918\sd-full.tar` (`963dfd23…`).
-- Goldens: stock.bak `53b3e0b3`, avp `a9788995` (en SD), NOR dump (en D:).
+- **SD física = instalación limpia + cubegm mínimo NOR (4 archivos) — PHYSICAL PASS.** Kernel 8e `f8fb6768`.
+- **Dump NOR verificado** `D:\R36SX\nor-dump-20260919\` (mtd0-3 + ddrinit-factory-12288.abs `d944d9af` + factory-hcboot-decompressed.bin + factory-nordtb-0.dtb + hashes; mtd1ro.bin sha `9fc95d7e`).
+- Backup SD: `D:\R36SX\sd-clean-install-backup-20260918\sd-full.tar` (`963dfd23…`).
+- Bootloader de fábrica descomprimido: LZMA @0x5e48 → 1.101.500 B (hcboot-custom e3100_cube, SIN upgrade).
 
 ## BUILD STATUS
 
-**R36SX-V26 KERNEL+ROOTFS OWN: BUILD PASS.** Pendiente D-2: bootloader.bin propio (hcboot + path-prefix="boot" + DDR-init de fábrica) + HCFOTA.bin (withboot).
+**R36SX-V26 KERNEL+ROOTFS OWN: BUILD PASS.** `tools/mtdnor` MIPS32r2 estático BUILD PASS (610 KB). Pendiente D-2b: bootloader propio (BR2_TARGET_HCBOOT hoy `not set` en nuestro defconfig).
 
 ## PHYSICAL STATUS
 
-**TODO PHYSICAL PASS** (audio/video/salida/clean-install/cubegm-mínimo). D-1 dump ejecutado en consola sin incidentes.
+**TODO PHYSICAL PASS** previo. D-1 dump ejecutado sin incidentes. D-2a' pendiente de ejecutar en consola.
 
 ## SOURCE SDK SHA256
 
@@ -42,20 +43,20 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## ACTIVE BLOCKERS
 
-Ninguno técnico. D-3 (flash) pendiente de: D-2a (mecanismo probado) + build validado + GO explícito del usuario. El riesgo de brick queda mitigado por: DDR-init byte-exacto + mecanismo oficial HCFOTA + dump NOR de rollback (restaurable por JTAG/HCPROGRAMMER usbdevice si hiciera falta).
+Ninguno técnico. Riesgo residual D-2c acotado por: D-2a' (mecanismo probado con bytes idénticos) + dual-path fallback + dump exacto + DDR-init byte-exacto.
 
 ## NEXT EXACT ACTION
 
-1. Estudiar `HCFota_Generator` + `hcprog.ini` (formato de empaquetado HCFOTA.bin).
-2. D-2a: empaquetar bootloader de fábrica (del dump) → flash prueba-mecanismo → boot esperado idéntico (con el usuario).
-3. D-2b: DTS path-prefix→"boot" + rebuild completo + validación + flash → cubegm/ 100% fuera.
+1. Montar SD (`wsl --shutdown` si "No such device") → desplegar `tools/mtdnor` + `tools/d2a_flash_factory.sh` a la raíz.
+2. Usuario: en FrogShell ejecutar `sh /mnt/sdcard/d2a_flash_factory.sh` → reboot → reportar (esperado: consola idéntica).
+3. Con PASS: empezar D-2b (habilitar HCBOOT en el defconfig + patch dual-path + build).
 
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |
 |------------|-----|
-| Caso cubegm + Fase D (plan completo) | `docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md` |
-| Dump NOR + DDR-init | `D:\R36SX\nor-dump-20260919\` |
-| Manuales vendor (HCFOTA/bootchain) | `/mnt/d/GitHub/KERNEL/HCLINUX_MANUAL_MACHINE_READABLE.md` §16.17 |
-| Contrato TreeFrogUI | `docs/TREEFROG_UI_CONTRACT.md` |
+| Caso cubegm + Fase D completa (addendum 3 = pivote MTD) | `docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md` |
+| Dump NOR + bootloader fábrica descomprimido + NOR-DTB | `D:\R36SX\nor-dump-20260919\` |
+| Herramienta MTD | `tools/mtdnor.c` / `tools/mtdnor` / `tools/d2a_flash_factory.sh` |
+| Manuales vendor | `/mnt/d/GitHub/KERNEL/HCLINUX_MANUAL_MACHINE_READABLE.md` |
 | Reglas (§5 hardware, §13 sync, §14 provenance) | `AGENTS.md` |
