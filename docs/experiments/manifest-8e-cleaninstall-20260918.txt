@@ -1,0 +1,103 @@
+# manifiesto de eliminacion — clean install 8e (2026-09-18)
+# TODO es recuperable de D:/R36SX/sd-clean-install-backup-20260918/sd-full.tar (963dfd23...)
+  ApplicationFrame.dll
+  Arial_en.ttf
+  Arial_kr.ttf
+  Browsing.wav
+  Bubbles.scr
+  FlyIn_H.wav
+  FlyIn_V.wav
+  FlyIn_V_media.wav
+  MoveYesNo.wav
+  MoveYesNo_media.wav
+  MyExecutable
+  PageBack.wav
+  PageBack_media.wav
+  PopUp.wav
+  PressYesNo.wav
+  PressYesNo_media.wav
+  SelectGame.wav
+  SelectGame_media.wav
+  SetKeySound.wav
+  Tahoma.ttf
+  UI_Res.cpd
+  advapi32.dll
+  allfiles.lst
+  boottrace.log
+  cubepoweroff.bmp
+  diag6x_19700101_000032.log
+  diag7_19700101_000030.log
+  diag8_19700101_000024.log
+  diag8_19700101_000129.log
+  diag9_avp_19700101_000018.log
+  diag9_avp_19700101_000026.log
+  driver.so
+  font.ttf
+  icube
+  icube.sh
+  icube_start.sh
+  icubemp_start.sh
+  joystick.cpd
+  menu.log
+  pagefile.sys
+  resource
+  resource.cpd
+  rkgame
+  root.dat
+  setting.xml
+  silence.wav
+  treefrog_ui.log
+  ui_cn.cpd
+  ui_cz.cpd
+  ui_de.cpd
+  ui_dk.cpd
+  ui_en.cpd
+  ui_es.cpd
+  ui_fi.cpd
+  ui_fr.cpd
+  ui_gr.cpd
+  ui_he.cpd
+  ui_id.cpd
+  ui_il.cpd
+  ui_it.cpd
+  ui_jp.cpd
+  ui_ko.cpd
+  ui_mn.cpd
+  ui_nl.cpd
+  ui_no.cpd
+  ui_pl.cpd
+  ui_pt.cpd
+  ui_ru.cpd
+  ui_se.cpd
+  ui_tr.cpd
+  ui_tw.cpd
+  ui_vn.cpd
+  virtuart_boot.log
+  xgame-logo.bmp
+  xgame-logo1.hc
+  ATARI/ (placeholder fabrica)
+  FC/ (placeholder fabrica)
+  GB/ (placeholder fabrica)
+  GBA/ (placeholder fabrica)
+  GBC/ (placeholder fabrica)
+  GG/ (placeholder fabrica)
+  MAME/ (placeholder fabrica)
+  MD/ (placeholder fabrica)
+  NGPC/ (placeholder fabrica)
+  PCE/ (placeholder fabrica)
+  PS/ (placeholder fabrica)
+  SFC/ (placeholder fabrica)
+  SMS/ (placeholder fabrica)
+  WSC/ (placeholder fabrica)
+  BGM/ (placeholder fabrica)
+  Ebook/ (placeholder fabrica)
+  Movie/ (placeholder fabrica)
+  Music/ (placeholder fabrica)
+  Photo/ (placeholder fabrica)
+  System Volume Information
+  log.txt
+  log.txt.prev
+  frogui_crash.log
+  picoarch_init.log
+  Chkdsk.bat
+  chkdsk.exe

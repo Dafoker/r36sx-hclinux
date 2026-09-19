@@ -24,16 +24,16 @@ avp_write() {
   kill $WP 2>/dev/null
 }
 
-# 7a: copiar a SD solo con flag opt-in
+# 7a: copiar a SD solo con flag opt-in (8e: tanto en cubegm/ como treefrog/)
 sd_copy() {
-  for d in /media/*/cubegm; do
+  for d in /media/*/cubegm /media/*/treefrog; do
     [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
   done
 }
 
-# 7a: flag opt-in — se evalua cuando la SD ya esta montada
+# 7a: flag opt-in — se evalua cuando la SD ya esta montada (8e: ambos layouts)
 diag_on() {
-  for d in /media/*/cubegm; do
+  for d in /media/*/cubegm /media/*/treefrog; do
     [ -f "$d/diag.enabled" ] && return 0
   done
   return 1

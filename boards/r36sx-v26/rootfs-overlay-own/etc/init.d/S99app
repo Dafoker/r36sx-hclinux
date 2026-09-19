@@ -3,6 +3,15 @@
 # Start the preinit — Fase 8d: lanzamiento DIRECTO de TreeFrogUI (zhijack.sh)
 # Fase 8f: montaje DIRECTO de la SD (la particion existe desde ~0.4s de uptime;
 # el scan mdev -s + sleep del vendor costaba ~2s). Fallback: mdev hotplug.
+# Fase 8e (S99app v2): el stack TreeFrogUI puede vivir en /treefrog/
+# (relocado fuera del cubegm/ de fabrica). Los binarios del stack llevan
+# rutas /mnt/sdcard/cubegm/... compiladas dentro (frogui 100 refs, picoarch 14
+# — evidencia en docs/experiments/2026-09-18_8e-stack-relocation-plan.md),
+# asi que en vez de recompilar binarios montamos treefrog SOBRE cubegm:
+#   mount --bind /media/<dev>/treefrog /mnt/sdcard/cubegm
+# El boot de FABRICA (stock) no ejecuta este script → ve el cubegm/ real
+# intacto → rollback stock garantizado. Sin treefrog/ en la SD = layout
+# legacy (compatible hacia atras).
 #
 
 MNTDIR=""
@@ -16,6 +25,11 @@ wait_for_media_ready()
 	while true
 	do
 		for subdir in $(ls /media); do
+			# 8e: layout nuevo (treefrog/) o legacy (cubegm/)
+			if [ -e /media/$subdir/treefrog/zhijack.sh ] ; then
+				MNTDIR=$subdir
+				return
+			fi
 			if [ -e /media/$subdir/cubegm/zhijack.sh ] ; then
 				MNTDIR=$subdir
 				return
@@ -38,6 +52,14 @@ wait_for_media_ready
 #mount
 echo "mount --bind /media/${MNTDIR} /mnt/sdcard"
 mount --bind /media/${MNTDIR} /mnt/sdcard
+
+# 8e: si el stack vive en treefrog/, aliasarlo sobre cubegm (los binarios
+# del stack llevan paths cubegm/ compilados; ver cabecera).
+if [ -f /mnt/sdcard/treefrog/zhijack.sh ]; then
+	echo "8e: bind treefrog -> /mnt/sdcard/cubegm (stack relocalizado)"
+	mount --bind /mnt/sdcard/treefrog /mnt/sdcard/cubegm
+fi
+
 memsize=$(free | grep Mem | awk '{print $2}')
 
 if [ -d /media/${MNTDIR}/rootfs ] ; then
@@ -56,8 +78,8 @@ if [ -d /media/${MNTDIR}/rootfs ] ; then
 else
 	mount --bind /media/${MNTDIR}/cubegm/lib /lib
 	echo "mount --bind /media/${MNTDIR}/cubegm/lib /lib"
-	mount --bind /media/${MNTDIR}/cubegm/usr/lib /usr/lib
 	echo "mount --bind /media/${MNTDIR}/cubegm/usr/lib /usr/lib"
+	mount --bind /media/${MNTDIR}/cubegm/usr/lib /usr/lib
 fi
 
 if [ $memsize -le 128000 ] ; then
