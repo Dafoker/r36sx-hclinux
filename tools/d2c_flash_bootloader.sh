@@ -4,7 +4,7 @@
 # + fallback dual-path compilado en el bootloader (/boot/ -> cubegm/).
 # cubegm/ NO se toca en este paso: si algo falla, el bootloader cae a cubegm/.
 IMG=/mnt/sdcard/bootloader-r36sx-v26-faseD2b.bin
-EXPECTED=1734c340728fad9a
+EXPECTED=1734c340728fad9a10adbd19ee83714be73be63da7f5bb16323c13bb648f6e96
 echo "1) sha256 de la imagen:"
 echo "$EXPECTED  $IMG" | sha256sum -c - || { echo "IMAGEN NO COINCIDE — ABORT"; exit 1; }
 echo "2) /boot/ preparado?:"
