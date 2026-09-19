@@ -1,0 +1,382 @@
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+recents: using gameplay screenshot
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+standalone_launch: start
+standalone_launch: file written
+standalone_launch: media app, skipping recents
+standalone_launch: calling environ_cb SHUTDOWN
+standalone_launch: after environ_cb
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+standalone_launch: start
+standalone_launch: file written
+standalone_launch: media app, skipping recents
+standalone_launch: calling environ_cb SHUTDOWN
+standalone_launch: after environ_cb
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+standalone_launch: start
+standalone_launch: file written
+standalone_launch: media app, skipping recents
+standalone_launch: calling environ_cb SHUTDOWN
+standalone_launch: after environ_cb
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+standalone_launch: start
+standalone_launch: file written
+standalone_launch: media app, skipping recents
+standalone_launch: calling environ_cb SHUTDOWN
+standalone_launch: after environ_cb
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+standalone_launch: start
+standalone_launch: file written
+standalone_launch: media app, skipping recents
+standalone_launch: calling environ_cb SHUTDOWN
+standalone_launch: after environ_cb
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+settings save: filter=bilinear idx=1
+recents: no screenshot found
+standalone_launch: start
+standalone_launch: file written
+standalone_launch: media app, skipping recents
+standalone_launch: calling environ_cb SHUTDOWN
+standalone_launch: after environ_cb
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+builtin_launch: start
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete
+launch file written, requesting shutdown
+retro_init start
+geometry set
+font_init done
+font_scan done
+wallpaper_scan done
+theme_pack_scan done
+icon_pack_scan done
+theme_init done
+settings loaded
+recent_games_init done
+favorites_init done
+core overrides loaded
+calloc done
+render_init done
+scan_directory done
+retro_init complete

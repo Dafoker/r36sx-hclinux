@@ -17,7 +17,10 @@
 | Hardware R36SX V2.6 | `docs/HARDWARE_R36SX_V26.md` | Fase 3 |
 | Port de board propia | `docs/BOARD_PORT.md` | Fase 4 |
 | Compilar / reproducir | `docs/BUILD.md`, `docs/ai/BUILD_CONTRACT.md` | Entradas por script |
-| Contrato TreeFrogUI | `docs/TREEFROGUI_COMPATIBILITY.md` | Fase 6 |
+| Contrato TreeFrogUI (matriz rápida /dev + servicios) | `docs/TREEFROGUI_COMPATIBILITY.md` | Fase 6 |
+| **Contrato TreeFrogUI formal** (boot flow, ABI media, inventario+hashes, garantías rootfs) | `docs/TREEFROG_UI_CONTRACT.md` | Fase 6 cerrada 2026-09-18 |
+| **Ownership de la cadena** (qué es nuestro vs fábrica) | `docs/BOOT_CHAIN.md` §ownership | Verificado 2026-09-18 |
+| **Relocación stack TreeFrogUI (8e)** | `docs/experiments/2026-09-18_8e-stack-relocation-plan.md` | Aprobada por usuario |
 | Testing / etiquetas de validación | `docs/TESTING.md`, `docs/ai/VALIDATION.md` | |
 | Recuperación / rollback | `docs/RECOVERY.md` | Golden SD protegida |
 | Roadmap / fases / gates | `docs/ROADMAP.md` | |
