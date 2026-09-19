@@ -1,6 +1,11 @@
 #!/bin/sh
-# S09trace v4 (9d) — nunca bloquea: toda interaccion con virtuart en bg+kill.
-# Guarda: timeline + virtuart_boot.log (cada snapshot) + delta IRQ66 + dmesg tails.
+# S09trace v5 (iteracion 7a) — diagnostico OPT-IN.
+# v4 (9d): escribia boottrace/virtuart/treefrog_ui a la SD en CADA boot
+#          (copies+sync cada 2s, ~60s tras picoarch) = desgaste SD + I/O.
+# v5: solo escribe a la SD si existe el flag /media/*/cubegm/diag.enabled.
+#     Sin flag: buffers SOLO en /tmp (RAM) para inspeccion via shell vivo;
+#     cero escrituras a SD; se auto-apaga tras el probe post-picoarch.
+#     Para debuggear: crear G:\cubegm\diag.enabled (archivo vacio) y reboot.
 LOG=/tmp/boottrace.log
 V=/tmp/virtuart.log
 IRQ=/tmp/irq66.log
@@ -19,6 +24,21 @@ avp_write() {
   kill $WP 2>/dev/null
 }
 
+# 7a: copiar a SD solo con flag opt-in
+sd_copy() {
+  for d in /media/*/cubegm; do
+    [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
+  done
+}
+
+# 7a: flag opt-in — se evalua cuando la SD ya esta montada
+diag_on() {
+  for d in /media/*/cubegm; do
+    [ -f "$d/diag.enabled" ] && return 0
+  done
+  return 1
+}
+
 (
   N=0
   while [ $N -lt 150 ]; do
@@ -28,14 +48,8 @@ avp_write() {
       grep -E "sdcard|/media| /lib | /bin | /sbin | /usr | /etc |swap" /proc/mounts 2>/dev/null
       grep -E "^ *66:" /proc/interrupts 2>/dev/null
     } >> "$LOG"
-    for d in /media/*/cubegm; do
-      [ -d "$d" ] && {
-        cp "$LOG" "$d/boottrace.log" 2>/dev/null
-        cp "$V" "$d/virtuart_boot.log" 2>/dev/null
-        cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null
-        sync
-      }
-    done
+    # 7a: solo copiar a SD con flag
+    diag_on && sd_copy
     # probe del shell NSH: no bloqueante, una vez picoarch vive
     if pidof picoarch >/dev/null 2>&1; then
       echo "=== picoarch ON: probing AVP (bg+kill) ===" >> "$LOG"
@@ -47,27 +61,25 @@ avp_write() {
       cat "$V" >> "$LOG"
       echo "=== dmesg tail ===" >> "$LOG"
       dmesg 2>/dev/null >> "$LOG"
-      for d in /media/*/cubegm; do
-        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
-      done
-      echo "=== probe ronda 1 lista — seguimos monitoreando 60s ===" >> "$LOG"
-      M=0
-      while [ $M -lt 30 ]; do
-        grep -E "^ *66:" /proc/interrupts 2>/dev/null >> "$LOG"
-        for d in /media/*/cubegm; do
-          [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
+      diag_on && sd_copy
+      if diag_on; then
+        echo "=== probe ronda 1 lista — seguimos monitoreando 60s ===" >> "$LOG"
+        M=0
+        while [ $M -lt 30 ]; do
+          grep -E "^ *66:" /proc/interrupts 2>/dev/null >> "$LOG"
+          sd_copy
+          M=$((M+1))
+          sleep 2
         done
-        M=$((M+1))
-        sleep 2
-      done
-      echo "=== FIN MONITOREO 60s ===" >> "$LOG"
-      echo "=== DMESG FINAL (post-juego) ===" >> "$LOG"
-      dmesg 2>/dev/null >> "$LOG"
-      echo "=== VIRTUART FINAL ===" >> "$LOG"
-      cat "$V" >> "$LOG"
-      for d in /media/*/cubegm; do
-        [ -d "$d" ] && { cp "$LOG" "$d/boottrace.log" 2>/dev/null; cp "$V" "$d/virtuart_boot.log" 2>/dev/null; cp /tmp/treefrog_ui.log "$d/treefrog_ui.log" 2>/dev/null; sync; }
-      done
+        echo "=== FIN MONITOREO 60s ===" >> "$LOG"
+        echo "=== DMESG FINAL (post-juego) ===" >> "$LOG"
+        dmesg 2>/dev/null >> "$LOG"
+        echo "=== VIRTUART FINAL ===" >> "$LOG"
+        cat "$V" >> "$LOG"
+        sd_copy
+      else
+        echo "=== diag.enabled AUSENTE (7a opt-in): monitoreo 60s OFF — dump queda solo en /tmp ===" >> "$LOG"
+      fi
       kill $VREADER 2>/dev/null
       exit 0
     fi

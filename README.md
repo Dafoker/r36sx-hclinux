@@ -2,7 +2,7 @@
 
 **Reproducible Linux/HCLinux platform for the R36SX V2.6 handheld console (HiChip HC1600A, MIPS32r2 little-endian) — with TreeFrogUI as the target frontend.**
 
-[![Status](https://img.shields.io/badge/Fase%208-ROOTFS%20OWN%20PHYSICAL%20PASS-brightgreen)]() [![Kernel](https://img.shields.io/badge/kernel-4.4.186-blue)]() [![Audio](https://img.shields.io/badge/AVP--media%20audio-PHYSICAL%20PASS-brightgreen)]() [![Video](https://img.shields.io/badge/AVP--media%20video-fix%20deployed%2C%20test%20pending-orange)]()
+[![Status](https://img.shields.io/badge/Fase%208-COMPLETE%20PHYSICAL%20PASS-brightgreen)]() [![Kernel](https://img.shields.io/badge/kernel-4.4.186-blue)]() [![Audio](https://img.shields.io/badge/AVP--media%20audio-PHYSICAL%20PASS-brightgreen)]() [![Video](https://img.shields.io/badge/AVP--media%20video-PHYSICAL%20PASS-brightgreen)]()
 
 ## What this is
 
@@ -12,9 +12,9 @@ Engineering project building our own kernel/DTB/rootfs for the R36SX V2.6 from t
 
 ## Current state (2026-09-18)
 
-**Fase 5 PHYSICAL PASS (own kernel boots to TreeFrogUI menu) · Fase 6 DONE (live contract matrix) · Fase 8: own Buildroot rootfs PHYSICAL PASS (10.4 MiB, factory launcher removed, ~8s to menu) · AVP-media: root cause found — factory↔SDK ABI drift (ADR-012): AUDIO fixed and PHYSICALLY PASSING (9l), VIDEO fix deployed to SD (9m), physical test pending.**
+**FASE 8 COMPLETE — PHYSICAL PASS TOTAL: the console runs OUR kernel + OUR Buildroot rootfs (10.4 MiB, factory launcher removed, ~8s to menu) with ALL media working: game audio, music player, VIDEO playback (image+sound) and clean emulator exit — physically verified on hardware (iteration 9m).**
 
-What works: full vendor pipeline with proven provenance; custom board `r36sx-v26` (DTB semantically identical to stock); **our kernel + our Buildroot userland boots the console to a fully functional TreeFrogUI menu (~8s)** with the factory launcher chain removed (icube-direct); **game audio + music player audio work** (ABI fix: `audio_config` padding 24 B). What's pending: **video image** (same ABI fix for `video_config`, +20 B, deployed 9m — awaiting physical test), then Phase 8 is complete. AVP/hcboot CAN now be built (public Codescape 2019.09 bare-metal toolchain found; own avp.bin built in 9a) though the current strategy is proxy-side ABI alignment (ADR-012), not AVP replacement.
+What works: the full chain is ours and verified — custom board `r36sx-v26` (DTB semantically identical to stock), own kernel (provenance-gated build), own userland; the whole AVP-media family (audio/music/video/core-exit) was fixed by discovering a **factory↔SDK ABI drift** (ADR-012): factory userspace binaries (Dec-2025) encode larger UAPI structs in their ioctl numbers than the Jul-2024 SDK headers compile — fixed by padding `audio_config` (+24 B) and `video_config` (+20 B) so the avp-proxy dispatch matches the real factory ABI. Deliberately preserved factory pieces: DDR-init/bootloader (NOR, untouched), AVP/HCRTOS firmware, and the upstream TreeFrogUI stack (`cubegm/`) — full ownership matrix in `docs/BOOT_CHAIN.md`. **Phase 7 (optimizations) now in progress**: 7a makes on-device diagnostics opt-in (zero SD writes in production boots, flag-gated tracing for debugging).
 
 | Subsystem | Status | Evidence |
 |---|---|---|
@@ -25,7 +25,7 @@ What works: full vendor pipeline with proven provenance; custom board `r36sx-v26
 | TreeFrogUI contract (Fase 6) | **DONE** — live dependency matrix validated on-device (diag6x/diag8) | `docs/TREEFROGUI_COMPATIBILITY.md` |
 | **Own rootfs (Fase 8)** | **PHYSICAL PASS** — Buildroot userland 10.4 MiB, factory launcher removed (icube-direct), menu in ~8s | `docs/experiments/2026-09-17_fase8-own-rootfs.md` |
 | **AVP media: audio** | **PHYSICAL PASS (9l)** — root cause: factory↔SDK ABI drift (24 B in `audio_config`), fixed by UAPI padding (ADR-012) | `patches/kernel/0001-*` · `docs/experiments/evidence-9l-boottrace.log` |
-| **AVP media: video** | Fix deployed to SD (9m, +20 B `video_config`) — **physical test pending** | `docs/experiments/2026-09-18_fase9m-video-abi-fix.md` |
+| **AVP media: video** | **PHYSICAL PASS (9m, user-verified)** — video shows image+sound; emulator exit clean | `patches/kernel/0002-*` · `docs/experiments/2026-09-18_fase9m-video-abi-fix.md` |
 | Physical validation | **PASS** — own kernel+rootfs boots the console to a functional, navigable TreeFrogUI menu; audio working in games and player | `docs/experiments/2026-09-16_menu-goal-stock-parity.md` · `CURRENT.md` |
 
 (See `CURRENT.md` for the operational snapshot and `CHANGELOG.md` for iteration history.)

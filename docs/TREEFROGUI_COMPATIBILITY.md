@@ -38,15 +38,15 @@ Fuentes de evidencia: **6m** = ingeniería inversa cubegm (`docs/experiments/202
 
 - Los fds abiertos por proceso son IDÉNTICOS bajo stock y bajo kernel propio — la app-layer no distingue kernels.
 - Input: pipeline `cubevol gpio → /tmp/joy_key` (sin evdev en ningún kernel — 6m/7b).
-- Media (auddec/viddec/sndC0*): proxies AMPRPC → AVP. **CAUSA RAÍZ CONFIRMADA 2026-09-18 (ADR-012): drift ABI de sizeof entre binarios userspace de fábrica (Dic-2025) y headers UAPI del SDK (Jul-2024)** — el sizeof queda codificado en el número de ioctl y el switch del avp-proxy no matcheaba → `KSHM_WRITE_HDL_ACCESS` nunca se enviaba. AUDIO: FIXED + PHYSICAL PASS (9l, padding 24 B `audio_config`). VIDEO: fix desplegado (9m, padding 20 B `video_config`), test físico pendiente. Ver docs/experiments/2026-09-18_fase9m-video-abi-fix.md.
+- Media (auddec/viddec/sndC0*): proxies AMPRPC → AVP. **CAUSA RAÍZ CONFIRMADA 2026-09-18 (ADR-012): drift ABI de sizeof entre binarios userspace de fábrica (Dic-2025) y headers UAPI del SDK (Jul-2024)** — el sizeof queda codificado en el número de ioctl y el switch del avp-proxy no matcheaba → `KSHM_WRITE_HDL_ACCESS` nunca se enviaba. **PHYSICAL PASS TOTAL (9m, test del usuario): audio (juegos/música) + video (imagen+sonido) + salida de emuladores = TODO OK bajo kernel propio.** Ver docs/experiments/2026-09-18_fase9m-video-abi-fix.md.
 
 ## CONTRATO (lo que todo kernel futuro r36sx-v26 debe garantizar)
 
 1. Drivers Linux-puro: HC_GE, HC_HWSPINLOCK, HC_CHECK_ADC, fb (fb0/fb1), dw-mmc, input-poll (userspace cubevol), GPIO/mem.
 2. Initramfs con la cadena S41hcdaemon (`hcdaemon&`) + S99app (wait media → binds /mnt/sdcard,/lib,/usr,/bin,/sbin → swap → icube.sh) — o equivalentes propios (Fase 8).
 3. NO hardware-init de periféricos compartidos con el AVP sin entender el ownership (lección 6w→7e).
-4. Para MEDIA completa: ABI proxy↔fábrica alineado por padding UAPI (ADR-012) — audio HECHO (9l), video en test (9m). Cualquier ioctl futuro que no matchee se diagnostica igual: amprpc debug on-device + scan `lui+ori` de los binarios de fábrica.
+4. Para MEDIA completa: ABI proxy↔fábrica alineado por padding UAPI (ADR-012) — **HECHO y PHYSICAL PASS TOTAL (9l+9m: audio, música, video, salida de cores)**. Cualquier ioctl futuro que no matchee se diagnostica igual: amprpc debug on-device + scan `lui+ori` de los binarios de fábrica.
 
-## Limitación conocida → RESUELTA (en verificación final)
+## Limitación conocida → RESUELTA (2026-09-18, PHYSICAL PASS)
 
-Audio (9l PHYSICAL PASS) + video decode (9m desplegado, test pendiente) bajo kernel propio — la "limitación diferida" de Fase 6/7 era íntegramente el drift ABI (ADR-012).
+Audio + video decode + salida de cores bajo kernel propio — la "limitación diferida" de Fase 6/7 era íntegramente el drift ABI (ADR-012). Cerrada con los fixes gemelos auddec.h (+24 B, 9l) y vidmp.h (+20 B, 9m), verificados físicamente por el usuario.

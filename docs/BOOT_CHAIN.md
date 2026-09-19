@@ -31,3 +31,19 @@
 ## Zona prohibida (AGENTS.md §5, ADR-005)
 
 DDR-init, bootloader, AVP: **intocables en baseline**. Clase D requiere autorización explícita. Deploy físico (Fase 5): solo reemplazo de `vmlinux.uImage` (+`dtb.bin`) en SD — la consola bootea desde SD (NOR 3 particiones: boot/eromfs/persistentmem — docs/DTS_STOCK_MODEL.md).
+
+## Ownership de la cadena (verificado 2026-09-18 — post 9m PHYSICAL PASS)
+
+Estado del deploy físico actual (SD de la consola) — qué es NUESTRO vs qué es de fábrica/upstream:
+
+| Componente | Propiedad | Evidencia |
+|---|---|---|
+| **Kernel Linux (vmlinux.uImage)** | **100% NUESTRO** — vanilla 4.4.186 + linux-drivers SDK + 45 parches vendor + parches propios (`patches/kernel/0001..0005`: ABI 2025 auddec/vidmp + debug budgets), compilado con Codescape mips-mti-linux-gnu 6.3.0 | BUILD PASS 9m `1b095ac8`; gates TOOLCHAIN+PATCH PROVENANCE PASS; build logs `~/work/r36sx-hclinux/logs/` |
+| **DTB (dtb.bin)** | **NUESTRO** — generado desde `boards/r36sx-v26/dts/` (referencia stock auditada) | `04fb8383…`, DTB SEMANTIC PASS 0-diff vs stock |
+| **Rootfs/initramfs embebido (rootfs-own.cpio)** | **NUESTRO** — Buildroot propio: busybox nuestro + glibc Codescape + overlay propio (rcS/S09trace/S10mdev/S41hcdaemon/S99app). Única pieza propietaria: `hcdaemon` de fábrica (610.404 B, documentada, ADR-008-nota) | `e305dfc2…`; 8a-8c PHYSICAL PASS |
+| **AVP/HCRTOS (avp.uImage)** | **FÁBRICA** — preservado POR DISEÑO (ADR-008; estrategia proxy-side ADR-012, no reemplazo). avp-own construido y archivado como plan C | SD `a9788995…` == `avp.uImage.factory.bak` |
+| **DDR-init + bootloader.bin** | **FÁBRICA** — NOR intocado, nunca re-flasheado (zona prohibida §5) | N/A (nunca escrito) |
+| **TreeFrogUI stack (cubegm/: picoarch, frogui_libretro, driver_r36sx.so, video_player…)** | **UPSTREAM (tzubertowski/TreeFrogUI)** — binarios del release v1.5.0 del ecosistema, no fábrica-R36SX ni nuestros | mtimes 2026-09-16, hashes TreeFrogUI release |
+| **Librerías del rootfs de fábrica en SD (rootfs/lib+usr, libffplayer/libhudi…)** | **FÁBRICA** — usadas por los media apps de fábrica; el ABI contra ellas es el que alineamos (ADR-012) | scan lui+ori (experimento 9m) |
+
+**Conclusión (verificada):** TODO el kernel — código fuente, toolchain, config, DTB y rootfs embebido — es nuestro y reproducible desde `SDK + este repo` (§4 AGENTS.md). Los binarios de fábrica que quedan en el camino de boot son SOLO: DDR-init/bootloader (NOR), AVP y las apps/libs de fábrica en SD — los tres deliberadamente preservados; el kernel que ejecuta Linux es 100% construido por nosotros.
