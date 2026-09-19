@@ -19,7 +19,7 @@ picoarch + cores/frogui_libretro.so (menú TreeFrogUI) →
 lanzamientos: cores/standalone (video_player, lgpt, pcsx4all…) vía /tmp/frogui_launch.txt
 ```
 
-[*] Los binds del directorio factory `rootfs/` de la SD siguen activos en S99app: proveen `/usr/lib/libffplayer.so`+`libhudi.so` (motor media de fábrica, ABI Dic-2025 — ver §4). **8e** (plan aprobado) relocará el stack TreeFrogUI fuera de `cubegm/`: ver `docs/experiments/2026-09-18_8e-stack-relocation-plan.md`.
+[*] **8e EJECUTADO (2026-09-18, CLEAN-INSTALL PHYSICAL PASS):** el stack TreeFrogUI vive en `/treefrog/`; S99app v2 lo aliasa: `mount --bind /mnt/sdcard/treefrog /mnt/sdcard/cubegm` (los binarios llevan paths `/mnt/sdcard/cubegm/…` compilados dentro — frogui 100 refs, picoarch 14; evidencia en el plan 8e). `cubegm/` queda reducido a **10 archivos**: 5 de boot (kernel/dtb/avp propios+y de fábrica) + **4 PRE-LINUX-REQUIRED de fábrica (`setting.xml`, `xgame-logo.bmp`, `allfiles.lst`, `root.dat` — al menos uno es leído por AVP/bootloader antes de Linux; eliminarlos = "please insert TF Card" — causa raíz aislada por bisect)** + flag `diag.enabled`. Los binds del `rootfs/` de fábrica siguen (libffplayer/libhudi = motor media ABI Dic-2025, ver §4).
 
 ## 2. Servicios del sistema requeridos (initramfs propio)
 

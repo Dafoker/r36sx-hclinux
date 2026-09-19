@@ -1,0 +1,475 @@
+T0 uptime=1.08 kernel=4.4.186-release
+=== uptime=1.12 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  899 root     [kworker/u2:3]
+  907 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1023 root     {rcS} /bin/sh /etc/init.d/rcS
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1047 root     {S10mdev} /bin/sh /etc/init.d/S10mdev start
+ 1051 root     usleep 300000
+ 1052 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+ 66:         14   sys_irq  66  18800800.amprpc
+=== uptime=3.40 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  899 root     [kworker/u2:3]
+  907 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1116 root     hcdaemon
+ 1128 root     [kworker/0:1H]
+ 1136 root     {zhijack.sh} /bin/sh /mnt/sdcard/cubegm/zhijack.sh
+ 1137 root     /bin/sh --
+ 1138 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard/cubegm vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:        101   sys_irq  66  18800800.amprpc
+=== uptime=6.71 ===
+PID   USER     COMMAND
+    1 root     init
+    2 root     [kthreadd]
+    3 root     [ksoftirqd/0]
+    4 root     [kworker/0:0]
+    5 root     [kworker/0:0H]
+    6 root     [kworker/u2:0]
+    7 root     [rcu_preempt]
+    8 root     [rcu_sched]
+    9 root     [rcu_bh]
+   10 root     [kdevtmpfs]
+   11 root     [kworker/u2:1]
+  206 root     [writeback]
+  208 root     [crypto]
+  209 root     [bioset]
+  211 root     [kblockd]
+  312 root     [rpcwork0]
+  313 root     [rpcwork1]
+  314 root     [rpcwork2]
+  315 root     [rpcwork3]
+  316 root     [rpcwork4]
+  317 root     [rpcwork5]
+  318 root     [rpcwork6]
+  319 root     [rpcwork7]
+  321 root     [kworker/0:1]
+  328 root     [kswapd0]
+  329 root     [fsnotify_mark]
+  892 root     [kworker/u2:2]
+  899 root     [kworker/u2:3]
+  907 root     [spi32766]
+  911 root     [bioset]
+  917 root     [bioset]
+  922 root     [bioset]
+  927 root     [bioset]
+  975 root     [bioset]
+  978 root     [mmcqd/0]
+ 1001 root     [deferwq]
+ 1027 root     /sbin/syslogd -n
+ 1031 root     /sbin/klogd -n
+ 1045 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1046 root     {S09trace} /bin/sh /etc/init.d/S09trace start
+ 1116 root     hcdaemon
+ 1128 root     [kworker/0:1H]
+ 1136 root     /bin/sh /tmp/treefrog-zhijack.sh
+ 1137 root     /bin/sh --
+ 1170 root     /usr/bin/cubevol
+ 1178 root     /mnt/sdcard/cubegm/nosleep -w 0x406d24:0xac62bb18 0x40701c:0xae02bb18 0x406b50:0xac44bb18 0x406d84:0xac62bcc8 0x407088:0xae02bcc8 0x406bb0:0xac44bcc8
+ 1180 root     /mnt/sdcard/cubegm/picoarch /mnt/sdcard/cubegm/cores/frogui_libretro.so /mnt/sdcard/cubegm/cores/frogui_libretro.so
+ 1192 root     usleep 300000
+ 1194 root     ps w
+tmpfs /media tmpfs rw,relatime 0 0
+/dev/mmcblk0p1 /media/mmc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /mnt/sdcard/cubegm vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /lib vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /usr vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /bin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /sbin vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+/dev/mmcblk0p1 /etc vfat rw,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=utf8,shortname=mixed,usefree,errors=remount-ro 0 0
+ 66:        477   sys_irq  66  18800800.amprpc
+=== picoarch ON: probing AVP (bg+kill) ===
+=== virtuart capturado hasta ahora ===
+VER:VIDDRIVER(Dec 26 2024 15:11:15)
+open /dev/persistentmem failed
+get tvtype in sysdata fail,from dts:15
+KdwaYewCiBETqFZPvtZFqORuSKMqoSzp 0
+b_hdmi_output = 1
+data = 0x5780074
+data = 0x1f00010
+b_hdmi_output = 1
+open /dev/persistentmem failed
+get_dts_panel_info 67 109 19 1 640 480
+Unplug_card_display_display_init 310
+CFG 48K
+hc1600a@dbE3100v20# hdmi_tx_reg_set_phy_clk_dat_pwdown_hpg
+HDMI WAIT PHY RDY TIME OUT
+
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# help
+
+Commands available:
+  help                 Show available cmds
+  exit                 Exit from current cmd set
+  history              Show history cmds
+  reset                reset system
+  dumpstack            memory status entry
+  quit                 Quit virtual uart console
+  gpio                 gpio pin val
+  elog                 elog cmds entry
+  mem                  memory status entry
+  softirqresched       set softirq resched priority
+  softirq              set softirq priority
+  sde                  SDE tool
+  dither               
+  test_mem_wr_speed    test mem write speed
+  test_mem_rd_speed    test mem read speed
+  swxf                 swxf
+  reset_hrx_audio      reset hdmi rx audio
+  os                   os cmds entry
+  nsh                  Enter NSH cmds
+  drcoff               drcoff
+  drcon                drcon
+  i2soinfo             i2soinfo()
+  enejtag              enejtag()
+  disejtag             disejtag()
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# ps
+Invalid command "ps"
+hc1600a@dbE3100v20# 
+hc1600a@dbE3100v20# VER:H264(Dec 26 2024 15:11:15)
+allocsz = 0x321b000
+guest_frame_rate ms_diff 33 30000 29970 
+ctx->block_align 0, ctx->bitdepth 16
+init:active 0x8c0caa00
+open /dev/sndC0i2so 12
+CFG 441K
+audio_info.ch_status 0x4
+vdec sync stc
+=== dmesg tail ===
+Linux version 4.4.186-release (dafunknoise@DFNK) (gcc version 6.3.0 (Codescape GNU Tools 2018.09-02 for MIPS MTI Linux) ) #52 PREEMPT Fri Sep 18 22:35:40 -05 2026
+MIPS: machine is Hichip hc16xx
+CPU0 revision is: 0001974c (MIPS 74Kc)
+FPU revision is: 01739300
+Determined physical RAM map:
+ memory: 0af91e50 @ 00000000 (usable)
+Initrd not found or empty - disabling initrd
+Zone ranges:
+  Normal   [mem 0x0000000000000000-0x000000000af90fff]
+Movable zone start for each node
+Early memory node ranges
+  node   0: [mem 0x0000000000000000-0x000000000af90fff]
+Initmem setup node 0 [mem 0x0000000000000000-0x000000000af90fff]
+On node 0 totalpages: 44945
+free_area_init_node: node 0, pgdat 80553f40, node_mem_map 81056ae0
+  Normal zone: 352 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 44945 pages, LIFO batch:7
+Primary instruction cache 32kB, VIPT, 4-way, linesize 32 bytes.
+Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+pcpu-alloc: [0] 0 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 44593
+Kernel command line: root=/dev/ram0 rootfstype=ramfs rw init=/linuxrc console=tty1 earlycon= no_console_suspend noirqdebug
+IRQ lockup detection disabled
+PID hash table entries: 1024 (order: 0, 4096 bytes)
+Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+Writing ErrCtl register=00000000
+Readback ErrCtl register=00000000
+Memory: 161272K/179780K available (3978K kernel code, 169K rwdata, 1312K rodata, 10916K init, 205K bss, 18508K reserved, 0K cma-reserved)
+Preemptible hierarchical RCU implementation.
+	Build-time adjustment of leaf fanout to 32.
+NR_IRQS:128
+CPU Clock: 1188MHz
+clocksource_probe: no matching clocksources found
+clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 3217610179 ns
+sched_clock: 32 bits at 594MHz, resolution 1ns, wraps every 3615292415ns
+Console: colour dummy device 80x25
+console [tty1] enabled
+Calibrating delay loop... 589.82 BogoMIPS (lpj=294912)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+devtmpfs: initialized
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+futex hash table entries: 256 (order: -1, 3072 bytes)
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+clocksource: Switched to clocksource MIPS
+NET: Registered protocol family 2
+TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+fuse init (API version 7.23)
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+io scheduler noop registered (default)
+Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+SCSI Media Changer driver v0.25 
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+usbcore: registered new interface driver usb-storage
+i2c /dev entries driver
+IR NEC protocol handler initialized
+Synopsys Designware Multimedia Card Interface Driver
+dw_mmc_hc 1884c000.mmc: num-slots property not found, assuming 1 slot is available
+dw_mmc_hc 1884c000.mmc: fifo-depth property not found, using value of FIFOTH register as default
+dw_mmc_hc 1884c000.mmc: host clk=198000000
+dw_mmc_hc 1884c000.mmc: setup source clock : 0x3 (0x0:49MHZ 0x1:99Mhz 0x2:150Mhz 0x3:198Mhz)
+dw_mmc_hc 1884c000.mmc: IDMAC supports 32-bit address mode.
+dw_mmc_hc 1884c000.mmc: Using internal DMA controller.
+dw_mmc_hc 1884c000.mmc: Version ID is 270a
+dw_mmc_hc 1884c000.mmc: DW MMC controller at irq 10,32 bit host data width,128 deep fifo
+dw_mmc_hc 1884c000.mmc: No vmmc regulator found
+dw_mmc_hc 1884c000.mmc: No vqmmc regulator found
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+dw_mmc_hc 1884c000.mmc: 1 slots initialized
+virtuart init ok
+kshmdev init ok
+m25p80 spi32766.0: found 25HD40, expected m25p80
+m25p80 spi32766.0: 25HD40 (512 Kbytes)
+4 ofpart partitions found on MTD device spi32766.0
+Creating 4 MTD partitions on "spi32766.0":
+0x000000000000-0x000000080000 : "nor"
+0x000000000000-0x00000006c000 : "boot"
+0x00000006c000-0x000000070000 : "eromfs"
+0x000000070000-0x000000080000 : "persistentmem"
+fb node name: fb0!
+fb0 enable!
+fb node name: fb1!
+fb1 enable!
+---> usb#0 reset
+musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+musb-hdrc: MHDRC RTL version 2.0 
+musb-hdrc musb-hdrc.0.auto: MUSB HDRC host driver
+mmc0: new high speed SDXC card at address aaaa
+musb-hdrc musb-hdrc.0.auto: new USB bus registered, assigned bus number 1
+usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb1: Product: MUSB HDRC host driver
+usb usb1: Manufacturer: Linux 4.4.186-release musb-hcd
+usb usb1: SerialNumber: musb-hdrc.0.auto
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+---> usb#0 reset
+mmcblk0: mmc0:aaaa SD64G 59.5 GiB 
+ mmcblk0: p1
+---> usb#0 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+---> usb#1 reset
+musb-hdrc: ConfigData=0xda (UTMI-8, bulk combine, bulk split, HB-ISO Rx, HB-ISO Tx, SoftConn)
+musb-hdrc: MHDRC RTL version 2.0 
+musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 2
+usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+usb usb2: Product: MUSB HDRC host driver
+usb usb2: Manufacturer: Linux 4.4.186-release musb-hcd
+usb usb2: SerialNumber: musb-hdrc.1.auto
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 1 port detected
+---> usb#1 reset
+---> usb#1 mode : 0x1 (0x1:host, 0x2:peripheral, 0x3:otg)
+reg_base: b8806000, reg_size: 8192, sys_reg_base: b8800000,  irq: 9
+hcge 18806000.ge: Init GE success.
+NET: Registered protocol family 17
+bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+name:check_adc1
+name:check_adc5
+Freeing unused kernel memory: 10916K
+devpts: called with bogus options
+amprpc[1]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[2]: OPEN /dev/virtuart_proxy -> fd=3amprpc[3]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[4]: OPEN /dev/virtuart_proxy -> fd=3amprpc[5]: OPEN /dev/virtuart_proxy -> fd=3
+amprpc[6]: OPEN /dev/virtuart_proxy -> fd=3<4>FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+amprpc[7]: OPEN /dev/ZZd2C -> fd=3
+amprpc[8]: OPEN /dev/virtuart_proxy -> fd=4amprpc[9]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[10]: OPEN /dev/virtuart_proxy -> fd=4amprpc[11]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[12]: OPEN /dev/virtuart_proxy -> fd=4amprpc[13]: OPEN /dev/virtuart_proxy -> fd=4
+amprpc[14]: OPEN /dev/dis -> fd=4amprpc[15]: IOCTL fd=4 cmd=0xC00C0E0C sz=12
+amprpc[16]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[17]: OPEN /dev/dis -> fd=4
+amprpc[18]: IOCTL fd=4 cmd=0x80140E09 sz=20amprpc[19]: IOCTL cmd=0x80140E09 -> ret=0
+amprpc[20]: OPEN /dev/hdmi -> fd=4amprpc[21]: OPEN /dev/dis -> fd=6
+amprpc[22]: IOCTL fd=6 cmd=0xC00C0E0C sz=12amprpc[23]: IOCTL cmd=0xC00C0E0C -> ret=0
+random: nonblocking pool is initialized
+amprpc[24]: OPEN /dev/virtuart_proxy -> fd=6
+amprpc[25]: OPEN /dev/dis -> fd=6amprpc[26]: IOCTL fd=6 cmd=0xC00C0E0C sz=12
+amprpc[27]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[28]: OPEN /dev/dis -> fd=6
+amprpc[29]: IOCTL fd=6 cmd=0x800C0E04 sz=12amprpc[30]: IOCTL cmd=0x800C0E04 -> ret=0map ge register to userspace. off = 0
+amprpc[31]: OPEN /dev/dis -> fd=6
+amprpc[32]: OPEN /dev/virtuart_proxy -> fd=7amprpc[33]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[34]: OPEN /dev/virtuart_proxy -> fd=7amprpc[35]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[36]: OPEN /dev/virtuart_proxy -> fd=7amprpc[37]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[38]: OPEN /dev/virtuart_proxy -> fd=7amprpc[39]: OPEN /dev/dis -> fd=7
+amprpc[40]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[41]: IOCTL cmd=0xC00C0E0C -> ret=0map ge register to userspace. off = 0
+amprpc[42]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[43]: OPEN /dev/virtuart_proxy -> fd=7amprpc[44]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[45]: OPEN /dev/virtuart_proxy -> fd=7amprpc[46]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[47]: OPEN /dev/virtuart_proxy -> fd=7amprpc[48]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[49]: OPEN /dev/virtuart_proxy -> fd=7amprpc[50]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[51]: OPEN /dev/virtuart_proxy -> fd=7amprpc[52]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[53]: OPEN /dev/virtuart_proxy -> fd=7amprpc[54]: OPEN /dev/virtuart_proxy -> fd=7
+amprpc[55]: OPEN /dev/dis -> fd=7amprpc[56]: IOCTL fd=7 cmd=0xC00C0E0C sz=12
+amprpc[57]: IOCTL cmd=0xC00C0E0C -> ret=0amprpc[58]: OPEN /dev/dis -> fd=7
+amprpc[59]: IOCTL fd=7 cmd=0xC00C0E0C sz=12amprpc[60]: IOCTL cmd=0xC00C0E0C -> ret=0
+amprpc[61]: OPEN /dev/virtuart_proxy -> fd=7amprpc[62]: OPEN /dev/avsync0 -> fd=7
+amprpc[63]: OPEN /dev/dis -> fd=8amprpc[64]: IOCTL fd=8 cmd=0x80140E09 sz=20
+amprpc[65]: IOCTL cmd=0x80140E09 -> ret=0amprpc[66]: OPEN /dev/virtuart_proxy -> fd=8
+amprpc[67]: OPEN /dev/mmz -> fd=8amprpc[68]: IOCTL fd=8 cmd=0xC0101901 sz=16
+amprpc[69]: IOCTL cmd=0xC0101901 -> ret=0amprpc[70]: IOCTL fd=8 cmd=0xC0101902 sz=16
+amprpc[71]: IOCTL cmd=0xC0101902 -> ret=0amprpc[72]: OPEN /dev/mmz -> fd=8
+amprpc[73]: IOCTL fd=8 cmd=0xC0101901 sz=16amprpc[74]: IOCTL cmd=0xC0101901 -> ret=0
+amprpc[75]: IOCTL fd=8 cmd=0xC0101902 sz=16amprpc[76]: IOCTL cmd=0xC0101902 -> ret=0
+amprpc[77]: OPEN /dev/viddec -> fd=8amprpc[78]: IOCTL fd=8 cmd=0x82980400 sz=664
+amprpc[79]: IOCTL cmd=0x82980400 -> ret=0amprpc[80]: IOCTL fd=8 cmd=0x40180500 sz=24
+amprpc[81]: IOCTL cmd=0x40180500 -> ret=0amprpc[82]: OPEN /dev/dis -> fd=9
+amprpc[83]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[84]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[85]: IOCTL fd=8 cmd=0x20000403 sz=0amprpc[86]: IOCTL cmd=0x20000403 -> ret=0
+amprpc[87]: IOCTL fd=9 cmd=0x80080E18 sz=8amprpc[88]: IOCTL cmd=0x80080E18 -> ret=0
+amprpc[89]: IOCTL fd=7 cmd=0x20000203 sz=0amprpc[90]: IOCTL cmd=0x20000203 -> ret=0
+amprpc[91]: IOCTL fd=8 cmd=0x40041503 sz=4amprpc[92]: IOCTL cmd=0x40041503 -> ret=0
+amprpc[93]: OPEN /dev/auddec -> fd=10amprpc[94]: IOCTL fd=10 cmd=0x82780301 sz=632
+amprpc[95]: IOCTL cmd=0x82780301 -> ret=0amprpc[96]: IOCTL fd=10 cmd=0x40180500 sz=24
+amprpc[97]: IOCTL cmd=0x40180500 -> ret=0amprpc[98]: IOCTL fd=10 cmd=0x20000304 sz=0
+amprpc[99]: IOCTL cmd=0x20000304 -> ret=0amprpc[100]: IOCTL fd=10 cmd=0x40041503 sz=4
+amprpc[101]: IOCTL cmd=0x40041503 -> ret=0amprpc[102]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[103]: IOCTL cmd=0x40040201 -> ret=0amprpc[104]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[105]: IOCTL cmd=0x40040201 -> ret=0amprpc[106]: IOCTL fd=8 cmd=0x20000402 sz=0
+amprpc[107]: IOCTL cmd=0x20000402 -> ret=0amprpc[108]: IOCTL fd=10 cmd=0x20000303 sz=0
+amprpc[109]: IOCTL cmd=0x20000303 -> ret=0amprpc[110]: IOCTL fd=10 cmd=0x20000305 sz=0
+amprpc[111]: IOCTL cmd=0x20000305 -> ret=0amprpc[112]: IOCTL fd=8 cmd=0x80040404 sz=4
+amprpc[113]: IOCTL cmd=0x80040404 -> ret=0amprpc[114]: IOCTL fd=7 cmd=0x2000020C sz=0
+amprpc[115]: IOCTL cmd=0x2000020C -> ret=0amprpc[116]: IOCTL fd=8 cmd=0x20000403 sz=0
+amprpc[117]: IOCTL cmd=0x20000403 -> ret=0amprpc[118]: IOCTL fd=9 cmd=0x80080E18 sz=8
+amprpc[119]: IOCTL cmd=0x80080E18 -> ret=0amprpc[120]: IOCTL fd=10 cmd=0x20000304 sz=0
+amprpc[121]: IOCTL cmd=0x20000304 -> ret=0amprpc[122]: OPEN /dev/virtuart_proxy -> fd=13
+amprpc[123]: IOCTL fd=7 cmd=0x20000203 sz=0amprpc[124]: IOCTL cmd=0x20000203 -> ret=0
+amprpc[125]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[126]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[127]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[128]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[129]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[130]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[131]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[132]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[133]: OPEN /dev/virtuart_proxy -> fd=13amprpc[134]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[135]: IOCTL cmd=0x40040201 -> ret=0amprpc[136]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[137]: IOCTL cmd=0x40040201 -> ret=0amprpc[138]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[139]: IOCTL cmd=0x40040201 -> ret=0amprpc[140]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[141]: IOCTL cmd=0x40040201 -> ret=0amprpc[142]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[143]: IOCTL cmd=0x40040201 -> ret=0amprpc[144]: IOCTL fd=7 cmd=0x40040201 sz=4
+amprpc[145]: IOCTL cmd=0x40040201 -> ret=0amprpc[146]: OPEN /dev/virtuart_proxy -> fd=13
+amprpc[147]: IOCTL fd=7 cmd=0x40040201 sz=4amprpc[148]: IOCTL cmd=0x40040201 -> ret=0
+amprpc[149]: IOCTL fd=8 cmd=0x80020401 sz=2amprpc[150]: IOCTL cmd=0x80020401 -> ret=0
+amprpc[151]: IOCTL fd=9 cmd=0x80100E19 sz=16amprpc[152]: IOCTL cmd=0x80100E19 -> ret=0
+amprpc[153]: IOCTL fd=10 cmd=0x20000302 sz=0amprpc[154]: IOCTL cmd=0x20000302 -> ret=0
+amprpc[155]: IOCTL fd=7 cmd=0x8004020D sz=4amprpc[156]: IOCTL cmd=0x8004020D -> ret=0
+amprpc[157]: IOCTL fd=7 cmd=0x2000020C sz=0amprpc[158]: IOCTL cmd=0x2000020C -> ret=0
+amprpc[159]: OPEN /dev/dis -> fd=7amprpc[160]: IOCTL fd=7 cmd=0x800C0E04 sz=12
+amprpc[161]: IOCTL cmd=0x800C0E04 -> ret=0
+=== probe ronda 1 lista — seguimos monitoreando 60s ===
+ 66:       4183   sys_irq  66  18800800.amprpc
+ 66:       6295   sys_irq  66  18800800.amprpc
+ 66:       6976   sys_irq  66  18800800.amprpc
+ 66:       7688   sys_irq  66  18800800.amprpc
+ 66:       9800   sys_irq  66  18800800.amprpc
+ 66:      10569   sys_irq  66  18800800.amprpc
+ 66:      11258   sys_irq  66  18800800.amprpc
+ 66:      12304   sys_irq  66  18800800.amprpc
+ 66:      13415   sys_irq  66  18800800.amprpc
+ 66:      14510   sys_irq  66  18800800.amprpc
+ 66:      15633   sys_irq  66  18800800.amprpc
+ 66:      16453   sys_irq  66  18800800.amprpc
+ 66:      18633   sys_irq  66  18800800.amprpc
+ 66:      19381   sys_irq  66  18800800.amprpc
+ 66:      20056   sys_irq  66  18800800.amprpc
+ 66:      20730   sys_irq  66  18800800.amprpc
+ 66:      21331   sys_irq  66  18800800.amprpc
+ 66:      22064   sys_irq  66  18800800.amprpc
+ 66:      22731   sys_irq  66  18800800.amprpc
+ 66:      23476   sys_irq  66  18800800.amprpc
+ 66:      24551   sys_irq  66  18800800.amprpc
+ 66:      26173   sys_irq  66  18800800.amprpc
+ 66:      26484   sys_irq  66  18800800.amprpc
