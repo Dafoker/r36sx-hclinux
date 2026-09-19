@@ -40,3 +40,20 @@ Determinar si `cubegm/` puede eliminarse por completo de la SD (decisión del us
 # Next action
 
 Usuario: boot de la consola. PASS → cerrar caso cubegm + Fase 7. FAIL → traer SD, restaurar el archivo culpable del tar, cerrar en 5.
+
+---
+
+## Addendum 1 — PHYSICAL PASS + decisión del usuario: intentar la eliminación 100% (2026-09-19)
+
+**TEST PASS (usuario):** boot con cubegm = contrato de 4 → todo OK. **Confirma**: el culpable del fail de la instalación limpia era `xgame-logo.bmp` (part4 del bootloader, `external_files`); `setting.xml`/`allfiles.lst`/`root.dat` eran solo-fábrica-menú y fueron eliminados sin efecto. **cubegm/ queda en su mínimo NOR: 4 archivos de boot (dtb.bin, avp.uImage, vmlinux.uImage, xgame-logo.bmp) + goldens + flag.**
+
+**Decisión del usuario: intentar la eliminación 100%** ("Intentémoslo"). Eso exige reemplazar el bootloader de NOR. Plan de Clase D con red de seguridad completa:
+
+### Fase D-1 — dump del NOR (SIN RIESGO, lee solo mtd*ro)
+Evidencia que lo habilita: kernel propio con `CONFIG_MTD=y`+`MTD_M25P80` (SPI-NOR), DTS `spi@1882e000` ("hichip,hc16xx-spi-sf"), y `/dev/mtd0..3(+ro)` VIVOS en la consola (evidence-diag6x). NOR total 16 MB (manual §3525). **`scripts/nor_dump.sh` desplegado a `G:\nor-dump.sh`** (`77678eb0`) — ejecutar desde FrogShell: `sh /mnt/sdcard/nor-dump.sh` → dump bit-a-bit de las 4 particiones + /proc/mtd + hashes → rollback EXACTO de fábrica + extracción del DDR-init de fábrica (12.288 B) y del NOR-DTB (confirmar external_files/path-prefix en el binario real).
+
+### Fase D-2 — build de nuestro hcboot (SIN RIESGO)
+Manual OPENCODE §12/§14: `mkboot`/`make hcboot-menuconfig` (defconfig `hichip_hc16xx_linux_bl_defconfig`); bootloader.bin = DDR-init + u-boot.bin (post-build genera). Nuestro build: DDR-init **byte-exacto de fábrica (del dump)** + hcboot con NOR-DTB `path-prefix="boot"`. Gate: comparar strings/símbolos contra el bootloader de fábrica del dump (mismo método que validó avp-own en 9a).
+
+### Fase D-3 — flash vía HCFOTA (EL paso de riesgo — requiere red completa + GO explícito)
+Manual §16.17: `hcfota` = upgrade oficial, "nor flash only, ya soportado": escribe flag en persistentmem → reboot → **hcboot lee hcfota.bin de un USB y re-flashea NOR**; también `hcfota <file-path>` desde Linux. PRE-REQUISITO ANTES DE FLASHEAR: entender y VERIFICAR la recuperación BootROM-level (HCPROGRAMMER USB — BR2_EXTERNAL_HCPROGRAMMER_USB_IRQ_DETECT_TIMEOUT=300 sugiere detección USB al boot) — si nuestro hcboot no arranca, la única vía es BootROM/JTAG. **PROHIBIDO flashear sin: (1) dump verificado, (2) hcfota.bin construido y validado, (3) mecanismo de recuperación probado con la consola sana, (4) GO explícito del usuario.**

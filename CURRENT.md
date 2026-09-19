@@ -1,19 +1,22 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-18/19 (8e-BISECT-CLOSE: CLEAN-INSTALL PHYSICAL PASS DEFINITIVO — Fase 8 cerrada por completo; Fase 7 continúa)
+**Actualizado:** 2026-09-19 (8f-RESULT: cubegm al mínimo NOR PHYSICAL PASS; FASE D "eliminar cubegm 100%" lanzada por decisión del usuario — D-1 dump NOR pendiente de ejecutar en consola)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
 
-r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/MIPS), TreeFrogUI estable, control total de kernel/DTB/rootfs/build.
+r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/MIPS), TreeFrogUI estable, control total de kernel/DTB/rootfs/boot.
 
 ## CURRENT PHASE
 
-**FASE 8 DONE DEFINITIVO** (bisect completo, una variable por boot): kernel 8e absuelto → mudanza treefrog absuelta → eliminaciones absueltas menos 4 sospechosos → **CLEAN-INSTALL PHYSICAL PASS**. La causa raíz del primer fail: uno de los 4 archivos pre-Linux (`setting.xml`, `xgame-logo.bmp`, `allfiles.lst`, `root.dat`) es requerido por AVP/bootloader — se conservan por diseño (1,5 MB). **FASE 7 (optimizaciones) continúa** — 7a deployado y validado (opt-in diag físicamente probado en ambos sentidos).
+**FASE D (bootloader propio → eliminar cubegm/ al 100%) — autorizada explícitamente por el usuario ("Intentémoslo") tras cerrar 8f (cubegm mínimo NOR = 4 archivos, PHYSICAL PASS).** Evidencia habilitante: NOR accesible desde nuestro Linux (MTD+M25P80, /dev/mtd0..3 vivos); HCFOTA = mecanismo oficial de reflash (flag persistentmem → hcboot se actualiza desde USB). Estadio: **D-1 (dump NOR) — script desplegado, espera ejecución del usuario.**
 
 ## CURRENT OBJECTIVE
 
-Fase 7 con datos (7b): timeline extraído del boot limpio — kernel@1,08s → SD+zhijack@3,4s → picoarch@~7s (floor = init de frogui, lado upstream TreeFrogUI — fuera de este repo). Opciones dentro de nuestro alcance: (1) refinamiento opcional del culpable exacto entre los 4 archivos pre-Linux (2 boots más), (2) dieta config kernel / rootfs squashfs / otras optimizaciones, (3) decisiones del usuario sobre la siguiente fase.
+1. **Usuario: ejecutar `sh /mnt/sdcard/nor-dump.sh` en FrogShell** (consola encendida, kernel 8e) → dump bit-a-bit de las 4 particiones NOR (16 MB) a la SD → traer la SD al PC.
+2. Análisis del dump: partición del bootloader, DDR-init de fábrica (12.288 B), NOR-DTB real (confirmar external_files/path-prefix="cubegm").
+3. D-2: build de nuestro hcboot (mkboot, defconfig bl) con path-prefix="boot" + DDR-init byte-exacto del dump.
+4. D-3 (flash): SOLO tras verificar recuperación BootROM/USB + GO explícito. PROHIBIDO flashear sin red completa.
 
 ## CURRENT HEAD
 
@@ -21,19 +24,18 @@ Fase 7 con datos (7b): timeline extraído del boot limpio — kernel@1,08s → S
 
 ## KNOWN-GOOD STATE
 
-- **SD = instalación limpia definitiva, PHYSICAL PASS**: kernel 8e `f8fb6768` + `treefrog/` (stack completo) + `cubegm/` 10 archivos (boot 5 + 4 pre-Linux-required + `diag.enabled`) + `rootfs/` + roms/frogui/picoarch.
-- Kernel 8e físico: BUILD `f8fb6768` (7,129,224 B, Entry 0x803db980) — S99app v2 (treefrog-alias + fallback legacy) + S09trace v5.1 (opt-in) + ABI fixes 9l/9m + snd_xfer budget 500.
+- **SD física = instalación limpia definitiva + cubegm mínimo NOR**: kernel 8e `f8fb6768` + `treefrog/` stack + `cubegm/` {dtb.bin, avp.uImage, vmlinux.uImage, xgame-logo.bmp} + goldens + `diag.enabled` + `G:\nor-dump.sh`.
+- Kernel físico: 8e (BUILD PASS, ABI fixes 9l/9m, S99app v2, S09trace v5.1, budget snd_xfer).
 - Backup completo: `D:\R36SX\sd-clean-install-backup-20260918\sd-full.tar` (`963dfd23…`).
-- Goldens SD: `vmlinux.uImage.stock.bak` (53b3e0b3), `avp.uImage.factory.bak` (a9788995).
-- Staging por iteración: `D:\R36SX\staging\` (fase9m/7a/8e). Parches: `patches/kernel/0001..0004`.
+- cubegm: contrato NOR documentado (experimento 2026-09-19). La eliminación 100% = Fase D.
 
 ## BUILD STATUS
 
-**R36SX-V26 KERNEL+ROOTFS OWN: BUILD PASS** (gates TOOLCHAIN/PATCH/DTB PASS). bootloader.bin ausente = esperado (ADR-008).
+**R36SX-V26 KERNEL+ROOTFS OWN: BUILD PASS** (gates PASS). bootloader.bin propio = pendiente D-2 (ADR-086-caído: toolchain bare-metal disponible desde 9a).
 
 ## PHYSICAL STATUS
 
-**TODO PHYSICAL PASS**: audio (juegos/música), video (imagen+sonido), salida de emuladores, instalación limpia desde FAT32 recién formateado. Bisect (a)/(b)/(c) PASS con evidencia en `docs/experiments/evidence-8e-*`.
+**TODO PHYSICAL PASS** (audio, video, salida, instalación limpia, cubegm mínimo). Bisect 8e + 8f completos con evidencia.
 
 ## SOURCE SDK SHA256
 
@@ -41,20 +43,19 @@ Fase 7 con datos (7b): timeline extraído del boot limpio — kernel@1,08s → S
 
 ## ACTIVE BLOCKERS
 
-Ninguno. Nota: `diag.enabled` está ACTIVO en la SD (logs en cada boot) — borrar el flag para boots de producción silenciosos.
+Ninguno técnico. D-3 (flash NOR) = zona prohibida: requiere dump verificado + build validado + recuperación BootROM/USB probada + GO explícito del usuario en ese punto.
 
 ## NEXT EXACT ACTION
 
-1. Usuario decide: (a) refinamiento del culpable exacto entre los 4 archivos pre-Linux (opcional, 2 boots), o (b) continuar Fase 7 (optimización siguiente), o (c) siguiente fase del ROADMAP.
-2. Mantener regla de la lección 8e: UNA variable por boot físico en deploys.
+1. **Usuario: `sh /mnt/sdcard/nor-dump.sh` en la consola (FrogShell)** → traer la SD.
+2. Yo: análisis del dump (particiones/DDR-init/NOR-DTB) + inicio D-2 (build hcboot).
 
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |
 |------------|-----|
-| Contrato TreeFrogUI (boot/ABI/inventario/layout limpio) | `docs/TREEFROG_UI_CONTRACT.md` |
-| Caso 8e completo (bisect + plan + manifiestos) | `docs/experiments/2026-09-18_8e-stack-relocation-plan.md` |
-| ADR-012 (ABI) / ADR-013 (diag opt-in) | `DECISIONS.md` |
-| Ownership de la cadena | `docs/BOOT_CHAIN.md` |
-| Reglas (§13 sync, §14 provenance) | `AGENTS.md` |
-| Backup completo pre-formato | `D:\R36SX\sd-clean-install-backup-20260918\` |
+| Caso cubegm + plan D | `docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md` |
+| Contrato TreeFrogUI (boot/ABI/layout) | `docs/TREEFROG_UI_CONTRACT.md` |
+| Manuales vendor (flasheo/HCFOTA/bootchain) | `/mnt/d/GitHub/KERNEL/HCLINUX_OPENCODE_GUIDE.md` + `HCLINUX_MANUAL_MACHINE_READABLE.md` |
+| ADR-012/013 | `DECISIONS.md` |
+| Reglas (§5 hardware, §13 sync, §14 provenance) | `AGENTS.md` |
