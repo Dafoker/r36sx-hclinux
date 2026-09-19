@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-19 (8f-RESULT: cubegm al mínimo NOR PHYSICAL PASS; FASE D "eliminar cubegm 100%" lanzada por decisión del usuario — D-1 dump NOR pendiente de ejecutar en consola)
+**Actualizado:** 2026-09-19 (D-1 DONE: dump NOR verificado + layout mapeado + DDR-init de fábrica extraído + mecánica HCFOTA completa — camino a cubegm 0%)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -9,14 +9,13 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT PHASE
 
-**FASE D (bootloader propio → eliminar cubegm/ al 100%) — autorizada explícitamente por el usuario ("Intentémoslo") tras cerrar 8f (cubegm mínimo NOR = 4 archivos, PHYSICAL PASS).** Evidencia habilitante: NOR accesible desde nuestro Linux (MTD+M25P80, /dev/mtd0..3 vivos); HCFOTA = mecanismo oficial de reflash (flag persistentmem → hcboot se actualiza desde USB). Estadio: **D-1 (dump NOR) — script desplegado, espera ejecución del usuario.**
+**FASE D (eliminar cubegm/ 100% vía bootloader propio) — D-1 COMPLETO.** Dump NOR bit-a-bit verificado (`D:\R36SX\nor-dump-20260919\`), layout mapeado (boot 0x0-0x6C000 / eromfs 0x6C000 / persistentmem 0x70000), DDR-init de fábrica extraído byte-exacto (`d944d9af…` — no coincide con ningún SDK), HCFOTA soporta modo `sd` (flash desde la SD), empaquetado = `HCFota_Generator`. **Siguiente: D-2** (build + validación en escalera).
 
 ## CURRENT OBJECTIVE
 
-1. **Usuario: ejecutar `sh /mnt/sdcard/nor-dump.sh` en FrogShell** (consola encendida, kernel 8e) → dump bit-a-bit de las 4 particiones NOR (16 MB) a la SD → traer la SD al PC.
-2. Análisis del dump: partición del bootloader, DDR-init de fábrica (12.288 B), NOR-DTB real (confirmar external_files/path-prefix="cubegm").
-3. D-2: build de nuestro hcboot (mkboot, defconfig bl) con path-prefix="boot" + DDR-init byte-exacto del dump.
-4. D-3 (flash): SOLO tras verificar recuperación BootROM/USB + GO explícito. PROHIBIDO flashear sin red completa.
+1. **D-2a (probar el MECANISMO sin riesgo funcional)**: empaquetar el bootloader de FÁBRICA exacto (bytes del dump) como HCFOTA.bin → flash vía hcfota reboot sd → la consola debe re-arrancar idéntica → mecanismo PROBADO.
+2. **D-2b**: cambiar DTS `path-prefix="cubegm"`→`"boot"` + rebuild (mkboot/mkall + HCFota_Generator withboot, DDR-init de fábrica) + validar strings vs fábrica (método 9a) → flash → boot desde /boot/ → mover archivos → **borrar cubegm/ al 100%**.
+3. Requisito pendiente: herramienta `hcfota` userspace MIPS (SOURCE/hcfota, meson) para nuestro rootfs (o trigger manual del flag OTA).
 
 ## CURRENT HEAD
 
@@ -24,18 +23,18 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## KNOWN-GOOD STATE
 
-- **SD física = instalación limpia definitiva + cubegm mínimo NOR**: kernel 8e `f8fb6768` + `treefrog/` stack + `cubegm/` {dtb.bin, avp.uImage, vmlinux.uImage, xgame-logo.bmp} + goldens + `diag.enabled` + `G:\nor-dump.sh`.
-- Kernel físico: 8e (BUILD PASS, ABI fixes 9l/9m, S99app v2, S09trace v5.1, budget snd_xfer).
-- Backup completo: `D:\R36SX\sd-clean-install-backup-20260918\sd-full.tar` (`963dfd23…`).
-- cubegm: contrato NOR documentado (experimento 2026-09-19). La eliminación 100% = Fase D.
+- **SD = instalación limpia + cubegm mínimo NOR (4 archivos) — PHYSICAL PASS.** Kernel 8e `f8fb6768`.
+- **Dump NOR (rollback exacto de fábrica)**: `D:\R36SX\nor-dump-20260919\` — mtd0-3 + `ddrinit-factory-12288.abs` + hashes.
+- Backup SD completo: `D:\R36SX\sd-clean-install-backup-20260918\sd-full.tar` (`963dfd23…`).
+- Goldens: stock.bak `53b3e0b3`, avp `a9788995` (en SD), NOR dump (en D:).
 
 ## BUILD STATUS
 
-**R36SX-V26 KERNEL+ROOTFS OWN: BUILD PASS** (gates PASS). bootloader.bin propio = pendiente D-2 (ADR-086-caído: toolchain bare-metal disponible desde 9a).
+**R36SX-V26 KERNEL+ROOTFS OWN: BUILD PASS.** Pendiente D-2: bootloader.bin propio (hcboot + path-prefix="boot" + DDR-init de fábrica) + HCFOTA.bin (withboot).
 
 ## PHYSICAL STATUS
 
-**TODO PHYSICAL PASS** (audio, video, salida, instalación limpia, cubegm mínimo). Bisect 8e + 8f completos con evidencia.
+**TODO PHYSICAL PASS** (audio/video/salida/clean-install/cubegm-mínimo). D-1 dump ejecutado en consola sin incidentes.
 
 ## SOURCE SDK SHA256
 
@@ -43,19 +42,20 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## ACTIVE BLOCKERS
 
-Ninguno técnico. D-3 (flash NOR) = zona prohibida: requiere dump verificado + build validado + recuperación BootROM/USB probada + GO explícito del usuario en ese punto.
+Ninguno técnico. D-3 (flash) pendiente de: D-2a (mecanismo probado) + build validado + GO explícito del usuario. El riesgo de brick queda mitigado por: DDR-init byte-exacto + mecanismo oficial HCFOTA + dump NOR de rollback (restaurable por JTAG/HCPROGRAMMER usbdevice si hiciera falta).
 
 ## NEXT EXACT ACTION
 
-1. **Usuario: `sh /mnt/sdcard/nor-dump.sh` en la consola (FrogShell)** → traer la SD.
-2. Yo: análisis del dump (particiones/DDR-init/NOR-DTB) + inicio D-2 (build hcboot).
+1. Estudiar `HCFota_Generator` + `hcprog.ini` (formato de empaquetado HCFOTA.bin).
+2. D-2a: empaquetar bootloader de fábrica (del dump) → flash prueba-mecanismo → boot esperado idéntico (con el usuario).
+3. D-2b: DTS path-prefix→"boot" + rebuild completo + validación + flash → cubegm/ 100% fuera.
 
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |
 |------------|-----|
-| Caso cubegm + plan D | `docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md` |
-| Contrato TreeFrogUI (boot/ABI/layout) | `docs/TREEFROG_UI_CONTRACT.md` |
-| Manuales vendor (flasheo/HCFOTA/bootchain) | `/mnt/d/GitHub/KERNEL/HCLINUX_OPENCODE_GUIDE.md` + `HCLINUX_MANUAL_MACHINE_READABLE.md` |
-| ADR-012/013 | `DECISIONS.md` |
+| Caso cubegm + Fase D (plan completo) | `docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md` |
+| Dump NOR + DDR-init | `D:\R36SX\nor-dump-20260919\` |
+| Manuales vendor (HCFOTA/bootchain) | `/mnt/d/GitHub/KERNEL/HCLINUX_MANUAL_MACHINE_READABLE.md` §16.17 |
+| Contrato TreeFrogUI | `docs/TREEFROG_UI_CONTRACT.md` |
 | Reglas (§5 hardware, §13 sync, §14 provenance) | `AGENTS.md` |

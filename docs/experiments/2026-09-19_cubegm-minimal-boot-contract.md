@@ -57,3 +57,33 @@ Manual OPENCODE §12/§14: `mkboot`/`make hcboot-menuconfig` (defconfig `hichip_
 
 ### Fase D-3 — flash vía HCFOTA (EL paso de riesgo — requiere red completa + GO explícito)
 Manual §16.17: `hcfota` = upgrade oficial, "nor flash only, ya soportado": escribe flag en persistentmem → reboot → **hcboot lee hcfota.bin de un USB y re-flashea NOR**; también `hcfota <file-path>` desde Linux. PRE-REQUISITO ANTES DE FLASHEAR: entender y VERIFICAR la recuperación BootROM-level (HCPROGRAMMER USB — BR2_EXTERNAL_HCPROGRAMMER_USB_IRQ_DETECT_TIMEOUT=300 sugiere detección USB al boot) — si nuestro hcboot no arranca, la única vía es BootROM/JTAG. **PROHIBIDO flashear sin: (1) dump verificado, (2) hcfota.bin construido y validado, (3) mecanismo de recuperación probado con la consola sana, (4) GO explícito del usuario.**
+
+---
+
+## Addendum 2 — D-1 EJECUTADO Y ANALIZADO (2026-09-19, noche) — layout NOR mapeado + mecánica de upgrade completa
+
+**Dump NOR ejecutado por el usuario** (`sh /mnt/sdcard/nor-dump.sh` desde FrogShell) — hashes verificados (SHA256SUMS.txt OK). Copia persistente: `D:\R36SX\nor-dump-20260919\` (mtd0-3 + tabla + DDR-init extraído).
+
+**Layout NOR (mapeado desde el propio dump, evidencia cruce con mtd0):**
+
+| Partición | NOR offset | Tamaño | Contenido |
+|---|---|---|---|
+| mtd0 "nor" | 0x000000 | 512 KiB (ventana) | vista completa del NOR |
+| mtd1 "boot" | 0x000000 | 442.368 B (0x6C000) | DDR-init (12.288 B) + bootloader COMPRIMIDO (boot-compressed; sin strings ni FDT en crudo — el DTB va dentro del payload); contenido real hasta 0x6A000 |
+| mtd2 "eromfs" | 0x06C000 | 16 KiB | romfs de rescate (`-rom1fs-`) |
+| mtd3 "persistentmem" | 0x070000 | 64 KiB | sysdata/factory + flags OTA |
+
+**DDR-init de fábrica EXTRAÍDO BYTE-EXACTO:** `ddrinit-factory-12288.abs` sha256 `d944d9afb427a404a8f2a57347291e356386c8c107c76b3e8c7baabd420a9145` — **NO coincide con NINGÚN ddrinit del SDK Jul-2024** (15+ variantes comparadas) → el de fábrica es de la línea Dic-2025 o custom → **D-2 usará el extraído, jamás uno del SDK** (el DDR erróneo = brick garantizado).
+
+**Mecánica de upgrade (SOURCE/hcfota/main.c + apps-bootloader/cmd/upgrade.c):**
+- `hcfota reboot <mode>` con modos **[none | usbdevice | usbhost | sd | network]** — **`sd` soportado**: el hcboot lee HCFOTA.bin DESDE LA SD (ideal: nuestro medio).
+- `hcfota <file-path>` = upgrade desde archivo local; `hcfota info <file>` = inspección.
+- upgrade.c: `upgrade_all_modes()` = USB_HOST|SD|NETWORK|USB_DEVICE; `upgrade_force()` como fallback de bootm.
+- Empaquetado: `HCFota_Generator --dtb ${DTB} --ini hcprog.ini -o for-upgrade[-withboot]/HCFOTA.bin` (post-build:300-305) — la variante **for-upgrade-withboot incluye el bootloader** = la nuestra. `BR2_EXTERNAL_HCFOTA_FILENAME="HCFOTA.bin"`.
+- El DTB del flujo completo (bootloader + hcfota + kernel) sale del MISMO dtb.bin del build → **nuestro DTS gobierna todo**.
+
+**Estrategia de validación en escalera (método 9a — mecanismo primero con datos conocidos-good):**
+1. **D-2a**: re-empaquetar y re-flashear el BOOTLOADER DE FÁBRICA EXACTO (bytes del dump) vía HCFOTA → si la consola re-arranca normal = mecanismo de upgrade PROBADO sin riesgo funcional.
+2. **D-2b**: build de NUESTRO hcboot (path-prefix="boot" + DDR-init de fábrica) → validación strings/símbolos vs fábrica (método 9a) → flash → boot → mover archivos a /boot/ → **eliminar cubegm/ 100%**.
+
+**Pendiente D-2**: (a) cambiar DTS path-prefix→"boot" + rebuild completo (mkboot/mkall + HCFota_Generator), (b) construir la herramienta hcfota userspace para MIPS (SOURCE/hcfota, meson) para el rootfs propio, (c) leer HCFota_Generator/HCFOTA.bin para el empaquetado del binario de fábrica (D-2a).
