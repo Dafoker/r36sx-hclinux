@@ -13,6 +13,13 @@
 #define HCRTOS_SYSMEM_SIZE 0xB53600
 #define HCRTOS_SYSMEM_OFFSET 0xBDA2E50
 
+/* Fase D-2b: macros del bootloader (hook fixup-load-addr de apps-bootloader
+ * requiere HCRTOS_BOOTMEM_OFFSET resoluble via gcc -E; formula identica a la
+ * del vendor en hc16xx-*-avp.dtsi; con SYSMEM 0xBDA2E50 resuelve 0x9DA0000
+ * == bootmem reg del DTB stock exacto). */
+#define HCRTOS_BOOTMEM_SIZE 0x2000000
+#define HCRTOS_BOOTMEM_OFFSET (((HCRTOS_SYSMEM_OFFSET < 0xc000000 ? HCRTOS_SYSMEM_OFFSET : 0xc000000) - HCRTOS_BOOTMEM_SIZE) & 0xffff0000)
+
 
 / {
 	#address-cells = <0x01>;
@@ -199,7 +206,7 @@
 			part3-label = "linux";
 			part4-filename = "xgame-logo.bmp";
 			part4-label = "logo";
-			path-prefix = "cubegm";
+			path-prefix = "boot";
 		};
 
 		gpio-out-def {

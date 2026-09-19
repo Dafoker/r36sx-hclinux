@@ -3059,7 +3059,7 @@ BR2_TARGET_UBOOT_CUSTOM_PATCH_DIR=""
 # HiChipTech Linux sdk distribution (in /media/ps/data/home/banner.xia/work/hclinux)
 #
 BR2_EXTERNAL_PRODUCT_NAME="HC16D3100V20"
-BR2_EXTERNAL_BOARD_DDRINIT_FILE="${BR2_EXTERNAL_HCLINUX_PATH}/board/hichip/hc16xx/common/ddrinit/hc16xx_ddr2_128M_800MHz.abs"
+BR2_EXTERNAL_BOARD_DDRINIT_FILE="${BR2_EXTERNAL_HCLINUX_PATH}/board/hichip/hc16xx/r36sx_v26/ddrinit/ddrinit-factory-12288.abs"
 BR2_EXTERNAL_BOOTMEDIA_FILE="${BR2_EXTERNAL_HCLINUX_PATH}/board/hichip/hc16xx/common/logo.m2v"
 BR2_EXTERNAL_FW_COMPRESS_GZIP=y
 # BR2_EXTERNAL_FW_COMPRESS_LZMA is not set
@@ -3068,7 +3068,10 @@ BR2_EXTERNAL_FW_COMPRESS_GZIP=y
 #
 # Bootloaders
 #
-# BR2_TARGET_HCBOOT is not set
+# Fase D-2b: bootloader propio (dual-path fallback /boot/->cubegm/, base c3_q6,
+# DDR-init de fabrica byte-exacto del dump NOR, DTB desde nuestro DTS)
+BR2_TARGET_HCBOOT=y
+BR2_TARGET_HCBOOT_DEFCONFIG="$(BR2_EXTERNAL_HCLINUX_PATH)/board/hichip/hc16xx/r36sx_v26/r36sx-v26_bl_defconfig"
 
 #
 # Extra Linux Configuration

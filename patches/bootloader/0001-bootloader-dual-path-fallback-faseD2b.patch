@@ -1,0 +1,26 @@
+--- /tmp/pristine-bl/hclinux-2024.02.y.2/hclinux/SOURCE/avp/components/applications/apps-bootloader/source/main.c	2024-07-02 23:37:31.000000000 -0500
++++ /home/dafunknoise/work/r36sx-hclinux/sdk/hclinux-2024.02.y.2/hclinux/SOURCE/avp/components/applications/apps-bootloader/source/main.c	2026-09-19 11:46:28.276332298 -0500
+@@ -254,6 +254,23 @@
+ 				return 0;
+ 			}
+ 		}
++		/*
++		 * D-2b (r36sx-hclinux): fallback dual-path — si el path-prefix
++		 * del DTB no resuelve el archivo, reintentar con el prefijo
++		 * legacy de fabrica "cubegm" antes de rendirse. El bootloader
++		 * queda bootable con AMBOS layouts (nuevo dir y el cubegm/ de
++		 * rollback) — inbrickeable por diseno.
++		 */
++		if (prefix && strcmp(prefix, "cubegm") != 0) {
++			for (i = 0; i < usbsd_nt.nb_partitions; i++) {
++				memset(strbuf, 0, sizeof(strbuf));
++				snprintf(strbuf, sizeof(strbuf), "/media/%s/cubegm/%s", usbsd_nt.dev[i], filename);
++				if (!stat(strbuf, &sb)) {
++					snprintf(devpath, len, "%s", strbuf);
++					return 0;
++				}
++			}
++		}
+ 	}
+ 
+ 	return -1;

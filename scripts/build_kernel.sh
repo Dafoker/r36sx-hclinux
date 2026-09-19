@@ -40,6 +40,20 @@ if [ -d "$OVERLAY_OWN" ]; then
   mkdir -p "$BD/rootfs-overlay-own"
   cp -r "$OVERLAY_OWN"/. "$BD/rootfs-overlay-own/"
 fi
+# Fase D-2b: bootloader propio — bl defconfig de la board -> workspace SDK
+BL_CFG="$R/boards/$BOARD/bootloader/${BOARD}_bl_defconfig"
+if [ -f "$BL_CFG" ]; then
+  mkdir -p "$BD/bootloader"
+  cp "$BL_CFG" "$BD/${BOARD}_bl_defconfig"
+  # DDR-init de fabrica (del dump NOR, D:\R36SX\nor-dump-20260919, sha verificado en reposicion)
+  if [ -f "$BD/ddrinit/ddrinit-factory-12288.abs" ]; then
+    H=$(sha256sum "$BD/ddrinit/ddrinit-factory-12288.abs" | cut -c1-16)
+    [ "$H" = "d944d9afb427a404" ] || { echo "ERROR: DDR-init de fabrica hash invalido ($H)"; exit 1; }
+    echo "DDR-init de fabrica verificado (d944d9af)"
+  else
+    echo "AVISO: falta ddrinit/ddrinit-factory-12288.abs en el board dir del SDK (D-2b lo requiere)"
+  fi
+fi
 
 # 4. entorno validado (docs/BUILD.md + TOOLCHAIN_PROVENANCE)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

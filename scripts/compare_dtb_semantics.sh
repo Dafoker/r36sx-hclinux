@@ -13,6 +13,10 @@ TMP=$(mktemp -d)
 # ALLOWLIST (regex; una por línea; "#" = comentario). Objetivo: VACÍA.
 ALLOWLIST=(
   "# (vacía — stock-equivalence estricta; añadir SOLO con evidencia y ADR)"
+  "# Fase D-2b (ADR-014 implícito del caso cubegm): path-prefix cubegm->boot —"
+  "# delta DELIBERADO: nuevo layout /boot/ con fallback dual-path en el bootloader"
+  "# propio. Docs: docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md"
+  '^[<>][[:space:]]*path-prefix = .(cubegm|boot).;$'
 )
 
 [ -f "$MINE" ] || { echo "ERROR: no existe $MINE (compilar primero)"; exit 1; }

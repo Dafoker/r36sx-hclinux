@@ -1,6 +1,6 @@
 # CURRENT.md — Snapshot operacional (CACHÉ — Git es la verdad)
 
-**Actualizado:** 2026-09-19/20 (D-2a-RESEARCH: HCFOTA descartado como primera vía — bootloader de fábrica SIN módulo upgrade; PIVOTE a escritura MTD directa; herramientas D-2a' construidas y pendientes de desplegar)
+**Actualizado:** 2026-09-19 (D-2b DONE: bootloader propio BUILD PASS + validación 9a completa; paquete D-2c desplegado en SD; PENDIENTE GO explícito del usuario para el flash del bootloader)
 **Regla:** snapshot pequeño, sin historia. No changelog.
 
 ## PROJECT
@@ -9,14 +9,13 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## CURRENT PHASE
 
-**FASE D (eliminar cubegm/ 100%) — mecanismo de primera escritura RESUELTO: escritura MTD directa desde nuestro Linux.** El bootloader de fábrica (descomprimido del dump: "hcboot-custom" de `e3100_cube`) NO tiene módulo upgrade → HCFOTA solo servirá DESPUÉS de tener nuestro bootloader. NOR-DTB de fábrica extraído (path-prefix="cubegm" confirmado en el binario real). Herramientas listas: `tools/mtdnor` + `tools/d2a_flash_factory.sh`.
+**FASE D — D-2b COMPLETO.** Bootloader propio construido y validado (método 9a): DDR-init de fábrica byte-exacto, NOR-DTB embebido path-prefix="boot", fallback dual-path compilado, módulo HCFOTA upgrade (SD) incluido. Paquete de flash desplegado en la SD: `/boot/` (copias idénticas de los 4 archivos) + imagen `bootloader-r36sx-v26-faseD2b.bin` (`1734c340…`) + `d2c_flash_bootloader.sh`. **ESPERA: GO explícito del usuario para D-2c (flash de /dev/mtd1).**
 
 ## CURRENT OBJECTIVE
 
-1. **Desplegar mtdnor + d2a_flash_factory.sh a la SD** (pendiente: SD no estaba montada al cierre) → **usuario ejecuta D-2a'**: re-escritura de los bytes EXACTOS de fábrica sobre /dev/mtd1 con doble verificación → reboot → consola idéntica = mecanismo MTD PROBADO.
-2. **D-2b**: habilitar BR2_TARGET_HCBOOT + bl defconfig dualcore + **patch fallback dual-path (/boot/ → cubegm/)** en apps-bootloader + DDR-init de fábrica (`d944d9af`) + DTB path-prefix="boot" → build → validación strings vs fábrica (método 9a).
-3. **D-2c (GO explícito)**: crear /boot/ con los 4 archivos (cubegm intacto) → flash MTD + readback → reboot.
-4. **D-3**: borrar cubegm/ al 100% → boot final.
+1. **GO del usuario** → ejecuta `sh /mnt/sdcard/d2c_flash_bootloader.sh` en FrogShell → reboot → boot-1 (esperado: idéntico, ahora cargando desde /boot/ con fallback cubegm/).
+2. Boot-2: swap `/boot/{dtb.bin, vmlinux.uImage}` por los builds nuevos (dtb "boot" + kernel eb0360ca) → reboot.
+3. **D-3**: borrar `cubegm/` al 100% → boot-3 → caso cerrado.
 
 ## CURRENT HEAD
 
@@ -24,18 +23,19 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## KNOWN-GOOD STATE
 
-- **SD física = instalación limpia + cubegm mínimo NOR (4 archivos) — PHYSICAL PASS.** Kernel 8e `f8fb6768`.
-- **Dump NOR verificado** `D:\R36SX\nor-dump-20260919\` (mtd0-3 + ddrinit-factory-12288.abs `d944d9af` + factory-hcboot-decompressed.bin + factory-nordtb-0.dtb + hashes; mtd1ro.bin sha `9fc95d7e`).
-- Backup SD: `D:\R36SX\sd-clean-install-backup-20260918\sd-full.tar` (`963dfd23…`).
-- Bootloader de fábrica descomprimido: LZMA @0x5e48 → 1.101.500 B (hcboot-custom e3100_cube, SIN upgrade).
+- **SD = instalación limpia + cubegm mínimo NOR — PHYSICAL PASS** (kernel 8e `f8fb6768`).
+- **D-2a' PHYSICAL PASS**: mecanismo MTD probado (re-escritura bytes idénticos de fábrica + reboot OK).
+- **bootloader.bin propio** (BUILD PASS + validado): DDR-init fábrica (d944d9af, campo tamaño dinámico), hcboot 413.216 B, NOR-DTB "boot", dual-path, upgrade SD. Imagen flash: staging + SD (`1734c340…`, 442.368 B pad 0xFF).
+- Dump NOR (rollback): `D:\R36SX\nor-dump-20260919\` + nuestro build descomprimido + ambos NOR-DTB.
+- Backup SD: `sd-full.tar` (`963dfd23…`).
 
 ## BUILD STATUS
 
-**R36SX-V26 KERNEL+ROOTFS OWN: BUILD PASS.** `tools/mtdnor` MIPS32r2 estático BUILD PASS (610 KB). Pendiente D-2b: bootloader propio (BR2_TARGET_HCBOOT hoy `not set` en nuestro defconfig).
+**KERNEL+ROOTFS+BOOTLOADER OWN: BUILD PASS.** bootloader.bin 425.504 B < partición ✓. (Nota: el paso final "flash binary" falla por romfs/logo > eromfs — irrelevante: no flasheamos eromfs; bootloader.bin se genera antes.)
 
 ## PHYSICAL STATUS
 
-**TODO PHYSICAL PASS** previo. D-1 dump ejecutado sin incidentes. D-2a' pendiente de ejecutar en consola.
+**TODO PHYSICAL PASS previo.** D-2a' mecanismo MTD PASS. D-2c flash pendiente de GO.
 
 ## SOURCE SDK SHA256
 
@@ -43,20 +43,19 @@ r36sx-hclinux — plataforma Linux/HCLinux reproducible para R36SX V2.6 (HC16xx/
 
 ## ACTIVE BLOCKERS
 
-Ninguno técnico. Riesgo residual D-2c acotado por: D-2a' (mecanismo probado con bytes idénticos) + dual-path fallback + dump exacto + DDR-init byte-exacto.
+Ninguno técnico. **D-2c requiere GO explícito del usuario** (zona prohibida §5 — mitigado por: mecanismo probado D-2a' + dual-path + dump de rollback + DDR-init fábrica).
 
 ## NEXT EXACT ACTION
 
-1. Montar SD (`wsl --shutdown` si "No such device") → desplegar `tools/mtdnor` + `tools/d2a_flash_factory.sh` a la raíz.
-2. Usuario: en FrogShell ejecutar `sh /mnt/sdcard/d2a_flash_factory.sh` → reboot → reportar (esperado: consola idéntica).
-3. Con PASS: empezar D-2b (habilitar HCBOOT en el defconfig + patch dual-path + build).
+1. Usuario da GO → ejecuta `sh /mnt/sdcard/d2c_flash_bootloader.sh` en FrogShell (consola encendida, SD insertada) → ~2 min → reboot → reportar.
+2. Con boot-1 PASS → boot-2 (swap dtb/kernel nuevos en /boot/) → boot-3 (D-3: borrar cubegm/).
 
 ## REFERENCIA RÁPIDA
 
 | Subsistema | Ver |
 |------------|-----|
-| Caso cubegm + Fase D completa (addendum 3 = pivote MTD) | `docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md` |
-| Dump NOR + bootloader fábrica descomprimido + NOR-DTB | `D:\R36SX\nor-dump-20260919\` |
-| Herramienta MTD | `tools/mtdnor.c` / `tools/mtdnor` / `tools/d2a_flash_factory.sh` |
-| Manuales vendor | `/mnt/d/GitHub/KERNEL/HCLINUX_MANUAL_MACHINE_READABLE.md` |
+| Caso cubegm + Fase D (4 addendums) | `docs/experiments/2026-09-19_cubegm-minimal-boot-contract.md` |
+| bl defconfig + parche dual-path | `boards/r36sx-v26/bootloader/` + `patches/bootloader/0001` |
+| Dump NOR + builds descomprimidos + NOR-DTBs | `D:\R36SX\nor-dump-20260919\` |
+| Herramientas flash | `tools/mtdnor` + `tools/d2c_flash_bootloader.sh` |
 | Reglas (§5 hardware, §13 sync, §14 provenance) | `AGENTS.md` |

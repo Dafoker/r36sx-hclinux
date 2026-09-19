@@ -31,8 +31,19 @@ SYSMEM_SIZE=0xB53600     # hcrtos sysmem size stock
   echo "#define HCRTOS_SYSMEM_SIZE ${SYSMEM_SIZE}"
   echo "#define HCRTOS_SYSMEM_OFFSET 0xBDA2E50"
   echo ""
+  echo "/* Fase D-2b: macros del bootloader (hook fixup-load-addr de apps-bootloader"
+  echo " * requiere HCRTOS_BOOTMEM_OFFSET resoluble via gcc -E; formula identica a la"
+  echo " * del vendor en hc16xx-*-avp.dtsi; con SYSMEM 0xBDA2E50 resuelve 0x9DA0000"
+  echo " * == bootmem reg del DTB stock exacto). */"
+  echo "#define HCRTOS_BOOTMEM_SIZE 0x2000000"
+  echo "#define HCRTOS_BOOTMEM_OFFSET (((HCRTOS_SYSMEM_OFFSET < 0xc000000 ? HCRTOS_SYSMEM_OFFSET : 0xc000000) - HCRTOS_BOOTMEM_SIZE) & 0xffff0000)"
+  echo ""
   tail -n +2 "$REF"
 } > "$OUT"
+
+# Fase D-2b: DELTA DELIBERADO — path-prefix "boot" (nuevo layout propio; el
+# bootloader lleva fallback dual-path a cubegm/). Documentado + allowlist en el gate.
+sed -i 's/path-prefix = "cubegm";/path-prefix = "boot";/' "$OUT"
 
 echo "=== make_board_dts ==="
 echo "salida: $OUT ($(wc -l < "$OUT") líneas)"
@@ -47,6 +58,6 @@ if diff -q "$REF" "$TMPD/test.dts" >/dev/null; then
   echo "SEMANTIC vs stock: PASS (idéntico)"
 else
   echo "SEMANTIC vs stock: DIFF —"
-  diff "$REF" "$TMPD/test.dts" | head -20
+  { diff "$REF" "$TMPD/test.dts" | head -20 || true; }
 fi
 echo "=== make_board_dts DONE ==="
